@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/28/CrossDomain/">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/08/25/vue使用笔记-vue-cli项目目录及配置文件浅析.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -282,7 +282,442 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/28/CrossDomain/" itemprop="url">CrossDomain</a></h1>
+                <a class="post-title-link" href="/2017/08/25/vue使用笔记-vue-cli项目目录及配置文件浅析.html" itemprop="url">vue使用笔记-vue-cli项目目录及配置文件浅析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T11:53:38+08:00">
+                2017-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/08/25/vue使用笔记-vue-cli项目目录及配置文件浅析.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/08/25/vue使用笔记-vue-cli项目目录及配置文件浅析.html" class="cy_cmt_count" data-xid="2017/08/25/vue使用笔记-vue-cli项目目录及配置文件浅析.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>之前写了一篇笔记，只是把用vue-cli搭建了一个移动端的项目。但本人对vue-cli的项目目录及webpack配置不了解，在此学习并记录下。</p>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init webpack &lt;projectName&gt;</div></pre></td></tr></table></figure>
+<h4 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">|-- build/		<span class="meta"># webpack配置文件</span></div><div class="line">|     |-- dev.server.js	<span class="meta"># 运行项目时的入口文件(npm run dev)</span></div><div class="line">|     | ···</div><div class="line">|-- config/		<span class="meta"># 项目配置文件</span></div><div class="line">|     |-- dev.env.js</div><div class="line">|     |-- index.js 	<span class="meta"># 项目运行和打包对应的配置文件</span></div><div class="line">|     |-- prod.env.js</div><div class="line">|     |-- test.env.js</div><div class="line">|-- src/		<span class="meta"># 开发源文件</span></div><div class="line">|     |-- assets/ 	<span class="meta"># 模块资源（会被webpack处理）</span></div><div class="line">|           | ···</div><div class="line">|     |-- commponents/ 	<span class="meta"># 模块</span></div><div class="line">|           | ···</div><div class="line">|     |-- router/ 	<span class="meta"># 路由</span></div><div class="line">|           | ···</div><div class="line">|     |-- App.vue 	<span class="meta"># 项目开始时的入口vue组件</span></div><div class="line">|     |-- main.js 	<span class="meta"># 程序入口文件</span></div><div class="line">|-- static/		<span class="meta"># 静态资源文件(直接拷贝到dist/static/里面)</span></div><div class="line">|     | ···</div><div class="line">|-- test/		<span class="meta"># 测试</span></div><div class="line">|     | ···</div><div class="line">|-- .babelrc		<span class="meta"># babel配置文件</span></div><div class="line">|-- .editorconfig	<span class="meta"># 编辑配置文件</span></div><div class="line">|-- .eslintignore	<span class="meta"># eslint忽略配置文件</span></div><div class="line">|-- .eslintrc.js 	<span class="meta"># eslint配置文件</span></div><div class="line">|-- .gitignore 		<span class="meta"># 项目提交忽略文件</span></div><div class="line">|-- .postcssrc.js	<span class="meta"># postcss配置文件[为css提供一些额外的功能，处理css]</span></div><div class="line">|-- index.html 		<span class="meta"># 入口模板文件</span></div><div class="line">|-- package.json 	<span class="meta"># 开发项目所需的包管理配置文件（运行的脚本与相关依赖）</span></div><div class="line">|-- README.md 		<span class="meta"># 重要内容介绍</span></div></pre></td></tr></table></figure>
+<h5 id="build"><a href="#build" class="headerlink" title="build/"></a>build/</h5><p>此目录为开发环境和生产环境的webpack配置文件，我们可以修改此目录下的文件，来添加或修改插件配置、调整路径等</p>
+<h5 id="config"><a href="#config" class="headerlink" title="config/"></a>config/</h5><p>此目录最为主要的是index.js文件，在index.js文件中配置了生产环境和开发环境的入口文件、相关目录和开发环境下的端口、是否自动打开浏览器以及生产环境下是否压缩、是否生成map文件等</p>
+<h5 id="src"><a href="#src" class="headerlink" title="src/"></a>src/</h5><p>此目录为开发环境下的源代码。<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">src/assets/ 		<span class="meta"># 为资源目录</span></div><div class="line">src/commonpents/ 	<span class="meta"># 为模块目录</span></div><div class="line">src/router/index.js 	<span class="meta"># 为路由文件</span></div><div class="line">src/App.vue 		<span class="meta"># 为开发环境下的入口模板文件</span></div><div class="line">src/main.js 		<span class="meta"># 为开发环境下的入口文件</span></div></pre></td></tr></table></figure></p>
+<h5 id="static"><a href="#static" class="headerlink" title="static/"></a>static/</h5><p>此目录为静态资源目录，此目录下的文件不会被webpack处理。在webpack打包后，此目录下的文件会被直接复制到dist/static/中</p>
+<h5 id="test"><a href="#test" class="headerlink" title="test/"></a>test/</h5><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">test/unit/ 	<span class="meta"># 该目录包含了单元测试相关的文件</span></div><div class="line">test/e2e/ 	<span class="meta"># 该目录包含了端到端测试相关的文件</span></div></pre></td></tr></table></figure>
+<h5 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h5><p>这个是单界面应用中的模板index.html。在开发环境中，webpack会生成相关资源，这些资源的url会自动插入到模板来渲染最终的HTML。</p>
+<h4 id="主要的配置文件"><a href="#主要的配置文件" class="headerlink" title="主要的配置文件"></a>主要的配置文件</h4><h5 id="dev-server-js"><a href="#dev-server-js" class="headerlink" title="dev-server.js"></a>dev-server.js</h5><p>开发环境下的入口文件，在此文件中引入了其他的配置文件和相关插件。<br>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">build/check-versions.js		<span class="meta"># 检查node/npm的版本</span></div><div class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></div><div class="line">build/webpack.prod.conf 	<span class="meta"># 打包的webpack配置文件</span></div><div class="line">build/webpack.dev.conf 		<span class="meta"># 开发的webpack配置文件</span></div></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">path 				<span class="meta"># ...</span></div><div class="line">webapck 			<span class="meta"># ...</span></div><div class="line">express 			<span class="meta"># ...</span></div><div class="line">opn 				<span class="meta"># 在浏览器中打开需要打开的链接uri - opn(uri)</span></div><div class="line">http-proxy-middleware 		<span class="meta"># 代理中间件，方便连接，快速，浏览器同步等</span></div><div class="line">connect-history-api-fallback 	<span class="meta"># 通过指定的索引页面代理请求，对于单页面应用程序特别有用</span></div><div class="line">webpack-dev-middleware 		<span class="meta"># 这个插件用于webpack打包的，详细用法参见webpack-dev-server</span></div><div class="line">webpack-hot-middleware 		<span class="meta"># 这个插件用于热刷新的，详细用法参见webpack-dev-server</span></div></pre></td></tr></table></figure></p>
+<h5 id="build-js"><a href="#build-js" class="headerlink" title="build.js"></a>build.js</h5><p>打包时运行的入口文件</p>
+<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">build/check-versions.js		<span class="meta"># 检查node/npm的版本</span></div><div class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></div><div class="line">build/webpack.prod.conf 	<span class="meta"># 打包的webpack配置文件</span></div></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">ora 	<span class="meta"># 打包过程中优雅的图标提示</span></div><div class="line">rimraf 	<span class="meta">#  相当于Unix命令：rm -rf , 用来删除指定的目录或文件</span></div></pre></td></tr></table></figure></p>
+<h5 id="webpack-dev-conf-js"><a href="#webpack-dev-conf-js" class="headerlink" title="webpack.dev.conf.js"></a>webpack.dev.conf.js</h5><p>开发环境的部分webpack配置信息</p>
+<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">build/utils.js			<span class="meta"># 样式loader的配置</span></div><div class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></div><div class="line">build/webpack.base.conf.js 	<span class="meta"># 主要的webpack配置信息</span></div></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">webpack-merge 			<span class="meta"># 用来合并loader</span></div><div class="line">html-webpack-plugin 		<span class="meta"># 为html文件引入带有hash值的外部资源，生成html入口文件</span></div><div class="line">friendly-errors-webpack-plugin 	<span class="meta"># 友好的错误提示(识别某些类别的webpack错误并处理、合并、优先排序，以提供更好的开发者体验)</span></div></pre></td></tr></table></figure></p>
+<h5 id="webpack-prop-conf-js"><a href="#webpack-prop-conf-js" class="headerlink" title="webpack.prop.conf.js"></a>webpack.prop.conf.js</h5><p>打包时的部分webpack配置信息</p>
+<p>引入的配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">同上</div></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">webpack-merge 				<span class="meta"># 用来合并loader</span></div><div class="line">html-webpack-plugin 			<span class="meta"># 为html文件引入带有hash值的外部资源，生成html入口文件</span></div><div class="line">copy-webpack-plugin 			<span class="meta"># copy文件到某一目录(此插件用来把static/下的静态资源直接复制到dist/static/目录下)</span></div><div class="line">extract-text-webpack-plugin 		<span class="meta"># 将不同文件的内容打包到一个文件中(抽离出css样式，并打包到一个css文件中)</span></div><div class="line">optimize-css-assets-webpack-plugin 	<span class="meta"># 优化css资源(默认使用cssnano处理器,cssnano是在postcss基础之上构建的)</span></div><div class="line">compression-webpack-plugin 		<span class="meta"># 压缩文件</span></div><div class="line">webpack-bundle-analyzer 		<span class="meta"># 资源分析器(获取资源压缩前后的实际大小等，此项目中config/index.js文件下找到</span></div><div class="line">					- bundleAnalyzerReport将其值改为true，打包时即可在<span class="number">8888</span>端口看到可视化的数据信息</div><div class="line">					- 或者是给process.env.npm_config_report赋值为true)</div></pre></td></tr></table></figure></p>
+<h5 id="webpack-base-conf-js"><a href="#webpack-base-conf-js" class="headerlink" title="webpack.base.conf.js"></a>webpack.base.conf.js</h5><p>开发环境及生产环境公用的部分webpack配置信息</p>
+<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">build/utils.js			<span class="meta"># 样式loader的配置</span></div><div class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></div><div class="line">build/vue-loader.conf.js 	<span class="meta"># 该配置文件只对css的map以及模板中相对链接是否转换成require方式做了配置</span></div></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">...</div></pre></td></tr></table></figure></p>
+<p><strong>此文件配置了项目的入口文件、输入、解析及不同类型的模块处理</strong></p>
+<p>以上内容由错误之处，还望指正。</p>
+<p><strong> 关键词：</strong>  <a href="http://www.jianshu.com/p/7f8a5d83f4b7" target="_blank" rel="external">postcss</a> , <a href="http://babeljs.cn/" target="_blank" rel="external">babel</a> , <a href="https://www.npmjs.com/package/http-proxy-middleware" target="_blank" rel="external">http-proxy-middleware</a> , <a href="http://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a> , <a href="https://www.npmjs.com/package/webpack-merge" target="_blank" rel="external">webpack-merge</a> , <a href="https://www.npmjs.com/package/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a> , <a href="https://github.com/webpack-contrib/compression-webpack-plugin" target="_blank" rel="external">compression-webpack-plugin</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/08/25/vue使用笔记-背景图片的路径问题.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/25/vue使用笔记-背景图片的路径问题.html" itemprop="url">vue使用笔记-背景图片的路径问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T11:23:10+08:00">
+                2017-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/08/25/vue使用笔记-背景图片的路径问题.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/08/25/vue使用笔记-背景图片的路径问题.html" class="cy_cmt_count" data-xid="2017/08/25/vue使用笔记-背景图片的路径问题.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>最近使用vue时，发现打包完的项目中，背景图片不能加载。<br>打包前background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url("../assets/images/audio.png") center no-repeat;</div></pre></td></tr></table></figure></p>
+<p>打包后background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url(/static/img/audio.8d110e4.png) center no-repeat;</div></pre></td></tr></table></figure></p>
+<p>打包后的文件，由于没有放到网站的根目录下，所以打包后背景图片无法获取。</p>
+<h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>在网上查了很多，很多答案都没有相关性，也没解决问题。其实很简单，无非就是把相对根目录的路径改成相对css文件的路径即可。<br>在build/utils.js里的有个ExtractTextPlugin对象，给它添加 publicPath: ‘../../‘ 就行了。</p>
+<p>这里问题的关键就是</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/31/vue使用笔记.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/31/vue使用笔记.html" itemprop="url">vue使用笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T14:41:00+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/07/31/vue使用笔记.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/07/31/vue使用笔记.html" class="cy_cmt_count" data-xid="2017/07/31/vue使用笔记.html" itemprop="commentsCount" ></span>
+                </a>
+              
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>既然公司有同事开始使用Vue，为了表示不落后，我也要开始vue的探索之旅啦。</p>
+</blockquote>
+<h5 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h5><p>node + vue + less</p>
+<h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><p>window + sublime</p>
+<h5 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h5><ul>
+<li><p>新建项目文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir 项目名称(这里使用pro-one代替)</div><div class="line">cd pro-one</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装vue-cli脚手架 (没有node环境要在电脑上安装node，参考链接：<a href="http://nodejs.cn/" target="_blank" rel="external">http://nodejs.cn/</a>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev vue-cli</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">vue init webpack ./ </div><div class="line">// 这里会提示你目标目录已存在，是否确认继续。（目标目录即为当前目录） 输入yes即可。</div><div class="line">接下来会有一些确认信息：</div><div class="line"></div><div class="line"> ? Project name (./) ******</div><div class="line"> ? Project name ******</div><div class="line"> ? Project description (A Vue.js project)</div><div class="line"> ? Project description A Vue.js project</div><div class="line"> ? Author ******</div><div class="line"> ? Author ******</div><div class="line"> ? Vue build standalone</div><div class="line"> ? Install vue-router? (Y/n)</div><div class="line"> ? Install vue-router? Yes</div><div class="line"> ? Use ESLint to lint your code? (Y/n)</div><div class="line"> ? Use ESLint to lint your code? Yes</div><div class="line"> ? Pick an ESLint preset (Use arrow keys)</div><div class="line"> ? Pick an ESLint preset Standard</div><div class="line"> ? Setup unit tests with Karma + Mocha? (Y/n)</div><div class="line"> ? Setup unit tests with Karma + Mocha? Yes</div><div class="line"> ? Setup e2e tests with Nightwatch? (Y/n)</div><div class="line"> ? Setup e2e tests with Nightwatch? Yes</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化项目信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装less/less-loader</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install less less-loader --save-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装jquery库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install jquery --save-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>由于此项目为移动端，所以需要修改根目录下的index.html文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">+     <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>smile-junior<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- built files will be auto injected --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line">+ 为新增的行</div></pre></td></tr></table></figure>
+</li>
+<li><p>在入口文件main.js内挂载全局的jquery，挂载后可以通过this.$使用，但不能用在()=&gt;{}箭头函数中，因为箭头函数中的this指向不是Vue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">main.js</div><div class="line"></div><div class="line">  <span class="comment">// The Vue build version to load with the `import` command</span></div><div class="line">  <span class="comment">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span></div><div class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line">  <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></div><div class="line">  <span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></div><div class="line"></div><div class="line">  Vue.config.productionTip = <span class="literal">false</span></div><div class="line">+ Vue.prototype.$ = <span class="built_in">require</span>(<span class="string">'jquery'</span>)</div><div class="line"></div><div class="line">  <span class="comment">/* eslint-disable no-new */</span></div><div class="line">  <span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">    router,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;App/&gt;'</span>,</div><div class="line">    <span class="attr">components</span>: &#123; App &#125;</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">+ 为新增的行</div></pre></td></tr></table></figure>
+</li>
+<li><p>在开发环境中调试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>打包项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>成功，在此不放贴图了。暂时写到这里，后面会继续更…</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/28/CrossDomain.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/28/CrossDomain.html" itemprop="url">CrossDomain</a></h1>
         
 
         <div class="post-meta">
@@ -314,8 +749,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/07/28/CrossDomain/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/07/28/CrossDomain/" class="cy_cmt_count" data-xid="2017/07/28/CrossDomain/" itemprop="commentsCount" ></span>
+                <a href="/2017/07/28/CrossDomain.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/07/28/CrossDomain.html" class="cy_cmt_count" data-xid="2017/07/28/CrossDomain.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -393,7 +828,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/27/前后端分离的思考/">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/27/前后端分离的思考.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -412,7 +847,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/27/前后端分离的思考/" itemprop="url">前后端分离的思考</a></h1>
+                <a class="post-title-link" href="/2017/07/27/前后端分离的思考.html" itemprop="url">前后端分离的思考</a></h1>
         
 
         <div class="post-meta">
@@ -444,8 +879,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/07/27/前后端分离的思考/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/07/27/前后端分离的思考/" class="cy_cmt_count" data-xid="2017/07/27/前后端分离的思考/" itemprop="commentsCount" ></span>
+                <a href="/2017/07/27/前后端分离的思考.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/07/27/前后端分离的思考.html" class="cy_cmt_count" data-xid="2017/07/27/前后端分离的思考.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -534,7 +969,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/27/单页面的交互方式探索/">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/27/单页面的交互方式探索.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -553,7 +988,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/27/单页面的交互方式探索/" itemprop="url">单页面的交互方式探索</a></h1>
+                <a class="post-title-link" href="/2017/07/27/单页面的交互方式探索.html" itemprop="url">单页面的交互方式探索</a></h1>
         
 
         <div class="post-meta">
@@ -585,8 +1020,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/07/27/单页面的交互方式探索/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/07/27/单页面的交互方式探索/" class="cy_cmt_count" data-xid="2017/07/27/单页面的交互方式探索/" itemprop="commentsCount" ></span>
+                <a href="/2017/07/27/单页面的交互方式探索.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/07/27/单页面的交互方式探索.html" class="cy_cmt_count" data-xid="2017/07/27/单页面的交互方式探索.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -671,7 +1106,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/26/前后端的数据交互问题分析/">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/26/前后端的数据交互问题分析.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -690,7 +1125,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/26/前后端的数据交互问题分析/" itemprop="url">前后端的数据交互问题分析</a></h1>
+                <a class="post-title-link" href="/2017/07/26/前后端的数据交互问题分析.html" itemprop="url">前后端的数据交互问题分析</a></h1>
         
 
         <div class="post-meta">
@@ -722,8 +1157,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/07/26/前后端的数据交互问题分析/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/07/26/前后端的数据交互问题分析/" class="cy_cmt_count" data-xid="2017/07/26/前后端的数据交互问题分析/" itemprop="commentsCount" ></span>
+                <a href="/2017/07/26/前后端的数据交互问题分析.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/07/26/前后端的数据交互问题分析.html" class="cy_cmt_count" data-xid="2017/07/26/前后端的数据交互问题分析.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -750,9 +1185,9 @@
       
         
           
-            <p>前后端数据交互的方式有很多种，比如后台是php<br>1, 直接传值到页面节点中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;&lt;?php echo '后台数据' ?&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>2, 先赋值给js的变量，再通过js渲染到页面上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data  = &#123;$data&#125;;</div><div class="line">	$(<span class="string">'.content'</span>).html(data.content);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>3, 通过AJAX请求数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data;</div><div class="line">	$.get(<span class="string">'ajaxurl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123; data = res; &#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+            <p>前后端数据交互的方式有很多种，比如后台是php<br>1, 直接传值到页面节点中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;<span class="xml">&lt;?php echo '后台数据' ?&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>2, 先赋值给js的变量，再通过js渲染到页面上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data  = &#123;$data&#125;;</div><div class="line">	$(<span class="string">'.content'</span>).html(data.content);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>3, 通过AJAX请求数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data;</div><div class="line">	$.get(<span class="string">'ajaxurl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123; data = res; &#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <p>4, 通过JSONP获取数据</p>
 <p>5, 通过h5的API：websocket，传递数据<br>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket</a></p>
 <p>现在比较流行通过AJAX的方式获取数据，而websocket一般是用来客户端和服务器实时通信的。<br>不管是通过哪种方式进行数据交互，传输的数据应该有一个规范的格式，并且最好是最终的数据（不需要前端再进行处理），数据的处理应该放在后台，前台的主要任务是布局和动画交互。</p>
@@ -799,7 +1234,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/18/input上传图片的问题总结/">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/18/input上传图片的问题总结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -818,7 +1253,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/18/input上传图片的问题总结/" itemprop="url">input上传图片的问题总结</a></h1>
+                <a class="post-title-link" href="/2017/07/18/input上传图片的问题总结.html" itemprop="url">input上传图片的问题总结</a></h1>
         
 
         <div class="post-meta">
@@ -850,8 +1285,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/07/18/input上传图片的问题总结/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/07/18/input上传图片的问题总结/" class="cy_cmt_count" data-xid="2017/07/18/input上传图片的问题总结/" itemprop="commentsCount" ></span>
+                <a href="/2017/07/18/input上传图片的问题总结.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/07/18/input上传图片的问题总结.html" class="cy_cmt_count" data-xid="2017/07/18/input上传图片的问题总结.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -929,7 +1364,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/14/你不知道的js-学习笔记/">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/14/你不知道的js-学习笔记.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -948,7 +1383,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/14/你不知道的js-学习笔记/" itemprop="url">你不知道的js-学习笔记</a></h1>
+                <a class="post-title-link" href="/2017/07/14/你不知道的js-学习笔记.html" itemprop="url">你不知道的js-学习笔记</a></h1>
         
 
         <div class="post-meta">
@@ -980,8 +1415,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/07/14/你不知道的js-学习笔记/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/07/14/你不知道的js-学习笔记/" class="cy_cmt_count" data-xid="2017/07/14/你不知道的js-学习笔记/" itemprop="commentsCount" ></span>
+                <a href="/2017/07/14/你不知道的js-学习笔记.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/07/14/你不知道的js-学习笔记.html" class="cy_cmt_count" data-xid="2017/07/14/你不知道的js-学习笔记.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1052,7 +1487,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/03/react-笔记/">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/03/react-笔记.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -1071,7 +1506,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/03/react-笔记/" itemprop="url">react[笔记]</a></h1>
+                <a class="post-title-link" href="/2017/07/03/react-笔记.html" itemprop="url">react[笔记]</a></h1>
         
 
         <div class="post-meta">
@@ -1103,8 +1538,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/07/03/react-笔记/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/07/03/react-笔记/" class="cy_cmt_count" data-xid="2017/07/03/react-笔记/" itemprop="commentsCount" ></span>
+                <a href="/2017/07/03/react-笔记.html#SOHUCS" itemprop="discussionUrl">
+                  <span id="url::https://ahxdg.github.io/2017/07/03/react-笔记.html" class="cy_cmt_count" data-xid="2017/07/03/react-笔记.html" itemprop="commentsCount" ></span>
                 </a>
               
             
@@ -1141,390 +1576,6 @@
 <p>安装所需模块 - webpack<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev webpack</div></pre></td></tr></table></figure></p>
 <p>&lt; - -  先更新到这里，后面继续更~  - - &gt;</p>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/03/走慢一点，等一等灵魂/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/03/走慢一点，等一等灵魂/" itemprop="url">走慢一点，等一等灵魂</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-03T08:49:58+08:00">
-                2017-07-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/07/03/走慢一点，等一等灵魂/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/07/03/走慢一点，等一等灵魂/" class="cy_cmt_count" data-xid="2017/07/03/走慢一点，等一等灵魂/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>不知不觉，毕业已经两个年头了。这两年里，自己进步不少，看招聘信息，发现3年是个坎。而我正在坎的这边，但已经开始飘飘然了~<br><!-- 其实3年不只是工龄上的坎，也是能力上的坎。 --><br>前段日子，自己一心想着可以找份更好的工作，觉得自己在这里是埋没了才能，但去面试了几家才发现，我在自己的舒适区待的太久了，以至于都忘记了努力。<br>看着身边的小弟弟、小妹妹们，就想起当初的自己，在难以忍受的环境里学习、成长、努力，却不去抱怨，而现在能力比之前好点，待遇也不错了，反而觉得不能接受再次一点的待遇和不公。有句话说“如果忍受不了现在的境遇，就去改变它。”，而我现在即改变不了，却也不甘心忍受，不甘心忍受，却也没能离开，想想多少有点讽刺。<br>其实，现在的境遇还是挺好的，只是我变了。可能是一路走来，太顺当~<br>所以，告诫自己：走慢一点，等一等灵魂。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/06/28/webpack使用笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/28/webpack使用笔记/" itemprop="url">webpack使用笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T13:33:31+08:00">
-                2017-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/06/28/webpack使用笔记/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/06/28/webpack使用笔记/" class="cy_cmt_count" data-xid="2017/06/28/webpack使用笔记/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>webpack十分强大。</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install webpack --save-dev （安装到项目依赖中）</div><div class="line">npm install webpack -g （全局安装）</div></pre></td></tr></table></figure>
-<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>使用webpack，需要在项目的根目录下创建一个webpack.config.js文件， 在里面配置一些基本信息：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/06/23/MarkDown使用笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/23/MarkDown使用笔记/" itemprop="url">MarkDown使用笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T17:20:56+08:00">
-                2017-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/06/23/MarkDown使用笔记/#SOHUCS" itemprop="discussionUrl">
-                  <span id="url::https://ahxdg.github.io/2017/06/23/MarkDown使用笔记/" class="cy_cmt_count" data-xid="2017/06/23/MarkDown使用笔记/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;br/&gt;</div></pre></td></tr></table></figure>
-<h5 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;</div></pre></td></tr></table></figure>
-<h5 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">**加粗文本**</div><div class="line">__加粗文本__</div></pre></td></tr></table></figure>
-<h5 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*斜体文本*</div><div class="line">_斜体文本_</div></pre></td></tr></table></figure>
-<h5 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">文字链接：[keer](https://ahxdg.github.io/)</div><div class="line">图片链接：![我的头像](/images/avatar.jpg)</div></pre></td></tr></table></figure>
-<h5 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">无序列表：* 列表内容</div><div class="line">无序列表：+ 列表内容</div><div class="line">无序列表：- 列表内容</div><div class="line"></div><div class="line">嵌套使用：* 列表一</div><div class="line">     	    * 列表二</div><div class="line"></div><div class="line">有序列表：1. 列表内容</div><div class="line"></div><div class="line">正常情况下输入&quot; 1986. What a great season &quot;，会显示一个有序列表，但如果只是想显示文案形式的文字，</div><div class="line">可以使用转义字符&quot;\&quot;，即：1986\. What a great season</div><div class="line"></div><div class="line">注意：中间有空格</div></pre></td></tr></table></figure>
-<h5 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 一级标题</div><div class="line">## 二级标题</div><div class="line">### 三级标题</div><div class="line">...</div></pre></td></tr></table></figure>
-<h6 id="特殊的标题"><a href="#特殊的标题" class="headerlink" title="特殊的标题"></a>特殊的标题</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Markdown还支持Setext和atx风格的标题</div><div class="line"></div><div class="line">Setext格式的写法：</div><div class="line">	这是Setext格式的标题</div><div class="line">	====================</div><div class="line"></div><div class="line">	这是Setext格式的副标题</div><div class="line">	--------------------</div><div class="line">注：(=/-两个以上，且必须跟在标题下面)</div></pre></td></tr></table></figure>
-<h5 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">| Tables    | address   |</div><div class="line">| --------- | :-------: |</div><div class="line">| tab       | china     |</div><div class="line"></div><div class="line">或者：</div><div class="line"></div><div class="line">| Tables    | address   |</div><div class="line">| :-------- | :-------- |</div><div class="line">| tab       | china     |</div></pre></td></tr></table></figure>
-<h5 id="虚线-分割线"><a href="#虚线-分割线" class="headerlink" title="虚线/分割线"></a>虚线/分割线</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">----</div><div class="line">****</div><div class="line">____</div><div class="line"></div><div class="line">注：(3个以上，“-”符号上面一行必须是空行，如果上面一行有文字，则会把上面一行当成一个标题)</div></pre></td></tr></table></figure>
-<h5 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">单行代码：</div><div class="line">	$这里是单行代码$</div><div class="line"></div><div class="line">多行代码：</div><div class="line">	 $$$</div><div class="line">	 这里是多行代码块</div><div class="line">	 $$$</div><div class="line"></div><div class="line">注：这里的&quot; $ &quot;代替&quot; ` &quot;</div></pre></td></tr></table></figure>
-<h5 id="上标-下标"><a href="#上标-下标" class="headerlink" title="上标/下标"></a>上标/下标</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">上标和下标在Markdown中没有特殊的标记形式，不过我们可以通过html标签来书写。</div><div class="line">上标：&lt;sup&gt;这是上标&lt;sup&gt;</div><div class="line">下标：&lt;sub&gt;这是下标&lt;sub&gt;</div></pre></td></tr></table></figure>
-<h5 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">® - &amp;reg;</div><div class="line">© - &amp;copy;</div><div class="line">&amp; - &amp;amp;</div><div class="line">&lt; - &amp;lt;</div><div class="line">&gt; - &amp;gt;</div></pre></td></tr></table></figure>
-<h5 id="下划线-删除线"><a href="#下划线-删除线" class="headerlink" title="下划线/删除线"></a>下划线/删除线</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">下划线：</div><div class="line">	Markdown中没有默认的下划线标记形式，不过一些扩展中有（自行搜索）</div><div class="line">	不过和上标/下标一样，可以利用html标签来实现：</div><div class="line">	&lt;u&gt;这段文字有下划线&lt;/u&gt;</div><div class="line"></div><div class="line">删除线：</div><div class="line">  	~~这里删除的文字~~</div><div class="line"></div><div class="line">注：由于u标签已经不被推荐使用，还是尽量避免。（一般链接都带有下划线，避免混淆）</div></pre></td></tr></table></figure>
-<h5 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Markdown中没有缩进，写过html的很容易想到用两个或四个&amp;nbsp;解决问题。</div><div class="line">但你会发现，再多的&amp;nbsp;都没有用。怎么办？</div><div class="line">很简单，你可以用半角的空格：&amp;ensp;或者是全角的空格：&amp;emsp;</div><div class="line"></div><div class="line">注：&amp;ensp;只占一个空格，&amp;emsp;占两个空格。</div></pre></td></tr></table></figure>
           
         
       
@@ -1606,7 +1657,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1619,7 +1670,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
