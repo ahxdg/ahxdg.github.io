@@ -269,12 +269,12 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <style>.video-content{text-align: center;}.video-content video{min-width: 70%;max-width: 90%;margin-bottom: 20px;}</style>
+        <style>.video-content{text-align: center;}.video-content video{min-width: 70%;max-width: 90%;margin-bottom: 20px;}#video-title{font-weight: 300;text-shadow: 0 0 1px rgba(0,0,0,0.2);margin: -30px 0 30px;}</style>
         <div class="video-content">
-			<video autoplay="" controls src="" id="video">
+          <h5 id="video-title"></h5>
+			    <video autoplay="" controls src="" id="video">
             您的浏览器不支持HTML5
-            </video>
-        </video>
+          </video>
         </div>
         <script>
         	var urlPars = urlParams();
@@ -283,8 +283,9 @@
         	}else{
         		alert('未找到视频源');
         	}
-        	if (urlPars['data-url']) {
+        	if (urlPars['data-title']) {
         		document.title = urlPars['data-title'];
+            document.querySelector('#video-title').innerText = urlPars['data-title'];
         	}
         	if (urlPars['data-from']) {
         		addFrom();
