@@ -93,13 +93,14 @@
 
 
 
-<meta name="description" content="这是一个由维护公司老系统引发的问题，上传图片。  下面直接进入主题 问题一：PC浏览器卡顿问题有些时候我们会发现，chrome浏览器上传图片时会出现卡顿，图片选择的弹窗会延迟很久才弹出来。通过审查元素，我们可以发现，此时的input控件上accept属性有值（如：&amp;lt;input type=”file” accept=”image/*” /&amp;gt;,或者&amp;lt;input type=”file">
+<meta name="description" content="这是一个由维护公司老系统引发的问题，上传图片。  下面直接进入主题 问题一：PC浏览器卡顿问题有些时候我们会发现，chrome浏览器上传图片时会出现卡顿，图片选择的弹窗会延迟很久才弹出来。通过审查元素，我们可以发现，此时的input控件上accept属性有值（如：&amp;lt;input type=”file” ac">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="input上传图片的问题总结">
 <meta property="og:url" content="https://ahxdg.github.io/2017/07/18/input上传图片的问题总结/index.html">
 <meta property="og:site_name" content="Keer">
 <meta property="og:description" content="这是一个由维护公司老系统引发的问题，上传图片。  下面直接进入主题 问题一：PC浏览器卡顿问题有些时候我们会发现，chrome浏览器上传图片时会出现卡顿，图片选择的弹窗会延迟很久才弹出来。通过审查元素，我们可以发现，此时的input控件上accept属性有值（如：&amp;lt;input type=”file” accept=”image/*” /&amp;gt;,或者&amp;lt;input type=”file">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-11-05T14:06:46.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="input上传图片的问题总结">
@@ -355,7 +356,7 @@
 </blockquote>
 <p>下面直接进入主题</p>
 <h5 id="问题一：PC浏览器卡顿问题"><a href="#问题一：PC浏览器卡顿问题" class="headerlink" title="问题一：PC浏览器卡顿问题"></a>问题一：PC浏览器卡顿问题</h5><p>有些时候我们会发现，chrome浏览器上传图片时会出现卡顿，图片选择的弹窗会延迟很久才弹出来。通过审查元素，我们可以发现，此时的input控件上accept属性有值（如：&lt;input type=”file” accept=”image/*” /&gt;,或者&lt;input type=”file” accept=”image/jpg,image/png” /&gt;等等…）。<br>当我们不设置accept或不给accept设置值时（如：&lt;input type=”file” accept=”” /&gt;），就不会有卡顿问题了。</p>
-<p><strong>问题分析：</strong>可能是由于设置的接收类型，chrome浏览器在选择文件弹窗时，过滤文件的处理较慢导致弹窗延迟。所以可以针对chrome浏览器特别把accept的值设置为空即可。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// acceptType 控件接收类型， inputDom为控件dom对象</span></div><div class="line">acceptType = isChrome ? <span class="string">""</span> : <span class="string">"image/*"</span>;</div><div class="line">inputDom.setAttribute(<span class="string">'accept'</span>,acceptType);</div></pre></td></tr></table></figure></p>
+<p><strong>问题分析：</strong>可能是由于设置的接收类型，chrome浏览器在选择文件弹窗时，过滤文件的处理较慢导致弹窗延迟。所以可以针对chrome浏览器特别把accept的值设置为空即可。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// acceptType 控件接收类型， inputDom为控件dom对象</span></span><br><span class="line">acceptType = isChrome ? <span class="string">""</span> : <span class="string">"image/*"</span>;</span><br><span class="line">inputDom.setAttribute(<span class="string">'accept'</span>,acceptType);</span><br></pre></td></tr></table></figure></p>
 <h5 id="问题二：手机浏览器上传图片时，不能选取图片（图片灰色）"><a href="#问题二：手机浏览器上传图片时，不能选取图片（图片灰色）" class="headerlink" title="问题二：手机浏览器上传图片时，不能选取图片（图片灰色）"></a>问题二：手机浏览器上传图片时，不能选取图片（图片灰色）</h5><p>有些同学在开发移动端页面时，会遇到这个问题。明明能打开手机的图片选择界面，但是图片都是灰色的，无法被选择。可能有些同学会发现，可以在界面中选择相册，相册里面的图片是可以被选择的。这个问题想想和chrome浏览器卡顿有点相似的，都是设置image/jpg,…类似的详细属性导致的。<br>那么，我们把accept的值设置成”image/*”就可以了。</p>
 <h5 id="问题三：手机浏览器上调取摄像头问题"><a href="#问题三：手机浏览器上调取摄像头问题" class="headerlink" title="问题三：手机浏览器上调取摄像头问题"></a>问题三：手机浏览器上调取摄像头问题</h5><p>这个问题应该是上面那个问题的延伸，在我们把accept属性设置为image/jpg,…等类型时，手机是无法调用摄像头的。而当我们把accept设置成”image/*“ 时就可以了，但是有些同学可能发现有个h5的属性capture【捕捉】，当&lt;input type=”file” accept=”image/*“ capture=”camera” /&gt;时，页面也是可以调用摄像头的。是的，但是在ios上面，会直接触发调用摄像头，而无法选择图库。所以这里需要注意下。如果你仅仅是想调用摄像头，那么在ios上你就可以这么干了，但是安卓上你就要另外用别的方式了。这里说下h5的getMedia方法是可以调用摄像头的。</p>
 
@@ -484,7 +485,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -497,7 +498,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

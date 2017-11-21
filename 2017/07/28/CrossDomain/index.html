@@ -93,13 +93,14 @@
 
 
 
-<meta name="description" content="今天有空，研究下跨域。  什么是跨域？A resource makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port to its own.当从不同的域名、协议、端口向自身请求资源时，资源会产生跨源HTTP请求。即为跨域 例如：在http://d">
+<meta name="description" content="今天有空，研究下跨域。  什么是跨域？A resource makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port to its own.当从不同的域名、协议、端口向">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CrossDomain">
 <meta property="og:url" content="https://ahxdg.github.io/2017/07/28/CrossDomain/index.html">
 <meta property="og:site_name" content="Keer">
 <meta property="og:description" content="今天有空，研究下跨域。  什么是跨域？A resource makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port to its own.当从不同的域名、协议、端口向自身请求资源时，资源会产生跨源HTTP请求。即为跨域 例如：在http://d">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-11-05T14:06:46.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CrossDomain">
@@ -354,7 +355,7 @@
 <p>今天有空，研究下跨域。</p>
 </blockquote>
 <h5 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h5><p>A resource makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port to its own.<br>当从不同的域名、协议、端口向自身请求资源时，资源会产生跨源HTTP请求。即为跨域</p>
-<p>例如：在<a href="http://domain-a.com上的一个页面请求http://domain-b.com/image.jpg，而如今许多页面都会有类似的请求，如：css/js/images" target="_blank" rel="external">http://domain-a.com上的一个页面请求http://domain-b.com/image.jpg，而如今许多页面都会有类似的请求，如：css/js/images</a></p>
+<p>例如：在<a href="http://domain-a.com上的一个页面请求http://domain-b.com/image.jpg，而如今许多页面都会有类似的请求，如：css/js/images" target="_blank" rel="noopener">http://domain-a.com上的一个页面请求http://domain-b.com/image.jpg，而如今许多页面都会有类似的请求，如：css/js/images</a></p>
 <p>为了安全考虑，浏览器都会遵循同源策略，因此web应用只会将http请求发到自己的域。而为了改善web应用，开发人员要求浏览器允许跨域请求。</p>
 <p>为什么说要求浏览器允许跨域请求，因为服务器本身是允许跨域请求的，只是浏览器有同源策略，当我们发起跨域请求时，浏览器会发送请求给别人家的服务器，如果别人家的服务器的返回头里有Access-Control-Allow-Origin:*，就表示允许跨域请求，那么我们才会得到返回的数据，否则，浏览器会自动过滤掉返回的数据，并告诉你跨域请求失败或错误的信息。</p>
 <h5 id="跨域方式"><a href="#跨域方式" class="headerlink" title="跨域方式"></a>跨域方式</h5><p>1，</p>
@@ -484,7 +485,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -497,7 +498,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

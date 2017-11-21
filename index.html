@@ -97,6 +97,7 @@
 <meta property="og:title" content="Keer">
 <meta property="og:url" content="https://ahxdg.github.io/index.html">
 <meta property="og:site_name" content="Keer">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Keer">
 
@@ -283,6 +284,351 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/11/21/故事汇-你为什么要爬山/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/21/故事汇-你为什么要爬山/" itemprop="url">[故事汇]-因为山在那里</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-21T11:19:20+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>“你为什么要爬山？”<br>“因为山就在那里。”</p>
+<p>这是乔治·马洛里在他爬山的时候被记者问到时的回答。</p>
+<p>生活中，我们也常常会被别人各种问到你为什么…，哪有那么多为什么？难道就不能心里有一点原始的冲动，喜欢或者是自由。</p>
+<p>如果再被别人问到为什么，刚好你又不想回答时，你可以问他：“你为什么要吃饭？”</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/11/19/把sublime添加到右键菜单，方便文件右键sublime打开/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/19/把sublime添加到右键菜单，方便文件右键sublime打开/" itemprop="url">把sublime添加到右键菜单，方便文件右键sublime打开</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-19T23:47:33+08:00">
+                2017-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>最近重新装了系统（目前是win10），又把sublime装了一遍，在写项目时发现文件不支持右键打开，无奈在网上搜了一些教程，学习了一下。并在这里做一下记录，以便日后再次需要时，方便查找。</p>
+</blockquote>
+<h4 id="方法大致有两种："><a href="#方法大致有两种：" class="headerlink" title="方法大致有两种："></a>方法大致有两种：</h4><p><strong> 1, 直接修改注册表 </strong></p>
+<p>win+R打开运行窗口，输入regedit打开注册表；找到HKEY_CLASSES_ROOT &gt; * &gt; shell，新建一个项[Edit with Sublime]（名字随意起），在该项下新建一个字符串值[icon]，修改该值的数据为“D:\Program Files\Sublime Text Build 3143\sublime_text.exe,0” ，“,0”前的值为sublime执行文件.exe的路径。<br>之后我们需要在该项下面再新建一个项[command]，直接修改其默认值的数据为“D:\Program Files\Sublime Text Build 3143\sublime_text.exe %1”即可。</p>
+<p>其实如果注册表里HKEY_CLASSES_ROOT &gt; * &gt; shell下面有值的话，你可以参照原有值的方式去添加。</p>
+<p><strong> 第二种方法是把这些流程写成一个文件，运行一下，直接添加到注册表里。我本人并没有去尝试，不过有兴趣的可以尝试一下，关于往注册表中添加命令的教程网上有很多 </strong></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/11/19/record/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/19/record/" itemprop="url">建站笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-19T14:40:11+08:00">
+                2017-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>2017/08/26：增加网站的/project/目录，在该目录下准备添加一些自己工作或日常中写的一些比较有意思的demo或组件<br>2017/07/31：网站更换域名为：togor.cn，原域名由于未备案，且不能在国内备案，故不能在阿里云服务器上使用，暂时先使用togor.cn<br>2017/06/25：完成“关于”、“标签”、“404”页面的配置及内容编辑；并绑定了keer.live域名<br>2017/06/22：重新部署了该博客，从零开始~</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/08/31/canvas学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -351,9 +697,9 @@
       
         
           
-            <h4 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h4><p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>main.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建canvas对象</span></div><div class="line">   <span class="keyword">var</span>	canvas = <span class="built_in">document</span>.querySelector(<span class="string">'#canvas'</span>),</div><div class="line">	ctx = canvas.getContext(<span class="string">'2d'</span>);</div></pre></td></tr></table></figure></p>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">stroke 		绘制路径边缘</div><div class="line">fill		填充路径内部</div><div class="line"></div><div class="line">线</div><div class="line">moveTo		把画笔移动到指定地点</div><div class="line">lineTo		绘制一条不可见的路径到指定地点</div><div class="line"></div><div class="line">圆</div><div class="line">arc		绘制圆弧或者圆</div><div class="line"></div><div class="line">文本</div><div class="line">fillText	在指定位置填充指定文本</div><div class="line">strokeText	在指定位置绘制文本边框</div><div class="line">measureText	在文本被绘制前，获取文本的宽度</div><div class="line"></div><div class="line">clearRect	擦除画布</div></pre></td></tr></table></figure>
+            <h4 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h4><p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>main.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建canvas对象</span></span><br><span class="line">   <span class="keyword">var</span>	canvas = <span class="built_in">document</span>.querySelector(<span class="string">'#canvas'</span>),</span><br><span class="line">	ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">stroke 		绘制路径边缘</span><br><span class="line">fill		填充路径内部</span><br><span class="line"></span><br><span class="line">线</span><br><span class="line">moveTo		把画笔移动到指定地点</span><br><span class="line">lineTo		绘制一条不可见的路径到指定地点</span><br><span class="line"></span><br><span class="line">圆</span><br><span class="line">arc		绘制圆弧或者圆</span><br><span class="line"></span><br><span class="line">文本</span><br><span class="line">fillText	在指定位置填充指定文本</span><br><span class="line">strokeText	在指定位置绘制文本边框</span><br><span class="line">measureText	在文本被绘制前，获取文本的宽度</span><br><span class="line"></span><br><span class="line">clearRect	擦除画布</span><br></pre></td></tr></table></figure>
           
         
       
@@ -467,9 +813,9 @@
             <p>最近在项目要用到一个函数，把数组打乱，结果竟然发现：js没有这么一个函数！！！震惊！！！</p>
 <p>然而旁边的陈同学却告诉我php里都内置了这样的函数shuffle，果然php是世界上最NB的语言~</p>
 <p>下面摘抄stackoverflow上面的一些精髓的方法</p>
-<p>方法一：(852赞)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> currentIndex = array.length, temporaryValue, randomIndex;</div><div class="line"></div><div class="line">  <span class="comment">// While there remain elements to shuffle...</span></div><div class="line">  <span class="keyword">while</span> (<span class="number">0</span> !== currentIndex) &#123;</div><div class="line"></div><div class="line">    <span class="comment">// Pick a remaining element...</span></div><div class="line">    randomIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * currentIndex);</div><div class="line">    currentIndex -= <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="comment">// And swap it with the current element.</span></div><div class="line">    temporaryValue = array[currentIndex];</div><div class="line">    array[currentIndex] = array[randomIndex];</div><div class="line">    array[randomIndex] = temporaryValue;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> array;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Used like so</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">11</span>, <span class="number">37</span>, <span class="number">42</span>];</div><div class="line">arr = shuffle(arr);</div><div class="line"><span class="built_in">console</span>.log(arr);</div></pre></td></tr></table></figure></p>
-<p>方法二：(347赞)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffleArray</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = array.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">var</span> j = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (i + <span class="number">1</span>));</div><div class="line">        <span class="keyword">var</span> temp = array[i];</div><div class="line">        array[i] = array[j];</div><div class="line">        array[j] = temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> array;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><a href="https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array" target="_blank" rel="external">传送门</a></p>
+<p>方法一：(852赞)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> currentIndex = array.length, temporaryValue, randomIndex;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// While there remain elements to shuffle...</span></span><br><span class="line">  <span class="keyword">while</span> (<span class="number">0</span> !== currentIndex) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Pick a remaining element...</span></span><br><span class="line">    randomIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * currentIndex);</span><br><span class="line">    currentIndex -= <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// And swap it with the current element.</span></span><br><span class="line">    temporaryValue = array[currentIndex];</span><br><span class="line">    array[currentIndex] = array[randomIndex];</span><br><span class="line">    array[randomIndex] = temporaryValue;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Used like so</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">11</span>, <span class="number">37</span>, <span class="number">42</span>];</span><br><span class="line">arr = shuffle(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure></p>
+<p>方法二：(347赞)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffleArray</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = array.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">var</span> j = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (i + <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">var</span> temp = array[i];</span><br><span class="line">        array[i] = array[j];</span><br><span class="line">        array[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array" target="_blank" rel="noopener">传送门</a></p>
 
           
         
@@ -581,7 +927,7 @@
       
         
           
-            <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">1，创建项目文件夹</div><div class="line">mkdir &lt;projectFileName&gt;</div><div class="line"></div><div class="line">2，进入项目目录</div><div class="line">cd &lt;projectFileName&gt;</div><div class="line"></div><div class="line">3，初始化项目</div><div class="line">npm init</div><div class="line"></div><div class="line">4，安装npm包</div><div class="line">npm install --save-dev webapck express</div><div class="line"></div><div class="line">5，修改package.json</div></pre></td></tr></table></figure>
+            <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1，创建项目文件夹</span><br><span class="line">mkdir &lt;projectFileName&gt;</span><br><span class="line"></span><br><span class="line">2，进入项目目录</span><br><span class="line">cd &lt;projectFileName&gt;</span><br><span class="line"></span><br><span class="line">3，初始化项目</span><br><span class="line">npm init</span><br><span class="line"></span><br><span class="line">4，安装npm包</span><br><span class="line">npm install --save-dev webapck express</span><br><span class="line"></span><br><span class="line">5，修改package.json</span><br></pre></td></tr></table></figure>
 
           
         
@@ -694,31 +1040,31 @@
         
           
             <p>之前写了一篇笔记，只是把用vue-cli搭建了一个移动端的项目。但本人对vue-cli的项目目录及webpack配置不了解，在此学习并记录下。</p>
-<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init webpack &lt;projectName&gt;</div></pre></td></tr></table></figure>
-<h4 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">|-- build/		<span class="meta"># webpack配置文件</span></div><div class="line">|     |-- dev.server.js	<span class="meta"># 运行项目时的入口文件(npm run dev)</span></div><div class="line">|     | ···</div><div class="line">|-- config/		<span class="meta"># 项目配置文件</span></div><div class="line">|     |-- dev.env.js</div><div class="line">|     |-- index.js 	<span class="meta"># 项目运行和打包对应的配置文件</span></div><div class="line">|     |-- prod.env.js</div><div class="line">|     |-- test.env.js</div><div class="line">|-- src/		<span class="meta"># 开发源文件</span></div><div class="line">|     |-- assets/ 	<span class="meta"># 模块资源（会被webpack处理）</span></div><div class="line">|           | ···</div><div class="line">|     |-- commponents/ 	<span class="meta"># 模块</span></div><div class="line">|           | ···</div><div class="line">|     |-- router/ 	<span class="meta"># 路由</span></div><div class="line">|           | ···</div><div class="line">|     |-- App.vue 	<span class="meta"># 项目开始时的入口vue组件</span></div><div class="line">|     |-- main.js 	<span class="meta"># 程序入口文件</span></div><div class="line">|-- static/		<span class="meta"># 静态资源文件(直接拷贝到dist/static/里面)</span></div><div class="line">|     | ···</div><div class="line">|-- test/		<span class="meta"># 测试</span></div><div class="line">|     | ···</div><div class="line">|-- .babelrc		<span class="meta"># babel配置文件</span></div><div class="line">|-- .editorconfig	<span class="meta"># 编辑配置文件</span></div><div class="line">|-- .eslintignore	<span class="meta"># eslint忽略配置文件</span></div><div class="line">|-- .eslintrc.js 	<span class="meta"># eslint配置文件</span></div><div class="line">|-- .gitignore 		<span class="meta"># 项目提交忽略文件</span></div><div class="line">|-- .postcssrc.js	<span class="meta"># postcss配置文件[为css提供一些额外的功能，处理css]</span></div><div class="line">|-- index.html 		<span class="meta"># 入口模板文件</span></div><div class="line">|-- package.json 	<span class="meta"># 开发项目所需的包管理配置文件（运行的脚本与相关依赖）</span></div><div class="line">|-- README.md 		<span class="meta"># 重要内容介绍</span></div></pre></td></tr></table></figure>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack &lt;projectName&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h4><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">|-- build/		<span class="meta"># webpack配置文件</span></span><br><span class="line">|     |-- dev.server.js	<span class="meta"># 运行项目时的入口文件(npm run dev)</span></span><br><span class="line">|     | ···</span><br><span class="line">|-- config/		<span class="meta"># 项目配置文件</span></span><br><span class="line">|     |-- dev.env.js</span><br><span class="line">|     |-- index.js 	<span class="meta"># 项目运行和打包对应的配置文件</span></span><br><span class="line">|     |-- prod.env.js</span><br><span class="line">|     |-- test.env.js</span><br><span class="line">|-- src/		<span class="meta"># 开发源文件</span></span><br><span class="line">|     |-- assets/ 	<span class="meta"># 模块资源（会被webpack处理）</span></span><br><span class="line">|           | ···</span><br><span class="line">|     |-- commponents/ 	<span class="meta"># 模块</span></span><br><span class="line">|           | ···</span><br><span class="line">|     |-- router/ 	<span class="meta"># 路由</span></span><br><span class="line">|           | ···</span><br><span class="line">|     |-- App.vue 	<span class="meta"># 项目开始时的入口vue组件</span></span><br><span class="line">|     |-- main.js 	<span class="meta"># 程序入口文件</span></span><br><span class="line">|-- static/		<span class="meta"># 静态资源文件(直接拷贝到dist/static/里面)</span></span><br><span class="line">|     | ···</span><br><span class="line">|-- test/		<span class="meta"># 测试</span></span><br><span class="line">|     | ···</span><br><span class="line">|-- .babelrc		<span class="meta"># babel配置文件</span></span><br><span class="line">|-- .editorconfig	<span class="meta"># 编辑配置文件</span></span><br><span class="line">|-- .eslintignore	<span class="meta"># eslint忽略配置文件</span></span><br><span class="line">|-- .eslintrc.js 	<span class="meta"># eslint配置文件</span></span><br><span class="line">|-- .gitignore 		<span class="meta"># 项目提交忽略文件</span></span><br><span class="line">|-- .postcssrc.js	<span class="meta"># postcss配置文件[为css提供一些额外的功能，处理css]</span></span><br><span class="line">|-- index.html 		<span class="meta"># 入口模板文件</span></span><br><span class="line">|-- package.json 	<span class="meta"># 开发项目所需的包管理配置文件（运行的脚本与相关依赖）</span></span><br><span class="line">|-- README.md 		<span class="meta"># 重要内容介绍</span></span><br></pre></td></tr></table></figure>
 <h5 id="build"><a href="#build" class="headerlink" title="build/"></a>build/</h5><p>此目录为开发环境和生产环境的webpack配置文件，我们可以修改此目录下的文件，来添加或修改插件配置、调整路径等</p>
 <h5 id="config"><a href="#config" class="headerlink" title="config/"></a>config/</h5><p>此目录最为主要的是index.js文件，在index.js文件中配置了生产环境和开发环境的入口文件、相关目录和开发环境下的端口、是否自动打开浏览器以及生产环境下是否压缩、是否生成map文件等</p>
-<h5 id="src"><a href="#src" class="headerlink" title="src/"></a>src/</h5><p>此目录为开发环境下的源代码。<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">src/assets/ 		<span class="meta"># 为资源目录</span></div><div class="line">src/commonpents/ 	<span class="meta"># 为模块目录</span></div><div class="line">src/router/index.js 	<span class="meta"># 为路由文件</span></div><div class="line">src/App.vue 		<span class="meta"># 为开发环境下的入口模板文件</span></div><div class="line">src/main.js 		<span class="meta"># 为开发环境下的入口文件</span></div></pre></td></tr></table></figure></p>
+<h5 id="src"><a href="#src" class="headerlink" title="src/"></a>src/</h5><p>此目录为开发环境下的源代码。<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">src/assets/ 		<span class="meta"># 为资源目录</span></span><br><span class="line">src/commonpents/ 	<span class="meta"># 为模块目录</span></span><br><span class="line">src/router/index.js 	<span class="meta"># 为路由文件</span></span><br><span class="line">src/App.vue 		<span class="meta"># 为开发环境下的入口模板文件</span></span><br><span class="line">src/main.js 		<span class="meta"># 为开发环境下的入口文件</span></span><br></pre></td></tr></table></figure></p>
 <h5 id="static"><a href="#static" class="headerlink" title="static/"></a>static/</h5><p>此目录为静态资源目录，此目录下的文件不会被webpack处理。在webpack打包后，此目录下的文件会被直接复制到dist/static/中</p>
-<h5 id="test"><a href="#test" class="headerlink" title="test/"></a>test/</h5><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">test/unit/ 	<span class="meta"># 该目录包含了单元测试相关的文件</span></div><div class="line">test/e2e/ 	<span class="meta"># 该目录包含了端到端测试相关的文件</span></div></pre></td></tr></table></figure>
+<h5 id="test"><a href="#test" class="headerlink" title="test/"></a>test/</h5><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test/unit/ 	<span class="meta"># 该目录包含了单元测试相关的文件</span></span><br><span class="line">test/e2e/ 	<span class="meta"># 该目录包含了端到端测试相关的文件</span></span><br></pre></td></tr></table></figure>
 <h5 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h5><p>这个是单界面应用中的模板index.html。在开发环境中，webpack会生成相关资源，这些资源的url会自动插入到模板来渲染最终的HTML。</p>
-<h4 id="主要的配置文件"><a href="#主要的配置文件" class="headerlink" title="主要的配置文件"></a>主要的配置文件</h4><h5 id="dev-server-js"><a href="#dev-server-js" class="headerlink" title="dev-server.js"></a>dev-server.js</h5><p>开发环境下的入口文件，在此文件中引入了其他的配置文件和相关插件。<br>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">build/check-versions.js		<span class="meta"># 检查node/npm的版本</span></div><div class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></div><div class="line">build/webpack.prod.conf 	<span class="meta"># 打包的webpack配置文件</span></div><div class="line">build/webpack.dev.conf 		<span class="meta"># 开发的webpack配置文件</span></div></pre></td></tr></table></figure></p>
-<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">path 				<span class="meta"># ...</span></div><div class="line">webapck 			<span class="meta"># ...</span></div><div class="line">express 			<span class="meta"># ...</span></div><div class="line">opn 				<span class="meta"># 在浏览器中打开需要打开的链接uri - opn(uri)</span></div><div class="line">http-proxy-middleware 		<span class="meta"># 代理中间件，方便连接，快速，浏览器同步等</span></div><div class="line">connect-history-api-fallback 	<span class="meta"># 通过指定的索引页面代理请求，对于单页面应用程序特别有用</span></div><div class="line">webpack-dev-middleware 		<span class="meta"># 这个插件用于webpack打包的，详细用法参见webpack-dev-server</span></div><div class="line">webpack-hot-middleware 		<span class="meta"># 这个插件用于热刷新的，详细用法参见webpack-dev-server</span></div></pre></td></tr></table></figure></p>
+<h4 id="主要的配置文件"><a href="#主要的配置文件" class="headerlink" title="主要的配置文件"></a>主要的配置文件</h4><h5 id="dev-server-js"><a href="#dev-server-js" class="headerlink" title="dev-server.js"></a>dev-server.js</h5><p>开发环境下的入口文件，在此文件中引入了其他的配置文件和相关插件。<br>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">build/check-versions.js		<span class="meta"># 检查node/npm的版本</span></span><br><span class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></span><br><span class="line">build/webpack.prod.conf 	<span class="meta"># 打包的webpack配置文件</span></span><br><span class="line">build/webpack.dev.conf 		<span class="meta"># 开发的webpack配置文件</span></span><br></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">path 				<span class="meta"># ...</span></span><br><span class="line">webapck 			<span class="meta"># ...</span></span><br><span class="line">express 			<span class="meta"># ...</span></span><br><span class="line">opn 				<span class="meta"># 在浏览器中打开需要打开的链接uri - opn(uri)</span></span><br><span class="line">http-proxy-middleware 		<span class="meta"># 代理中间件，方便连接，快速，浏览器同步等</span></span><br><span class="line">connect-history-api-fallback 	<span class="meta"># 通过指定的索引页面代理请求，对于单页面应用程序特别有用</span></span><br><span class="line">webpack-dev-middleware 		<span class="meta"># 这个插件用于webpack打包的，详细用法参见webpack-dev-server</span></span><br><span class="line">webpack-hot-middleware 		<span class="meta"># 这个插件用于热刷新的，详细用法参见webpack-dev-server</span></span><br></pre></td></tr></table></figure></p>
 <h5 id="build-js"><a href="#build-js" class="headerlink" title="build.js"></a>build.js</h5><p>打包时运行的入口文件</p>
-<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">build/check-versions.js		<span class="meta"># 检查node/npm的版本</span></div><div class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></div><div class="line">build/webpack.prod.conf 	<span class="meta"># 打包的webpack配置文件</span></div></pre></td></tr></table></figure></p>
-<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">ora 	<span class="meta"># 打包过程中优雅的图标提示</span></div><div class="line">rimraf 	<span class="meta">#  相当于Unix命令：rm -rf , 用来删除指定的目录或文件</span></div></pre></td></tr></table></figure></p>
+<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">build/check-versions.js		<span class="meta"># 检查node/npm的版本</span></span><br><span class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></span><br><span class="line">build/webpack.prod.conf 	<span class="meta"># 打包的webpack配置文件</span></span><br></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">ora 	<span class="meta"># 打包过程中优雅的图标提示</span></span><br><span class="line">rimraf 	<span class="meta">#  相当于Unix命令：rm -rf , 用来删除指定的目录或文件</span></span><br></pre></td></tr></table></figure></p>
 <h5 id="webpack-dev-conf-js"><a href="#webpack-dev-conf-js" class="headerlink" title="webpack.dev.conf.js"></a>webpack.dev.conf.js</h5><p>开发环境的部分webpack配置信息</p>
-<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">build/utils.js			<span class="meta"># 样式loader的配置</span></div><div class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></div><div class="line">build/webpack.base.conf.js 	<span class="meta"># 主要的webpack配置信息</span></div></pre></td></tr></table></figure></p>
-<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">webpack-merge 			<span class="meta"># 用来合并loader</span></div><div class="line">html-webpack-plugin 		<span class="meta"># 为html文件引入带有hash值的外部资源，生成html入口文件</span></div><div class="line">friendly-errors-webpack-plugin 	<span class="meta"># 友好的错误提示(识别某些类别的webpack错误并处理、合并、优先排序，以提供更好的开发者体验)</span></div></pre></td></tr></table></figure></p>
+<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">build/utils.js			<span class="meta"># 样式loader的配置</span></span><br><span class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></span><br><span class="line">build/webpack.base.conf.js 	<span class="meta"># 主要的webpack配置信息</span></span><br></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">webpack-merge 			<span class="meta"># 用来合并loader</span></span><br><span class="line">html-webpack-plugin 		<span class="meta"># 为html文件引入带有hash值的外部资源，生成html入口文件</span></span><br><span class="line">friendly-errors-webpack-plugin 	<span class="meta"># 友好的错误提示(识别某些类别的webpack错误并处理、合并、优先排序，以提供更好的开发者体验)</span></span><br></pre></td></tr></table></figure></p>
 <h5 id="webpack-prop-conf-js"><a href="#webpack-prop-conf-js" class="headerlink" title="webpack.prop.conf.js"></a>webpack.prop.conf.js</h5><p>打包时的部分webpack配置信息</p>
-<p>引入的配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">同上</div></pre></td></tr></table></figure></p>
-<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">webpack-merge 				<span class="meta"># 用来合并loader</span></div><div class="line">html-webpack-plugin 			<span class="meta"># 为html文件引入带有hash值的外部资源，生成html入口文件</span></div><div class="line">copy-webpack-plugin 			<span class="meta"># copy文件到某一目录(此插件用来把static/下的静态资源直接复制到dist/static/目录下)</span></div><div class="line">extract-text-webpack-plugin 		<span class="meta"># 将不同文件的内容打包到一个文件中(抽离出css样式，并打包到一个css文件中)</span></div><div class="line">optimize-css-assets-webpack-plugin 	<span class="meta"># 优化css资源(默认使用cssnano处理器,cssnano是在postcss基础之上构建的)</span></div><div class="line">compression-webpack-plugin 		<span class="meta"># 压缩文件</span></div><div class="line">webpack-bundle-analyzer 		<span class="meta"># 资源分析器(获取资源压缩前后的实际大小等，此项目中config/index.js文件下找到</span></div><div class="line">					- bundleAnalyzerReport将其值改为true，打包时即可在<span class="number">8888</span>端口看到可视化的数据信息</div><div class="line">					- 或者是给process.env.npm_config_report赋值为true)</div></pre></td></tr></table></figure></p>
+<p>引入的配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同上</span><br></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">webpack-merge 				<span class="meta"># 用来合并loader</span></span><br><span class="line">html-webpack-plugin 			<span class="meta"># 为html文件引入带有hash值的外部资源，生成html入口文件</span></span><br><span class="line">copy-webpack-plugin 			<span class="meta"># copy文件到某一目录(此插件用来把static/下的静态资源直接复制到dist/static/目录下)</span></span><br><span class="line">extract-text-webpack-plugin 		<span class="meta"># 将不同文件的内容打包到一个文件中(抽离出css样式，并打包到一个css文件中)</span></span><br><span class="line">optimize-css-assets-webpack-plugin 	<span class="meta"># 优化css资源(默认使用cssnano处理器,cssnano是在postcss基础之上构建的)</span></span><br><span class="line">compression-webpack-plugin 		<span class="meta"># 压缩文件</span></span><br><span class="line">webpack-bundle-analyzer 		<span class="meta"># 资源分析器(获取资源压缩前后的实际大小等，此项目中config/index.js文件下找到</span></span><br><span class="line">					- bundleAnalyzerReport将其值改为true，打包时即可在<span class="number">8888</span>端口看到可视化的数据信息</span><br><span class="line">					- 或者是给process.env.npm_config_report赋值为true)</span><br></pre></td></tr></table></figure></p>
 <h5 id="webpack-base-conf-js"><a href="#webpack-base-conf-js" class="headerlink" title="webpack.base.conf.js"></a>webpack.base.conf.js</h5><p>开发环境及生产环境公用的部分webpack配置信息</p>
-<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">build/utils.js			<span class="meta"># 样式loader的配置</span></div><div class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></div><div class="line">build/vue-loader.conf.js 	<span class="meta"># 该配置文件只对css的map以及模板中相对链接是否转换成require方式做了配置</span></div></pre></td></tr></table></figure></p>
-<p>引入的相关插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>引入的配置文件：<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">build/utils.js			<span class="meta"># 样式loader的配置</span></span><br><span class="line">config/index.js 		<span class="meta"># 主要的配置文件</span></span><br><span class="line">build/vue-loader.conf.js 	<span class="meta"># 该配置文件只对css的map以及模板中相对链接是否转换成require方式做了配置</span></span><br></pre></td></tr></table></figure></p>
+<p>引入的相关插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...</span><br></pre></td></tr></table></figure></p>
 <p><strong>此文件配置了项目的入口文件、输入、解析及不同类型的模块处理</strong></p>
 <p>以上内容由错误之处，还望指正。</p>
-<p><strong> 关键词：</strong>  <a href="http://www.jianshu.com/p/7f8a5d83f4b7" target="_blank" rel="external">postcss</a> , <a href="http://babeljs.cn/" target="_blank" rel="external">babel</a> , <a href="https://www.npmjs.com/package/http-proxy-middleware" target="_blank" rel="external">http-proxy-middleware</a> , <a href="http://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a> , <a href="https://www.npmjs.com/package/webpack-merge" target="_blank" rel="external">webpack-merge</a> , <a href="https://www.npmjs.com/package/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a> , <a href="https://github.com/webpack-contrib/compression-webpack-plugin" target="_blank" rel="external">compression-webpack-plugin</a></p>
+<p><strong> 关键词：</strong>  <a href="http://www.jianshu.com/p/7f8a5d83f4b7" target="_blank" rel="noopener">postcss</a> , <a href="http://babeljs.cn/" target="_blank" rel="noopener">babel</a> , <a href="https://www.npmjs.com/package/http-proxy-middleware" target="_blank" rel="noopener">http-proxy-middleware</a> , <a href="http://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="noopener">webpack-dev-server</a> , <a href="https://www.npmjs.com/package/webpack-merge" target="_blank" rel="noopener">webpack-merge</a> , <a href="https://www.npmjs.com/package/html-webpack-plugin" target="_blank" rel="noopener">html-webpack-plugin</a> , <a href="https://github.com/webpack-contrib/compression-webpack-plugin" target="_blank" rel="noopener">compression-webpack-plugin</a></p>
 
           
         
@@ -830,8 +1176,8 @@
       
         
           
-            <h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>最近使用vue时，发现打包完的项目中，背景图片不能加载。<br>打包前background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url("../assets/images/audio.png") center no-repeat;</div></pre></td></tr></table></figure></p>
-<p>打包后background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url(/static/img/audio.8d110e4.png) center no-repeat;</div></pre></td></tr></table></figure></p>
+            <h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>最近使用vue时，发现打包完的项目中，背景图片不能加载。<br>打包前background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: url("../assets/images/audio.png") center no-repeat;</span><br></pre></td></tr></table></figure></p>
+<p>打包后background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: url(/static/img/audio.8d110e4.png) center no-repeat;</span><br></pre></td></tr></table></figure></p>
 <p>打包后的文件，由于没有放到网站的根目录下，所以打包后背景图片无法获取。</p>
 <h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>在网上查了很多，很多答案都没有相关性，也没解决问题。其实很简单，无非就是把相对根目录的路径改成相对css文件的路径即可。<br>在build/utils.js里的有个ExtractTextPlugin对象，给它添加 publicPath: ‘../../‘ 就行了。</p>
 <p>这里问题的关键就是</p>
@@ -953,34 +1299,34 @@
 <h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><p>window + sublime</p>
 <h5 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h5><ul>
 <li><p>新建项目文档</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir 项目名称(这里使用pro-one代替)</div><div class="line">cd pro-one</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir 项目名称(这里使用pro-one代替)</span><br><span class="line">cd pro-one</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>安装vue-cli脚手架 (没有node环境要在电脑上安装node，参考链接：<a href="http://nodejs.cn/" target="_blank" rel="external">http://nodejs.cn/</a>)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev vue-cli</div></pre></td></tr></table></figure>
+<li><p>安装vue-cli脚手架 (没有node环境要在电脑上安装node，参考链接：<a href="http://nodejs.cn/" target="_blank" rel="noopener">http://nodejs.cn/</a>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev vue-cli</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">vue init webpack ./ </div><div class="line">// 这里会提示你目标目录已存在，是否确认继续。（目标目录即为当前目录） 输入yes即可。</div><div class="line">接下来会有一些确认信息：</div><div class="line"></div><div class="line"> ? Project name (./) ******</div><div class="line"> ? Project name ******</div><div class="line"> ? Project description (A Vue.js project)</div><div class="line"> ? Project description A Vue.js project</div><div class="line"> ? Author ******</div><div class="line"> ? Author ******</div><div class="line"> ? Vue build standalone</div><div class="line"> ? Install vue-router? (Y/n)</div><div class="line"> ? Install vue-router? Yes</div><div class="line"> ? Use ESLint to lint your code? (Y/n)</div><div class="line"> ? Use ESLint to lint your code? Yes</div><div class="line"> ? Pick an ESLint preset (Use arrow keys)</div><div class="line"> ? Pick an ESLint preset Standard</div><div class="line"> ? Setup unit tests with Karma + Mocha? (Y/n)</div><div class="line"> ? Setup unit tests with Karma + Mocha? Yes</div><div class="line"> ? Setup e2e tests with Nightwatch? (Y/n)</div><div class="line"> ? Setup e2e tests with Nightwatch? Yes</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack ./ </span><br><span class="line">// 这里会提示你目标目录已存在，是否确认继续。（目标目录即为当前目录） 输入yes即可。</span><br><span class="line">接下来会有一些确认信息：</span><br><span class="line"></span><br><span class="line"> ? Project name (./) ******</span><br><span class="line"> ? Project name ******</span><br><span class="line"> ? Project description (A Vue.js project)</span><br><span class="line"> ? Project description A Vue.js project</span><br><span class="line"> ? Author ******</span><br><span class="line"> ? Author ******</span><br><span class="line"> ? Vue build standalone</span><br><span class="line"> ? Install vue-router? (Y/n)</span><br><span class="line"> ? Install vue-router? Yes</span><br><span class="line"> ? Use ESLint to lint your code? (Y/n)</span><br><span class="line"> ? Use ESLint to lint your code? Yes</span><br><span class="line"> ? Pick an ESLint preset (Use arrow keys)</span><br><span class="line"> ? Pick an ESLint preset Standard</span><br><span class="line"> ? Setup unit tests with Karma + Mocha? (Y/n)</span><br><span class="line"> ? Setup unit tests with Karma + Mocha? Yes</span><br><span class="line"> ? Setup e2e tests with Nightwatch? (Y/n)</span><br><span class="line"> ? Setup e2e tests with Nightwatch? Yes</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>初始化项目信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装less/less-loader</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install less less-loader --save-dev</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install less less-loader --save-dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装jquery库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install jquery --save-dev</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery --save-dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>由于此项目为移动端，所以需要修改根目录下的index.html文件</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">+     <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>smile-junior<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- built files will be auto injected --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line">+ 为新增的行</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">+     <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>smile-junior<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- built files will be auto injected --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">+ 为新增的行</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在入口文件main.js内挂载全局的jquery，挂载后可以通过this.$使用，但不能用在()=&gt;{}箭头函数中，因为箭头函数中的this指向不是Vue</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">main.js</div><div class="line"></div><div class="line">  <span class="comment">// The Vue build version to load with the `import` command</span></div><div class="line">  <span class="comment">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span></div><div class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line">  <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></div><div class="line">  <span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></div><div class="line"></div><div class="line">  Vue.config.productionTip = <span class="literal">false</span></div><div class="line">+ Vue.prototype.$ = <span class="built_in">require</span>(<span class="string">'jquery'</span>)</div><div class="line"></div><div class="line">  <span class="comment">/* eslint-disable no-new */</span></div><div class="line">  <span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">    router,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;App/&gt;'</span>,</div><div class="line">    <span class="attr">components</span>: &#123; App &#125;</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">+ 为新增的行</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">main.js</span><br><span class="line"></span><br><span class="line">  <span class="comment">// The Vue build version to load with the `import` command</span></span><br><span class="line">  <span class="comment">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span></span><br><span class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line">  <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></span><br><span class="line">  <span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></span><br><span class="line"></span><br><span class="line">  Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line">+ Vue.prototype.$ = <span class="built_in">require</span>(<span class="string">'jquery'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* eslint-disable no-new */</span></span><br><span class="line">  <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    router,</span><br><span class="line">    template: <span class="string">'&lt;App/&gt;'</span>,</span><br><span class="line">    components: &#123; App &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">+ 为新增的行</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在开发环境中调试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>打包项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>成功，在此不放贴图了。暂时写到这里，后面会继续更…</p>
@@ -1099,383 +1445,10 @@
 <p>今天有空，研究下跨域。</p>
 </blockquote>
 <h5 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h5><p>A resource makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port to its own.<br>当从不同的域名、协议、端口向自身请求资源时，资源会产生跨源HTTP请求。即为跨域</p>
-<p>例如：在<a href="http://domain-a.com上的一个页面请求http://domain-b.com/image.jpg，而如今许多页面都会有类似的请求，如：css/js/images" target="_blank" rel="external">http://domain-a.com上的一个页面请求http://domain-b.com/image.jpg，而如今许多页面都会有类似的请求，如：css/js/images</a></p>
+<p>例如：在<a href="http://domain-a.com上的一个页面请求http://domain-b.com/image.jpg，而如今许多页面都会有类似的请求，如：css/js/images" target="_blank" rel="noopener">http://domain-a.com上的一个页面请求http://domain-b.com/image.jpg，而如今许多页面都会有类似的请求，如：css/js/images</a></p>
 <p>为了安全考虑，浏览器都会遵循同源策略，因此web应用只会将http请求发到自己的域。而为了改善web应用，开发人员要求浏览器允许跨域请求。</p>
 <p>为什么说要求浏览器允许跨域请求，因为服务器本身是允许跨域请求的，只是浏览器有同源策略，当我们发起跨域请求时，浏览器会发送请求给别人家的服务器，如果别人家的服务器的返回头里有Access-Control-Allow-Origin:*，就表示允许跨域请求，那么我们才会得到返回的数据，否则，浏览器会自动过滤掉返回的数据，并告诉你跨域请求失败或错误的信息。</p>
 <h5 id="跨域方式"><a href="#跨域方式" class="headerlink" title="跨域方式"></a>跨域方式</h5><p>1，</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/27/前后端分离的思考/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/27/前后端分离的思考/" itemprop="url">前后端分离的思考</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T15:21:36+08:00">
-                2017-07-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="什么是前后端分离"><a href="#什么是前后端分离" class="headerlink" title="什么是前后端分离"></a>什么是前后端分离</h5><p>有人说SPA（single page application）就是前后端分离，是的，不过我觉得SPA只是前后端分离的一种应用场景。<br>或者换句话问：<strong>前后端分离是什么？</strong><br>是什么？是SPA？应该不能这样回答吧。<br>前后端分离应该是前后端职责明确的划分，各司其职。</p>
-<ul>
-<li>前端负责V和C</li>
-<li>后端负责M</li>
-</ul>
-<p>在这里，应该明确划分，后端只负责把数据处理好然后返回给前端，而不需要前端再对数据处理。前端负责数据的展示，以及用户的交互，对于展示的逻辑后端不应再去涉足。更深一点说是架构上应该分离，最好是部署到不同的服务器上。</p>
-<h5 id="为什么要前后端分离"><a href="#为什么要前后端分离" class="headerlink" title="为什么要前后端分离"></a>为什么要前后端分离</h5><p>1, 开发效率<br>  前端开发依赖后端<br>2, 前后端职责不清<br>  前后端代码混杂，没有约束，且维护困难。<br>3, 场景需求<br>  有些项目可能是多端的，后端只写接口会方便各端调用，不需要针对不同端写重复的代码。</p>
-<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
-<li>减轻服务器压力，服务器不需要再渲染页面，对于多端只需提供一套API即可。</li>
-<li>方便开发，前后端人员各司其职，不再被同步事件相互等待而耽误工程的开发。</li>
-<li>完全的前端组件化</li>
-</ul>
-<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ul>
-<li>不利于SEO优化，</li>
-</ul>
-<p>后端只负责业务/数据接口，前端只负责展现/交互逻辑。后端可以对于同一块数据根据不同端的需求不同，根据不同的筛选条件返回不同的数据给客户端</p>
-<p>目前，有些公司在后端（java/php/..）和前端之间加了一层node，用做把数据的规整和请求的转发。本人尚不清楚此架构的具体意义和实现方式，不过有兴趣的同学可以查看资料进行学习。</p>
-<h5 id="我们是否需要进行前后端分离"><a href="#我们是否需要进行前后端分离" class="headerlink" title="我们是否需要进行前后端分离"></a>我们是否需要进行前后端分离</h5><p>对于我们是否需要进行前后端分离，我觉得应该有很多考量。比如代码的维护，以及分离方式的架构，具体实现方式等等，当我们对此还不熟悉时，可以去尝试，但无论是否分离，尽可能的写出可维护性的代码，尽可能的进行网站优化都是我们应该做的。<br>有机会就去学习和尝试新东西，我们才会在实践中慢慢成长~</p>
-<p>该篇文章参考了下面链接中内容，简单书写了自己的看法。<br>参考链接：<a href="http://blog.jobbole.com/65513/" target="_blank" rel="external">http://blog.jobbole.com/65513/</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/27/单页面的交互方式探索/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/27/单页面的交互方式探索/" itemprop="url">单页面的交互方式探索</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T14:44:00+08:00">
-                2017-07-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>ajax+js+html(仅有一个页面)</li>
-<li>ajax+jq+load+html(多个页面)</li>
-</ul>
-<p>对于第一种来说，页面中所有的dom节点，基本都是通过js动态生成的。<br>二对于第二种而言，可以把不同的内容先分别写到不同的页面上，然后利用load方法加载不同模块的html文件。</p>
-<h5 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h5><ul>
-<li>去掉了页面的频繁刷新，加上优雅的提醒，将会很大提升用户的使用体验。</li>
-<li>所有数据都保存在一个全局变量/“次级全局变量”（能被大多数函数访问和修改），没有的页面间跳转传参的麻烦</li>
-<li>减轻服务器压力，服务器只需负责数据的计算和输出即可。</li>
-</ul>
-<h5 id="坏处"><a href="#坏处" class="headerlink" title="坏处"></a>坏处</h5><ul>
-<li>SEO优化麻烦</li>
-<li>浏览器的导航功能无法使用</li>
-</ul>
-<h5 id="部分问题的解决方式"><a href="#部分问题的解决方式" class="headerlink" title="部分问题的解决方式"></a>部分问题的解决方式</h5><p>1，利用h5的pushState等新属性，修改history和url可以做SEO优化，但当打开页面时，对于不同的url需要做相应判断。(刚好浏览锤子手机网站看到#后面的参数才恍然想起，#后面的参数改变不刷新页面，但可以通过后面的参数判断应该显示哪一模块。当然这个是不利于SEO优化的)<br>参考链接：<a href="http://isux.tencent.com/seo-for-single-page-applications.html" target="_blank" rel="external">http://isux.tencent.com/seo-for-single-page-applications.html</a><br>参考链接：<a href="http://zhanzhang.baidu.com/college/articleinfo?id=294" target="_blank" rel="external">http://zhanzhang.baidu.com/college/articleinfo?id=294</a><br>参考链接：<a href="http://www.ruanyifeng.com/blog/2013/07/how_to_make_search_engines_find_ajax_content.html" target="_blank" rel="external">如何让搜索引擎抓取AJAX内容？</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://ahxdg.github.io/2017/07/26/前后端的数据交互问题分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/26/前后端的数据交互问题分析/" itemprop="url">前后端的数据交互问题分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T14:57:40+08:00">
-                2017-07-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前后端数据交互的方式有很多种，比如后台是php<br>1, 直接传值到页面节点中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;<span class="xml">&lt;?php echo '后台数据' ?&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>2, 先赋值给js的变量，再通过js渲染到页面上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data  = &#123;$data&#125;;</div><div class="line">	$(<span class="string">'.content'</span>).html(data.content);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>3, 通过AJAX请求数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data;</div><div class="line">	$.get(<span class="string">'ajaxurl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123; data = res; &#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>4, 通过JSONP获取数据</p>
-<p>5, 通过h5的API：websocket，传递数据<br>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket</a></p>
-<p>现在比较流行通过AJAX的方式获取数据，而websocket一般是用来客户端和服务器实时通信的。<br>不管是通过哪种方式进行数据交互，传输的数据应该有一个规范的格式，并且最好是最终的数据（不需要前端再进行处理），数据的处理应该放在后台，前台的主要任务是布局和动画交互。</p>
 
           
         
@@ -1559,7 +1532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1572,7 +1545,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -93,13 +93,14 @@
 
 
 
-<meta name="description" content="前后端数据交互的方式有很多种，比如后台是php1, 直接传值到页面节点中1&amp;lt;div&amp;gt;&amp;lt;?php echo &apos;后台数据&apos; ?&amp;gt;&amp;lt;/div&amp;gt; 2, 先赋值给js的变量，再通过js渲染到页面上1234&amp;lt;script&amp;gt;	var data  = &amp;#123;$data&amp;#125;;	$(&apos;.content&apos;).html(data.content);&amp;lt;/s">
+<meta name="description" content="前后端数据交互的方式有很多种，比如后台是php1, 直接传值到页面节点中1&amp;lt;div&amp;gt;&amp;lt;?php echo &apos;后台数据&apos; ?&amp;gt;&amp;lt;/div&amp;gt; 2, 先赋值给js的变量，再通过js渲染到页面上1234&amp;lt;scr">
 <meta name="keywords" content="思考">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前后端的数据交互问题分析">
 <meta property="og:url" content="https://ahxdg.github.io/2017/07/26/前后端的数据交互问题分析/index.html">
 <meta property="og:site_name" content="Keer">
 <meta property="og:description" content="前后端数据交互的方式有很多种，比如后台是php1, 直接传值到页面节点中1&amp;lt;div&amp;gt;&amp;lt;?php echo &apos;后台数据&apos; ?&amp;gt;&amp;lt;/div&amp;gt; 2, 先赋值给js的变量，再通过js渲染到页面上1234&amp;lt;script&amp;gt;	var data  = &amp;#123;$data&amp;#125;;	$(&apos;.content&apos;).html(data.content);&amp;lt;/s">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-11-05T14:06:46.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前后端的数据交互问题分析">
@@ -350,11 +351,11 @@
       
 
       
-        <p>前后端数据交互的方式有很多种，比如后台是php<br>1, 直接传值到页面节点中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;<span class="xml">&lt;?php echo '后台数据' ?&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>2, 先赋值给js的变量，再通过js渲染到页面上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data  = &#123;$data&#125;;</div><div class="line">	$(<span class="string">'.content'</span>).html(data.content);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>3, 通过AJAX请求数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data;</div><div class="line">	$.get(<span class="string">'ajaxurl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123; data = res; &#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+        <p>前后端数据交互的方式有很多种，比如后台是php<br>1, 直接传值到页面节点中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;<span class="xml">&lt;?php echo '后台数据' ?&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>2, 先赋值给js的变量，再通过js渲染到页面上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">var</span> data  = &#123;$data&#125;;</span><br><span class="line">	$(<span class="string">'.content'</span>).html(data.content);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>3, 通过AJAX请求数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="keyword">var</span> data;</span><br><span class="line">	$.get(<span class="string">'ajaxurl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123; data = res; &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>4, 通过JSONP获取数据</p>
-<p>5, 通过h5的API：websocket，传递数据<br>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket</a></p>
+<p>5, 通过h5的API：websocket，传递数据<br>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket</a></p>
 <p>现在比较流行通过AJAX的方式获取数据，而websocket一般是用来客户端和服务器实时通信的。<br>不管是通过哪种方式进行数据交互，传输的数据应该有一个规范的格式，并且最好是最终的数据（不需要前端再进行处理），数据的处理应该放在后台，前台的主要任务是布局和动画交互。</p>
 
       
@@ -473,7 +474,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -486,7 +487,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
