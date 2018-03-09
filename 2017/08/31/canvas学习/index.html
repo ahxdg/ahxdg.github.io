@@ -93,14 +93,13 @@
 
 
 
-<meta name="description" content="起步index.html123456789101112&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;meta charset=&quot;UTF-8&quot;&amp;">
+<meta name="description" content="起步index.html123456789101112&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;	&amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt;	&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&amp;gt;&amp;lt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas学习">
 <meta property="og:url" content="https://ahxdg.github.io/2017/08/31/canvas学习/index.html">
 <meta property="og:site_name" content="Keer">
 <meta property="og:description" content="起步index.html123456789101112&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;	&amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt;	&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&amp;gt;&amp;lt;">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-05T14:06:46.163Z">
+<meta property="og:updated_time" content="2017-08-31T06:35:32.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas学习">
 <meta name="twitter:description" content="起步index.html123456789101112&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;	&amp;lt;title&amp;gt;Document&amp;lt;/title&amp;gt;	&amp;lt;link rel=&quot;stylesheet&quot; href=&quot;./style.css&quot;&amp;gt;&amp;lt;">
@@ -350,9 +349,9 @@
       
 
       
-        <h4 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h4><p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>main.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建canvas对象</span></span><br><span class="line">   <span class="keyword">var</span>	canvas = <span class="built_in">document</span>.querySelector(<span class="string">'#canvas'</span>),</span><br><span class="line">	ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br></pre></td></tr></table></figure></p>
-<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">stroke 		绘制路径边缘</span><br><span class="line">fill		填充路径内部</span><br><span class="line"></span><br><span class="line">线</span><br><span class="line">moveTo		把画笔移动到指定地点</span><br><span class="line">lineTo		绘制一条不可见的路径到指定地点</span><br><span class="line"></span><br><span class="line">圆</span><br><span class="line">arc		绘制圆弧或者圆</span><br><span class="line"></span><br><span class="line">文本</span><br><span class="line">fillText	在指定位置填充指定文本</span><br><span class="line">strokeText	在指定位置绘制文本边框</span><br><span class="line">measureText	在文本被绘制前，获取文本的宽度</span><br><span class="line"></span><br><span class="line">clearRect	擦除画布</span><br></pre></td></tr></table></figure>
+        <h4 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h4><p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>main.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建canvas对象</span></div><div class="line">   <span class="keyword">var</span>	canvas = <span class="built_in">document</span>.querySelector(<span class="string">'#canvas'</span>),</div><div class="line">	ctx = canvas.getContext(<span class="string">'2d'</span>);</div></pre></td></tr></table></figure></p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">stroke 		绘制路径边缘</div><div class="line">fill		填充路径内部</div><div class="line"></div><div class="line">线</div><div class="line">moveTo		把画笔移动到指定地点</div><div class="line">lineTo		绘制一条不可见的路径到指定地点</div><div class="line"></div><div class="line">圆</div><div class="line">arc		绘制圆弧或者圆</div><div class="line"></div><div class="line">文本</div><div class="line">fillText	在指定位置填充指定文本</div><div class="line">strokeText	在指定位置绘制文本边框</div><div class="line">measureText	在文本被绘制前，获取文本的宽度</div><div class="line"></div><div class="line">clearRect	擦除画布</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -472,7 +471,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -485,7 +484,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -563,7 +562,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

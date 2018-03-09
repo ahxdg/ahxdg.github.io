@@ -93,15 +93,14 @@
 
 
 
-<meta name="description" content="问题：最近使用vue时，发现打包完的项目中，背景图片不能加载。打包前background的代码1background: url(&quot;../assets/images/audio.png&quot;) center no-repeat; 打包后background的代码1background: url(/stat">
+<meta name="description" content="问题：最近使用vue时，发现打包完的项目中，背景图片不能加载。打包前background的代码1background: url(&quot;../assets/images/audio.png&quot;) center no-repeat; 打包后background的代码1background: url(/static/img/audio.8d110e4.png) center no-repeat; 打包后的文件">
 <meta name="keywords" content="笔记,webpack,vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue使用笔记-背景图片的路径问题">
 <meta property="og:url" content="https://ahxdg.github.io/2017/08/25/vue使用笔记-背景图片的路径问题/index.html">
 <meta property="og:site_name" content="Keer">
 <meta property="og:description" content="问题：最近使用vue时，发现打包完的项目中，背景图片不能加载。打包前background的代码1background: url(&quot;../assets/images/audio.png&quot;) center no-repeat; 打包后background的代码1background: url(/static/img/audio.8d110e4.png) center no-repeat; 打包后的文件">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-05T14:06:46.179Z">
+<meta property="og:updated_time" content="2017-08-25T05:11:26.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue使用笔记-背景图片的路径问题">
 <meta name="twitter:description" content="问题：最近使用vue时，发现打包完的项目中，背景图片不能加载。打包前background的代码1background: url(&quot;../assets/images/audio.png&quot;) center no-repeat; 打包后background的代码1background: url(/static/img/audio.8d110e4.png) center no-repeat; 打包后的文件">
@@ -351,8 +350,8 @@
       
 
       
-        <h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>最近使用vue时，发现打包完的项目中，背景图片不能加载。<br>打包前background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: url("../assets/images/audio.png") center no-repeat;</span><br></pre></td></tr></table></figure></p>
-<p>打包后background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: url(/static/img/audio.8d110e4.png) center no-repeat;</span><br></pre></td></tr></table></figure></p>
+        <h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>最近使用vue时，发现打包完的项目中，背景图片不能加载。<br>打包前background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url("../assets/images/audio.png") center no-repeat;</div></pre></td></tr></table></figure></p>
+<p>打包后background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url(/static/img/audio.8d110e4.png) center no-repeat;</div></pre></td></tr></table></figure></p>
 <p>打包后的文件，由于没有放到网站的根目录下，所以打包后背景图片无法获取。</p>
 <h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>在网上查了很多，很多答案都没有相关性，也没解决问题。其实很简单，无非就是把相对根目录的路径改成相对css文件的路径即可。<br>在build/utils.js里的有个ExtractTextPlugin对象，给它添加 publicPath: ‘../../‘ 就行了。</p>
 <p>这里问题的关键就是</p>
@@ -486,7 +485,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -499,7 +498,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -577,7 +576,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
