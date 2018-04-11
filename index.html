@@ -86,7 +86,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
 
 
 
@@ -286,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/03/22/webRTC录音功能.html">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/04/11/FlexPaper无法播放跨域的swf文件.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -305,7 +305,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/22/webRTC录音功能.html" itemprop="url">webRTC录音功能</a></h1>
+                <a class="post-title-link" href="/2018/04/11/FlexPaper无法播放跨域的swf文件.html" itemprop="url">FlexPaper无法播放跨域的swf文件</a></h1>
         
 
         <div class="post-meta">
@@ -317,8 +317,134 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T15:16:24+08:00">
-                2018-03-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T15:33:50+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>今天接到一个问题，公司有个项目使用了flexpaper，做文档展示。但无法正常显示swf文件</p>
+</blockquote>
+<p>其实，如果在本地先做好demo，问题可能就很快被发现的。<br>但是，由于这个项目三个人参与，且后端代码，前端代码和静态资源（swf文件）分别由三个人负责，所以问题一直没有被发现，因为不清楚到底是谁那里出了问题。</p>
+<p>中午接到问题时，我也是一脸懵逼，因为刚进来，根本不知道这个项目。</p>
+<p><strong>处理过程：</strong></p>
+<p>1，先把前端代码拿到手，配置好打开发现只是一个样式demo，并没有flexpaper。索性在本地写一个flexpaper的demo</p>
+<p>2，找到后端负责人（因为他在开发这个项目，并且是套的前端代码），拿到他的开发环境，浏览器打开发现只是未显示swf文件，并没有报错。</p>
+<p>3，找到负责swf文件的人，从他那里copy了一份。直接拖到chrome浏览器发现是直接下载，又拖到360浏览器，可以正常打开，<strong>排除文件出错</strong>。</p>
+<p>由于是参照后端的项目写的demo，代码中引入的FlexPaperViewer.swf是服务器上的文件，而播放的swf是本地的文件，所以报了一个错误：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GET http:<span class="comment">//192.168.0.180:8078/crossdomain.xml 404 (Not Found)</span></div></pre></td></tr></table></figure></p>
+<p>从报错信息中可以得知，是跨域问题。</p>
+<p>修改FlexPaperViewer.swf的引入路径，把FlexPaperViewer.swf文件下载到本地，引入本地的FlexPaperViewer.swf试一下，可以正常打开。</p>
+<p><strong>也就是说：当我们引入FlexPaperViewer文件时，对于需要播放的swf文件必须是在同一个域名下，不然就会出现上面的错误。</strong></p>
+<p>当然，除此之外还有别的解决方案：就是上面报错的信息中所提到的crossdomain.xml文件，当FlexPaperViewer文件和需要播放的swf文件在不同域时，我们可以在需要播放的swf文件所在域的根目录下添加一个crossdomain.xml：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">cross-domain-policy</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">allow-access-from</span> <span class="attr">domain</span>=<span class="string">"FlexPaperViewer文件所在的域"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">cross-domain-policy</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>意思是：允许FlexPaperViewer文件所在的域对本域名下的文件进行跨域请求，这样就不会报错了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/03/30/webRTC录音功能.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/30/webRTC录音功能.html" itemprop="url">webRTC录音功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T14:04:35+08:00">
+                2018-03-30
               </time>
             
 
@@ -358,12 +484,13 @@
 <p>近期公司老项目中有个录音功能由于chrome浏览器的更新，停止录音时特别慢，由此引出了相关问题</p>
 </blockquote>
 <p>问题原因：<br>项目所使用的录音插件为：microm.min.js，我搜了一下，在github上有相关的项目：<a href="https://zzarcon.github.io/microm/" target="_blank" rel="external">https://zzarcon.github.io/microm/</a><br>这个插件在浏览器更新后，对于录音停止后处理数据并返回信息的速度明显慢了很多，特别影响体验。至于为何在更新了浏览器会出现这样的问题，我目前并未发现什么原因。<br>但有一点是这个插件值得优化的地方，就是把录音的Blob转成MP3数据行为是在停止录音操作发生后执行的。如果改成边录边转，那就不会存在这种问题了..</p>
-<p>处理问题的过程：<br>首先，我找到了格式话了压缩的代码，通过日志找到耗时的代码，就在下面的for里，就是把blob转成mp3的过程，但我想不通的是为什么新版的chrome（64，65）会很慢…<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">key</span>: <span class="string">"encodeSamplesToMp3"</span>,</div><div class="line">  <span class="attr">value</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e, t</span>) </span>&#123;</div><div class="line">    t = o(l, t);</div><div class="line">    <span class="comment">//这里的for循环特别耗时</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> r, n, a, i, s, f, _ = e[<span class="number">0</span>], u = e[<span class="number">1</span>], c = t.maxSamples, h = _.length, d = <span class="keyword">new</span> <span class="keyword">this</span>.lame.Mp3Encoder(t.channels, t.sampleRate, t.kbps), p = [], m = <span class="number">0</span>; h &gt;= c;)</div><div class="line">    m += c,</div><div class="line">    n = _.splice(m, m + c),</div><div class="line">    a = u ? u.splice(m, m + c) : <span class="literal">null</span>,</div><div class="line">    r = d.encodeBuffer(n, a),</div><div class="line">    r.length &gt; <span class="number">0</span> &amp;&amp; p.push(<span class="keyword">new</span> <span class="built_in">Int8Array</span>(r)),</div><div class="line">    h -= c;</div><div class="line">    i = d.flush(),</div><div class="line">    i.length &gt; <span class="number">0</span> &amp;&amp; p.push(<span class="keyword">new</span> <span class="built_in">Int8Array</span>(i)),</div><div class="line">    s = <span class="keyword">new</span> Blob(p, &#123;</div><div class="line">      <span class="attr">type</span>: <span class="string">"audio/mp3"</span></div><div class="line">    &#125;),</div><div class="line">    f = URL.createObjectURL(s),</div><div class="line">    <span class="keyword">this</span>.mp3Resolver(&#123;</div><div class="line">      <span class="attr">buffer</span>: p,</div><div class="line">      <span class="attr">blob</span>: s,</div><div class="line">      <span class="attr">url</span>: f</div><div class="line">    &#125;)</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>处理问题的过程：<br>首先，我找到了格式话了压缩的代码，通过日志找到耗时的代码，就在下面的for里，就是把blob转成mp3的过程，但我想不通的是为什么新版的chrome（64，65）会很慢…</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">key</span>: <span class="string">"encodeSamplesToMp3"</span>,</div><div class="line">  <span class="attr">value</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e, t</span>) </span>&#123;</div><div class="line">    t = o(l, t);</div><div class="line">    <span class="comment">//这里的for循环特别耗时</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> r, n, a, i, s, f, _ = e[<span class="number">0</span>], u = e[<span class="number">1</span>], c = t.maxSamples, h = _.length, d = <span class="keyword">new</span> <span class="keyword">this</span>.lame.Mp3Encoder(t.channels, t.sampleRate, t.kbps), p = [], m = <span class="number">0</span>; h &gt;= c;)</div><div class="line">    m += c,</div><div class="line">    n = _.splice(m, m + c),</div><div class="line">    a = u ? u.splice(m, m + c) : <span class="literal">null</span>,</div><div class="line">    r = d.encodeBuffer(n, a),</div><div class="line">    r.length &gt; <span class="number">0</span> &amp;&amp; p.push(<span class="keyword">new</span> <span class="built_in">Int8Array</span>(r)),</div><div class="line">    h -= c;</div><div class="line">    i = d.flush(),</div><div class="line">    i.length &gt; <span class="number">0</span> &amp;&amp; p.push(<span class="keyword">new</span> <span class="built_in">Int8Array</span>(i)),</div><div class="line">    s = <span class="keyword">new</span> Blob(p, &#123;</div><div class="line">      <span class="attr">type</span>: <span class="string">"audio/mp3"</span></div><div class="line">    &#125;),</div><div class="line">    f = URL.createObjectURL(s),</div><div class="line">    <span class="keyword">this</span>.mp3Resolver(&#123;</div><div class="line">      <span class="attr">buffer</span>: p,</div><div class="line">      <span class="attr">blob</span>: s,</div><div class="line">      <span class="attr">url</span>: f</div><div class="line">    &#125;)</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>我去查了chrome浏览器的更新文档，但并没有找到相关的信息（可能是我的英文阅读能力太差了8_8）。</p>
-<p>在我一筹莫展的时候，我们的运维小哥nick跟我说，我们项目的V2.0上面的录音是ok的！（顿时觉得他的身躯有光芒在照耀着我…）<br>我打开2.0测试了一下，果然很快。<br>果断找到项目文件，里面引入了三个相关文件：<br><strong>lame.min.js</strong><br><strong>recordmp3.js</strong><br><strong>worker-realtime.js</strong></p>
+<p>在我一筹莫展的时候，我们的运维小哥nick跟我说，我们项目的V2.0上面的录音是ok的！（顿时觉得他的身躯有光芒在照耀着我…）<br>我打开2.0测试了一下，果然很快。<br>果断找到项目文件，里面引入了三个相关文件：<br>lame.min.js<br>recordmp3.js<br>worker-realtime.js</p>
 <p>而v2.0的做法是在录音时弹出一个新的窗口，录音在新的窗口中处理，完成后把数据传给老窗口。（不清楚为什么会这样，可能是跟下面引发出的问题相关吧。）</p>
-<p>其中，lame.min.js是底层处理录音的文件，其他两个文件是对于lame的封装：<br>代码如下：<br>recordmp3.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">exports</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> MP3Recorder = <span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> recorder = <span class="keyword">this</span>;</div><div class="line">        config = config || &#123;&#125;;</div><div class="line">        config.sampleRate = config.sampleRate || <span class="number">44100</span>;</div><div class="line">        config.bitRate = config.bitRate || <span class="number">128</span>;</div><div class="line">        navigator.getUserMedia = navigator.getUserMedia ||</div><div class="line">                                 navigator.webkitGetUserMedia ||</div><div class="line">                                 navigator.mozGetUserMedia ||</div><div class="line">                                 navigator.msGetUserMedia;</div><div class="line">        <span class="keyword">if</span> (navigator.getUserMedia) &#123;</div><div class="line">            navigator.getUserMedia(&#123;</div><div class="line">                <span class="attr">audio</span>: <span class="literal">true</span></div><div class="line">            &#125;,</div><div class="line">            <span class="function"><span class="keyword">function</span> (<span class="params">stream</span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> context = <span class="keyword">new</span> AudioContext(),</div><div class="line">                    microphone = context.createMediaStreamSource(stream),</div><div class="line">                    processor = context.createScriptProcessor(<span class="number">16384</span>, <span class="number">1</span>, <span class="number">1</span>),<span class="comment">//bufferSize大小，输入channel数，输出channel数</span></div><div class="line">                    mp3ReceiveSuccess, currentErrorCallback;</div><div class="line">                config.sampleRate = context.sampleRate;</div><div class="line">                processor.onaudioprocess = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">                    <span class="comment">//边录音边转换</span></div><div class="line">                    <span class="keyword">var</span> array = event.inputBuffer.getChannelData(<span class="number">0</span>);</div><div class="line">                    realTimeWorker.postMessage(&#123; <span class="attr">cmd</span>: <span class="string">'encode'</span>, <span class="attr">buf</span>: array &#125;);</div><div class="line">                &#125;;</div><div class="line"></div><div class="line">                <span class="keyword">var</span> realTimeWorker = <span class="keyword">new</span> Worker(<span class="string">'/audio/worker-realtime.js'</span>);</div><div class="line">                realTimeWorker.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">                    <span class="keyword">switch</span> (e.data.cmd) &#123;</div><div class="line">                        <span class="keyword">case</span> <span class="string">'init'</span>:</div><div class="line">                            log(<span class="string">'初始化成功'</span>);</div><div class="line">                            <span class="keyword">if</span> (config.funOk) &#123;</div><div class="line">                                config.funOk();</div><div class="line">                            &#125;</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        <span class="keyword">case</span> <span class="string">'end'</span>:</div><div class="line">                            log(<span class="string">'MP3大小：'</span>, e.data.buf.length);</div><div class="line">                            <span class="keyword">if</span> (mp3ReceiveSuccess) &#123;</div><div class="line">                                mp3ReceiveSuccess(<span class="keyword">new</span> Blob(e.data.buf, &#123; <span class="attr">type</span>: <span class="string">'audio/mp3'</span> &#125;));</div><div class="line">                            &#125;</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        <span class="keyword">case</span> <span class="string">'error'</span>:</div><div class="line">                            log(<span class="string">'错误信息：'</span> + e.data.error);</div><div class="line">                            <span class="keyword">if</span> (currentErrorCallback) &#123;</div><div class="line">                                currentErrorCallback(e.data.error);</div><div class="line">                            &#125;</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        <span class="keyword">default</span>:</div><div class="line">                            log(<span class="string">'未知信息：'</span>, e.data);</div><div class="line">                    &#125;</div><div class="line">                &#125;;</div><div class="line"></div><div class="line">                recorder.getMp3Blob = <span class="function"><span class="keyword">function</span> (<span class="params">onSuccess, onError</span>) </span>&#123;</div><div class="line">                    currentErrorCallback = onError;</div><div class="line">                    mp3ReceiveSuccess = onSuccess;</div><div class="line">                    realTimeWorker.postMessage(&#123; <span class="attr">cmd</span>: <span class="string">'finish'</span> &#125;);</div><div class="line">                &#125;;</div><div class="line"></div><div class="line">                recorder.start = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">if</span> (processor &amp;&amp; microphone) &#123;</div><div class="line">                        microphone.connect(processor);</div><div class="line">                        processor.connect(context.destination);</div><div class="line">                        log(<span class="string">'开始录音'</span>);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                recorder.stop = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">if</span> (processor &amp;&amp; microphone) &#123;</div><div class="line">                        microphone.disconnect(processor);</div><div class="line">                        processor.disconnect(context.destination);</div><div class="line">                        log(<span class="string">'录音结束'</span>);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                realTimeWorker.postMessage(&#123;</div><div class="line">                    <span class="attr">cmd</span>: <span class="string">'init'</span>,</div><div class="line">                    <span class="attr">config</span>: &#123;</div><div class="line">                        <span class="attr">sampleRate</span>: config.sampleRate,</div><div class="line">                        <span class="attr">bitRate</span>: config.bitRate</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;,</div><div class="line">            <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> msg;</div><div class="line">                <span class="keyword">switch</span> (error.code || error.name) &#123;</div><div class="line">                    <span class="keyword">case</span> <span class="string">'PERMISSION_DENIED'</span>:</div><div class="line">                    <span class="keyword">case</span> <span class="string">'PermissionDeniedError'</span>:</div><div class="line">                        msg = <span class="string">'用户拒绝访问麦客风'</span>;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> <span class="string">'NOT_SUPPORTED_ERROR'</span>:</div><div class="line">                    <span class="keyword">case</span> <span class="string">'NotSupportedError'</span>:</div><div class="line">                        msg = <span class="string">'浏览器不支持麦客风'</span>;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> <span class="string">'MANDATORY_UNSATISFIED_ERROR'</span>:</div><div class="line">                    <span class="keyword">case</span> <span class="string">'MandatoryUnsatisfiedError'</span>:</div><div class="line">                        msg = <span class="string">'找不到麦客风设备'</span>;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">default</span>:</div><div class="line">                        msg = <span class="string">'无法打开麦克风，异常信息:'</span> + (error.code || error.name);</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (config.funCancel) &#123;</div><div class="line">                    config.funCancel(msg);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (config.funCancel) &#123;</div><div class="line">                config.funCancel(<span class="string">'当前浏览器不支持录音功能'</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (config.debug) &#123;</div><div class="line">                <span class="built_in">console</span>.log(str);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    exports.MP3Recorder = MP3Recorder;</div><div class="line">&#125;)(<span class="built_in">window</span>);</div></pre></td></tr></table></figure></p>
-<p>worker-realtime.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"><span class="meta">    'use strict'</span>;</div><div class="line">    importScripts(<span class="string">'lame.min.js'</span>);</div><div class="line">    <span class="keyword">var</span> mp3Encoder, maxSamples = <span class="number">1152</span>, samplesMono, lame, config, dataBuffer;</div><div class="line">    <span class="keyword">var</span> clearBuffer = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        dataBuffer = [];</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> appendToBuffer = <span class="function"><span class="keyword">function</span> (<span class="params">mp3Buf</span>) </span>&#123;</div><div class="line">        dataBuffer.push(<span class="keyword">new</span> <span class="built_in">Int8Array</span>(mp3Buf));</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> init = <span class="function"><span class="keyword">function</span> (<span class="params">prefConfig</span>) </span>&#123;</div><div class="line">        config = prefConfig || &#123;&#125;;</div><div class="line">        lame = <span class="keyword">new</span> lamejs();</div><div class="line">        mp3Encoder = <span class="keyword">new</span> lame.Mp3Encoder(<span class="number">1</span>, config.sampleRate || <span class="number">44100</span>, config.bitRate || <span class="number">128</span>);</div><div class="line">        clearBuffer();</div><div class="line">        self.postMessage(&#123;</div><div class="line">            <span class="attr">cmd</span>: <span class="string">'init'</span></div><div class="line">        &#125;);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> floatTo16BitPCM = <span class="function"><span class="keyword">function</span> <span class="title">floatTo16BitPCM</span>(<span class="params">input, output</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; input.length; i++) &#123;</div><div class="line">            <span class="keyword">var</span> s = <span class="built_in">Math</span>.max(<span class="number">-1</span>, <span class="built_in">Math</span>.min(<span class="number">1</span>, input[i]));</div><div class="line">            output[i] = (s &lt; <span class="number">0</span> ? s * <span class="number">0x8000</span> : s * <span class="number">0x7FFF</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> convertBuffer = <span class="function"><span class="keyword">function</span> (<span class="params">arrayBuffer</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = <span class="keyword">new</span> <span class="built_in">Float32Array</span>(arrayBuffer);</div><div class="line">        <span class="keyword">var</span> out = <span class="keyword">new</span> <span class="built_in">Int16Array</span>(arrayBuffer.length);</div><div class="line">        floatTo16BitPCM(data, out)</div><div class="line">        <span class="keyword">return</span> out;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> encode = <span class="function"><span class="keyword">function</span> (<span class="params">arrayBuffer</span>) </span>&#123;</div><div class="line">        samplesMono = convertBuffer(arrayBuffer);</div><div class="line">        <span class="keyword">var</span> remaining = samplesMono.length;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; remaining &gt;= <span class="number">0</span>; i += maxSamples) &#123;</div><div class="line">            <span class="keyword">var</span> left = samplesMono.subarray(i, i + maxSamples);</div><div class="line">            <span class="keyword">var</span> mp3buf = mp3Encoder.encodeBuffer(left);</div><div class="line">            appendToBuffer(mp3buf);</div><div class="line">            remaining -= maxSamples;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> finish = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        appendToBuffer(mp3Encoder.flush());</div><div class="line">        self.postMessage(&#123;</div><div class="line">            <span class="attr">cmd</span>: <span class="string">'end'</span>,</div><div class="line">            <span class="attr">buf</span>: dataBuffer</div><div class="line">        &#125;);</div><div class="line">        clearBuffer();</div><div class="line">    &#125;;</div><div class="line">    self.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (e.data.cmd) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'init'</span>:</div><div class="line">                init(e.data.config);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'encode'</span>:</div><div class="line">                encode(e.data.buf);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'finish'</span>:</div><div class="line">                finish();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>其中，lame.min.js是底层处理录音的文件，其他两个文件是对于lame的封装：<br>代码如下：<br>recordmp3.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">exports</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> MP3Recorder = <span class="function"><span class="keyword">function</span> (<span class="params">config</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> recorder = <span class="keyword">this</span>;</div><div class="line">        config = config || &#123;&#125;;</div><div class="line">        config.sampleRate = config.sampleRate || <span class="number">44100</span>;</div><div class="line">        config.bitRate = config.bitRate || <span class="number">128</span>;</div><div class="line">        navigator.getUserMedia = navigator.getUserMedia ||</div><div class="line">                                 navigator.webkitGetUserMedia ||</div><div class="line">                                 navigator.mozGetUserMedia ||</div><div class="line">                                 navigator.msGetUserMedia;</div><div class="line">        <span class="keyword">if</span> (navigator.getUserMedia) &#123;</div><div class="line">            navigator.getUserMedia(&#123;</div><div class="line">                <span class="attr">audio</span>: <span class="literal">true</span></div><div class="line">            &#125;,</div><div class="line">            <span class="function"><span class="keyword">function</span> (<span class="params">stream</span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> context = <span class="keyword">new</span> AudioContext(),</div><div class="line">                    microphone = context.createMediaStreamSource(stream),</div><div class="line">                    processor = context.createScriptProcessor(<span class="number">16384</span>, <span class="number">1</span>, <span class="number">1</span>),<span class="comment">//bufferSize大小，输入channel数，输出channel数</span></div><div class="line">                    mp3ReceiveSuccess, currentErrorCallback;</div><div class="line">                config.sampleRate = context.sampleRate;</div><div class="line">                processor.onaudioprocess = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">                    <span class="comment">//边录音边转换</span></div><div class="line">                    <span class="keyword">var</span> array = event.inputBuffer.getChannelData(<span class="number">0</span>);</div><div class="line">                    realTimeWorker.postMessage(&#123; <span class="attr">cmd</span>: <span class="string">'encode'</span>, <span class="attr">buf</span>: array &#125;);</div><div class="line">                &#125;;</div><div class="line">                <span class="keyword">var</span> realTimeWorker = <span class="keyword">new</span> Worker(<span class="string">'/audio/worker-realtime.js'</span>);</div><div class="line">                realTimeWorker.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">                    <span class="keyword">switch</span> (e.data.cmd) &#123;</div><div class="line">                        <span class="keyword">case</span> <span class="string">'init'</span>:</div><div class="line">                            log(<span class="string">'初始化成功'</span>);</div><div class="line">                            <span class="keyword">if</span> (config.funOk) &#123;</div><div class="line">                                config.funOk();</div><div class="line">                            &#125;</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        <span class="keyword">case</span> <span class="string">'end'</span>:</div><div class="line">                            log(<span class="string">'MP3大小：'</span>, e.data.buf.length);</div><div class="line">                            <span class="keyword">if</span> (mp3ReceiveSuccess) &#123;</div><div class="line">                                mp3ReceiveSuccess(<span class="keyword">new</span> Blob(e.data.buf, &#123; <span class="attr">type</span>: <span class="string">'audio/mp3'</span> &#125;));</div><div class="line">                            &#125;</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        <span class="keyword">case</span> <span class="string">'error'</span>:</div><div class="line">                            log(<span class="string">'错误信息：'</span> + e.data.error);</div><div class="line">                            <span class="keyword">if</span> (currentErrorCallback) &#123;</div><div class="line">                                currentErrorCallback(e.data.error);</div><div class="line">                            &#125;</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        <span class="keyword">default</span>:</div><div class="line">                            log(<span class="string">'未知信息：'</span>, e.data);</div><div class="line">                    &#125;</div><div class="line">                &#125;;</div><div class="line">                recorder.getMp3Blob = <span class="function"><span class="keyword">function</span> (<span class="params">onSuccess, onError</span>) </span>&#123;</div><div class="line">                    currentErrorCallback = onError;</div><div class="line">                    mp3ReceiveSuccess = onSuccess;</div><div class="line">                    realTimeWorker.postMessage(&#123; <span class="attr">cmd</span>: <span class="string">'finish'</span> &#125;);</div><div class="line">                &#125;;</div><div class="line">                recorder.start = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">if</span> (processor &amp;&amp; microphone) &#123;</div><div class="line">                        microphone.connect(processor);</div><div class="line">                        processor.connect(context.destination);</div><div class="line">                        log(<span class="string">'开始录音'</span>);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                recorder.stop = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">if</span> (processor &amp;&amp; microphone) &#123;</div><div class="line">                        microphone.disconnect(processor);</div><div class="line">                        processor.disconnect(context.destination);</div><div class="line">                        log(<span class="string">'录音结束'</span>);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                realTimeWorker.postMessage(&#123;</div><div class="line">                    <span class="attr">cmd</span>: <span class="string">'init'</span>,</div><div class="line">                    <span class="attr">config</span>: &#123;</div><div class="line">                        <span class="attr">sampleRate</span>: config.sampleRate,</div><div class="line">                        <span class="attr">bitRate</span>: config.bitRate</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">            &#125;,</div><div class="line">            <span class="function"><span class="keyword">function</span> (<span class="params">error</span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> msg;</div><div class="line">                <span class="keyword">switch</span> (error.code || error.name) &#123;</div><div class="line">                    <span class="keyword">case</span> <span class="string">'PERMISSION_DENIED'</span>:</div><div class="line">                    <span class="keyword">case</span> <span class="string">'PermissionDeniedError'</span>:</div><div class="line">                        msg = <span class="string">'用户拒绝访问麦客风'</span>;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> <span class="string">'NOT_SUPPORTED_ERROR'</span>:</div><div class="line">                    <span class="keyword">case</span> <span class="string">'NotSupportedError'</span>:</div><div class="line">                        msg = <span class="string">'浏览器不支持麦客风'</span>;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> <span class="string">'MANDATORY_UNSATISFIED_ERROR'</span>:</div><div class="line">                    <span class="keyword">case</span> <span class="string">'MandatoryUnsatisfiedError'</span>:</div><div class="line">                        msg = <span class="string">'找不到麦客风设备'</span>;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">default</span>:</div><div class="line">                        msg = <span class="string">'无法打开麦克风，异常信息:'</span> + (error.code || error.name);</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (config.funCancel) &#123;</div><div class="line">                    config.funCancel(msg);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (config.funCancel) &#123;</div><div class="line">                config.funCancel(<span class="string">'当前浏览器不支持录音功能'</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (config.debug) &#123;</div><div class="line">                <span class="built_in">console</span>.log(str);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    exports.MP3Recorder = MP3Recorder;</div><div class="line">&#125;)(<span class="built_in">window</span>);</div></pre></td></tr></table></figure></p>
+<p>worker-realtime.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"><span class="meta">    'use strict'</span>;</div><div class="line">    importScripts(<span class="string">'lame.min.js'</span>);</div><div class="line">    <span class="keyword">var</span> mp3Encoder, maxSamples = <span class="number">1152</span>, samplesMono, lame, config, dataBuffer;</div><div class="line">    <span class="keyword">var</span> clearBuffer = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        dataBuffer = [];</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> appendToBuffer = <span class="function"><span class="keyword">function</span> (<span class="params">mp3Buf</span>) </span>&#123;</div><div class="line">        dataBuffer.push(<span class="keyword">new</span> <span class="built_in">Int8Array</span>(mp3Buf));</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> init = <span class="function"><span class="keyword">function</span> (<span class="params">prefConfig</span>) </span>&#123;</div><div class="line">        config = prefConfig || &#123;&#125;;</div><div class="line">        lame = <span class="keyword">new</span> lamejs();</div><div class="line">        mp3Encoder = <span class="keyword">new</span> lame.Mp3Encoder(<span class="number">1</span>, config.sampleRate || <span class="number">44100</span>, config.bitRate || <span class="number">128</span>);</div><div class="line">        clearBuffer();</div><div class="line">        self.postMessage(&#123;</div><div class="line">            <span class="attr">cmd</span>: <span class="string">'init'</span></div><div class="line">        &#125;);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> floatTo16BitPCM = <span class="function"><span class="keyword">function</span> <span class="title">floatTo16BitPCM</span>(<span class="params">input, output</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; input.length; i++) &#123;</div><div class="line">            <span class="keyword">var</span> s = <span class="built_in">Math</span>.max(<span class="number">-1</span>, <span class="built_in">Math</span>.min(<span class="number">1</span>, input[i]));</div><div class="line">            output[i] = (s &lt; <span class="number">0</span> ? s * <span class="number">0x8000</span> : s * <span class="number">0x7FFF</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> convertBuffer = <span class="function"><span class="keyword">function</span> (<span class="params">arrayBuffer</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = <span class="keyword">new</span> <span class="built_in">Float32Array</span>(arrayBuffer);</div><div class="line">        <span class="keyword">var</span> out = <span class="keyword">new</span> <span class="built_in">Int16Array</span>(arrayBuffer.length);</div><div class="line">        floatTo16BitPCM(data, out)</div><div class="line">        <span class="keyword">return</span> out;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> encode = <span class="function"><span class="keyword">function</span> (<span class="params">arrayBuffer</span>) </span>&#123;</div><div class="line">        samplesMono = convertBuffer(arrayBuffer);</div><div class="line">        <span class="keyword">var</span> remaining = samplesMono.length;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; remaining &gt;= <span class="number">0</span>; i += maxSamples) &#123;</div><div class="line">            <span class="keyword">var</span> left = samplesMono.subarray(i, i + maxSamples);</div><div class="line">            <span class="keyword">var</span> mp3buf = mp3Encoder.encodeBuffer(left);</div><div class="line">            appendToBuffer(mp3buf);</div><div class="line">            remaining -= maxSamples;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> finish = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        appendToBuffer(mp3Encoder.flush());</div><div class="line">        self.postMessage(&#123;</div><div class="line">            <span class="attr">cmd</span>: <span class="string">'end'</span>,</div><div class="line">            <span class="attr">buf</span>: dataBuffer</div><div class="line">        &#125;);</div><div class="line">        clearBuffer();</div><div class="line">    &#125;;</div><div class="line">    self.onmessage = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (e.data.cmd) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'init'</span>:</div><div class="line">                init(e.data.config);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'encode'</span>:</div><div class="line">                encode(e.data.buf);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'finish'</span>:</div><div class="line">                finish();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
 <p>赶紧，我写了一个demo，还好可以在localhost下做测试（安全限制：只能在安全的域下使用相关功能）。测试结果：录音停止很快，不在有上述问题。速度上线！</p>
 <p>但，第二天问题又来了，一个老师反馈说，chrome标签页上面一直有一个小红点（显示：此标签页正在使用您的摄像头和麦克风，果然歪果仁对于自己的隐私还是很敏感的）</p>
 <p>拉出代码来，发现打开页面时直接新建了MP3Recorder对象，更改代码把new MP3Recorder放到了用户触发录音开始的事件里，轻松搞定！</p>
@@ -1349,123 +1476,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/08/28/我是搬运工-js数组打乱-shuffle.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/28/我是搬运工-js数组打乱-shuffle.html" itemprop="url">[我是搬运工]-js数组打乱-shuffle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T08:53:50+08:00">
-                2017-08-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近在项目要用到一个函数，把数组打乱，结果竟然发现：js没有这么一个函数！！！震惊！！！</p>
-<p>然而旁边的陈同学却告诉我php里都内置了这样的函数shuffle，果然php是世界上最NB的语言~</p>
-<p>下面摘抄stackoverflow上面的一些精髓的方法</p>
-<p>方法一：(852赞)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> currentIndex = array.length, temporaryValue, randomIndex;</div><div class="line"></div><div class="line">  <span class="comment">// While there remain elements to shuffle...</span></div><div class="line">  <span class="keyword">while</span> (<span class="number">0</span> !== currentIndex) &#123;</div><div class="line"></div><div class="line">    <span class="comment">// Pick a remaining element...</span></div><div class="line">    randomIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * currentIndex);</div><div class="line">    currentIndex -= <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="comment">// And swap it with the current element.</span></div><div class="line">    temporaryValue = array[currentIndex];</div><div class="line">    array[currentIndex] = array[randomIndex];</div><div class="line">    array[randomIndex] = temporaryValue;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> array;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Used like so</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">11</span>, <span class="number">37</span>, <span class="number">42</span>];</div><div class="line">arr = shuffle(arr);</div><div class="line"><span class="built_in">console</span>.log(arr);</div></pre></td></tr></table></figure></p>
-<p>方法二：(347赞)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffleArray</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = array.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">var</span> j = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (i + <span class="number">1</span>));</div><div class="line">        <span class="keyword">var</span> temp = array[i];</div><div class="line">        array[i] = array[j];</div><div class="line">        array[j] = temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> array;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><a href="https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array" target="_blank" rel="external">传送门</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1515,7 +1525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1528,7 +1538,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1718,6 +1728,10 @@
 
 
 
+  
+    
+
+    
   
 
 
