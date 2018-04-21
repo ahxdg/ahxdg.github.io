@@ -269,17 +269,25 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <style>.add-list a{margin:0 20px;}</style>
+        <style>.add-list a{margin:5px 20px;display: inline-block;}.add-list a:hover{color: #000 !important;}</style>
         <div class="add-list">
           <a href="javascript:;" class="video-link" data-url="http://ozo7lu5l3.bkt.clouddn.com/v_001.mp4" data-title="白岩松：没有高考你能干的过富二代？" data-from="微博秒拍" target="_blank">白岩松：没有高考你能干的过富二代？</a>
           <a href="javascript:;" class="video-link" data-url="http://gslb.miaopai.com/stream/4xdvE931kAPLx3GKVDsAAVEMTHJu6rAHqdeBwg__.mp4?ssig=26dfd59173ea819f1e90e3b6b12eeffc&time_stamp=1509899978397&cookie_id=&vend=1&os=3&partner=1&platform=2&cookie_id=&refer=miaopai&scid=4xdvE931kAPLx3GKVDsAAVEMTHJu6rAHqdeBwg__" data-title="九十多岁老人学画，以怀念与逝去的老伴点点滴滴" data-from="微博秒拍 （一条视频）" target="_blank">九十多岁老人学画，以怀念与逝去的老伴点点滴滴</a>
+          <a href="javascript:;" class="video-link" data-url="https://cdn-video-sohu.vmovier.com/98f1d9e835d4679befabdde0e6a3494f.mp4" data-title="孩子们眼中的爱情" data-from="V电影" target="_blank">孩子们眼中的爱情</a>
+          <a href="javascript:;" class="video-link" data-url="https://cdn-video-sohu.vmovier.com/879779f6fb89e03162257124f9050455.mp4" data-title="最后的父爱" data-from="V电影" target="_blank">最后的父爱</a>
+          <a href="javascript:;" class="video-link" data-url="https://player.youku.com/embed/XMjkwNzE3NDUyMA==?client_id=b598bfd8ec862716&password=undefined&autoplay=false" data-title="俄罗斯校园事件-以父之名" data-from="优酷" target="_blank">俄罗斯校园事件-以父之名</a>
+          <a href="javascript:;" class="video-link" data-url="https://vd1.bdstatic.com/mda-hfrq98h3ta5tzugp/mda-hfrq98h3ta5tzugp.mp4" data-title="本田创意广告-Paper" data-from="好看视频" target="_blank">本田创意广告-Paper</a>
+          <a href="javascript:;" class="video-link" data-url="https://player.youku.com/embed/XNjg4Mjg2MjU2?client_id=b598bfd8ec862716&password=undefined&autoplay=false" data-title="泰国公益广告-给予是最好的沟通" data-from="优酷" target="_blank">泰国公益广告-给予是最好的沟通</a>
+          <a href="javascript:;" class="video-link" data-url="https://player.youku.com/embed/XODU1MjUyMDU2?client_id=b598bfd8ec862716&password=undefined&autoplay=false" data-title="流行美盘发申遗创意广告-爸爸的礼物" data-from="优酷" target="_blank">流行美盘发申遗创意广告-爸爸的礼物</a>
         </div>
         <script>
           var alinks = document.querySelectorAll('.video-link');
           for (var i = 0; i < alinks.length; i++) {
               var $this = alinks[i];
               $this.setAttribute('href',window.location.origin + '/video/play/index.html?data-url='+decodeUri($this.getAttribute('data-url')) + '&data-title=' + decodeUri($this.getAttribute('data-title')) + '&data-from=' + decodeUri($this.getAttribute('data-from')));
-          }
+              $this.style.color = '#' + '345678'.split('').map(function(v,i,a){ 
+                  return i>5 ? null : a[Math.floor(Math.random()*16)] }).join('');
+              }
           function decodeUri(str){
             return str ? encodeURIComponent(str) : '';
           }

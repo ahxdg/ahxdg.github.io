@@ -269,23 +269,30 @@
 
     <main id="main" class="main">
       <div class="main-inner">
-        <style>.video-content{text-align: center;}.video-content video{min-width: 70%;max-width: 90%;margin-bottom: 20px;}#video-title{font-weight: 300;text-shadow: 0 0 1px rgba(0,0,0,0.2);margin: -30px 0 30px;}</style>
+        <style>.video-content{text-align: center;}.video-content video,#video-iframe{min-width: 70%;max-width: 90%;margin:0 auto 20px;display:block;}#video-title{font-weight: 300;text-shadow: 0 0 1px rgba(0,0,0,0.2);margin: -30px 0 30px;}.fluid-vids{height:456px !important;position: relative !important;padding-top: 0 !important;}#video-iframe{position: relative !important;}</style>
         <div class="video-content">
           <h5 id="video-title"></h5>
 			    <video autoplay="" controls src="" id="video">
             您的浏览器不支持HTML5
           </video>
+          <iframe src="" frameborder="0" id="video-iframe"></iframe>
         </div>
         <script>
         	var urlPars = urlParams();
         	if (urlPars['data-url']) {
-        		document.querySelector('#video').setAttribute('src',urlPars['data-url']);
+            if (/youku/.test(urlPars['data-url'])) {
+        		  $$('#video-iframe').setAttribute('src',urlPars['data-url']);
+              $$('#video').style.display = 'none';
+            }else{
+              $$('#video').setAttribute('src',urlPars['data-url']);
+              $$('#video-iframe').style.display = 'none';
+            }
         	}else{
         		alert('未找到视频源');
         	}
         	if (urlPars['data-title']) {
         		document.title = urlPars['data-title'];
-            document.querySelector('#video-title').innerText = urlPars['data-title'];
+            $$('#video-title').innerText = urlPars['data-title'];
         	}
         	if (urlPars['data-from']) {
         		addFrom();
@@ -305,8 +312,12 @@
         		var p = document.createElement('p');
         		var txt = document.createTextNode('视频来源：' + from_txt);
         		p.appendChild(txt);
-        		document.querySelector('#video').parentNode.appendChild(p);
+        		$$('#video').parentNode.appendChild(p);
         	}
+
+          function $$ (dom) {
+            return document.querySelector(dom);
+          }
         </script>
       </div>
     </main>
