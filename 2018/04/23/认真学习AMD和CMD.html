@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="思考," />
+  <meta name="keywords" content="js," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="前后端数据交互的方式有很多种，比如后台是php1, 直接传值到页面节点中1&amp;lt;div&amp;gt;&amp;lt;?php echo &apos;后台数据&apos; ?&amp;gt;&amp;lt;/div&amp;gt; 2, 先赋值给js的变量，再通过js渲染到页面上1234&amp;lt;script&amp;gt;	var data  = &amp;#123;$data&amp;#125;;	$(&apos;.content&apos;).html(data.content);&amp;lt;/s">
-<meta name="keywords" content="思考">
+<meta name="description" content="一直都觉得AMD和CMD是很厉害的东西，想学习来着，却一直没认认真真的学习过，今天就好好的学习一下。做个记录…  先摘写两句话：AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。 那它们是来干嘛的呢？ 这个我们可以简单聊一下前端的开发模式：对于一个小的项目而言：可能一两个人就够了，而前端的开发文件也不多。但是当一个项目">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前后端的数据交互问题分析">
-<meta property="og:url" content="http://togor.cn/2017/07/26/前后端的数据交互问题分析.html">
+<meta property="og:title" content="认真学习AMD和CMD">
+<meta property="og:url" content="http://togor.cn/2018/04/23/认真学习AMD和CMD.html">
 <meta property="og:site_name" content="Keer">
-<meta property="og:description" content="前后端数据交互的方式有很多种，比如后台是php1, 直接传值到页面节点中1&amp;lt;div&amp;gt;&amp;lt;?php echo &apos;后台数据&apos; ?&amp;gt;&amp;lt;/div&amp;gt; 2, 先赋值给js的变量，再通过js渲染到页面上1234&amp;lt;script&amp;gt;	var data  = &amp;#123;$data&amp;#125;;	$(&apos;.content&apos;).html(data.content);&amp;lt;/s">
-<meta property="og:updated_time" content="2017-07-28T00:48:17.805Z">
+<meta property="og:description" content="一直都觉得AMD和CMD是很厉害的东西，想学习来着，却一直没认认真真的学习过，今天就好好的学习一下。做个记录…  先摘写两句话：AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。 那它们是来干嘛的呢？ 这个我们可以简单聊一下前端的开发模式：对于一个小的项目而言：可能一两个人就够了，而前端的开发文件也不多。但是当一个项目">
+<meta property="og:updated_time" content="2018-04-26T15:33:00.605Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前后端的数据交互问题分析">
-<meta name="twitter:description" content="前后端数据交互的方式有很多种，比如后台是php1, 直接传值到页面节点中1&amp;lt;div&amp;gt;&amp;lt;?php echo &apos;后台数据&apos; ?&amp;gt;&amp;lt;/div&amp;gt; 2, 先赋值给js的变量，再通过js渲染到页面上1234&amp;lt;script&amp;gt;	var data  = &amp;#123;$data&amp;#125;;	$(&apos;.content&apos;).html(data.content);&amp;lt;/s">
+<meta name="twitter:title" content="认真学习AMD和CMD">
+<meta name="twitter:description" content="一直都觉得AMD和CMD是很厉害的东西，想学习来着，却一直没认认真真的学习过，今天就好好的学习一下。做个记录…  先摘写两句话：AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。 那它们是来干嘛的呢？ 这个我们可以简单聊一下前端的开发模式：对于一个小的项目而言：可能一两个人就够了，而前端的开发文件也不多。但是当一个项目">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://togor.cn/2017/07/26/前后端的数据交互问题分析.html"/>
+  <link rel="canonical" href="http://togor.cn/2018/04/23/认真学习AMD和CMD.html"/>
 
 
 
 
 
-  <title>前后端的数据交互问题分析 | Keer</title>
+  <title>认真学习AMD和CMD | Keer</title>
   
 
 
@@ -286,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/07/26/前后端的数据交互问题分析.html">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/04/23/认真学习AMD和CMD.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前后端的数据交互问题分析</h1>
+          <h1 class="post-title" itemprop="name headline">认真学习AMD和CMD</h1>
         
 
         <div class="post-meta">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T14:57:40+08:00">
-                2017-07-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-23T13:46:26+08:00">
+                2018-04-23
               </time>
             
 
@@ -350,12 +350,35 @@
       
 
       
-        <p>前后端数据交互的方式有很多种，比如后台是php<br>1, 直接传值到页面节点中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;<span class="xml">&lt;?php echo '后台数据' ?&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>2, 先赋值给js的变量，再通过js渲染到页面上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data  = &#123;$data&#125;;</div><div class="line">	$(<span class="string">'.content'</span>).html(data.content);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>3, 通过AJAX请求数据<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="keyword">var</span> data;</div><div class="line">	$.get(<span class="string">'ajaxurl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123; data = res; &#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>4, 通过JSONP获取数据</p>
-<p>5, 通过h5的API：websocket，传递数据<br>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket</a></p>
-<p>现在比较流行通过AJAX的方式获取数据，而websocket一般是用来客户端和服务器实时通信的。<br>不管是通过哪种方式进行数据交互，传输的数据应该有一个规范的格式，并且最好是最终的数据（不需要前端再进行处理），数据的处理应该放在后台，前台的主要任务是布局和动画交互。</p>
+        <blockquote>
+<p>一直都觉得AMD和CMD是很厉害的东西，想学习来着，却一直没认认真真的学习过，今天就好好的学习一下。做个记录…</p>
+</blockquote>
+<p>先摘写两句话：<br>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。<br>CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。</p>
+<p>那它们是来干嘛的呢？</p>
+<p>这个我们可以简单聊一下前端的开发模式：<br>对于一个小的项目而言：可能一两个人就够了，而前端的开发文件也不多。<br>但是当一个项目足够大的时候：需要多个人维护和开发，并且有很多模块，如果还是按照上面的开发模式，那将是一场灾难。那么就需要每个人负责一块或者多块内容，也就需要所谓的“模块化”了。</p>
+<p><strong>简单的模块：</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name = <span class="string">'fn'</span>;</div><div class="line">  <span class="keyword">var</span> say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + name);</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">fn.say();</div><div class="line"></div><div class="line">需要注意的是：这里fn的name是可以被修改的。</div></pre></td></tr></table></figure></p>
+<p><strong>立即执行函数：</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> m = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name = <span class="string">'fn'</span>;</div><div class="line">  <span class="keyword">var</span> say = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'hello '</span> + name);</div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">return</span> &#123;<span class="attr">say</span>: say&#125;;</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;)();</div><div class="line"></div><div class="line">m.say();</div><div class="line"></div><div class="line">这里的name是不能被修改的。</div></pre></td></tr></table></figure></p>
+<p>然而，这样还是会有问题的。<br>当小A在一个文件中定义的一个全局的sayHello，而小B在另一个文件中也定义了一个全局的sayHello，那就会有冲突了。</p>
+<p>为了避免：</p>
+<ul>
+<li>命名冲突</li>
+<li>全局变量冗杂</li>
+<li>依赖关系的复杂性</li>
+<li>便于开发等..</li>
+</ul>
+<p>我们就需要有一种能满足上面的要求的规范和方法。</p>
+<p><strong>CommonJS</strong><br>2009年，美国程序员Ryan Dahl创造了node.js项目，将javascript语言用于服务器端编程。而这也标志着Javascript模块化编程的诞生。<br>大牛云集的CommonJs社区发力，制定了Modules/1.0（<a href="http://wiki.commonjs.org/wiki/Modules/1.0）规范：" target="_blank" rel="external">http://wiki.commonjs.org/wiki/Modules/1.0）规范：</a></p>
+<ol>
+<li>模块的标识应遵循的规则（书写规范）</li>
+<li>定义全局函数require，通过传入模块标识来引入其他模块，执行的结果即为别的模块暴漏出来的API</li>
+<li>如果被require函数引入的模块中也包含依赖，那么依次加载这些依赖</li>
+<li>如果引入模块失败，那么require函数应该报一个异常</li>
+<li>模块通过变量exports来向往暴漏API，exports只能是一个对象，暴漏的API须作为此对象的属性。</li>
+</ol>
+<p>此规范一出，立刻产生了良好的效果，由于其简单而直接，在nodejs中，这种模块化方案立刻被推广开了。</p>
+<p>示例如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// a.js</span></div><div class="line">exports.add = <span class="function"><span class="keyword">function</span> (<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// b.js</span></div><div class="line"><span class="keyword">var</span> a</div></pre></td></tr></table></figure>
+<p><em>《–待续–》</em></p>
 
       
     </div>
@@ -385,7 +408,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/思考/" rel="tag"># 思考</a>
+            <a href="/tags/js/" rel="tag"># js</a>
           
         </div>
       
@@ -398,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/18/input上传图片的问题总结.html" rel="next" title="input上传图片的问题总结">
-                <i class="fa fa-chevron-left"></i> input上传图片的问题总结
+              <a href="/2018/04/11/FlexPaper无法播放跨域的swf文件.html" rel="next" title="FlexPaper无法播放跨域的swf文件">
+                <i class="fa fa-chevron-left"></i> FlexPaper无法播放跨域的swf文件
               </a>
             
           </div>
@@ -408,8 +431,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/27/单页面的交互方式探索.html" rel="prev" title="单页面的交互方式探索">
-                单页面的交互方式探索 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/26/倒看西游，看真实人生.html" rel="prev" title="倒看西游，看真实人生">
+                倒看西游，看真实人生 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
