@@ -286,6 +286,136 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/07/27/前后端分离的思考.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/27/前后端分离的思考.html" itemprop="url">前后端分离的思考</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T15:21:36+08:00">
+                2017-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="什么是前后端分离"><a href="#什么是前后端分离" class="headerlink" title="什么是前后端分离"></a>什么是前后端分离</h5><p>有人说SPA（single page application）就是前后端分离，是的，不过我觉得SPA只是前后端分离的一种应用场景。<br>或者换句话问：<strong>前后端分离是什么？</strong><br>是什么？是SPA？应该不能这样回答吧。<br>前后端分离应该是前后端职责明确的划分，各司其职。</p>
+<ul>
+<li>前端负责V和C</li>
+<li>后端负责M</li>
+</ul>
+<p>在这里，应该明确划分，后端只负责把数据处理好然后返回给前端，而不需要前端再对数据处理。前端负责数据的展示，以及用户的交互，对于展示的逻辑后端不应再去涉足。更深一点说是架构上应该分离，最好是部署到不同的服务器上。</p>
+<h5 id="为什么要前后端分离"><a href="#为什么要前后端分离" class="headerlink" title="为什么要前后端分离"></a>为什么要前后端分离</h5><p>1, 开发效率<br>  前端开发依赖后端<br>2, 前后端职责不清<br>  前后端代码混杂，没有约束，且维护困难。<br>3, 场景需求<br>  有些项目可能是多端的，后端只写接口会方便各端调用，不需要针对不同端写重复的代码。</p>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
+<li>减轻服务器压力，服务器不需要再渲染页面，对于多端只需提供一套API即可。</li>
+<li>方便开发，前后端人员各司其职，不再被同步事件相互等待而耽误工程的开发。</li>
+<li>完全的前端组件化</li>
+</ul>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ul>
+<li>不利于SEO优化，</li>
+</ul>
+<p>后端只负责业务/数据接口，前端只负责展现/交互逻辑。后端可以对于同一块数据根据不同端的需求不同，根据不同的筛选条件返回不同的数据给客户端</p>
+<p>目前，有些公司在后端（java/php/..）和前端之间加了一层node，用做把数据的规整和请求的转发。本人尚不清楚此架构的具体意义和实现方式，不过有兴趣的同学可以查看资料进行学习。</p>
+<h5 id="我们是否需要进行前后端分离"><a href="#我们是否需要进行前后端分离" class="headerlink" title="我们是否需要进行前后端分离"></a>我们是否需要进行前后端分离</h5><p>对于我们是否需要进行前后端分离，我觉得应该有很多考量。比如代码的维护，以及分离方式的架构，具体实现方式等等，当我们对此还不熟悉时，可以去尝试，但无论是否分离，尽可能的写出可维护性的代码，尽可能的进行网站优化都是我们应该做的。<br>有机会就去学习和尝试新东西，我们才会在实践中慢慢成长~</p>
+<p>该篇文章参考了下面链接中内容，简单书写了自己的看法。<br>参考链接：<a href="http://blog.jobbole.com/65513/" target="_blank" rel="external">http://blog.jobbole.com/65513/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/07/27/单页面的交互方式探索.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1335,123 +1465,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/06/22/record.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/22/record.html" itemprop="url">建站笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-22T17:02:43+08:00">
-                2017-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>2018/04/21：网站升级HTTPS；添加二级域名static.togor.cn，与七牛存储空间绑定，提供静态资源CDN融合加速读取。<br>2018/04/11：网站域名重新更改为togor.cn，添加favcion.ico，添加“友言”评论功能。<br>2017/12/09：更换域名为keer.live。<br>2017/11/23：增加网站视频模块。该模块下面收集了一些我个人觉得比较好的视频。<br>2017/08/26：增加网站的/project/目录，在该目录下准备添加一些自己工作或日常中写的一些比较有意思的demo或组件<br>2017/07/31：网站更换域名为：togor.cn，原域名由于未备案，且不能在国内备案，故不能在阿里云服务器上使用，暂时先使用togor.cn<br>2017/06/25：完成“关于”、“标签”、“404”页面的配置及内容编辑；并绑定了keer.live域名<br>2017/06/22：重新部署了该博客，从零开始~</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1496,7 +1514,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
