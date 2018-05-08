@@ -286,6 +286,133 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/05/07/基础-JS之sort.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/07/基础-JS之sort.html" itemprop="url">[基础] - JS之sort</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-07T23:19:25+08:00">
+                2018-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>虽然干前端很久了，但其实js的基础好多还都没有掌握。呢，在sort上卡住了…</p>
+</blockquote>
+<p>起因：今天写代码，需要用到排序，排数组对象的那种。</p>
+<p>就用了js的sort方法，我知道不传参数就是按从小到大排，可我以为传一个比较函数comparer(a,b)<br>如果return a&gt;b，就是从小到大排；否则就是从大小排。（ 很蠢吧~~ ）</p>
+<p>其实是：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arr.sort(comparer)</div></pre></td></tr></table></figure></p>
+<p>comarer 可选。用来指定按某种顺序进行排列的函数。<br>如果省略，元素按照转换为的字符串的各个字符的<u>Unicode位点</u>进行排序。<br>如果没有省略，则会根据函数返回的值进行排序：<br>大于0，则按从小到大排序；<br>小于0，则按从大到小排序；<br>等于0，不处理。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">arr = [&#123;<span class="attr">a</span>:<span class="number">2</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;,&#123;<span class="attr">a</span>:<span class="number">2</span>,<span class="attr">b</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;]</div><div class="line"></div><div class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x.a-y.a</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 排序后的arr，后面两项由于比较时相等，便未做处理</span></div><div class="line"><span class="comment">// [</span></div><div class="line"><span class="comment">//  &#123;a: 1, b: 2&#125;,</span></div><div class="line"><span class="comment">//  &#123;a: 2, b: 2&#125;,</span></div><div class="line"><span class="comment">//  &#123;a: 2, b: 1&#125;</span></div><div class="line"><span class="comment">// ]</span></div></pre></td></tr></table></figure></p>
+<p>并且，sort方法有返回值，返回值为被重新排序后的原数组。</p>
+<p><strong>注意：</strong><br>如果没有使用comparer，对数字排序时需要注意，有可能会出现看似错误的排序：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">arr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">10</span>,<span class="number">2</span>]</div><div class="line">arr.sort()</div><div class="line"><span class="comment">// [1, 10, 2, 3]</span></div></pre></td></tr></table></figure></p>
+<p>之所以会出现上面的情况，因为在比较时数字被转换成了字符串，而字符串‘1’的位置在‘2’，‘3’的前面</p>
+<p>所以，在用sort函数时，可以加一个comparer函数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">comparer</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (a &lt; b) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (a &gt; b) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果是对数字比较，可以用下面简便的方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">comparer</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a - b;  <span class="comment">// 如果想要大的在前，可以return b - a;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对象可以按照某个属性排序：(此实例摘自MDN)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> items = [</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">'Edward'</span>, <span class="attr">value</span>: <span class="number">21</span> &#125;,</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">'Sharpe'</span>, <span class="attr">value</span>: <span class="number">37</span> &#125;,</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">'And'</span>, <span class="attr">value</span>: <span class="number">45</span> &#125;,</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">'The'</span>, <span class="attr">value</span>: <span class="number">-12</span> &#125;,</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">'Magnetic'</span> &#125;,</div><div class="line">  &#123; <span class="attr">name</span>: <span class="string">'Zeros'</span>, <span class="attr">value</span>: <span class="number">37</span> &#125;</div><div class="line">];</div><div class="line"></div><div class="line"><span class="comment">// sort by value</span></div><div class="line">items.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (a.value - b.value)</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// sort by name</span></div><div class="line">items.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> nameA = a.name.toUpperCase(); <span class="comment">// ignore upper and lowercase</span></div><div class="line">  <span class="keyword">var</span> nameB = b.name.toUpperCase(); <span class="comment">// ignore upper and lowercase</span></div><div class="line">  <span class="keyword">if</span> (nameA &lt; nameB) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (nameA &gt; nameB) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  </div><div class="line"><span class="comment">// names must be equal</span></div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>在MDN上有提到，如果comparer函数的比较复杂且元素较多的时候，可以映射改善排序。<br>也就是说comparer的两个参数a, b要进行一系列的运算后进行比较时，可能会导致很高的负载。其思路时，先对要比较的两个值进行处理，并做好映射关系。然后对处理后的值直接去比较，再跟据映射关系得到一个新的数组。实例如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 需要被排序的数组</span></div><div class="line"><span class="keyword">var</span> list = [<span class="string">'Delta'</span>, <span class="string">'alpha'</span>, <span class="string">'CHARLIE'</span>, <span class="string">'bravo'</span>];</div><div class="line"></div><div class="line"><span class="comment">// 对需要排序的数字和位置的临时存储</span></div><div class="line"><span class="keyword">var</span> mapped = list.map(<span class="function"><span class="keyword">function</span>(<span class="params">el, i</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123; <span class="attr">index</span>: i, <span class="attr">value</span>: el.toLowerCase() &#125;;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 按照多个值排序数组</span></div><div class="line">mapped.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> +(a.value &gt; b.value) || +(a.value === b.value) - <span class="number">1</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 根据索引得到排序的结果</span></div><div class="line"><span class="keyword">var</span> result = mapped.map(<span class="function"><span class="keyword">function</span>(<span class="params">el</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> list[el.index];</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>这种说法，我没有去验证。不过我验证了元素较多的情况，我用了12万条数据，正常的比较耗时为75ms左右；用上面的方法，耗时为200ms左右。之所以这种方法更耗时，原因在于排序前后两次的map反而增加了处理时间，而中的sort方法并没有提高。</p>
+<p>所以，上面的方法是否真的可取，还是留给你自己去验证吧。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/05/04/关于法定纪念日不放假的思考.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1426,133 +1553,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/12/01/Tips-of-the-Sublime.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/01/Tips-of-the-Sublime.html" itemprop="url">Tips of the Sublime</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-01T16:10:17+08:00">
-                2017-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>用sublime也快两年了，知道sublime对于前端开发是很方便的。但自己对于sublime的快捷键和插件等却从没有认真思考和学习过…</p>
-</blockquote>
-<p>这里，暂时简单记录一下，自己平常使用到快捷方式和插件。以便再日后使用时，可以方便查找。</p>
-<h5 id="快捷键-windows"><a href="#快捷键-windows" class="headerlink" title="快捷键 (windows)"></a>快捷键 (windows)</h5><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Ctrl + Shift + D	复制一行</div><div class="line">Ctrl  + D		选中该文档中下一个与所有与当前被选中的内容一样的文本</div><div class="line">Shift + Tab		向前缩进一个Tab</div><div class="line">Shift + Home		选中本行光标之前的所有文本</div><div class="line">Shift + End		选中本行光标之后的所有文本</div><div class="line">Delete			删除光标所在位置的后一个字符</div><div class="line">Ctrl + Enter	在该行后面插入一行，不影响当前行的内容</div><div class="line">Ctrl + Shift + Enter	在该行前面插入一行，不影响当前行的内容</div><div class="line">Ctrl + ←		光标向左移动一个单词，若是中文，则移至相连中文的第一个字前面</div><div class="line">Ctrl + →		光标向后移动一个单词，若是中文，则移至相连中文的第一个字后面</div><div class="line">Ctrl + Shift + ↑	向上移动一行</div><div class="line">Ctrl + Shift + ↓	向下移动一行</div><div class="line"></div><div class="line">Alt + Shfit + 数字 分屏</div><div class="line"></div><div class="line">Ctrl + Shift + P	打开命令面板</div><div class="line">Ctrl + Shift + L	在选中的多行末尾添加光标</div><div class="line">Ctrl + P		打开全局查找文件的面板</div><div class="line">Ctrl + G		定位到行</div><div class="line">Ctrl + R		定位到函数</div><div class="line">Ctrl + Shift + F	全局查找</div></pre></td></tr></table></figure>
-<p>注：在win10系統中，当自带输入法为中文时，无法使用Ctrl+Shift+F</p>
-<h5 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h5><h6 id="Emmet"><a href="#Emmet" class="headerlink" title="Emmet"></a>Emmet</h6><p>Emmet是一款编辑器插件，可以极大地改善你的HTML和CSS工作流程。</p>
-<h6 id="jsHint"><a href="#jsHint" class="headerlink" title="jsHint"></a>jsHint</h6><p>jsHint js/json语法检查插件，帮你检查js的语法错误，让你的代码规范化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// JSLint.sublime-settings（插件安装的目录下可以找到）</div><div class="line">&#123;</div><div class="line">	&quot;run_on_save&quot;: true		// 保存文件时自动检查</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h6 id="HTML-CSS-JS-Prettify"><a href="#HTML-CSS-JS-Prettify" class="headerlink" title="HTML-CSS-JS Prettify"></a>HTML-CSS-JS Prettify</h6><p>让你的html,js,css,json代码更加优美。</p>
-<h6 id="Less"><a href="#Less" class="headerlink" title="Less"></a>Less</h6><p>高亮显示less文件</p>
-<h6 id="jade"><a href="#jade" class="headerlink" title="jade"></a>jade</h6><p>高亮显示jade</p>
-<h6 id="LiveReload"><a href="#LiveReload" class="headerlink" title="LiveReload"></a>LiveReload</h6><p>结合chrome浏览器，使sublime更改文件后具有自动刷新的功能</p>
-<h6 id="Vue-Syntax-Highlight"><a href="#Vue-Syntax-Highlight" class="headerlink" title="Vue Syntax Highlight"></a>Vue Syntax Highlight</h6><p>高亮显示Vue</p>
-<h6 id="ReactJS"><a href="#ReactJS" class="headerlink" title="ReactJS"></a>ReactJS</h6><p>高亮显示React</p>
-<h6 id="Colorsublime"><a href="#Colorsublime" class="headerlink" title="Colorsublime"></a>Colorsublime</h6><p>为sublime提供多种主题</p>
-<h6 id="Pretty-JSON"><a href="#Pretty-JSON" class="headerlink" title="Pretty JSON"></a>Pretty JSON</h6><p>json文件格式化</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1602,7 +1602,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
