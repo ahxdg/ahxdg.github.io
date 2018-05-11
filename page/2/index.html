@@ -286,6 +286,243 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/03/09/python实例-获取国内城市区域划分数据，写cityPicker插件.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/python实例-获取国内城市区域划分数据，写cityPicker插件.html" itemprop="url">[python实例] - 获取国内城市区域划分数据，写cityPicker插件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T10:58:11+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>因工作需要，写一个城市选择插件，故在国家统计局的网站上面找了16年的城乡划分数据，以保证数据的及时性和可扩展性。</p>
+</blockquote>
+<p>通过访问链接www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/index.html 可以看到这个页面</p>
+<p><img src="http://static.togor.cn/blog-1.png?imageView2/0/w/450" alt="统计局截图"></p>
+<p>点开对应链接，则可以看到相应级别的区域划分信息</p>
+<p><img src="http://static.togor.cn/blog-2.png?imageView2/0/w/450" alt="统计局截图"></p>
+<p>根据页面的dom节点信息，得到我们相应的数据。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line">data = &#123;&#125;</div><div class="line">pattern =re.compile(<span class="string">u"[\u4e00-\u9fa5]+"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 写数据</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">writeJson</span><span class="params">(jso)</span>:</span></div><div class="line">  jsObj = json.dumps(jso)</div><div class="line">  fileObject = open(<span class="string">'city.json'</span>, <span class="string">'w'</span>) </div><div class="line">  fileObject.write(jsObj)  </div><div class="line">  fileObject.close()  </div><div class="line"></div><div class="line"><span class="comment"># 获取city数据</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GetCityData</span>:</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, url)</span>:</span></div><div class="line">    self.url = url</div><div class="line">    self.openUrl()</div><div class="line"></div><div class="line">  <span class="comment"># 打开根页面</span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">openUrl</span><span class="params">(self)</span>:</span></div><div class="line">    txt = self.getTxt(self.url)</div><div class="line">    res = re.findall(<span class="string">r'provincetr\'&gt;&lt;td&gt;(.*)&lt;/td&gt;&lt;/tr&gt;'</span>, txt)</div><div class="line">    res2 = re.findall(<span class="string">r'\d&#123;2&#125;'</span>, res[<span class="number">0</span>])</div><div class="line">    res3 = re.findall(pattern, res[<span class="number">0</span>])</div><div class="line">    <span class="keyword">for</span> (x1, x2) <span class="keyword">in</span> zip(res2, res3):</div><div class="line">      data[x1] = &#123;<span class="string">'prov'</span>: x2,<span class="string">'child'</span>:&#123;&#125;&#125;</div><div class="line">      print(data[x1])</div><div class="line">      self.twoLevel(x1)</div><div class="line">    <span class="comment"># print(data)</span></div><div class="line">    writeJson(data)</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">twoLevel</span><span class="params">(self, u)</span>:</span></div><div class="line">    u = <span class="string">'http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/'</span>+ u +<span class="string">'.html'</span></div><div class="line">    txt = self.getTxt(u)</div><div class="line">    res = re.findall(<span class="string">r'citytr\'&gt;&lt;td&gt;(.*?)&lt;/td&gt;&lt;/tr&gt;'</span>, txt)</div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> res:</div><div class="line">      href = re.findall(<span class="string">r'\d*\/\d*'</span>, x)</div><div class="line">      ss = href[<span class="number">0</span>].split(<span class="string">'/'</span>)</div><div class="line">      data[ss[<span class="number">0</span>]][<span class="string">'child'</span>][ss[<span class="number">1</span>]] = &#123;<span class="string">'muni'</span>: re.findall(pattern, x)[<span class="number">0</span>], <span class="string">'child'</span>: &#123;&#125;&#125;</div><div class="line">      print(data[ss[<span class="number">0</span>]][<span class="string">'child'</span>][ss[<span class="number">1</span>]])</div><div class="line">      self.threeLevel(ss)</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">threeLevel</span><span class="params">(self, us)</span>:</span></div><div class="line">    txt = self.getTxt(<span class="string">'http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/'</span> + us[<span class="number">0</span>] + <span class="string">'/'</span> + us[<span class="number">1</span>] + <span class="string">'.html'</span>)</div><div class="line">    res = re.findall(<span class="string">r'countytr\'&gt;&lt;td&gt;(.*?)&lt;/td&gt;&lt;/tr&gt;'</span>, txt)</div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> res:</div><div class="line">      href = re.findall(<span class="string">r'\d*\/\d*'</span>, x)</div><div class="line">      ss = href[<span class="number">0</span>].split(<span class="string">'/'</span>)</div><div class="line">      data[us[<span class="number">0</span>]][<span class="string">'child'</span>][us[<span class="number">1</span>]][<span class="string">'child'</span>][ss[<span class="number">1</span>]] = &#123;<span class="string">'county'</span>: re.findall(pattern, x)[<span class="number">0</span>]&#125;</div><div class="line">      print(data[us[<span class="number">0</span>]][<span class="string">'child'</span>][us[<span class="number">1</span>]][<span class="string">'child'</span>][ss[<span class="number">1</span>]])</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">getTxt</span><span class="params">(self, u)</span>:</span></div><div class="line">    headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36'</span>&#125;</div><div class="line">    m_res = requests.get(u, headers=headers)</div><div class="line">    m_res.encoding = <span class="string">'gb2312'</span></div><div class="line">    <span class="keyword">return</span> m_res.text</div><div class="line"></div><div class="line">GetCityData(<span class="string">'http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2016/index.html'</span>)</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/03/02/python实例-跳一跳.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/02/python实例-跳一跳.html" itemprop="url">[python实例] - 跳一跳</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T17:54:31+08:00">
+                2018-03-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>祭出已经玩了很久的跳一跳, 就当是在python的路上回忆吧.</p>
+</blockquote>
+<p><strong>技术方案</strong>：通过adb连接android手机，获取屏幕信息[跳一跳]，再利用ginput获取起始点和目标位置，测试并统计出跳一跳按压时长和位移的关系值，通过adb命令模拟手指按压。<br><strong>注意事项</strong>：为避免微信检测是否为脚本执行，swipe的按压位置要随机<br><strong>升级方案</strong>：利用python的图像处理，自动获取起始点和目标位置，可以使得程序更加自动化。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</div><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line">x = str(random.randint(<span class="number">300</span>,<span class="number">700</span>))</div><div class="line">y = str(random.randint(<span class="number">1300</span>,<span class="number">1800</span>))</div><div class="line"></div><div class="line">cmd = <span class="string">"adb shell screencap -p /sdcard/t1t.png &amp;&amp; adb pull /sdcard/t1t.png"</span></div><div class="line"></div><div class="line">p = subprocess.Popen(cmd, shell=<span class="keyword">True</span>)</div><div class="line">p.communicate()</div><div class="line"></div><div class="line">img = array(Image.open(<span class="string">'./t1t.png'</span>))</div><div class="line">imshow(img)</div><div class="line"></div><div class="line">xy = ginput(<span class="number">2</span>)</div><div class="line">show()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dist</span> <span class="params">(l)</span>:</span></div><div class="line">  <span class="keyword">return</span> ((l[<span class="number">1</span>][<span class="number">0</span>]-l[<span class="number">0</span>][<span class="number">0</span>])**<span class="number">2</span> + (l[<span class="number">1</span>][<span class="number">1</span>]-l[<span class="number">0</span>][<span class="number">1</span>])**<span class="number">2</span>)**<span class="number">0.5</span> * <span class="number">1.4</span></div><div class="line"></div><div class="line">l = dist(xy)</div><div class="line">ll = <span class="string">"adb shell input swipe "</span> + x + <span class="string">" "</span> + y + <span class="string">" "</span> + x + <span class="string">" "</span> + y + <span class="string">" "</span> + str(int(l))</div><div class="line"></div><div class="line">subprocess.Popen(ll, shell=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>此方法每跳一格都要执行一次命令，可以按升级方案处理。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/12/01/Tips-of-the-Sublime.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1229,271 +1466,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/08/25/vue使用笔记-背景图片的路径问题.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/25/vue使用笔记-背景图片的路径问题.html" itemprop="url">vue使用笔记-背景图片的路径问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T11:23:10+08:00">
-                2017-08-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>最近使用vue时，发现打包完的项目中，背景图片不能加载。<br>打包前background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url("../assets/images/audio.png") center no-repeat;</div></pre></td></tr></table></figure></p>
-<p>打包后background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url(/static/img/audio.8d110e4.png) center no-repeat;</div></pre></td></tr></table></figure></p>
-<p>打包后的文件，由于没有放到网站的根目录下，所以打包后背景图片无法获取。</p>
-<h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>在网上查了很多，很多答案都没有相关性，也没解决问题。其实很简单，无非就是把相对根目录的路径改成相对css文件的路径即可。<br>在build/utils.js里的有个ExtractTextPlugin对象，给它添加 publicPath: ‘../../‘ 就行了。</p>
-<p>这里问题的关键就是</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/07/31/vue使用笔记.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/31/vue使用笔记.html" itemprop="url">vue使用笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T14:41:00+08:00">
-                2017-07-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>既然公司有同事开始使用Vue，为了表示不落后，我也要开始vue的探索之旅啦。</p>
-</blockquote>
-<h5 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h5><p>node + vue + less</p>
-<h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><p>window + sublime</p>
-<h5 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h5><ul>
-<li><p>新建项目文档</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir 项目名称(这里使用pro-one代替)</div><div class="line">cd pro-one</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装vue-cli脚手架 (没有node环境要在电脑上安装node，参考链接：<a href="http://nodejs.cn/" target="_blank" rel="external">http://nodejs.cn/</a>)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev vue-cli</div></pre></td></tr></table></figure>
-</li>
-<li><p>创建项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">vue init webpack ./ </div><div class="line">// 这里会提示你目标目录已存在，是否确认继续。（目标目录即为当前目录） 输入yes即可。</div><div class="line">接下来会有一些确认信息：</div><div class="line"></div><div class="line"> ? Project name (./) ******</div><div class="line"> ? Project name ******</div><div class="line"> ? Project description (A Vue.js project)</div><div class="line"> ? Project description A Vue.js project</div><div class="line"> ? Author ******</div><div class="line"> ? Author ******</div><div class="line"> ? Vue build standalone</div><div class="line"> ? Install vue-router? (Y/n)</div><div class="line"> ? Install vue-router? Yes</div><div class="line"> ? Use ESLint to lint your code? (Y/n)</div><div class="line"> ? Use ESLint to lint your code? Yes</div><div class="line"> ? Pick an ESLint preset (Use arrow keys)</div><div class="line"> ? Pick an ESLint preset Standard</div><div class="line"> ? Setup unit tests with Karma + Mocha? (Y/n)</div><div class="line"> ? Setup unit tests with Karma + Mocha? Yes</div><div class="line"> ? Setup e2e tests with Nightwatch? (Y/n)</div><div class="line"> ? Setup e2e tests with Nightwatch? Yes</div></pre></td></tr></table></figure>
-</li>
-<li><p>初始化项目信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装less/less-loader</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install less less-loader --save-dev</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装jquery库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install jquery --save-dev</div></pre></td></tr></table></figure>
-</li>
-<li><p>由于此项目为移动端，所以需要修改根目录下的index.html文件</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">+     <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>smile-junior<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- built files will be auto injected --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line">+ 为新增的行</div></pre></td></tr></table></figure>
-</li>
-<li><p>在入口文件main.js内挂载全局的jquery，挂载后可以通过this.$使用，但不能用在()=&gt;{}箭头函数中，因为箭头函数中的this指向不是Vue</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">main.js</div><div class="line"></div><div class="line">  <span class="comment">// The Vue build version to load with the `import` command</span></div><div class="line">  <span class="comment">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span></div><div class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line">  <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></div><div class="line">  <span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></div><div class="line"></div><div class="line">  Vue.config.productionTip = <span class="literal">false</span></div><div class="line">+ Vue.prototype.$ = <span class="built_in">require</span>(<span class="string">'jquery'</span>)</div><div class="line"></div><div class="line">  <span class="comment">/* eslint-disable no-new */</span></div><div class="line">  <span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">    router,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;App/&gt;'</span>,</div><div class="line">    <span class="attr">components</span>: &#123; App &#125;</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">+ 为新增的行</div></pre></td></tr></table></figure>
-</li>
-<li><p>在开发环境中调试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure>
-</li>
-<li><p>打包项目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>成功，在此不放贴图了。暂时写到这里，后面会继续更…</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1543,7 +1515,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1556,7 +1528,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

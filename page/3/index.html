@@ -286,6 +286,271 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/08/25/vue使用笔记-背景图片的路径问题.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/25/vue使用笔记-背景图片的路径问题.html" itemprop="url">vue使用笔记-背景图片的路径问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-25T11:23:10+08:00">
+                2017-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>最近使用vue时，发现打包完的项目中，背景图片不能加载。<br>打包前background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url("../assets/images/audio.png") center no-repeat;</div></pre></td></tr></table></figure></p>
+<p>打包后background的代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background: url(/static/img/audio.8d110e4.png) center no-repeat;</div></pre></td></tr></table></figure></p>
+<p>打包后的文件，由于没有放到网站的根目录下，所以打包后背景图片无法获取。</p>
+<h5 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h5><p>在网上查了很多，很多答案都没有相关性，也没解决问题。其实很简单，无非就是把相对根目录的路径改成相对css文件的路径即可。<br>在build/utils.js里的有个ExtractTextPlugin对象，给它添加 publicPath: ‘../../‘ 就行了。</p>
+<p>这里问题的关键就是</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/07/31/vue使用笔记.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/31/vue使用笔记.html" itemprop="url">vue使用笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T14:41:00+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>既然公司有同事开始使用Vue，为了表示不落后，我也要开始vue的探索之旅啦。</p>
+</blockquote>
+<h5 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h5><p>node + vue + less</p>
+<h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><p>window + sublime</p>
+<h5 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h5><ul>
+<li><p>新建项目文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir 项目名称(这里使用pro-one代替)</div><div class="line">cd pro-one</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装vue-cli脚手架 (没有node环境要在电脑上安装node，参考链接：<a href="http://nodejs.cn/" target="_blank" rel="external">http://nodejs.cn/</a>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev vue-cli</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">vue init webpack ./ </div><div class="line">// 这里会提示你目标目录已存在，是否确认继续。（目标目录即为当前目录） 输入yes即可。</div><div class="line">接下来会有一些确认信息：</div><div class="line"></div><div class="line"> ? Project name (./) ******</div><div class="line"> ? Project name ******</div><div class="line"> ? Project description (A Vue.js project)</div><div class="line"> ? Project description A Vue.js project</div><div class="line"> ? Author ******</div><div class="line"> ? Author ******</div><div class="line"> ? Vue build standalone</div><div class="line"> ? Install vue-router? (Y/n)</div><div class="line"> ? Install vue-router? Yes</div><div class="line"> ? Use ESLint to lint your code? (Y/n)</div><div class="line"> ? Use ESLint to lint your code? Yes</div><div class="line"> ? Pick an ESLint preset (Use arrow keys)</div><div class="line"> ? Pick an ESLint preset Standard</div><div class="line"> ? Setup unit tests with Karma + Mocha? (Y/n)</div><div class="line"> ? Setup unit tests with Karma + Mocha? Yes</div><div class="line"> ? Setup e2e tests with Nightwatch? (Y/n)</div><div class="line"> ? Setup e2e tests with Nightwatch? Yes</div></pre></td></tr></table></figure>
+</li>
+<li><p>初始化项目信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装less/less-loader</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install less less-loader --save-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装jquery库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install jquery --save-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>由于此项目为移动端，所以需要修改根目录下的index.html文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">+     <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>smile-junior<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- built files will be auto injected --&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line">+ 为新增的行</div></pre></td></tr></table></figure>
+</li>
+<li><p>在入口文件main.js内挂载全局的jquery，挂载后可以通过this.$使用，但不能用在()=&gt;{}箭头函数中，因为箭头函数中的this指向不是Vue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">main.js</div><div class="line"></div><div class="line">  <span class="comment">// The Vue build version to load with the `import` command</span></div><div class="line">  <span class="comment">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span></div><div class="line">  <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line">  <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></div><div class="line">  <span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></div><div class="line"></div><div class="line">  Vue.config.productionTip = <span class="literal">false</span></div><div class="line">+ Vue.prototype.$ = <span class="built_in">require</span>(<span class="string">'jquery'</span>)</div><div class="line"></div><div class="line">  <span class="comment">/* eslint-disable no-new */</span></div><div class="line">  <span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">el</span>: <span class="string">'#app'</span>,</div><div class="line">    router,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;App/&gt;'</span>,</div><div class="line">    <span class="attr">components</span>: &#123; App &#125;</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">+ 为新增的行</div></pre></td></tr></table></figure>
+</li>
+<li><p>在开发环境中调试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>打包项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>成功，在此不放贴图了。暂时写到这里，后面会继续更…</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/07/28/CrossDomain.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1232,246 +1497,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/06/28/webpack使用笔记.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/28/webpack使用笔记.html" itemprop="url">webpack使用笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T13:33:31+08:00">
-                2017-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>webpack十分强大。</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install webpack --save-dev （安装到项目依赖中）</div><div class="line">npm install webpack -g （全局安装）</div></pre></td></tr></table></figure>
-<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>使用webpack，需要在项目的根目录下创建一个webpack.config.js文件， 在里面配置一些基本信息：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">入口：</div><div class="line">entry: <span class="string">'./src/index.js'</span></div><div class="line"></div><div class="line">输入：</div><div class="line">output: &#123;</div><div class="line">	<span class="attr">path</span>: <span class="string">'./dist'</span>,</div><div class="line">	<span class="attr">filename</span>: bundle.js</div><div class="line">&#125;</div><div class="line"></div><div class="line">模块：</div><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">	<span class="attr">rules</span>: [</div><div class="line">		&#123;</div><div class="line">			<span class="attr">test</span>: <span class="string">''</span>,</div><div class="line">			<span class="attr">use</span>: []</div><div class="line">		&#125;</div><div class="line">	]</div><div class="line">&#125;</div><div class="line"></div><div class="line">扩展：</div><div class="line">plugins: [</div><div class="line">	<span class="keyword">new</span> ImageminPlugin(&#123;</div><div class="line">		<span class="comment">/* 配置信息 */</span></div><div class="line">	&#125;)</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>模块化，移植性好（解耦）</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/06/23/MarkDown使用笔记.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/23/MarkDown使用笔记.html" itemprop="url">MarkDown使用笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T17:20:56+08:00">
-                2017-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;br/&gt;</div></pre></td></tr></table></figure>
-<h5 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;</div></pre></td></tr></table></figure>
-<h5 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">**加粗文本**</div><div class="line">__加粗文本__</div></pre></td></tr></table></figure>
-<h5 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*斜体文本*</div><div class="line">_斜体文本_</div></pre></td></tr></table></figure>
-<h5 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">文字链接：[keer](https://ahxdg.github.io/)</div><div class="line">图片链接：![我的头像](/images/avatar.jpg)</div></pre></td></tr></table></figure>
-<h5 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">无序列表：* 列表内容</div><div class="line">无序列表：+ 列表内容</div><div class="line">无序列表：- 列表内容</div><div class="line"></div><div class="line">嵌套使用：* 列表一</div><div class="line">     	    * 列表二</div><div class="line"></div><div class="line">有序列表：1. 列表内容</div><div class="line"></div><div class="line">正常情况下输入&quot; 1986. What a great season &quot;，会显示一个有序列表，但如果只是想显示文案形式的文字，</div><div class="line">可以使用转义字符&quot;\&quot;，即：1986\. What a great season</div><div class="line"></div><div class="line">注意：中间有空格</div></pre></td></tr></table></figure>
-<h5 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 一级标题</div><div class="line">## 二级标题</div><div class="line">### 三级标题</div><div class="line">...</div></pre></td></tr></table></figure>
-<h6 id="特殊的标题"><a href="#特殊的标题" class="headerlink" title="特殊的标题"></a>特殊的标题</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Markdown还支持Setext和atx风格的标题</div><div class="line"></div><div class="line">Setext格式的写法：</div><div class="line">	这是Setext格式的标题</div><div class="line">	====================</div><div class="line"></div><div class="line">	这是Setext格式的副标题</div><div class="line">	--------------------</div><div class="line">注：(=/-两个以上，且必须跟在标题下面)</div></pre></td></tr></table></figure>
-<h5 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">| Tables    | address   |</div><div class="line">| --------- | :-------: |</div><div class="line">| tab       | china     |</div><div class="line"></div><div class="line">或者：</div><div class="line"></div><div class="line">| Tables    | address   |</div><div class="line">| :-------- | :-------- |</div><div class="line">| tab       | china     |</div></pre></td></tr></table></figure>
-<h5 id="虚线-分割线"><a href="#虚线-分割线" class="headerlink" title="虚线/分割线"></a>虚线/分割线</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">----</div><div class="line">****</div><div class="line">____</div><div class="line"></div><div class="line">注：(3个以上，“-”符号上面一行必须是空行，如果上面一行有文字，则会把上面一行当成一个标题)</div></pre></td></tr></table></figure>
-<h5 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">单行代码：</div><div class="line">	$这里是单行代码$</div><div class="line"></div><div class="line">多行代码：</div><div class="line">	 $$$</div><div class="line">	 这里是多行代码块</div><div class="line">	 $$$</div><div class="line"></div><div class="line">注：这里的&quot; $ &quot;代替&quot; ` &quot;</div></pre></td></tr></table></figure>
-<h5 id="上标-下标"><a href="#上标-下标" class="headerlink" title="上标/下标"></a>上标/下标</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">上标和下标在Markdown中没有特殊的标记形式，不过我们可以通过html标签来书写。</div><div class="line">上标：&lt;sup&gt;这是上标&lt;sup&gt;</div><div class="line">下标：&lt;sub&gt;这是下标&lt;sub&gt;</div></pre></td></tr></table></figure>
-<h5 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">® - &amp;reg;</div><div class="line">© - &amp;copy;</div><div class="line">&amp; - &amp;amp;</div><div class="line">&lt; - &amp;lt;</div><div class="line">&gt; - &amp;gt;</div></pre></td></tr></table></figure>
-<h5 id="下划线-删除线"><a href="#下划线-删除线" class="headerlink" title="下划线/删除线"></a>下划线/删除线</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">下划线：</div><div class="line">	Markdown中没有默认的下划线标记形式，不过一些扩展中有（自行搜索）</div><div class="line">	不过和上标/下标一样，可以利用html标签来实现：</div><div class="line">	&lt;u&gt;这段文字有下划线&lt;/u&gt;</div><div class="line"></div><div class="line">删除线：</div><div class="line">  	~~这里删除的文字~~</div><div class="line"></div><div class="line">注：由于u标签已经不被推荐使用，还是尽量避免。（一般链接都带有下划线，避免混淆）</div></pre></td></tr></table></figure>
-<h5 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Markdown中没有缩进，写过html的很容易想到用两个或四个&amp;nbsp;解决问题。</div><div class="line">但你会发现，再多的&amp;nbsp;都没有用。怎么办？</div><div class="line">很简单，你可以用半角的空格：&amp;ensp;或者是全角的空格：&amp;emsp;</div><div class="line"></div><div class="line">注：&amp;ensp;只占一个空格，&amp;emsp;占两个空格。</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1521,7 +1546,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1534,7 +1559,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
