@@ -286,6 +286,142 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/05/14/关于网站做背景视频的简单解决方案.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/14/关于网站做背景视频的简单解决方案.html" itemprop="url">关于网站做背景视频的简单解决方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-14T12:23:32+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>当我们打开一个网站时，倘若是直接看到一个动态的背景，我想一定会比一个图片或者轮播图片要感觉更赞的。</p>
+</blockquote>
+<p>那我们就开始吧，看看会有什么样的坑在等着…</p>
+<p><strong>思路：</strong><br>利用html的video标签，做背景。</p>
+<p>对，就是这样。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- &lt;video preload autoplay loop muted src="v.mp4"&gt; --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"web-bg"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">video</span> <span class="attr">autoplay</span> <span class="attr">loop</span> <span class="attr">src</span>=<span class="string">"v.mp4"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"v.mp4"</span> <span class="attr">type</span>=<span class="string">"video/mp4"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>接下来，就是调整样式：<br>一般我们做视频背景的时候都是全屏铺满的（该文也是按照这个思路来写的），所以<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.web-bg</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">position</span>: fixed;</div><div class="line">  <span class="attribute">z-index</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.web-bg</span> <span class="selector-tag">video</span>&#123;</div><div class="line">  <span class="attribute">display</span>: block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://static.togor.cn/blog/20180514/v1.jpg?v=3" alt="v1.jpg"><br>成功了吗？还没有。视频并没有全屏，但我们明明把宽度设置了100%。其实对于video标签来说已经是满屏了，只是视频的源数据中的宽高比和屏幕的宽高比不等，所以才会显示左右两边有黑边。</p>
+<p>对于这种情况：当视频的宽高比小于屏幕的宽高比时，就会出现上面截图的情况；反之，则是上下出现黑边。</p>
+<p>那怎么解决这个问题呢？</p>
+<p>记不记得背景图片size的一个属性值：cover，虽然视频并没有什么cover属性，不过我们可以用样式实现这样的效果。</p>
+<p>通过js获取到video原始的宽高比VP以及屏幕的宽高比WP,<br>当VP&gt;WP时，设置video的height:100%,width:auto;<br>当VP&lt;WP时，设置video的height:auto,width:100%;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> $v = $(<span class="string">'video'</span>), VP, WP;</div><div class="line">  $v.oncanplay = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    VP = $v.videoWidth / $v.videoHeight;</div><div class="line">    WP = <span class="built_in">window</span>.innerWidth / <span class="built_in">window</span>.innerHeight</div><div class="line">    <span class="keyword">if</span> (VP &gt; WP) &#123;</div><div class="line">      $v.style.width = <span class="string">'auto'</span>;</div><div class="line">      $v.style.height = <span class="string">'100%'</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (VP &lt; WP) &#123;</div><div class="line">      $v.style.width = <span class="string">'100%'</span>;</div><div class="line">      $v.style.height = <span class="string">'auto'</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">$</span>(<span class="params">dom</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(dom)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>嗯，这是可以的。但还是不够完美，因为你会发现，视频没有加载好的那段时间，你还是会看到黑边。怎么办呢？</p>
+<p><i style="color: #ccc">你要先想想吗</i></p>
+<p>接下来，为了避免这个问题，最简单的办法就是先默认把这个背景层给隐藏掉。然后再canplay的监听函数中再显示就行了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在oncanplay的函数中加一句：</span></div><div class="line">$(<span class="string">'.web-bg'</span>).style.display = <span class="string">'block'</span>;</div></pre></td></tr></table></figure></p>
+<p>而在原来的style样式中，把类web-bg设置成display: none;</p>
+<p>或者：把video的背景设置成一张默认的图片，并且background-size设置成cover。</p>
+<p>很好！但还没有结束…</p>
+<p>当你用safari浏览器打开看的时候，你会发现视频并没有播放，而是停留在第一帧上。当然如果你用的是一个有音轨且有声音的视频时候也会在chrome浏览器上出现这个问题（chrome浏览器可以在video上加一个muted，也就是我上面注释的那行）。</p>
+<p>这个问题是由于safari对于视频的策略导致的，safari对于大多数网站是不支持自动播放视频的。为什么是大多数而不是所有呢？自己猜去吧</p>
+<p>虽然不支持自动播放，但你还是可以通过手势用js去触发视频播放的，但对于视频背景好像并没有什么鸟用。</p>
+<p>既然不支持，那就要做兼容处理了。最简单的就是用一张背景图代替视频，刚好上面我们提到了给video设置背景图片。另外还有一种办法就是用gif图片，但可能不会很清晰，如果对背景的清晰度要求不高的还是可以用的。</p>
+<p>除此之外，还有办法吗？有的，那就是找苹果公司，让他们给你的网站开通自动播放视频的权限。: )</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/05/11/Life-without-love-之滴滴.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -480,7 +616,6 @@
 <p>定义删除邮件的函数：deleteMail<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">deleteMail</span><span class="params">(msg)</span>:</span></div><div class="line">  conn.store(msg, <span class="string">'+FLAGS'</span>, <span class="string">'\\Deleted'</span>) <span class="comment"># 标记要删除的邮件</span></div><div class="line">  <span class="keyword">return</span> conn.expunge() <span class="comment"># 删除邮件</span></div></pre></td></tr></table></figure></p>
 <p>当然还有start函数的执行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span></div><div class="line">  start()</div></pre></td></tr></table></figure></p>
 <p>下面简单列一下commonds.py的内容：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># commonds.py</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">commonds</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="string">'playMusic'</span>: <span class="string">'start orpheus:'</span>,</div><div class="line">    <span class="string">'stopMusic'</span>: <span class="string">'taskkill /f /t /im cloudmusic.exe'</span>,</div><div class="line">    <span class="string">'shutdown'</span>: <span class="string">'shutdown -s -t 0 -f'</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p>不用看了，就这些了。</p>
 
           
         
@@ -1434,126 +1569,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/03/09/算法-人，狼，羊，白菜过河问题.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/算法-人，狼，羊，白菜过河问题.html" itemprop="url">[算法] - 人，狼，羊，白菜过河问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T23:51:47+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>每次只能带一样东西过桥，羊会吃白菜，狼会吃羊，但是狼不吃白菜，请问这个人要把这三样东西带过到河对岸？</p>
-</blockquote>
-<p>思路：</p>
-<p>a表示初始岸，b表示目的岸<br>1表示狼，2表示羊，3表示白菜</p>
-<p>每次移动，人带一种东西或者不带；<br>每次移动，离开的一岸羊和狼或者白菜不能同时存在；<br>如果想把三种东西带到b岸：<br>-&nbsp;人从a到b，每次都要带一种东西过河；<br>-&nbsp;人从b到a，尽量不带，如果不带不可以，则随机带一个；</p>
-<p>如果移动尝试失败，则换别的可能尝试，直到成功为止。</p>
-<p>代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> NC = &#123;</div><div class="line">	<span class="attr">a</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],		<span class="comment">// a表示初始的一边，1表示狼，2表示羊，3表示白菜</span></div><div class="line">	b: [],			<span class="comment">// b表示另一边</span></div><div class="line">	status: <span class="string">'a'</span>,</div><div class="line">	<span class="attr">times</span>: <span class="number">1</span>,		<span class="comment">// times尝试的次数</span></div><div class="line">	start: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">this</span>.m(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="number">0</span>)</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">m</span>: <span class="function"><span class="keyword">function</span> (<span class="params">from, to, index</span>) </span>&#123;</div><div class="line">		<span class="comment">// 从from到to，带from下标为index的东西，index为-1时表示不带东西</span></div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'第'</span> + <span class="keyword">this</span>.times + <span class="string">'次：初始值'</span>)</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'a边:'</span> ,<span class="keyword">this</span>.a)</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'b边:'</span> ,<span class="keyword">this</span>.b)</div><div class="line">		<span class="keyword">if</span> (index == <span class="number">-1</span>) &#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'人从：'</span> + <span class="keyword">from</span> + <span class="string">' -&gt; '</span> + to)</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'人尝试从 '</span>+<span class="keyword">from</span>+<span class="string">' 移动 '</span> + <span class="keyword">this</span>[<span class="keyword">from</span>][index] + <span class="string">' 到 '</span> + to)</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">this</span>.times++</div><div class="line">		<span class="keyword">var</span> r, arr = [], len = <span class="keyword">this</span>[<span class="keyword">from</span>].length, v</div><div class="line">		<span class="keyword">if</span> (index == <span class="number">-1</span>) &#123;</div><div class="line">			arr = <span class="keyword">this</span>[<span class="string">'b'</span>]</div><div class="line">			v = <span class="number">0</span></div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">				<span class="keyword">if</span> (i != index) &#123;</div><div class="line">					arr.push(<span class="keyword">this</span>[<span class="keyword">from</span>][i])</div><div class="line">				&#125;<span class="keyword">else</span>&#123;</div><div class="line">					v = <span class="keyword">this</span>[<span class="keyword">from</span>][i]</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		r = <span class="keyword">this</span>.checkFrom(arr)</div><div class="line">		<span class="keyword">if</span> (!r) &#123;</div><div class="line">			index++;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'移动失败，进行下一次尝试'</span>)</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'--------------------'</span>)</div><div class="line">			<span class="keyword">this</span>.m(<span class="keyword">from</span>, to, index)</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			r = <span class="keyword">this</span>.checkTo(to, v)</div><div class="line">			<span class="keyword">if</span> (r) &#123;</div><div class="line">				<span class="keyword">this</span>.ms(<span class="keyword">from</span>, to, v)</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				index++;</div><div class="line">				<span class="keyword">this</span>.m(<span class="keyword">from</span>, to, index)</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">ms</span>: <span class="function"><span class="keyword">function</span> (<span class="params">f, t, v</span>) </span>&#123;</div><div class="line">		<span class="comment">// 从f到t，带v表示的东西</span></div><div class="line">		<span class="keyword">var</span> arr = [], l = <span class="keyword">this</span>[f].length;</div><div class="line">		<span class="keyword">var</span> sf = [], index = <span class="number">-1</span>;</div><div class="line">		<span class="keyword">this</span>.status = <span class="keyword">this</span>.status == <span class="string">'a'</span> ? <span class="string">'b'</span> : <span class="string">'a'</span></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; l; i++) &#123;</div><div class="line">			<span class="keyword">if</span> (<span class="keyword">this</span>[f][i] != v) &#123;</div><div class="line">				sf.push(<span class="keyword">this</span>[f][i])</div><div class="line">			&#125;<span class="keyword">else</span>&#123;</div><div class="line">				<span class="keyword">this</span>[t].push(v);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">this</span>[f] = sf;</div><div class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.b.length == <span class="number">3</span>) &#123;</div><div class="line">			<span class="keyword">this</span>.sucLog()</div><div class="line">			<span class="keyword">return</span> <span class="literal">false</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">this</span>.sucLog()</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'--------------------'</span>)</div><div class="line">		<span class="keyword">if</span> (t != <span class="string">'b'</span>) &#123;</div><div class="line">			index = <span class="number">0</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">this</span>.m(t, f, index)</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">checkFrom</span>: <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">		<span class="comment">// 检查离开的一岸剩下的物体是否可以同时存在</span></div><div class="line">		<span class="keyword">if</span> (arr.length &lt; <span class="number">2</span>) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="built_in">Math</span>.abs(arr[<span class="number">0</span>] - arr[<span class="number">1</span>]) != <span class="number">1</span></div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">checkTo</span>: <span class="function"><span class="keyword">function</span> (<span class="params">t, v</span>) </span>&#123;</div><div class="line">		<span class="comment">// 检查是否与上一次重复带一个物体</span></div><div class="line">		<span class="keyword">if</span> (!v) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">		&#125;</div><div class="line">		<span class="comment">// 重复r为true</span></div><div class="line">		<span class="keyword">var</span> r = (t == <span class="string">'a'</span> &amp;&amp; <span class="keyword">this</span>.ta == v) || (t == <span class="string">'b'</span> &amp;&amp; <span class="keyword">this</span>.tb == v)</div><div class="line">		<span class="keyword">if</span> (r) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">false</span></div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">if</span> (t == <span class="string">'a'</span>) &#123;</div><div class="line">				<span class="keyword">this</span>.ta = v</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (t == <span class="string">'b'</span>) &#123;</div><div class="line">				<span class="keyword">this</span>.tb = v</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">return</span> <span class="literal">true</span></div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">sucLog</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="comment">// 打印结果</span></div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'移动成功，结果为：'</span>)</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'a边:'</span> ,<span class="keyword">this</span>.a)</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'b边:'</span> ,<span class="keyword">this</span>.b)</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'人在'</span> + <span class="keyword">this</span>.status + <span class="string">'边'</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这是一种尝试的方法，还有一种方法：列出所有状态，用宽搜思想去遍历出所有的可能性。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1603,7 +1618,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1616,7 +1631,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
