@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Keer">
 <meta property="og:description" content="当我们打开一个网站时，倘若是直接看到一个动态的背景，我想一定会比一个图片或者轮播图片要感觉更赞的。  那我们就开始吧，看看会有什么样的坑在等着… 思路：利用html的video标签，做背景。 对，就是这样。 123456789101112131415&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;UTF-8&quot;">
 <meta property="og:image" content="http://static.togor.cn/blog/20180514/v1.jpg?v=3">
-<meta property="og:updated_time" content="2018-05-14T09:21:39.296Z">
+<meta property="og:updated_time" content="2018-05-16T03:25:53.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于网站做背景视频的简单解决方案">
 <meta name="twitter:description" content="当我们打开一个网站时，倘若是直接看到一个动态的背景，我想一定会比一个图片或者轮播图片要感觉更赞的。  那我们就开始吧，看看会有什么样的坑在等着… 思路：利用html的video标签，做背景。 对，就是这样。 123456789101112131415&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;UTF-8&quot;">
@@ -373,10 +373,11 @@
 <p>或者：把video的背景设置成一张默认的图片，并且background-size设置成cover。</p>
 <p>很好！但还没有结束…</p>
 <p>当你用safari浏览器打开看的时候，你会发现视频并没有播放，而是停留在第一帧上。当然如果你用的是一个有音轨且有声音的视频时候也会在chrome浏览器上出现这个问题（chrome浏览器可以在video上加一个muted，也就是我上面注释的那行）。</p>
-<p>这个问题是由于safari对于视频的策略导致的，safari对于大多数网站是不支持自动播放视频的。为什么是大多数而不是所有呢？自己猜去吧</p>
+<!-- 这个问题是由于safari对于视频的策略导致的，safari对于大多数网站是不支持自动播放视频的。为什么是大多数而不是所有呢？自己猜去吧 -->
 <p>虽然不支持自动播放，但你还是可以通过手势用js去触发视频播放的，但对于视频背景好像并没有什么鸟用。</p>
 <p>既然不支持，那就要做兼容处理了。最简单的就是用一张背景图代替视频，刚好上面我们提到了给video设置背景图片。另外还有一种办法就是用gif图片，但可能不会很清晰，如果对背景的清晰度要求不高的还是可以用的。</p>
-<p>除此之外，还有办法吗？有的，那就是找苹果公司，让他们给你的网站开通自动播放视频的权限。: )</p>
+<p>再或者…</p>
+<p>把video放到一个单独的页面里，然后利用iframe引入到页面中，有惊喜哦。这也可以？？ 是的。</p>
 
       
     </div>
