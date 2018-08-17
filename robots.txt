@@ -1,0 +1,25 @@
+User-Agent: Baiduspider
+Allow: /tags
+Allow: /video
+Allow: /project
+Allow: /about
+Allow: /archives
+Allow: /categories
+Allow: /404
+Allow: /2017
+Allow: /2018
+Allow: /2019
+Disallow: /
+
+User-Agent: Googlebot
+Allow: /tags
+Allow: /video
+Allow: /project
+Allow: /about
+Allow: /archives
+Allow: /categories
+Allow: /404
+Allow: /2017
+Allow: /2018
+Allow: /2019
+Disallow: /
