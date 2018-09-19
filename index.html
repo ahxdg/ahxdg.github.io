@@ -286,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/09/11/这个搞笑的总统.html">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/09/19/IP地址-MAC地址的正则匹配.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Togor">
@@ -305,7 +305,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/11/这个搞笑的总统.html" itemprop="url">这个搞笑的总统</a></h1>
+                <a class="post-title-link" href="/2018/09/19/IP地址-MAC地址的正则匹配.html" itemprop="url">IP地址&MAC地址的正则匹配</a></h1>
         
 
         <div class="post-meta">
@@ -317,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-11T22:13:09+08:00">
-                2018-09-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T13:32:26+08:00">
+                2018-09-19
               </time>
             
 
@@ -354,7 +354,24 @@
       
         
           
-            <p>沐猴而冠 - 送给川普</p>
+            <blockquote>
+<p>直接进主题。</p>
+</blockquote>
+<p><strong>IP地址：</strong></p>
+<p>IP地址的范围： 0.0.0.0 - 255.255.255.255</p>
+<p>思路：</p>
+<p>我们按点分割成4个数字段，每个数字段的匹配规则是一样的，每个数字段 0-255。</p>
+<p>分情况：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- 第一位数字为<span class="number">0</span>：    <span class="number">0</span>                       <span class="comment">// 0开头只能是0</span></div><div class="line">- 第一位数字为<span class="number">1</span>：    <span class="number">1</span>\d&#123;<span class="number">0</span>,<span class="number">2</span>&#125;                <span class="comment">// 1开的的个，十，百位数</span></div><div class="line">- 第一位数字为<span class="number">2</span>：    <span class="number">2</span>\d?|<span class="number">2</span>[<span class="number">0</span><span class="number">-4</span>]\d|<span class="number">25</span>[<span class="number">0</span><span class="number">-5</span>]   <span class="comment">// 2开的的个，十位数，200-249，250-255</span></div><div class="line">- 第一位数字为<span class="number">3</span><span class="number">-9</span>：  [<span class="number">3</span><span class="number">-9</span>]\d?                <span class="comment">// 3-9开头的个，十位数</span></div></pre></td></tr></table></figure></p>
+<p>合起来就是： <code>0|(1\d{0,2})|(2\d?|2[0-4]\d|25[0-5])|[3-9]\d?</code></p>
+<p>总的正则： <code>((0|(1\d{0,2})|(2\d?|2[0-4]\d|25[0-5])|[3-9]\d?)\.){3}(0|(1\d{0,2})|(2\d?|2[0-4]\d|25[0-5])|[3-9]\d?)</code></p>
+<p><strong>注意： 括号一定记得加！</strong></p>
+<p><br></p>
+<p><strong>MAC地址：</strong></p>
+<p>MAC地址为6组2位的十六进制的数字组成。<br>MAC地址的范围： 00:00:00:00:00:00 - FF:FF:FF:FF:FF:FF</p>
+<p>思路：</p>
+<p>分成六组，匹配00-FF。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[A-Fa-f0<span class="number">-9</span>]&#123;<span class="number">2</span>&#125;</div></pre></td></tr></table></figure>
+<p>总的正则：<code>([A-Fa-f0-9]{2}\:){5}[A-Fa-f0-9]{2}</code></p>
 
           
         
@@ -1538,7 +1555,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
