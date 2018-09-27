@@ -286,6 +286,131 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/05/10/python实例-利用imap处理邮件.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/10/python实例-利用imap处理邮件.html" itemprop="url">[python实例] - 利用imap处理邮件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T13:09:05+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>其实，这里不只是有IMAP~</p>
+</blockquote>
+<p>之所以选择IMAP，因为它能在本地对远程服务器做修改，而POP不能。<br>至于IMAP和POP之间的区别，我将在后面的文章中写一篇详尽的说明。</p>
+<p>第一步：引入需要的包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> imaplib  <span class="comment"># 连接邮件服务器，获取邮件</span></div><div class="line"><span class="keyword">import</span> email.parser <span class="keyword">import</span> Parser <span class="comment"># 解析邮件</span></div><div class="line"><span class="keyword">import</span> subprocess <span class="comment"># 运行脚本</span></div><div class="line"><span class="keyword">import</span> threading  <span class="comment"># 设置定时器</span></div><div class="line"></div><div class="line"><span class="comment"># 下面两行后面有说明</span></div><div class="line"><span class="keyword">from</span> commonds <span class="keyword">import</span> commonds</div><div class="line">cmds = commonds()</div></pre></td></tr></table></figure>
+<p>第二步：定义一个开始函数: start<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">start</span><span class="params">()</span>:</span></div><div class="line">  user = <span class="string">'******'</span> <span class="comment"># 邮箱登录名</span></div><div class="line">  password = <span class="string">'*******'</span>  <span class="comment"># 客户端授权码</span></div><div class="line">  connact(user, password) <span class="comment"># 进入下一步</span></div></pre></td></tr></table></figure></p>
+<p>第三步：定义一个连接函数: connact<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">connact</span><span class="params">(u, p)</span>:</span></div><div class="line">  <span class="keyword">global</span> conn <span class="comment"># 定义一个全局变量</span></div><div class="line">  conn = imaplib.IMAP4_SSL(port = <span class="string">'993'</span>, host = <span class="string">'imap.163.com'</span>) <span class="comment"># 连接网易的邮件服务器</span></div><div class="line">  s, d = conn.login(u, p) <span class="comment"># 登录</span></div><div class="line">  s, d = conn.select() <span class="comment"># 选择邮件文件夹（默认为收件箱）</span></div><div class="line">  getMails() <span class="comment"># 进入下一步</span></div></pre></td></tr></table></figure></p>
+<p>第四步：定义一个获取邮件的函数：getMails<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getMails</span><span class="params">()</span>:</span></div><div class="line">  s, msgs = conn.search(<span class="keyword">None</span>, <span class="string">'All'</span>)  <span class="comment"># 获取所有邮件</span></div><div class="line">  msgList = msgs[<span class="number">0</span>].split() <span class="comment"># 格式化列表</span></div><div class="line">  lastMsg = msgList[len(msgList)<span class="number">-1</span>] <span class="comment"># 最后一封邮件</span></div><div class="line"></div><div class="line">  data = conn.fetch(lastMsg, <span class="string">'(RFC822)'</span>) <span class="comment"># 获取邮件内容</span></div><div class="line"></div><div class="line">  msg = data[<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>].decode(<span class="string">'utf-8'</span>) <span class="comment"># 转码</span></div><div class="line">  msg = Parser().parseter(msg) <span class="comment"># 解析邮件</span></div><div class="line"></div><div class="line">  controls = getControls(msg) <span class="comment"># 获取邮件的内容</span></div><div class="line"></div><div class="line">  <span class="comment"># 其实这是一个利用邮件控制的电脑的脚本</span></div><div class="line">  <span class="comment"># 而这个方法就是根据邮件内容，执行相应命令</span></div><div class="line">  <span class="comment"># 命令与执行方法，在commonds.py文件中</span></div><div class="line">  <span class="keyword">if</span> controls[<span class="string">'isControl'</span>]:</div><div class="line">    controlSomething(controls, lastMsg) <span class="comment"># 根据邮件内容执行相应处理</span></div><div class="line">  <span class="comment"># 设置定时器，每隔1秒请求新的数据</span></div><div class="line">  timer = threading.Timer(<span class="number">1</span>, getMails)</div><div class="line">  timer.start()</div></pre></td></tr></table></figure></p>
+<p>第五步：定义一个判断命令的函数：getControls<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getControls</span><span class="params">(msg)</span>:</span></div><div class="line">  o = &#123;&#125;</div><div class="line">  Flag = <span class="keyword">False</span></div><div class="line">  value = msg.get(<span class="string">'From'</span>, <span class="string">''</span>)</div><div class="line">  offset = value.find(<span class="string">'&lt;'</span>)</div><div class="line">  <span class="keyword">if</span> value[offset+<span class="number">1</span>:len(value)<span class="number">-1</span>] == <span class="string">'发送邮件的邮箱地址'</span></div><div class="line">    subj = msg.get(<span class="string">'Subject'</span>,<span class="string">''</span>)</div><div class="line">    <span class="keyword">if</span> subj.find(<span class="string">'control:'</span>) &gt; <span class="number">-1</span>:</div><div class="line">      Flag = <span class="keyword">True</span></div><div class="line">      o[<span class="string">'doWhat'</span>] = subj[<span class="number">3</span>:].strip()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">      Flag = <span class="keyword">False</span></div><div class="line">  o[<span class="string">'isControl'</span>] = Flag</div><div class="line">  <span class="keyword">return</span> o</div></pre></td></tr></table></figure></p>
+<p>第六步：定义一个执行函数：controlSomething<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">controlSomething</span><span class="params">(params, lMsg)</span>:</span></div><div class="line">  doWhat = params[<span class="string">'doWhat'</span>]</div><div class="line">  cmd = cmds[doWhat]</div><div class="line">  <span class="comment"># 判断是否存在对应的命令以及获取的命令邮件是否被删除（防止重复执行）</span></div><div class="line">  <span class="keyword">if</span> cmd <span class="keyword">and</span> deleteMail(lMsg):</div><div class="line">    subprocess.Popen(cmd, shell=<span class="keyword">True</span>) <span class="comment"># 执行命令</span></div></pre></td></tr></table></figure></p>
+<p>定义删除邮件的函数：deleteMail<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">deleteMail</span><span class="params">(msg)</span>:</span></div><div class="line">  conn.store(msg, <span class="string">'+FLAGS'</span>, <span class="string">'\\Deleted'</span>) <span class="comment"># 标记要删除的邮件</span></div><div class="line">  <span class="keyword">return</span> conn.expunge() <span class="comment"># 删除邮件</span></div></pre></td></tr></table></figure></p>
+<p>当然还有start函数的执行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span></div><div class="line">  start()</div></pre></td></tr></table></figure></p>
+<p>下面简单列一下commonds.py的内容：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># commonds.py</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">commonds</span><span class="params">()</span>:</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="string">'playMusic'</span>: <span class="string">'start orpheus:'</span>,</div><div class="line">    <span class="string">'stopMusic'</span>: <span class="string">'taskkill /f /t /im cloudmusic.exe'</span>,</div><div class="line">    <span class="string">'shutdown'</span>: <span class="string">'shutdown -s -t 0 -f'</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/05/07/基础-JS之sort.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1436,123 +1561,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/03/02/python实例-跳一跳.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/02/python实例-跳一跳.html" itemprop="url">[python实例] - 跳一跳</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T17:54:31+08:00">
-                2018-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>祭出已经玩了很久的跳一跳, 就当是在python的路上回忆吧.</p>
-</blockquote>
-<p><strong>技术方案</strong>：通过adb连接android手机，获取屏幕信息[跳一跳]，再利用ginput获取起始点和目标位置，测试并统计出跳一跳按压时长和位移的关系值，通过adb命令模拟手指按压。<br><strong>注意事项</strong>：为避免微信检测是否为脚本执行，swipe的按压位置要随机<br><strong>升级方案</strong>：利用python的图像处理，自动获取起始点和目标位置，可以使得程序更加自动化。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</div><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line">x = str(random.randint(<span class="number">300</span>,<span class="number">700</span>))</div><div class="line">y = str(random.randint(<span class="number">1300</span>,<span class="number">1800</span>))</div><div class="line"></div><div class="line">cmd = <span class="string">"adb shell screencap -p /sdcard/t1t.png &amp;&amp; adb pull /sdcard/t1t.png"</span></div><div class="line"></div><div class="line">p = subprocess.Popen(cmd, shell=<span class="keyword">True</span>)</div><div class="line">p.communicate()</div><div class="line"></div><div class="line">img = array(Image.open(<span class="string">'./t1t.png'</span>))</div><div class="line">imshow(img)</div><div class="line"></div><div class="line">xy = ginput(<span class="number">2</span>)</div><div class="line">show()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dist</span> <span class="params">(l)</span>:</span></div><div class="line">  <span class="keyword">return</span> ((l[<span class="number">1</span>][<span class="number">0</span>]-l[<span class="number">0</span>][<span class="number">0</span>])**<span class="number">2</span> + (l[<span class="number">1</span>][<span class="number">1</span>]-l[<span class="number">0</span>][<span class="number">1</span>])**<span class="number">2</span>)**<span class="number">0.5</span> * <span class="number">1.4</span></div><div class="line"></div><div class="line">l = dist(xy)</div><div class="line">ll = <span class="string">"adb shell input swipe "</span> + x + <span class="string">" "</span> + y + <span class="string">" "</span> + x + <span class="string">" "</span> + y + <span class="string">" "</span> + str(int(l))</div><div class="line"></div><div class="line">subprocess.Popen(ll, shell=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
-<p>此方法每跳一格都要执行一次命令，可以按升级方案处理。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1602,7 +1610,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1615,7 +1623,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
