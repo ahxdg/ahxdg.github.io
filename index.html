@@ -286,6 +286,133 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/10/21/算法-多维数组的元素拼接.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/21/算法-多维数组的元素拼接.html" itemprop="url">[算法] - 多维数组的元素拼接</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-21T18:54:40+08:00">
+                2018-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>前两天被朋友问道的一道算法题，今天把答案贴出来。当然会有一些疏漏的地方，欢迎指正。</p>
+</blockquote>
+<p><strong>问题描述：</strong></p>
+<p>二维数组：</p>
+<p>[<br>  [1,2,3],<br>  [a,b,c]<br>]</p>
+<p>==&gt; [1a,1b,1c,2a,2b,2c,3a,3b,3c]</p>
+<p>求三维如何计算出来？</p>
+<p>[<br>  [1,2,3],<br>  [a,b,c],<br>  [A,B,C]<br>]</p>
+<p>第一眼看到这个我以为只需要三个for循环就行了，<strong>too young too simple.</strong></p>
+<p>后来回到家里，仔细看了下（码代码之前），我又天真的以为是一个递归。</p>
+<p>当我开始着手写的时候，才发现自己想错了。</p>
+<p>而正确的思路应该是，把这个复杂的问题先简单化。既然二维的数组利用两个for循环就很容易处理的，那就把三维的拆成二维的，先解决前连个数组就行了，然后把得到的结果和剩下的那个数组再组成一个新的二维数组，用同样的方法去处理。 哎呦呦~~，是不是很简单？ ^_^</p>
+<p>那就开始码代码了…</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">connactArrays</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> isArray = <span class="built_in">Array</span>.isArray(arr),</div><div class="line">      sub = <span class="number">2</span>,</div><div class="line">      len,</div><div class="line">      res;</div><div class="line"></div><div class="line">  <span class="comment">// 不是数组，直接返回错误信息。当然也可以打印出错误信息，并返回一个空的数组。</span></div><div class="line">  <span class="keyword">if</span> (!isArray) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'error type'</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  len = arr.length;</div><div class="line"></div><div class="line">  <span class="comment">// 长度为1，直接返回</span></div><div class="line">  <span class="keyword">if</span> (len == <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  res = connactTwoArr(arr[<span class="number">0</span>], arr[<span class="number">1</span>]);</div><div class="line">  <span class="keyword">while</span> (len &gt; sub) &#123;</div><div class="line">    res = connactTwoArr(res, arr[sub])</div><div class="line">    sub++;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">connactTwoArr</span> (<span class="params">arr1, arr2</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> arr = [],</div><div class="line">      len1 = arr1.length,</div><div class="line">      len2 = arr2.length,</div><div class="line">      i,</div><div class="line">      j,</div><div class="line">      arr = [];</div><div class="line">  <span class="keyword">if</span> (!len1) &#123;</div><div class="line">    <span class="keyword">return</span> arr2;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (!len2) &#123;</div><div class="line">    <span class="keyword">return</span> arr1;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len1; i++)&#123;</div><div class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; len2; j++) &#123;</div><div class="line">      arr.push(arr1[i] + arr2[j].toString())   <span class="comment">// 这里防止两个数组均为数字时，按数字的相加处理</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中加了一些简单的判断。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">测试：</div><div class="line">connactArrays([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>],[<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>]]);</div><div class="line"></div><div class="line"><span class="comment">// output</span></div><div class="line">[<span class="string">"1aA"</span>, <span class="string">"1aB"</span>, <span class="string">"1aC"</span>, <span class="string">"1bA"</span>, <span class="string">"1bB"</span>, <span class="string">"1bC"</span>, <span class="string">"1cA"</span>, <span class="string">"1cB"</span>, <span class="string">"1cC"</span>, <span class="string">"2aA"</span>, <span class="string">"2aB"</span>, <span class="string">"2aC"</span>, <span class="string">"2bA"</span>, <span class="string">"2bB"</span>, <span class="string">"2bC"</span>, <span class="string">"2cA"</span>, <span class="string">"2cB"</span>, <span class="string">"2cC"</span>, <span class="string">"3aA"</span>, <span class="string">"3aB"</span>, <span class="string">"3aC"</span>, <span class="string">"3bA"</span>, <span class="string">"3bB"</span>, <span class="string">"3bC"</span>, <span class="string">"3cA"</span>, <span class="string">"3cB"</span>, <span class="string">"3cC"</span>]</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/09/27/利用webhook自动更新服务器代码.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1382,118 +1509,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/05/11/Life-without-love-之滴滴.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/11/Life-without-love-之滴滴.html" itemprop="url">Life-without-love-之滴滴</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-11T21:44:55+08:00">
-                2018-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>生而为人，请你务必善良。</p>
-<p style="color: #fff;">平台利益为大，不知底线为何？为他人负责，不是告诉别人要注意安全。<br>凶手之恶，实为人神共愤，处百死不能消逝者家人愤。<br>再有地域炮者，何事都有他，细数各地卑劣，而其最为人所不齿。<br>造谣者，蹭热度者，吃人血馒头的“销售精英”…，最大的恶，不仅是灾难，还有消费死者和灾难。</p>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1543,7 +1558,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
