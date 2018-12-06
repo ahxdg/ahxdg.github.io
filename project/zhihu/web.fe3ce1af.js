@@ -1,0 +1,4852 @@
+// modules are defined as an array
+// [ module function, map of requires ]
+//
+// map of requires is short require name -> numeric require
+//
+// anything defined in a previous bundle is accessed via the
+// orig method which is the require for previous bundles
+
+// eslint-disable-next-line no-global-assign
+parcelRequire = (function (modules, cache, entry, globalName) {
+  // Save the require from previous bundle to this closure if any
+  var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
+  var nodeRequire = typeof require === 'function' && require;
+
+  function newRequire(name, jumped) {
+    if (!cache[name]) {
+      if (!modules[name]) {
+        // if we cannot find the module within our internal map or
+        // cache jump to the current global require ie. the last bundle
+        // that was added to the page.
+        var currentRequire = typeof parcelRequire === 'function' && parcelRequire;
+        if (!jumped && currentRequire) {
+          return currentRequire(name, true);
+        }
+
+        // If there are other bundles on this page the require from the
+        // previous one is saved to 'previousRequire'. Repeat this as
+        // many times as there are bundles until the module is found or
+        // we exhaust the require chain.
+        if (previousRequire) {
+          return previousRequire(name, true);
+        }
+
+        // Try the node require function if it exists.
+        if (nodeRequire && typeof name === 'string') {
+          return nodeRequire(name);
+        }
+
+        var err = new Error('Cannot find module \'' + name + '\'');
+        err.code = 'MODULE_NOT_FOUND';
+        throw err;
+      }
+
+      localRequire.resolve = resolve;
+
+      var module = cache[name] = new newRequire.Module(name);
+
+      modules[name][0].call(module.exports, localRequire, module, module.exports, this);
+    }
+
+    return cache[name].exports;
+
+    function localRequire(x){
+      return newRequire(localRequire.resolve(x));
+    }
+
+    function resolve(x){
+      return modules[name][1][x] || x;
+    }
+  }
+
+  function Module(moduleName) {
+    this.id = moduleName;
+    this.bundle = newRequire;
+    this.exports = {};
+  }
+
+  newRequire.isParcelRequire = true;
+  newRequire.Module = Module;
+  newRequire.modules = modules;
+  newRequire.cache = cache;
+  newRequire.parent = previousRequire;
+  newRequire.register = function (id, exports) {
+    modules[id] = [function (require, module) {
+      module.exports = exports;
+    }, {}];
+  };
+
+  for (var i = 0; i < entry.length; i++) {
+    newRequire(entry[i]);
+  }
+
+  if (entry.length) {
+    // Expose entry point to Node, AMD or browser globals
+    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
+    var mainExports = newRequire(entry[entry.length - 1]);
+
+    // CommonJS
+    if (typeof exports === "object" && typeof module !== "undefined") {
+      module.exports = mainExports;
+
+    // RequireJS
+    } else if (typeof define === "function" && define.amd) {
+     define(function () {
+       return mainExports;
+     });
+
+    // <script>
+    } else if (globalName) {
+      this[globalName] = mainExports;
+    }
+  }
+
+  // Override the current require with this new one
+  return newRequire;
+})({"C:\\Users\\flyfi\\AppData\\Roaming\\npm\\node_modules\\parcel\\src\\builtins\\bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"C:\\Users\\flyfi\\AppData\\Roaming\\npm\\node_modules\\parcel\\src\\builtins\\css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"C:\\Users\\flyfi\\AppData\\Roaming\\npm\\node_modules\\parcel\\src\\builtins\\bundle-url.js"}],"style.css":[function(require,module,exports) {
+
+var reloadCSS = require('_css_loader');
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"C:\\Users\\flyfi\\AppData\\Roaming\\npm\\node_modules\\parcel\\src\\builtins\\css-loader.js"}],"test2.json":[function(require,module,exports) {
+module.exports = [{
+    "num": 192,
+    "href": "/question/24706380/answer/387403508",
+    "text": "怎么在一个月内让英语听力有明显的提高？"
+}, {
+    "num": 180,
+    "href": "/question/35005800/answer/61498512",
+    "text": "想要充实自己，有哪 10 本书或者 10 部电影值得推荐？"
+}, {
+    "num": 160,
+    "href": "/question/29547414/answer/44818033",
+    "text": "如何看待医生拒绝给艾滋病人做手术？"
+}, {
+    "num": 155,
+    "href": "/question/23819007/answer/107332874",
+    "text": "你有什么道理后悔没有早点知道？"
+}, {
+    "num": 153,
+    "href": "/question/28358499/answer/73162464",
+    "text": "如何长时间高效学习？"
+}, {
+    "num": 151,
+    "href": "/question/22467582/answer/21504075",
+    "text": "有哪些很重要又被忽视的炒菜技巧？"
+}, {
+    "num": 140,
+    "href": "/question/27540795/answer/307846975",
+    "text": "宾馆的工作人员是怎么看待开房的一对男女的？"
+}, {
+    "num": 125,
+    "href": "/question/39886583/answer/86560817",
+    "text": "历史上有哪些成就颇高但鲜为人知的人？"
+}, {
+    "num": 124,
+    "href": "/question/28217434/answer/224184182",
+    "text": "有一个舍得为你花钱的男朋友是种怎样的体验？"
+}, {
+    "num": 121,
+    "href": "/question/20034722/answer/238650965",
+    "text": "为什么国内大学不推行单人宿舍和国外一样？"
+}, {
+    "num": 119,
+    "href": "/question/26982970/answer/35153654",
+    "text": "哪些事情永久地改变了你？"
+}, {
+    "num": 117,
+    "href": "/question/48040579/answer/264770860",
+    "text": "有什么相见恨晚的背单词方法？"
+}, {
+    "num": 115,
+    "href": "/question/23819007/answer/71141181",
+    "text": "你有什么道理后悔没有早点知道？"
+}, {
+    "num": 115,
+    "href": "/question/43128864/answer/150011362",
+    "text": "一个人能无耻到什么地步？"
+}, {
+    "num": 114,
+    "href": "/question/264619647/answer/356196567",
+    "text": "你在什么时候曾觉得自己认识的那个人很恐怖或者厉害得可怕？"
+}, {
+    "num": 113,
+    "href": "/question/26753619/answer/34280535",
+    "text": "如何成为一个优秀的男朋友？"
+}, {
+    "num": 110,
+    "href": "/question/20381470/answer/28568570",
+    "text": "体质极差的人该如何从头开始恢复身体素质？"
+}, {
+    "num": 109,
+    "href": "/question/266048311/answer/303031137",
+    "text": "印象中什么时候你对中国电影、电视剧最失望？"
+}, {
+    "num": 108,
+    "href": "/question/34643719/answer/88101952",
+    "text": "你什么时候被狗的智商震惊了？"
+}, {
+    "num": 106,
+    "href": "/question/50200915/answer/120450390",
+    "text": "有文化可以有多可怕？"
+}, {
+    "num": 104,
+    "href": "/question/35811067/answer/65986583",
+    "text": "有哪些好看的高智商悬疑电影？"
+}, {
+    "num": 103,
+    "href": "/question/20958648/answer/16745450",
+    "text": "淘宝上有哪些网购美食？"
+}, {
+    "num": 103,
+    "href": "/question/32094733/answer/54873212",
+    "text": "拥有稀有的姓是种怎样的体验？"
+}, {
+    "num": 103,
+    "href": "/question/269972263/answer/476701958",
+    "text": "如何当一个被强奸过的女生的男朋友？"
+}, {
+    "num": 98,
+    "href": "/question/275351176/answer/421551347",
+    "text": "有哪些书非常有利于年轻人未来发展？"
+}, {
+    "num": 98,
+    "href": "/question/65640022/answer/233310989",
+    "text": "如何评价薛之谦 9 月 21 日对李雨桐的再次回应，并晒出转账记录？"
+}, {
+    "num": 97,
+    "href": "/question/26452022/answer/327438730",
+    "text": "如何评价现在的大学生？"
+}, {
+    "num": 96,
+    "href": "/question/31997695/answer/345029155",
+    "text": "恋人之间的最好状态是怎样的？"
+}, {
+    "num": 95,
+    "href": "/question/25518717/answer/90861183",
+    "text": "人截肢了以后会有什么感觉？"
+}, {
+    "num": 94,
+    "href": "/question/27540795/answer/294240985",
+    "text": "宾馆的工作人员是怎么看待开房的一对男女的？"
+}, {
+    "num": 94,
+    "href": "/question/54384499/answer/139174791",
+    "text": "谁是 2016 年的演技最差的男星？"
+}, {
+    "num": 90,
+    "href": "/question/61676183/answer/195943977",
+    "text": "有哪些你难以理解的潮流？"
+}, {
+    "num": 90,
+    "href": "/question/39314386/answer/88531424",
+    "text": "你写过或者听过哪些「魔性」的故事？"
+}, {
+    "num": 89,
+    "href": "/question/20114429/answer/271380484",
+    "text": "死刑與真正的无期徒刑相比,哪個較有威慑力？"
+}, {
+    "num": 88,
+    "href": "/question/35112627/answer/61710698",
+    "text": "有哪些必备的知识技能？"
+}, {
+    "num": 87,
+    "href": "/question/275756508/answer/412111841",
+    "text": "街边小吃究竟有多脏？"
+}, {
+    "num": 87,
+    "href": "/question/62900700/answer/445432395",
+    "text": "你的大学都有过哪些惊为天人的人物？"
+}, {
+    "num": 87,
+    "href": "/question/43697913/answer/237891025",
+    "text": "迄今为止，你感到（生理上）最痛的一次经历是什么？"
+}, {
+    "num": 87,
+    "href": "/question/275611680/answer/450002926",
+    "text": "现在的年轻人吃不了苦吗？"
+}, {
+    "num": 86,
+    "href": "/question/266230601/answer/351033170",
+    "text": "每个宿舍最早起来的人后来怎么样了呢？"
+}, {
+    "num": 85,
+    "href": "/question/268450915/answer/373615004",
+    "text": "有哪些惊艳了时光的名字？"
+}, {
+    "num": 85,
+    "href": "/question/263509237/answer/326215283",
+    "text": "你可以接受跟性工作者谈恋爱乃至组建家庭吗？"
+}, {
+    "num": 84,
+    "href": "/question/21842476/answer/24177466",
+    "text": "《不能说的秘密》是部好电影吗？"
+}, {
+    "num": 83,
+    "href": "/question/40068553/answer/88516445",
+    "text": "低学历是否比高学历更加会赚钱？"
+}, {
+    "num": 82,
+    "href": "/question/36546814/answer/80647839",
+    "text": "有哪些堪称「神器」，却鲜为人知的软件/网站/互联网服务？"
+}, {
+    "num": 81,
+    "href": "/question/33449950/answer/61727365",
+    "text": "有哪些你第一眼看到就爱上的句子？"
+}, {
+    "num": 81,
+    "href": "/question/68656031/answer/386135806",
+    "text": "出国后，你有哪些既有认知被打破？"
+}, {
+    "num": 81,
+    "href": "/question/20296247/answer/29370489",
+    "text": "数学里的 e 为什么叫做自然底数？是不是自然界里什么东西恰好是 e？"
+}, {
+    "num": 78,
+    "href": "/question/48442985/answer/112197685",
+    "text": "在交通工具上靠着陌生人的肩膀睡着了或是被陌生人靠着肩膀睡着了是怎样一种体验？"
+}, {
+    "num": 78,
+    "href": "/question/28409136/answer/40799569",
+    "text": "就 2015 年初而言，国人的审美大体处于一个什么样的水平？"
+}, {
+    "num": 78,
+    "href": "/question/25527623/answer/171351489",
+    "text": "女生被外科男医生检查肛门，觉得难堪心里过不去坎怎么办？"
+}, {
+    "num": 78,
+    "href": "/question/268163243/answer/521225474",
+    "text": "你最欣赏的性格是什么样的？"
+}, {
+    "num": 76,
+    "href": "/question/267346432/answer/426452693",
+    "text": "学霸的作息时间是怎么样的？为什么不会困？"
+}, {
+    "num": 76,
+    "href": "/question/29173647/answer/437189494",
+    "text": "有哪些极简主义的头像？"
+}, {
+    "num": 74,
+    "href": "/question/36260262/answer/67686600",
+    "text": "如果神话传说都是真的，世界会变成什么样子？"
+}, {
+    "num": 74,
+    "href": "/question/20894671/answer/30171083",
+    "text": "日常生活中有哪些十分钟就能学会并可以终生受用的技能？"
+}, {
+    "num": 74,
+    "href": "/question/264619647/answer/350106709",
+    "text": "你在什么时候曾觉得自己认识的那个人很恐怖或者厉害得可怕？"
+}, {
+    "num": 74,
+    "href": "/question/276620696/answer/433193312",
+    "text": "如何评价电影《我不是药神》（Dying to Survive）？"
+}, {
+    "num": 73,
+    "href": "/question/40350229/answer/87428865",
+    "text": "如果800个小时后发生世界大战，你最想怎么做？"
+}, {
+    "num": 73,
+    "href": "/question/21263953/answer/17757062",
+    "text": "医生为什么不搭理未挂号的病人？"
+}, {
+    "num": 72,
+    "href": "/question/22292474/answer/54177203",
+    "text": "哪些实用的小方法、小技巧、好习惯能让人每天进步？"
+}, {
+    "num": 72,
+    "href": "/question/21368231/answer/90497581",
+    "text": "自控力极差的人如何自救？"
+}, {
+    "num": 71,
+    "href": "/question/37206525/answer/72868899",
+    "text": "有没有一部电影让你在深夜中痛哭？"
+}, {
+    "num": 71,
+    "href": "/question/265531388/answer/296452515",
+    "text": "你遇到过哪些「赤裸裸暴露人性」的事情？"
+}, {
+    "num": 71,
+    "href": "/question/27647963/answer/506674240",
+    "text": "头被砍掉的一刹那，是头觉得身体掉了，还是身体觉得头掉了？"
+}, {
+    "num": 70,
+    "href": "/question/41372112/answer/103991529",
+    "text": "有哪些写出来让人尴尬到脸酸的文章或段子？"
+}, {
+    "num": 70,
+    "href": "/question/32300010/answer/55860776",
+    "text": "在大学里怎样保持饱满的精神状态？"
+}, {
+    "num": 70,
+    "href": "/question/278526058/answer/494222764",
+    "text": "男大学生寝室的关系可以可怕到什么程度？"
+}, {
+    "num": 70,
+    "href": "/question/46711189/answer/107370444",
+    "text": "你听到过或写下过最漂亮的一句话是什么？"
+}, {
+    "num": 70,
+    "href": "/question/37098794/answer/261210273",
+    "text": "你导师是如何嫌弃你的？"
+}, {
+    "num": 69,
+    "href": "/question/273953130/answer/373495242",
+    "text": "表白成功的下一刻，应该做什么？"
+}, {
+    "num": 69,
+    "href": "/question/266105379/answer/489898205",
+    "text": "在美国千万别做什么?"
+}, {
+    "num": 69,
+    "href": "/question/37093377/answer/206623816",
+    "text": "穷养的女孩和富养的女孩的区别在哪？"
+}, {
+    "num": 69,
+    "href": "/question/264918610/answer/428768644",
+    "text": "你见过哪些父母惊艳到你的教育？"
+}, {
+    "num": 69,
+    "href": "/question/37284137/answer/81159319",
+    "text": "你见过最丑的设计是什么？"
+}, {
+    "num": 68,
+    "href": "/question/22316395/answer/100909780",
+    "text": "如何用保险保障自己的一生？"
+}, {
+    "num": 68,
+    "href": "/question/20230755/answer/145582359",
+    "text": "为什么会有回光返照？"
+}, {
+    "num": 67,
+    "href": "/question/20687290/answer/15853608",
+    "text": "没有锻炼基础的人，如何增肌与减脂？"
+}, {
+    "num": 67,
+    "href": "/question/280038593/answer/460249954",
+    "text": "你习惯用支付宝还是微信支付？"
+}, {
+    "num": 67,
+    "href": "/question/62900700/answer/207142790",
+    "text": "你的大学都有过哪些惊为天人的人物？"
+}, {
+    "num": 67,
+    "href": "/question/33795805/answer/476396033",
+    "text": "你见过父母有哪些强盗逻辑？"
+}, {
+    "num": 67,
+    "href": "/question/51459956/answer/258679498",
+    "text": "你知道的最冷的冷知识是什么？"
+}, {
+    "num": 67,
+    "href": "/question/30736289/answer/49652491",
+    "text": "在学校门口卖铁板鱿鱼的大二女生，以后会有什么发展？"
+}, {
+    "num": 67,
+    "href": "/question/57848662/answer/322346128",
+    "text": "如何评价电影《红海行动》？"
+}, {
+    "num": 67,
+    "href": "/question/264877099/answer/286324558",
+    "text": "如何看待李小璐在 PG One 家里过夜？"
+}, {
+    "num": 66,
+    "href": "/question/19552586/answer/83906685",
+    "text": "最适合在办公室吃的零食是什么？"
+}, {
+    "num": 66,
+    "href": "/question/24399575/answer/84674422",
+    "text": "有哪些价格不贵格调又高的家装家居？"
+}, {
+    "num": 66,
+    "href": "/question/31476726/answer/52484181",
+    "text": "你的手机上有哪些有意思的 APP ？"
+}, {
+    "num": 66,
+    "href": "/question/263357735/answer/271223987",
+    "text": "如何看待 B 站视频揭秘卢本伟《绝地求生》开挂，被卢本伟寄律师函以“告上法庭”恐吓？"
+}, {
+    "num": 66,
+    "href": "/question/50343728/answer/407127160",
+    "text": "你有什么值得分享的高效学习方法？"
+}, {
+    "num": 66,
+    "href": "/question/22085688/answer/22534419",
+    "text": "如何在一个月内通过大学英语四级、大学英语六级考试？"
+}, {
+    "num": 66,
+    "href": "/question/36084748/answer/66263268",
+    "text": "你有哪些特别的生存法则？"
+}, {
+    "num": 65,
+    "href": "/question/271184234/answer/465632979",
+    "text": "为什么一些人只使用 QQ 而不使用微信？"
+}, {
+    "num": 65,
+    "href": "/question/50200915/answer/120480636",
+    "text": "有文化可以有多可怕？"
+}, {
+    "num": 65,
+    "href": "/question/22213153/answer/193941111",
+    "text": "年轻时得了绝症或大病是如何面对的？"
+}, {
+    "num": 65,
+    "href": "/question/37455810/answer/322704508",
+    "text": "童年阴影真的会相随一生吗？"
+}, {
+    "num": 64,
+    "href": "/question/28029257/answer/115900560",
+    "text": "与网络卖家发生纠纷后如何解决？"
+}, {
+    "num": 64,
+    "href": "/question/269990788/answer/351585697",
+    "text": "如何看待王宝强亲自领金扫帚奖？"
+}, {
+    "num": 63,
+    "href": "/question/39382862/answer/82185549",
+    "text": "六小龄童演的孙悟空真的好吗？好在哪里？"
+}, {
+    "num": 63,
+    "href": "/question/19574354/answer/241983837",
+    "text": "窦唯目前在干什么？"
+}, {
+    "num": 63,
+    "href": "/question/27702564/answer/41500687",
+    "text": "每天坚持英语学习为什么还是学不好？"
+}, {
+    "num": 62,
+    "href": "/question/58896903/answer/293994868",
+    "text": "现在的男生为什么不追求女生？"
+}, {
+    "num": 62,
+    "href": "/question/60182144/answer/372509566",
+    "text": "你高中哪一个瞬间最可怕？"
+}, {
+    "num": 61,
+    "href": "/question/34496321/answer/63561878",
+    "text": "女生光头是种什么体验？"
+}, {
+    "num": 61,
+    "href": "/question/35781319/answer/68089288",
+    "text": "喜欢宅的人，如何把家里装修成全世界最舒服的地方？"
+}, {
+    "num": 61,
+    "href": "/question/22918070/answer/62468647",
+    "text": "女生如何健身练出好身材？"
+}, {
+    "num": 61,
+    "href": "/question/268530159/answer/381967521",
+    "text": "一线歌手之间的唱功真的有差距吗？从哪些方面可以看出来？"
+}, {
+    "num": 61,
+    "href": "/question/268450915/answer/425239926",
+    "text": "有哪些惊艳了时光的名字？"
+}, {
+    "num": 61,
+    "href": "/question/30040201/answer/46534546",
+    "text": "为什么日本这样的小国家当年强大到可以侵华？"
+}, {
+    "num": 61,
+    "href": "/question/22590902/answer/55182189",
+    "text": "如何白手起家挣到一百万？"
+}, {
+    "num": 60,
+    "href": "/question/26927514/answer/50373040",
+    "text": "月生活费 800 的女大学生如何在保证三餐不受影响的情况下提升自己的着装搭配和品味？"
+}, {
+    "num": 60,
+    "href": "/question/25106944/answer/306520790",
+    "text": "微信朋友圈中有哪些行为或做法显得特别 low?"
+}, {
+    "num": 60,
+    "href": "/question/54104076/answer/144092579",
+    "text": "手机里你最不舍得删掉的一张照片是什么？"
+}, {
+    "num": 60,
+    "href": "/question/263398393/answer/269329988",
+    "text": "你心目中有哪些实力的演员也适合花木兰这个角色？"
+}, {
+    "num": 60,
+    "href": "/question/58896903/answer/299745591",
+    "text": "现在的男生为什么不追求女生？"
+}, {
+    "num": 60,
+    "href": "/question/48040579/answer/154436187",
+    "text": "有什么相见恨晚的背单词方法？"
+}, {
+    "num": 60,
+    "href": "/question/269575911/answer/372282921",
+    "text": "你手机里最舍不得删的那张照片有什么故事?"
+}, {
+    "num": 60,
+    "href": "/question/41365485/answer/296571058",
+    "text": "有哪些典型的「学生思维」？"
+}, {
+    "num": 60,
+    "href": "/question/275612174/answer/392707691",
+    "text": "你有哪些给女孩子在谈恋爱中的忠告？"
+}, {
+    "num": 59,
+    "href": "/question/33511209/answer/456060156",
+    "text": "在健身房，你最讨厌什么样的人？"
+}, {
+    "num": 59,
+    "href": "/question/21223279/answer/27324884",
+    "text": "为什么中国男足踢不好？"
+}, {
+    "num": 59,
+    "href": "/question/33220674/answer/57958313",
+    "text": "我们是怎样一步步地走向平庸的？"
+}, {
+    "num": 59,
+    "href": "/question/298688205/answer/528647866",
+    "text": "人类有没有可能是被设计出来的？"
+}, {
+    "num": 59,
+    "href": "/question/30150181/answer/52283893",
+    "text": "被传销洗脑是怎样的过程？"
+}, {
+    "num": 59,
+    "href": "/question/268167592/answer/344605994",
+    "text": "派出所接过哪些奇怪的报警？"
+}, {
+    "num": 59,
+    "href": "/question/28589066/answer/119286221",
+    "text": "若歹徒当面强奸女友，我该如何应对？"
+}, {
+    "num": 59,
+    "href": "/question/37098794/answer/250635252",
+    "text": "你导师是如何嫌弃你的？"
+}, {
+    "num": 58,
+    "href": "/question/27936753/answer/81327730",
+    "text": "有哪些相貌平凡的人穿出衣服品味的例子？"
+}, {
+    "num": 58,
+    "href": "/question/26784045/answer/178802510",
+    "text": "你坚持过哪些细小的好习惯？"
+}, {
+    "num": 58,
+    "href": "/question/19942068/answer/68750999",
+    "text": "网络上有哪些免费的教育资源？"
+}, {
+    "num": 58,
+    "href": "/question/29910774/answer/118618769",
+    "text": "你读过的最让人心酸的句子有哪些？"
+}, {
+    "num": 58,
+    "href": "/question/30178891/answer/100118940",
+    "text": "有哪些让人欲罢不能的学习方法？"
+}, {
+    "num": 58,
+    "href": "/question/28358499/answer/43002343",
+    "text": "如何长时间高效学习？"
+}, {
+    "num": 58,
+    "href": "/question/29357990/answer/44260471",
+    "text": "如何看待 36 岁清华毕业 IT 男马桶上猝死，死前对母亲说「太累」？"
+}, {
+    "num": 58,
+    "href": "/question/41899403/answer/333033632",
+    "text": "一个父亲每月要赚多少钱，才能撑起一个家？"
+}, {
+    "num": 58,
+    "href": "/question/273776303/answer/370885085",
+    "text": "你听过或经历过的最神奇的工伤是什么？"
+}, {
+    "num": 57,
+    "href": "/question/51976252/answer/159702151",
+    "text": "你在最饿时曾饥不择食吃过什么？"
+}, {
+    "num": 57,
+    "href": "/question/21894570/answer/38320902",
+    "text": "为什么美剧比大部分国产剧好看？"
+}, {
+    "num": 57,
+    "href": "/question/64501030/answer/341511773",
+    "text": "经常看书的人和不看书的人有什么区别？"
+}, {
+    "num": 57,
+    "href": "/question/43607087/answer/321913371",
+    "text": "人是怎么废掉的？"
+}, {
+    "num": 57,
+    "href": "/question/264868038/answer/309040682",
+    "text": "你在大学时期，遇到过最可怕的瞬间是什么？"
+}, {
+    "num": 57,
+    "href": "/question/51459956/answer/203336196",
+    "text": "你知道的最冷的冷知识是什么？"
+}, {
+    "num": 56,
+    "href": "/question/21423568/answer/29751744",
+    "text": "如何布置独居小房间能惬意地生活？"
+}, {
+    "num": 56,
+    "href": "/question/27391031/answer/93252048",
+    "text": "怎么花最少的钱提升出租屋的格调？"
+}, {
+    "num": 56,
+    "href": "/question/276620328/answer/439987712",
+    "text": "有没有什么歌曲让你感慨「还有这种唱法！」？"
+}, {
+    "num": 56,
+    "href": "/question/28544155/answer/101257372",
+    "text": "你是如何转行的？转行容易吗？"
+}, {
+    "num": 56,
+    "href": "/question/68428279/answer/312089661",
+    "text": "哪一瞬间让你觉得情商高真的很重要？"
+}, {
+    "num": 56,
+    "href": "/question/301130190/answer/524173967",
+    "text": "如何看待 iG 3:0 击败 FNC 夺得 LPL 首个 S 赛世界冠军？"
+}, {
+    "num": 55,
+    "href": "/question/20872048/answer/40045720",
+    "text": "男生如何学习服装搭配？"
+}, {
+    "num": 55,
+    "href": "/question/59143980/answer/168192781",
+    "text": "为什么《摔跤吧！爸爸》争议这么大？"
+}, {
+    "num": 55,
+    "href": "/question/21260723/answer/29561931",
+    "text": "昆虫为什么不会因趋光性齐刷刷地奔向太阳？"
+}, {
+    "num": 55,
+    "href": "/question/29077330/answer/104811817",
+    "text": "你收养的流浪动物与最初进门时相比有了哪些变化？"
+}, {
+    "num": 55,
+    "href": "/question/27194444/answer/35878860",
+    "text": "被人痛骂之后如何调整好情绪？"
+}, {
+    "num": 54,
+    "href": "/question/19647535/answer/58268748",
+    "text": "旅行时如何拍出不那么「到此一游」的照片？"
+}, {
+    "num": 54,
+    "href": "/question/36131029/answer/433340445",
+    "text": "便宜的衣服比贵的衣服差很多吗？"
+}, {
+    "num": 54,
+    "href": "/question/35070138/answer/117015535",
+    "text": "关于孤独，什么样的描述最能引起你的共鸣？"
+}, {
+    "num": 54,
+    "href": "/question/36925599/answer/88598775",
+    "text": "有哪些2000年初（2000~2005 年）看似不靠谱的预测成真了？"
+}, {
+    "num": 54,
+    "href": "/question/37284137/answer/80921941",
+    "text": "你见过最丑的设计是什么？"
+}, {
+    "num": 54,
+    "href": "/question/276560947/answer/387818917",
+    "text": "如何看待《爱情公寓》电影关谷和展博两角色未登场？"
+}, {
+    "num": 54,
+    "href": "/question/266048311/answer/392347685",
+    "text": "印象中什么时候你对中国电影、电视剧最失望？"
+}, {
+    "num": 53,
+    "href": "/question/290565048/answer/481789908",
+    "text": "「侣行」夫妇（张昕宇、梁红）花了一亿人民币环球旅行有意义吗？"
+}, {
+    "num": 53,
+    "href": "/question/31764327/answer/54133212",
+    "text": "可以在网上买书赶紧看完然后再退掉吗？"
+}, {
+    "num": 53,
+    "href": "/question/21100397/answer/29424643",
+    "text": "如何才能拍出一张特别好看的自拍照？"
+}, {
+    "num": 53,
+    "href": "/question/30994199/answer/51731600",
+    "text": "有哪些好看的负能量电影？"
+}, {
+    "num": 53,
+    "href": "/question/265407029/answer/296502094",
+    "text": "一个人智商高有多可怕？"
+}, {
+    "num": 53,
+    "href": "/question/28594126/answer/288800459",
+    "text": "长时间坚持健身能在一定程度上改变容貌吗？"
+}, {
+    "num": 53,
+    "href": "/question/32189846/answer/114349214",
+    "text": "有哪些外行人看来很蠢的设计实际上却是精妙无比？"
+}, {
+    "num": 52,
+    "href": "/question/31775843/answer/388479324",
+    "text": "女孩子被富养是怎样的感受？"
+}, {
+    "num": 52,
+    "href": "/question/279247693/answer/458731300",
+    "text": "你手机中最舍不得删的一段视频是什么？"
+}, {
+    "num": 52,
+    "href": "/question/35793109/answer/313915390",
+    "text": "历史上有哪些仿佛开过挂的人？"
+}, {
+    "num": 52,
+    "href": "/question/52148525/answer/130145521",
+    "text": "你认识的遭遇性侵犯的人后来怎样了？"
+}, {
+    "num": 52,
+    "href": "/question/37018317/answer/70366425",
+    "text": "一个人心理成熟的具体表现都有哪些？"
+}, {
+    "num": 51,
+    "href": "/question/22467582/answer/53495841",
+    "text": "有哪些很重要又被忽视的炒菜技巧？"
+}, {
+    "num": 51,
+    "href": "/question/280038593/answer/459366317",
+    "text": "你习惯用支付宝还是微信支付？"
+}, {
+    "num": 51,
+    "href": "/question/24545277/answer/461774398",
+    "text": "熬夜快感的本质是什么？"
+}, {
+    "num": 50,
+    "href": "/question/26702926/answer/33843851",
+    "text": "淘宝上买衣服，怎么买出质量，穿出品位？"
+}, {
+    "num": 50,
+    "href": "/question/293315890/answer/487981071",
+    "text": "到目前为止，你做过的最骚的操作是什么？"
+}, {
+    "num": 50,
+    "href": "/question/25303181/answer/30527293",
+    "text": "唱歌时候的气息如何练习？"
+}, {
+    "num": 50,
+    "href": "/question/21321799/answer/18329036",
+    "text": "为什么《董小姐》里「爱上一匹野马，可我的家里没有草原」会引起如此强烈的共鸣？"
+}, {
+    "num": 49,
+    "href": "/question/26391310/answer/344701422",
+    "text": "女生一个人去印度自由行一个月左右可行吗？"
+}, {
+    "num": 49,
+    "href": "/question/34565860/answer/372185072",
+    "text": "有什么生活小玩意原来没用过，用过之后就停不了的？"
+}, {
+    "num": 49,
+    "href": "/question/31027404/answer/89636908",
+    "text": "通过跑步瘦下来是种怎样的体验？"
+}, {
+    "num": 49,
+    "href": "/question/266105379/answer/307776394",
+    "text": "在美国千万别做什么?"
+}, {
+    "num": 49,
+    "href": "/question/35103080/answer/397870811",
+    "text": "超强的学习能力是怎样练就的？"
+}, {
+    "num": 49,
+    "href": "/question/47194806/answer/416865001",
+    "text": "你们高考当天发生了什么有趣的事？"
+}, {
+    "num": 49,
+    "href": "/question/263525664/answer/375303793",
+    "text": "有哪些「985 学生知道了会流泪，211 学生知道了会沉默」 的残酷现实？"
+}, {
+    "num": 49,
+    "href": "/question/38166506/answer/75300925",
+    "text": "有哪些在发达国家很普遍，在中国却行不通的商业模式？"
+}, {
+    "num": 49,
+    "href": "/question/24114669/answer/26849139",
+    "text": "如何系统地学习股市？"
+}, {
+    "num": 49,
+    "href": "/question/265892704/answer/303311382",
+    "text": "如果为了不被饿死开始吃自己，从哪块肉开始下手影响最小？"
+}, {
+    "num": 49,
+    "href": "/question/28594126/answer/41402690",
+    "text": "长时间坚持健身能在一定程度上改变容貌吗？"
+}, {
+    "num": 48,
+    "href": "/question/22716525/answer/22778058",
+    "text": "很瘦的人该制定怎样的健身计划？"
+}, {
+    "num": 48,
+    "href": "/question/21396519/answer/33361101",
+    "text": "为什么《黑猫警长》五集后就停播了？"
+}, {
+    "num": 48,
+    "href": "/question/35103080/answer/414223605",
+    "text": "超强的学习能力是怎样练就的？"
+}, {
+    "num": 48,
+    "href": "/question/268009004/answer/388911648",
+    "text": "你听过小孩说的最可怕的话是什么？"
+}, {
+    "num": 48,
+    "href": "/question/22638720/answer/22792536",
+    "text": "中国有哪些逆天的文物？"
+}, {
+    "num": 48,
+    "href": "/question/52178718/answer/135219904",
+    "text": "25 岁做什么，可在 5 年后受益匪浅？"
+}, {
+    "num": 48,
+    "href": "/question/273581547/answer/369430589",
+    "text": "中兴通讯被美国商务部下达出口禁止令，会对其本身和行业产生多大的影响？"
+}, {
+    "num": 47,
+    "href": "/question/38054671/answer/74696190",
+    "text": "有什么经济学技巧可以用于日常购物？"
+}, {
+    "num": 47,
+    "href": "/question/265200695/answer/291786131",
+    "text": "PG ONE 会像薛之谦一样翻身吗？"
+}, {
+    "num": 47,
+    "href": "/question/270419920/answer/354941605",
+    "text": "如何看待不小心撕了男朋友一套游戏王卡组，男朋友要求分手的行为？"
+}, {
+    "num": 47,
+    "href": "/question/269575911/answer/350236462",
+    "text": "你手机里最舍不得删的那张照片有什么故事?"
+}, {
+    "num": 47,
+    "href": "/question/267925961/answer/419846231",
+    "text": "什么操作称得上「绝杀」，可以用视频分享吗？"
+}, {
+    "num": 47,
+    "href": "/question/299320524/answer/514988133",
+    "text": "如何看待英雄联盟 S8 八强赛 RNG 2:3 不敌 G2？"
+}, {
+    "num": 47,
+    "href": "/question/65982807/answer/343402822",
+    "text": "一家人长得都很好看是一种什么样的体验？"
+}, {
+    "num": 47,
+    "href": "/question/301459876/answer/525937106",
+    "text": "所谓厉害的人，遇到问题时的思维模式与我们的差别在哪？"
+}, {
+    "num": 46,
+    "href": "/question/27897924/answer/66071782",
+    "text": "《水浒传》好在哪里？"
+}, {
+    "num": 46,
+    "href": "/question/30062423/answer/99415545",
+    "text": "有哪些「一张照片，就是一个故事」的照片？"
+}, {
+    "num": 46,
+    "href": "/question/271135885/answer/363081609",
+    "text": "日本人知道自己被称为「日本鬼子」、「鬼子」、「小日本」吗？"
+}, {
+    "num": 46,
+    "href": "/question/266933152/answer/329078571",
+    "text": "人类可以文明到什么程度？"
+}, {
+    "num": 46,
+    "href": "/question/36246233/answer/68946674",
+    "text": "做客孩子临走时带走几只玩具，我的孩子抗拒并一直哭，要怎么开导？"
+}, {
+    "num": 46,
+    "href": "/question/25023733/answer/57275132",
+    "text": "「学霸变学渣」和「学渣变学霸」分别是怎样的一番体验？"
+}, {
+    "num": 46,
+    "href": "/question/36828401/answer/300591641",
+    "text": "你高中时做过的最热血的事情是什么？"
+}, {
+    "num": 46,
+    "href": "/question/20354735/answer/119192006",
+    "text": "有哪些不起眼却非常赚钱的行业？"
+}, {
+    "num": 46,
+    "href": "/question/291804959/answer/477609569",
+    "text": "如何看待温州乐清 20 岁女生乘坐滴滴顺风车遇害 ？是否反映出客服系统存在问题？"
+}, {
+    "num": 46,
+    "href": "/question/24906516/answer/429275823",
+    "text": "中国禁毒力度很大吗？"
+}, {
+    "num": 45,
+    "href": "/question/34979179/answer/87656581",
+    "text": "野球场上，你见过最装逼的是什么？"
+}, {
+    "num": 45,
+    "href": "/question/266536582/answer/326103481",
+    "text": "部分女生为什么会答应男摄拍私房？"
+}, {
+    "num": 45,
+    "href": "/question/36336562/answer/422754000",
+    "text": "你见过最假、最差劲的图片处理是什么样的？"
+}, {
+    "num": 45,
+    "href": "/question/60182144/answer/378462482",
+    "text": "你高中哪一个瞬间最可怕？"
+}, {
+    "num": 45,
+    "href": "/question/21949948/answer/484064267",
+    "text": "打招呼用 Hello 跟用 Hi 或者用 Hey 的区别是什么？"
+}, {
+    "num": 45,
+    "href": "/question/22508677/answer/141334678",
+    "text": "编程到底难在哪里？"
+}, {
+    "num": 45,
+    "href": "/question/27202369/answer/74330560",
+    "text": "男人会娶没有生育能力的女生吗？"
+}, {
+    "num": 45,
+    "href": "/question/38300001/answer/76336850",
+    "text": "如何看待渔民帮捞尸体要 1.8 万？"
+}, {
+    "num": 45,
+    "href": "/question/23061038/answer/402960268",
+    "text": "「不要相信歌词，他们为了押韵什么都做得出来」的例子有哪些？"
+}, {
+    "num": 44,
+    "href": "/question/274851168/answer/384704004",
+    "text": "你在星巴克有哪些神奇的发现？"
+}, {
+    "num": 44,
+    "href": "/question/271184234/answer/385604615",
+    "text": "为什么一些人只使用 QQ 而不使用微信？"
+}, {
+    "num": 44,
+    "href": "/question/25528331/answer/76404492",
+    "text": "长城这么矮究竟能拦住什么？"
+}, {
+    "num": 44,
+    "href": "/question/35202781/answer/62733888",
+    "text": "你在刚出国时闹过哪些笑话？"
+}, {
+    "num": 44,
+    "href": "/question/20018541/answer/22893042",
+    "text": "如何评价湖南卫视的《变形计》？"
+}, {
+    "num": 44,
+    "href": "/question/36215808/answer/70140804",
+    "text": "牢狱生活是种什么体验？"
+}, {
+    "num": 44,
+    "href": "/question/41365485/answer/90729115",
+    "text": "有哪些典型的「学生思维」？"
+}, {
+    "num": 44,
+    "href": "/question/24078583/answer/26668990",
+    "text": "游戏里的 BOSS 每天都在干嘛？不寂寞吗？"
+}, {
+    "num": 44,
+    "href": "/question/41899403/answer/93797173",
+    "text": "一个父亲每月要赚多少钱，才能撑起一个家？"
+}, {
+    "num": 43,
+    "href": "/question/26391310/answer/323733471",
+    "text": "女生一个人去印度自由行一个月左右可行吗？"
+}, {
+    "num": 43,
+    "href": "/question/30203908/answer/235363015",
+    "text": "你吃过的最奇葩的食物是什么？"
+}, {
+    "num": 43,
+    "href": "/question/66515446/answer/247755678",
+    "text": "有哪些东西你知道很贵，却不知道居然那么贵？"
+}, {
+    "num": 43,
+    "href": "/question/33573060/answer/141891770",
+    "text": "安检人员曾检查出哪些可怕/奇怪的物品？"
+}, {
+    "num": 43,
+    "href": "/question/49129840/answer/114725143",
+    "text": "哪些歌手的真实性格和他官方人设非常不符？"
+}, {
+    "num": 43,
+    "href": "/question/266066566/answer/313340103",
+    "text": "你闻过最难闻的物质是什么?"
+}, {
+    "num": 42,
+    "href": "/question/22350877/answer/486537023",
+    "text": "聂卫平是谁？在围棋界有多厉害？"
+}, {
+    "num": 42,
+    "href": "/question/33573060/answer/95026285",
+    "text": "安检人员曾检查出哪些可怕/奇怪的物品？"
+}, {
+    "num": 42,
+    "href": "/question/49516344/answer/336848879",
+    "text": "淘宝有哪些店不靠谱？"
+}, {
+    "num": 42,
+    "href": "/question/41035200/answer/89713352",
+    "text": "《疯狂动物城》（Zootopia）中有哪些有趣的细节？"
+}, {
+    "num": 42,
+    "href": "/question/26980854/answer/439772592",
+    "text": "什么是「富人思维」？"
+}, {
+    "num": 42,
+    "href": "/question/26992286/answer/41322427",
+    "text": "为什么要给马钉马掌？"
+}, {
+    "num": 42,
+    "href": "/question/36925599/answer/70766173",
+    "text": "有哪些2000年初（2000~2005 年）看似不靠谱的预测成真了？"
+}, {
+    "num": 42,
+    "href": "/question/267410992/answer/327650349",
+    "text": "你觉得运动员什么时刻真的很了不起？"
+}, {
+    "num": 42,
+    "href": "/question/49630896/answer/117199601",
+    "text": "马蓉和宋喆最有可能是什么下场？"
+}, {
+    "num": 41,
+    "href": "/question/30744932/answer/78796298",
+    "text": "有哪些适合居住一周的旅游小镇？"
+}, {
+    "num": 41,
+    "href": "/question/62179107/answer/437445980",
+    "text": "有哪些让人拍案叫绝的智障设计？"
+}, {
+    "num": 41,
+    "href": "/question/265829482/answer/456949004",
+    "text": "中国音乐圈最令人痛心的一刻是什么时候？"
+}, {
+    "num": 41,
+    "href": "/question/29769850/answer/60368304",
+    "text": "18 岁考上清华北大的本科和 22 岁考上清华北大的硕士，哪个更令人佩服？"
+}, {
+    "num": 41,
+    "href": "/question/25148298/answer/30251778",
+    "text": "那些在北上广深国外打拼的年轻人们，你们的父母怎么办？"
+}, {
+    "num": 41,
+    "href": "/question/37668821/answer/74798607",
+    "text": "拿了投资人的钱却创业失败，在商业圈子里的后果都会有哪些？"
+}, {
+    "num": 41,
+    "href": "/question/19632354/answer/466520841",
+    "text": "经常晚十二点后睡觉到底对身体有多大危害？"
+}, {
+    "num": 41,
+    "href": "/question/64676168/answer/239324761",
+    "text": "有哪些让你觉得「高端的东西就是好」的瞬间？"
+}, {
+    "num": 40,
+    "href": "/question/270171443/answer/352582464",
+    "text": "如何看待张继科和景甜公开恋情？"
+}, {
+    "num": 40,
+    "href": "/question/38485891/answer/76741547",
+    "text": "有哪些好看到让人浑身颤抖、无法自拔、久久不忘的电影？"
+}, {
+    "num": 40,
+    "href": "/question/26992616/answer/49462528",
+    "text": "为什么外国超级英雄趴着飞，而中国神仙竖着飞？"
+}, {
+    "num": 40,
+    "href": "/question/22589329/answer/455709144",
+    "text": "作为儿女应该怎样看待父亲出轨？"
+}, {
+    "num": 40,
+    "href": "/question/37472890/answer/72562397",
+    "text": "花一整夜的时间解一个方程是什么体验？"
+}, {
+    "num": 40,
+    "href": "/question/28271703/answer/294818051",
+    "text": "霍金在物理学科学家中到底有多高的地位？可以和爱因斯坦，牛顿这些人相提并论吗？"
+}, {
+    "num": 40,
+    "href": "/question/21064565/answer/35551492",
+    "text": "如何用通俗的语言来解释「费米悖论」？"
+}, {
+    "num": 40,
+    "href": "/question/28674837/answer/63435604",
+    "text": "三天不吃饭是种怎样的体验？"
+}, {
+    "num": 40,
+    "href": "/question/26606410/answer/463741010",
+    "text": "有哪些脑残的产品设计？"
+}, {
+    "num": 40,
+    "href": "/question/25583089/answer/31575304",
+    "text": "设计师这样的工作，可以做一辈子吗？"
+}, {
+    "num": 40,
+    "href": "/question/276178814/answer/393268677",
+    "text": "有没有那么一瞬间突然有死亡的感觉，突然觉得非常恐惧？"
+}, {
+    "num": 40,
+    "href": "/question/27732400/answer/37862682",
+    "text": "如何评价陈赫离婚？"
+}, {
+    "num": 39,
+    "href": "/question/285945326/answer/463364902",
+    "text": "方便面对身体有什么影响？"
+}, {
+    "num": 39,
+    "href": "/question/63465235/answer/217191284",
+    "text": "面包店是怎么处理当天剩余面包的？"
+}, {
+    "num": 39,
+    "href": "/question/22249299/answer/85020199",
+    "text": "非洲为什么这么穷？"
+}, {
+    "num": 39,
+    "href": "/question/268660866/answer/343250054",
+    "text": "你见过的最神奇的朋友圈是什么？"
+}, {
+    "num": 39,
+    "href": "/question/268679446/answer/464823050",
+    "text": "哪些精彩的打斗片段让你念念不忘？"
+}, {
+    "num": 39,
+    "href": "/question/265120544/answer/474744267",
+    "text": "你最不能理解的网红美食是什么？"
+}, {
+    "num": 39,
+    "href": "/question/35913647/answer/217331679",
+    "text": "哪张照片让你不由地感叹「年轻，真好」 ？"
+}, {
+    "num": 39,
+    "href": "/question/26598476/answer/45396765",
+    "text": "为什么我那个当程序员的男朋友，一直特别想要一个机械键盘？"
+}, {
+    "num": 39,
+    "href": "/question/263813215/answer/273340138",
+    "text": "假如太阳立刻消失了，地球能撑几秒？地球人能撑几秒？"
+}, {
+    "num": 39,
+    "href": "/question/20320900/answer/267258687",
+    "text": "为什么女生有体香？"
+}, {
+    "num": 39,
+    "href": "/question/276488630/answer/458474665",
+    "text": "有哪些知识是你学医之后才知道的？"
+}, {
+    "num": 38,
+    "href": "/question/21354669/answer/70776994",
+    "text": "开炸鸡排店的「水」真的很深吗？"
+}, {
+    "num": 38,
+    "href": "/question/28311266/answer/61603769",
+    "text": "中国的劝酒文化背后的逻辑是什么？"
+}, {
+    "num": 38,
+    "href": "/question/22744751/answer/22473212",
+    "text": "知乎上关于美食的精彩问答有哪些？"
+}, {
+    "num": 38,
+    "href": "/question/19736701/answer/112807409",
+    "text": "《阿甘正传》中的珍妮频频离开阿甘是什么原因？"
+}, {
+    "num": 38,
+    "href": "/question/38130123/answer/131454481",
+    "text": "如何看待《一人我饮酒醉》这样的歌曲，是怎样的一种产物？"
+}, {
+    "num": 38,
+    "href": "/question/20732514/answer/15997386",
+    "text": "知乎上有哪些关于书籍推荐的好问答？"
+}, {
+    "num": 38,
+    "href": "/question/46667028/answer/102445298",
+    "text": "如何看待哔哩哔哩曾承诺永远不加广告，而现在却在加了贴片广告？"
+}, {
+    "num": 38,
+    "href": "/question/264549085/answer/283019193",
+    "text": "2018考研结束，你有什么刻骨铭心的故事？"
+}, {
+    "num": 38,
+    "href": "/question/29194797/answer/43643852",
+    "text": "女性遭遇强奸时如何有效地保留证据？"
+}, {
+    "num": 38,
+    "href": "/question/293090132/answer/484042471",
+    "text": "如何看待知名律师易胜华坐火车和大学生换下铺被拒后发微博感叹世界太过冷漠？"
+}, {
+    "num": 38,
+    "href": "/question/20354735/answer/479284043",
+    "text": "有哪些不起眼却非常赚钱的行业？"
+}, {
+    "num": 38,
+    "href": "/question/293315890/answer/499866676",
+    "text": "到目前为止，你做过的最骚的操作是什么？"
+}, {
+    "num": 38,
+    "href": "/question/48186303/answer/402374620",
+    "text": "数学思维在生活中有多大用处？"
+}, {
+    "num": 38,
+    "href": "/question/20320900/answer/391408712",
+    "text": "为什么女生有体香？"
+}, {
+    "num": 38,
+    "href": "/question/50600301/answer/121746518",
+    "text": "如何看待阿里巴巴安全部门的月饼事件？"
+}, {
+    "num": 38,
+    "href": "/question/31280604/answer/51835324",
+    "text": "认为「只有我完美了，别人才会喜欢我」的想法有什么错误，该怎么解决？"
+}, {
+    "num": 38,
+    "href": "/question/276488630/answer/389630672",
+    "text": "有哪些知识是你学医之后才知道的？"
+}, {
+    "num": 38,
+    "href": "/question/27202369/answer/345151988",
+    "text": "男人会娶没有生育能力的女生吗？"
+}, {
+    "num": 38,
+    "href": "/question/31524027/answer/66112942",
+    "text": "你见过最人性化的设计是什么？"
+}, {
+    "num": 38,
+    "href": "/question/65125008/answer/228781122",
+    "text": "如何看待女员工入职才 3 天就宣布怀孕，产假结束提出辞职？"
+}, {
+    "num": 37,
+    "href": "/question/27786625/answer/369711965",
+    "text": "如何看待大学寝室里挂床帘的做法？"
+}, {
+    "num": 37,
+    "href": "/question/34729669/answer/89574928",
+    "text": "如何看待微信好友让你去给他们的孩子投票的事情？"
+}, {
+    "num": 37,
+    "href": "/question/39322261/answer/80899690",
+    "text": "如何看待百度将「血友病吧」吧主撤掉并售卖贴吧的行为？"
+}, {
+    "num": 37,
+    "href": "/question/37421586/answer/391244152",
+    "text": "医生遇到过哪些「这居然都能死」的病人？"
+}, {
+    "num": 37,
+    "href": "/question/41956302/answer/102533943",
+    "text": "你最意想不到的一笔收入是怎么来的？"
+}, {
+    "num": 37,
+    "href": "/question/27039705/answer/35506915",
+    "text": "刻奇（Kitsch）是什么？如何克服刻奇？"
+}, {
+    "num": 37,
+    "href": "/question/39433085/answer/105671770",
+    "text": "跟抑郁症患者恋爱是什么感受？"
+}, {
+    "num": 37,
+    "href": "/question/278002904/answer/406829305",
+    "text": "为什么说拔罐拔出来的黑紫色印记是毒素呢？"
+}, {
+    "num": 36,
+    "href": "/question/30744932/answer/63609652",
+    "text": "有哪些适合居住一周的旅游小镇？"
+}, {
+    "num": 36,
+    "href": "/question/26039287/answer/32240514",
+    "text": "装修有哪些建议？"
+}, {
+    "num": 36,
+    "href": "/question/31099380/answer/511801959",
+    "text": "为什么四川盆地是中国最重要的“战略备份区”？"
+}, {
+    "num": 36,
+    "href": "/question/64466059/answer/221773265",
+    "text": "如何评价《权力的游戏》第七季第七集 S07E07「The Dragon and the Wolf」?"
+}, {
+    "num": 36,
+    "href": "/question/28309686/answer/441286709",
+    "text": "哪些动画的细节让你觉得「这就是神作的水准」？"
+}, {
+    "num": 36,
+    "href": "/question/28591246/answer/51373690",
+    "text": "读书到底为了什么，读研到底值不值？"
+}, {
+    "num": 36,
+    "href": "/question/19709258/answer/39912178",
+    "text": "雅思要如何准备？"
+}, {
+    "num": 36,
+    "href": "/question/30602857/answer/108081694",
+    "text": "中国的家长有哪些让人难以理解的神逻辑？"
+}, {
+    "num": 36,
+    "href": "/question/284510691/answer/442834793",
+    "text": "皇帝看了垃圾奏折会怎么回复？"
+}, {
+    "num": 36,
+    "href": "/question/26828496/answer/85372720",
+    "text": "为什么我书读得越多，越看不起周围的人？"
+}, {
+    "num": 35,
+    "href": "/question/285945326/answer/464125539",
+    "text": "方便面对身体有什么影响？"
+}, {
+    "num": 35,
+    "href": "/question/274851168/answer/426255801",
+    "text": "你在星巴克有哪些神奇的发现？"
+}, {
+    "num": 35,
+    "href": "/question/60820895/answer/356399404",
+    "text": "你用/买过什么很贵的东西，但是感觉很值？"
+}, {
+    "num": 35,
+    "href": "/question/41380989/answer/91249017",
+    "text": "每天坚持跑步，或者慢跑真正带给你了什么？"
+}, {
+    "num": 35,
+    "href": "/question/38780814/answer/79427294",
+    "text": "章泽天喜欢/欣赏刘强东的什么？"
+}, {
+    "num": 35,
+    "href": "/question/20921841/answer/56549898",
+    "text": "提高手机摄影水平，有什么心得？"
+}, {
+    "num": 35,
+    "href": "/question/29675892/answer/261678580",
+    "text": "你经历过怎样的骗局？"
+}, {
+    "num": 35,
+    "href": "/question/62066590/answer/196586876",
+    "text": "你在火车站或火车上有过哪些难忘的或更新世界观的经历？"
+}, {
+    "num": 35,
+    "href": "/question/38850948/answer/78576944",
+    "text": "医患关系一直恶化下去会怎样？"
+}, {
+    "num": 35,
+    "href": "/question/60843717/answer/188915660",
+    "text": "有哪些大局已定，却又被极限反杀的操作？"
+}, {
+    "num": 35,
+    "href": "/question/26441584/answer/37205255",
+    "text": "「55 度水杯」利用的是什么物理原理？"
+}, {
+    "num": 35,
+    "href": "/question/25569759/answer/146182692",
+    "text": "为什么很多欧洲人和美国人不午睡下午还能满血状态工作？"
+}, {
+    "num": 35,
+    "href": "/question/22843634/answer/89432614",
+    "text": "怎么解读「一个人越炫耀什么，内心就越缺少什么」这句话？"
+}, {
+    "num": 34,
+    "href": "/question/30466809/answer/49942727",
+    "text": "坐趟从北京到莫斯科的列车是一种怎样的体验？"
+}, {
+    "num": 34,
+    "href": "/question/21696230/answer/385712570",
+    "text": "你是明白了哪几个基本原理之后而厨艺大增的？"
+}, {
+    "num": 34,
+    "href": "/question/47536117/answer/179232020",
+    "text": "为什么同样是描写奢侈华美的生活，《小时代》给人很装逼的感觉，而《红楼梦》没有？"
+}, {
+    "num": 34,
+    "href": "/question/29759221/answer/55062331",
+    "text": "一个精英的诞生，家庭因素有多大？"
+}, {
+    "num": 34,
+    "href": "/question/274187314/answer/374357278",
+    "text": "为什么很多夜店都是对女性免费？"
+}, {
+    "num": 34,
+    "href": "/question/274718297/answer/393781247",
+    "text": "银行会如何对待有一亿活期存款的个人客户？"
+}, {
+    "num": 34,
+    "href": "/question/35874887/answer/64938172",
+    "text": "大神们都存着哪些图片以做回复之用？"
+}, {
+    "num": 34,
+    "href": "/question/40852072/answer/425679316",
+    "text": "普通人进豪车店，店员会有什么反应？"
+}, {
+    "num": 34,
+    "href": "/question/279247693/answer/406489937",
+    "text": "你手机中最舍不得删的一段视频是什么？"
+}, {
+    "num": 34,
+    "href": "/question/40035336/answer/84673664",
+    "text": "有没有可能给月球表面都打上蜡，变成一个光溜溜的圆球？如果将其表面都打上蜡，大概需要多少蜡？"
+}, {
+    "num": 34,
+    "href": "/question/25857988/answer/486524056",
+    "text": "请说说你们当初是怎么找到创业的方向的？"
+}, {
+    "num": 34,
+    "href": "/question/35667984/answer/71504751",
+    "text": "减肥对外貌的改变有多大？"
+}, {
+    "num": 34,
+    "href": "/question/29459494/answer/82762875",
+    "text": "中国的校服为什么丑？"
+}, {
+    "num": 34,
+    "href": "/question/263305072/answer/274851043",
+    "text": "什么样子的婚姻让人感到必须要离婚？"
+}, {
+    "num": 34,
+    "href": "/question/303651330/answer/539543337",
+    "text": "如何评价独立音乐人花粥遭大学老师批评《盗将行》的歌词「狗屁不通」一事？"
+}, {
+    "num": 33,
+    "href": "/question/31092804/answer/141402430",
+    "text": "从事食品行业和餐饮行业的人，不会去吃哪些食品？"
+}, {
+    "num": 33,
+    "href": "/question/66515446/answer/243798096",
+    "text": "有哪些东西你知道很贵，却不知道居然那么贵？"
+}, {
+    "num": 33,
+    "href": "/question/27991444/answer/40656161",
+    "text": "为什么 2015 年初，上海有卫计委官员呼吁大家生二胎？"
+}, {
+    "num": 33,
+    "href": "/question/30844773/answer/402367766",
+    "text": "苏炳添把头发剃光可以快多少？"
+}, {
+    "num": 33,
+    "href": "/question/268882069/answer/343565314",
+    "text": "女朋友想要iPhoneX，我该怎么做？"
+}, {
+    "num": 33,
+    "href": "/question/36336562/answer/321536292",
+    "text": "你见过最假、最差劲的图片处理是什么样的？"
+}, {
+    "num": 33,
+    "href": "/question/265872057/answer/373403843",
+    "text": "医生和护士可以把外卖叫到医院来吃吗？"
+}, {
+    "num": 33,
+    "href": "/question/58299296/answer/172838255",
+    "text": "月入6000，要还4500房贷，却渴望每天吃日料，两者可以均衡吗？"
+}, {
+    "num": 33,
+    "href": "/question/36948523/answer/86942426",
+    "text": "一个人吃火锅是一种什么样的体验？"
+}, {
+    "num": 33,
+    "href": "/question/21231158/answer/82563588",
+    "text": "小孩被同龄小孩打，家长是否应该教育孩子打回去？"
+}, {
+    "num": 33,
+    "href": "/question/50608844/answer/410199592",
+    "text": "有哪些不经意拍出的惊艳照片？"
+}, {
+    "num": 33,
+    "href": "/question/20003900/answer/382087561",
+    "text": "历史上有哪些疑似穿越者？理由是什么？"
+}, {
+    "num": 33,
+    "href": "/question/62006185/answer/369403733",
+    "text": "你在面试时见过最奇葩的事情是什么？"
+}, {
+    "num": 33,
+    "href": "/question/293090132/answer/484019531",
+    "text": "如何看待知名律师易胜华坐火车和大学生换下铺被拒后发微博感叹世界太过冷漠？"
+}, {
+    "num": 33,
+    "href": "/question/29503919/answer/410918738",
+    "text": "为什么不用哈士奇当警犬？"
+}, {
+    "num": 33,
+    "href": "/question/40117062/answer/102834972",
+    "text": "你因为睡觉太死错过什么重要的事情？"
+}, {
+    "num": 33,
+    "href": "/question/31637529/answer/54173168",
+    "text": "有什么道理是开始注重外表几年后才能悟出来的？"
+}, {
+    "num": 33,
+    "href": "/question/27325912/answer/69427301",
+    "text": "哪些纪录片让你开阔眼界、增长见识？"
+}, {
+    "num": 33,
+    "href": "/question/30770284/answer/123653776",
+    "text": "网易云音乐有哪些值得收藏的歌单？"
+}, {
+    "num": 32,
+    "href": "/question/21190731/answer/39277876",
+    "text": "如何煎出完美的鸡蛋？"
+}, {
+    "num": 32,
+    "href": "/question/20770272/answer/37771285",
+    "text": "如何变成有趣的人？"
+}, {
+    "num": 32,
+    "href": "/question/282331322/answer/427963995",
+    "text": "你见过最逼真、最极致的图片处理是什么样的？"
+}, {
+    "num": 32,
+    "href": "/question/268679446/answer/343895348",
+    "text": "哪些精彩的打斗片段让你念念不忘？"
+}, {
+    "num": 32,
+    "href": "/question/40500121/answer/204544589",
+    "text": "有哪些「小时候不以为意，长大后细思恐极」的影视情节？"
+}, {
+    "num": 32,
+    "href": "/question/267850742/answer/333966275",
+    "text": "什么音乐歌曲你听着听着就哭了？"
+}, {
+    "num": 32,
+    "href": "/question/286897013/answer/500730421",
+    "text": "《小猪佩奇》为什么会火？与以前的优秀国产动画比较如何？"
+}, {
+    "num": 32,
+    "href": "/question/274188233/answer/378766811",
+    "text": "你们烦不烦「小猪佩奇」？"
+}, {
+    "num": 32,
+    "href": "/question/37104257/answer/109662392",
+    "text": "如何装逼装得别人一愣一愣的？"
+}, {
+    "num": 32,
+    "href": "/question/57260850/answer/330462345",
+    "text": "如何一针见血地彻底击溃熊孩子和熊家长？"
+}, {
+    "num": 32,
+    "href": "/question/68666119/answer/365326419",
+    "text": "四十岁还打游戏的人的生活状态是什么样子？"
+}, {
+    "num": 32,
+    "href": "/question/65982807/answer/293400826",
+    "text": "一家人长得都很好看是一种什么样的体验？"
+}, {
+    "num": 32,
+    "href": "/question/27986261/answer/336219315",
+    "text": "在只有一个人上班的公司里工作是怎样的体验？"
+}, {
+    "num": 32,
+    "href": "/question/277656808/answer/444371954",
+    "text": "为什么大家都说孕妇不能吃凉的？"
+}, {
+    "num": 32,
+    "href": "/question/31524027/answer/66129572",
+    "text": "你见过最人性化的设计是什么？"
+}, {
+    "num": 32,
+    "href": "/question/51235355/answer/383022540",
+    "text": "大学老师做的 PPT 为什么普遍难看毫无美感？"
+}, {
+    "num": 31,
+    "href": "/question/24399575/answer/67850935",
+    "text": "有哪些价格不贵格调又高的家装家居？"
+}, {
+    "num": 31,
+    "href": "/question/21700610/answer/19208322",
+    "text": "中国房价高企真的是因为刚需吗？"
+}, {
+    "num": 31,
+    "href": "/question/31434037/answer/94388078",
+    "text": "有一个热爱健身的女朋友是怎样的体验？"
+}, {
+    "num": 31,
+    "href": "/question/20637394/answer/18836479",
+    "text": "「三只松鼠」为什么发展这么快？采取了哪些营销策略？"
+}, {
+    "num": 31,
+    "href": "/question/35519508/answer/63534960",
+    "text": "iPhone 在中国为什么这么火？"
+}, {
+    "num": 31,
+    "href": "/question/37271601/answer/72091183",
+    "text": "有哪些「看似复杂，实则简单」的PS技巧？"
+}, {
+    "num": 31,
+    "href": "/question/27004700/answer/34955464",
+    "text": "如何系统性学习摄影后期调色？"
+}, {
+    "num": 31,
+    "href": "/question/287198029/answer/523568223",
+    "text": "吴亦凡的说唱 rap 水平到底如何？"
+}, {
+    "num": 31,
+    "href": "/question/39463086/answer/83930400",
+    "text": "有哪些搞笑的弹幕？"
+}, {
+    "num": 31,
+    "href": "/question/29629426/answer/46365133",
+    "text": "提车了，下一步需要做什么？"
+}, {
+    "num": 31,
+    "href": "/question/263824222/answer/298820676",
+    "text": "你和导师之间发生过哪些有趣的事？"
+}, {
+    "num": 31,
+    "href": "/question/263824222/answer/306699403",
+    "text": "你和导师之间发生过哪些有趣的事？"
+}, {
+    "num": 31,
+    "href": "/question/34401174/answer/396372403",
+    "text": "有哪些是同一个人而颜值相差甚远的照片？"
+}, {
+    "num": 31,
+    "href": "/question/30130754/answer/48982383",
+    "text": "苏轼被神化了吗？有哪些例子可看出苏轼仍是「凡人」？"
+}, {
+    "num": 31,
+    "href": "/question/30571237/answer/51202191",
+    "text": "历史上有哪些「点错技能树」的例子？"
+}, {
+    "num": 31,
+    "href": "/question/64028409/answer/227457213",
+    "text": "面试的时候，销售经理让你把一瓶矿泉水卖 300 元，你会怎么应对？"
+}, {
+    "num": 31,
+    "href": "/question/32422838/answer/55775344",
+    "text": "怎么写出一本程序员风格的修真小说？"
+}, {
+    "num": 31,
+    "href": "/question/270343200/answer/360555808",
+    "text": "人类生理上有什么不合理之处？"
+}, {
+    "num": 31,
+    "href": "/question/67669270/answer/392838765",
+    "text": "有没有什么动物是因为自己的愚蠢而死的？"
+}, {
+    "num": 31,
+    "href": "/question/52707261/answer/131731754",
+    "text": "吃一小勺电子会怎么样？"
+}, {
+    "num": 31,
+    "href": "/question/29173647/answer/445124929",
+    "text": "有哪些极简主义的头像？"
+}, {
+    "num": 31,
+    "href": "/question/37502508/answer/85889553",
+    "text": "怎么才能使粉色看起来非常硬汉？"
+}, {
+    "num": 31,
+    "href": "/question/23436237/answer/42001758",
+    "text": "为儿子以后泡妞着想，应该让他学吉他还是学钢琴？"
+}, {
+    "num": 30,
+    "href": "/question/279764146/answer/418564691",
+    "text": "女儿今年上大学要用被奖励的钱买 LV 包，我应该怎么对她说？"
+}, {
+    "num": 30,
+    "href": "/question/37331263/answer/72355084",
+    "text": "在朋友圈发跑步记录截图，为什么总有人的评论带讽刺性？"
+}, {
+    "num": 30,
+    "href": "/question/25670519/answer/90019146",
+    "text": "张怡宁到底有多强？"
+}, {
+    "num": 30,
+    "href": "/question/28882548/answer/42426812",
+    "text": "有哪些非常好看、质量上乘，但在国内缺乏关注的美剧？"
+}, {
+    "num": 30,
+    "href": "/question/29183631/answer/387904202",
+    "text": "读书到底有什么用？"
+}, {
+    "num": 30,
+    "href": "/question/51134718/answer/134648851",
+    "text": "为了考研，我们能努力到什么程度？"
+}, {
+    "num": 30,
+    "href": "/question/22425541/answer/76887168",
+    "text": "一个人旅行应该怎样自拍？"
+}, {
+    "num": 30,
+    "href": "/question/34401174/answer/391578148",
+    "text": "有哪些是同一个人而颜值相差甚远的照片？"
+}, {
+    "num": 30,
+    "href": "/question/284510691/answer/443096534",
+    "text": "皇帝看了垃圾奏折会怎么回复？"
+}, {
+    "num": 30,
+    "href": "/question/63444070/answer/492886928",
+    "text": "冷门的历史知识有哪些？"
+}, {
+    "num": 30,
+    "href": "/question/28422616/answer/40821180",
+    "text": "如何评价雾霾调查《穹顶之下》？"
+}, {
+    "num": 30,
+    "href": "/question/51898570/answer/128465331",
+    "text": "如何选择一款适合自己的发型？"
+}, {
+    "num": 30,
+    "href": "/question/276414096/answer/389085022",
+    "text": "地球上最清的水有多清？"
+}, {
+    "num": 30,
+    "href": "/question/35239964/answer/66644148",
+    "text": "宇宙中有哪些超出常人想象的现象？"
+}, {
+    "num": 30,
+    "href": "/question/290578374/answer/475524758",
+    "text": "集齐元素周期表所有元素，大概需要多少钱？"
+}, {
+    "num": 30,
+    "href": "/question/61098126/answer/184114808",
+    "text": "如何看待雷军 2017 年 6 月 14 日转评的微博「唉……」？"
+}, {
+    "num": 30,
+    "href": "/question/60311015/answer/388093832",
+    "text": "有哪些已经堕落了的公司，为什么？"
+}, {
+    "num": 30,
+    "href": "/question/35517162/answer/63671882",
+    "text": "老人摔倒到底是扶还是不扶？"
+}, {
+    "num": 30,
+    "href": "/question/27475550/answer/46438120",
+    "text": "国内有哪些非常有设计感的 App？"
+}, {
+    "num": 30,
+    "href": "/question/275611680/answer/438124254",
+    "text": "现在的年轻人吃不了苦吗？"
+}, {
+    "num": 30,
+    "href": "/question/25952151/answer/112404695",
+    "text": "电影《色•戒》里易先生到底爱不爱王佳芝？"
+}, {
+    "num": 30,
+    "href": "/question/19552578/answer/20026076",
+    "text": "如何评价电影《让子弹飞》？"
+}, {
+    "num": 30,
+    "href": "/question/51815739/answer/264611881",
+    "text": "如何评价章子怡？"
+}, {
+    "num": 29,
+    "href": "/question/27648526/answer/77087788",
+    "text": "哪些地方适合一个人旅行？"
+}, {
+    "num": 29,
+    "href": "/question/39974807/answer/154256490",
+    "text": "闹灾荒的时候，和珅在给灾民的米汤里撒了一把沙子， 这其中包含着什么经济学原理？"
+}, {
+    "num": 29,
+    "href": "/question/28946100/answer/306188096",
+    "text": "食堂大妈不愿给同学们打肉，食堂的肉去哪了？"
+}, {
+    "num": 29,
+    "href": "/question/39997502/answer/117268466",
+    "text": "为什么很多人辛劳一生，仍然生活在社会底层？"
+}, {
+    "num": 29,
+    "href": "/question/264049431/answer/425981364",
+    "text": "100 米短跑提高 0.1 秒有多难？"
+}, {
+    "num": 29,
+    "href": "/question/19783289/answer/19744850",
+    "text": "《福布斯》2011 年评腾讯创新能力全球第四，超越苹果和谷歌，如何理解？"
+}, {
+    "num": 29,
+    "href": "/question/278946958/answer/419670366",
+    "text": "你什么时候会对华语乐坛感到失望？"
+}, {
+    "num": 29,
+    "href": "/question/271435202/answer/404702092",
+    "text": "你吃过最令人感动的食物是什么？"
+}, {
+    "num": 29,
+    "href": "/question/276774646/answer/397518882",
+    "text": "少儿动画中的一些正面角色为什么会让人感觉有点讨厌？"
+}, {
+    "num": 29,
+    "href": "/question/49617435/answer/135687349",
+    "text": "蜡笔小新中有哪些细思恐极的细节？"
+}, {
+    "num": 29,
+    "href": "/question/30340143/answer/276883131",
+    "text": "普通老百姓撞了豪车，是不是真该毁一生？"
+}, {
+    "num": 29,
+    "href": "/question/52545263/answer/132105825",
+    "text": "自己的车被借走后遇到过哪些坑爹事？"
+}, {
+    "num": 29,
+    "href": "/question/22178601/answer/66040600",
+    "text": "你为什么买日本车？"
+}, {
+    "num": 29,
+    "href": "/question/22527928/answer/130117447",
+    "text": "考研数学怎么学?"
+}, {
+    "num": 29,
+    "href": "/question/30115784/answer/48195315",
+    "text": "《三国演义》中有哪些细思恐极的细节？"
+}, {
+    "num": 29,
+    "href": "/question/46582590/answer/101918305",
+    "text": "上个世纪日本泡沫时代究竟是怎样的一副光景？到底繁荣到什么程度？"
+}, {
+    "num": 29,
+    "href": "/question/25551786/answer/302530539",
+    "text": "女孩收入达到多高时可以购买奢侈品？"
+}, {
+    "num": 29,
+    "href": "/question/25551786/answer/213276355",
+    "text": "女孩收入达到多高时可以购买奢侈品？"
+}, {
+    "num": 29,
+    "href": "/question/19982269/answer/13554085",
+    "text": "大三学生手头有 6000 元，有什么好的理财投资建议？"
+}, {
+    "num": 29,
+    "href": "/question/67025480/answer/251461464",
+    "text": "如何评价 2017 年 10 月 28 日英雄联盟世界总决赛半决赛 RNG vs SKT？"
+}, {
+    "num": 29,
+    "href": "/question/27183659/answer/122308257",
+    "text": "自然界有哪些很残酷的现象？"
+}, {
+    "num": 29,
+    "href": "/question/268753428/answer/341261569",
+    "text": "斯蒂芬·霍金（Stephen Hawking）去世，享年 76 岁，如何评价他一生的贡献？"
+}, {
+    "num": 29,
+    "href": "/question/22158238/answer/113375425",
+    "text": "「登月无用，不如拿来改善民生」的说法有道理吗？"
+}, {
+    "num": 29,
+    "href": "/question/279387872/answer/438882825",
+    "text": "30 岁左右的人，来谈谈你犯了哪些错误？"
+}, {
+    "num": 29,
+    "href": "/question/60311015/answer/515400071",
+    "text": "有哪些已经堕落了的公司，为什么？"
+}, {
+    "num": 29,
+    "href": "/question/25119198/answer/458966826",
+    "text": "电信宽带，如果不去注销，放任不管，会有什么后果？"
+}, {
+    "num": 29,
+    "href": "/question/37672919/answer/73645420",
+    "text": "为什么越努力，越焦虑？"
+}, {
+    "num": 29,
+    "href": "/question/31937124/answer/405459586",
+    "text": "有哪些你想发明却已经被人发明了的东西？"
+}, {
+    "num": 29,
+    "href": "/question/50171698/answer/205494234",
+    "text": "如何评价电影《战狼 2》？"
+}, {
+    "num": 28,
+    "href": "/question/27917495/answer/38711050",
+    "text": "必胜客贵吗？"
+}, {
+    "num": 28,
+    "href": "/question/30400300/answer/50666665",
+    "text": "北京有哪些深藏不露的餐馆？"
+}, {
+    "num": 28,
+    "href": "/question/266384530/answer/332753360",
+    "text": "从哪一刻开始你觉得读书是有用的？"
+}, {
+    "num": 28,
+    "href": "/question/20427741/answer/27936065",
+    "text": "为什么厨师很少有女性？"
+}, {
+    "num": 28,
+    "href": "/question/23434853/answer/25259724",
+    "text": "为什么路飞对成员态度差别那么大？"
+}, {
+    "num": 28,
+    "href": "/question/22580262/answer/398509695",
+    "text": "有哪些堪称神作的漫画？"
+}, {
+    "num": 28,
+    "href": "/question/22345285/answer/55014168",
+    "text": "为什么有人说富坚义博有着殿堂级的画功？他的画功体现在哪儿呢？"
+}, {
+    "num": 28,
+    "href": "/question/39463086/answer/84495233",
+    "text": "有哪些搞笑的弹幕？"
+}, {
+    "num": 28,
+    "href": "/question/29098290/answer/43235948",
+    "text": "刚拿到驾照的人上高速有潜在危险吗？"
+}, {
+    "num": 28,
+    "href": "/question/21575743/answer/378739931",
+    "text": "看到清代的老照片，为什么上面的名妓和嫔妃都那么丑？"
+}, {
+    "num": 28,
+    "href": "/question/20597941/answer/199457835",
+    "text": "有哪些出国后才发现的以前对英语世界的错误理解？"
+}, {
+    "num": 28,
+    "href": "/question/35953016/answer/424927405",
+    "text": "面试应答有哪些话术和技巧？"
+}, {
+    "num": 28,
+    "href": "/question/60843717/answer/192922691",
+    "text": "有哪些大局已定，却又被极限反杀的操作？"
+}, {
+    "num": 28,
+    "href": "/question/68733553/answer/305463907",
+    "text": "玩《旅行青蛙（旅かえる）》有哪些体验？"
+}, {
+    "num": 28,
+    "href": "/question/23238816/answer/24014856",
+    "text": "如何保持正确的坐姿？"
+}, {
+    "num": 28,
+    "href": "/question/58889974/answer/340612672",
+    "text": "一个老师如何轻易毁掉学生的一生？"
+}, {
+    "num": 28,
+    "href": "/question/24497541/answer/51764293",
+    "text": "人贩子为什么不能一律判死刑？"
+}, {
+    "num": 28,
+    "href": "/question/63393032/answer/322843205",
+    "text": "如何评价《舌尖上的中国》第三季？"
+}, {
+    "num": 28,
+    "href": "/question/40563735/answer/87567355",
+    "text": "如果是王家卫去拍《西游记》会是什么样的故事？"
+}, {
+    "num": 28,
+    "href": "/question/31119593/answer/101533592",
+    "text": "如何用王家卫的方式表白？"
+}, {
+    "num": 27,
+    "href": "/question/19563517/answer/486320712",
+    "text": "海底捞有哪些让人难忘的服务细节？"
+}, {
+    "num": 27,
+    "href": "/question/20409817/answer/25723267",
+    "text": "国内哪些品牌的牛奶可以放心地喝？"
+}, {
+    "num": 27,
+    "href": "/question/25670519/answer/502508774",
+    "text": "张怡宁到底有多强？"
+}, {
+    "num": 27,
+    "href": "/question/286296120/answer/448680007",
+    "text": "想男朋友出一部分钱买个ipad 过分吗？"
+}, {
+    "num": 27,
+    "href": "/question/20982901/answer/21761628",
+    "text": "知乎上极力推崇读书的人为什么不把上知乎的时间都用来读书？"
+}, {
+    "num": 27,
+    "href": "/question/20011323/answer/435655585",
+    "text": "为什么很多人都说百度是家缺德的公司？"
+}, {
+    "num": 27,
+    "href": "/question/270660676/answer/357606064",
+    "text": "如何评价京东杀熟？"
+}, {
+    "num": 27,
+    "href": "/question/29556265/answer/377302037",
+    "text": "如何评价《复仇者联盟 3 ：无限战争》?"
+}, {
+    "num": 27,
+    "href": "/question/19982738/answer/21020674",
+    "text": "怎么做出特别美味的蛋炒饭？"
+}, {
+    "num": 27,
+    "href": "/question/282450507/answer/514939429",
+    "text": "为什么美队会认为冬兵是最好的朋友，而对于与自己出生入死的钢铁侠冷漠？"
+}, {
+    "num": 27,
+    "href": "/question/270364088/answer/385668844",
+    "text": "考研复试中，有哪些令人窒息的问题？"
+}, {
+    "num": 27,
+    "href": "/question/28966967/answer/246933496",
+    "text": "如何高质量地走完大学四年？"
+}, {
+    "num": 27,
+    "href": "/question/36532219/answer/68528909",
+    "text": "无神论的各位一般从哪里获得精神力量？"
+}, {
+    "num": 27,
+    "href": "/question/26828496/answer/34410076",
+    "text": "为什么我书读得越多，越看不起周围的人？"
+}, {
+    "num": 27,
+    "href": "/question/22357547/answer/129871099",
+    "text": "面试官问你的缺点是什么，应该如何回答？"
+}, {
+    "num": 27,
+    "href": "/question/30340143/answer/275822710",
+    "text": "普通老百姓撞了豪车，是不是真该毁一生？"
+}, {
+    "num": 27,
+    "href": "/question/22006772/answer/70433118",
+    "text": "如何得到暴雪娱乐公司的工作机会？"
+}, {
+    "num": 27,
+    "href": "/question/270343200/answer/367356046",
+    "text": "人类生理上有什么不合理之处？"
+}, {
+    "num": 27,
+    "href": "/question/29815334/answer/323122136",
+    "text": "女生腿长是什么感觉？"
+}, {
+    "num": 27,
+    "href": "/question/50947794/answer/123769221",
+    "text": "为什么有人说「我欠小米公司一个尊重」？"
+}, {
+    "num": 27,
+    "href": "/question/31383789/answer/132504555",
+    "text": "你游泳时有没有什么特别的经历？"
+}, {
+    "num": 27,
+    "href": "/question/66331248/answer/288567359",
+    "text": "女人会嫁没有生育能力的男生吗？"
+}, {
+    "num": 27,
+    "href": "/question/27486818/answer/37267873",
+    "text": "知道哪些法律上的小常识可以保护自己？"
+}, {
+    "num": 27,
+    "href": "/question/263305072/answer/277111359",
+    "text": "什么样子的婚姻让人感到必须要离婚？"
+}, {
+    "num": 26,
+    "href": "/question/20946770/answer/139874562",
+    "text": "香港人是怎么买得起房子的？"
+}, {
+    "num": 26,
+    "href": "/question/26839539/answer/34414665",
+    "text": "「让死刑犯去踢足球」的方案可行吗？"
+}, {
+    "num": 26,
+    "href": "/question/278925300/answer/403804740",
+    "text": "体育赛场上你见过什么「大将之风」？"
+}, {
+    "num": 26,
+    "href": "/question/275060289/answer/387913266",
+    "text": "假如刘国梁去参加业余比赛，可以都赢吗？"
+}, {
+    "num": 26,
+    "href": "/question/37453271/answer/72075439",
+    "text": "知乎里最让你耳目一新或惊奇到下巴掉到地上的提问是哪个？"
+}, {
+    "num": 26,
+    "href": "/question/270660676/answer/363196725",
+    "text": "如何评价京东杀熟？"
+}, {
+    "num": 26,
+    "href": "/question/63175444/answer/354740756",
+    "text": "如何评价电影《头号玩家》（Ready Player One）？"
+}, {
+    "num": 26,
+    "href": "/question/63681162/answer/212917492",
+    "text": "如何看待不买东西就坐星巴克里的人？"
+}, {
+    "num": 26,
+    "href": "/question/22580262/answer/394854677",
+    "text": "有哪些堪称神作的漫画？"
+}, {
+    "num": 26,
+    "href": "/question/28966967/answer/317844410",
+    "text": "如何高质量地走完大学四年？"
+}, {
+    "num": 26,
+    "href": "/question/36391193/answer/128439298",
+    "text": "历史上有哪些脱离发明者初衷的发明？"
+}, {
+    "num": 26,
+    "href": "/question/37538557/answer/73796078",
+    "text": "ISIS 实力到底如何？为什么打击力度那么大，却拿它没办法？未来该如何解决?"
+}, {
+    "num": 26,
+    "href": "/question/19672620/answer/375751002",
+    "text": "人类活动对环境的影响到底有多大？"
+}, {
+    "num": 26,
+    "href": "/question/28062142/answer/220862334",
+    "text": "你是从什么时候开始，感受到了岁月的残忍？"
+}, {
+    "num": 26,
+    "href": "/question/23061609/answer/23499990",
+    "text": "打针或抽血时，针扎进去，会不会有一管肉在针头里？"
+}, {
+    "num": 26,
+    "href": "/question/64676168/answer/233278641",
+    "text": "有哪些让你觉得「高端的东西就是好」的瞬间？"
+}, {
+    "num": 26,
+    "href": "/question/20727176/answer/22478584",
+    "text": "有哪些值得推荐的字体？"
+}, {
+    "num": 26,
+    "href": "/question/64586783/answer/222204325",
+    "text": "女生被人渣前男友胁迫，怎么办？"
+}, {
+    "num": 26,
+    "href": "/question/267535689/answer/329939471",
+    "text": "《舌尖上的中国》第三季真的扑街了吗？"
+}, {
+    "num": 26,
+    "href": "/question/50171698/answer/205556122",
+    "text": "如何评价电影《战狼 2》？"
+}, {
+    "num": 26,
+    "href": "/question/40727213/answer/88114415",
+    "text": "如何用王家卫手法，写浙江温州江南皮革厂倒闭的故事？"
+}, {
+    "num": 25,
+    "href": "/question/20692856/answer/57608090",
+    "text": "奶茶里的奶和茶分别是什么成分？对人体有危害吗？"
+}, {
+    "num": 25,
+    "href": "/question/37925102/answer/74834653",
+    "text": "去过 100 个以上的国家是种怎样的体验？"
+}, {
+    "num": 25,
+    "href": "/question/23054572/answer/23547306",
+    "text": "有哪些 100 元以下，很少见但高大上的物件？"
+}, {
+    "num": 25,
+    "href": "/question/20280417/answer/280038841",
+    "text": "关于快递员和快递公司，有哪些趣事？"
+}, {
+    "num": 25,
+    "href": "/question/31476726/answer/389004295",
+    "text": "你的手机上有哪些有意思的 APP ？"
+}, {
+    "num": 25,
+    "href": "/question/266646689/answer/321998021",
+    "text": "iPhone 有什么让你放弃的理由？"
+}, {
+    "num": 25,
+    "href": "/question/267172931/answer/320999367",
+    "text": "怎么用简明易懂的话劝阻想买oppo和vivo的人？"
+}, {
+    "num": 25,
+    "href": "/question/27361206/answer/369538240",
+    "text": "Skype和人裸聊了，会被勒索吗？"
+}, {
+    "num": 25,
+    "href": "/question/28237252/answer/40040390",
+    "text": "有哪些经典的科幻电影值得推荐？"
+}, {
+    "num": 25,
+    "href": "/question/64501030/answer/433777429",
+    "text": "经常看书的人和不看书的人有什么区别？"
+}, {
+    "num": 25,
+    "href": "/question/25626726/answer/75990316",
+    "text": "手动挡汽车的驾驶乐趣有哪些？怎么练习？"
+}, {
+    "num": 25,
+    "href": "/question/68783076/answer/267902073",
+    "text": "如果你穿越到长征途中，你会带一张什么照片给红军看看？"
+}, {
+    "num": 25,
+    "href": "/question/30147821/answer/47398092",
+    "text": "工作后，你悟出什么职场道理？"
+}, {
+    "num": 25,
+    "href": "/question/22076666/answer/69638270",
+    "text": "比特币是什么？"
+}, {
+    "num": 25,
+    "href": "/question/27986261/answer/337652990",
+    "text": "在只有一个人上班的公司里工作是怎样的体验？"
+}, {
+    "num": 25,
+    "href": "/question/27956530/answer/325176625",
+    "text": "初高中那些地痞流氓都怎样了？"
+}, {
+    "num": 25,
+    "href": "/question/63128280/answer/329636865",
+    "text": "特种兵能一脚踹死一个人吗？"
+}, {
+    "num": 25,
+    "href": "/question/23061038/answer/419271569",
+    "text": "「不要相信歌词，他们为了押韵什么都做得出来」的例子有哪些？"
+}, {
+    "num": 24,
+    "href": "/question/25150716/answer/45120785",
+    "text": "肯德基和麦当劳的优惠券意义在哪里？为何不直接降价？"
+}, {
+    "num": 24,
+    "href": "/question/36274714/answer/67204453",
+    "text": "为什么牛奶卖不完宁可倒掉也不免费送人？"
+}, {
+    "num": 24,
+    "href": "/question/267116948/answer/427853750",
+    "text": "韩国人知道自己国家的「体育精神」闻名世界吗？不感到羞愧吗？"
+}, {
+    "num": 24,
+    "href": "/question/63128280/answer/345640418",
+    "text": "特种兵能一脚踹死一个人吗？"
+}, {
+    "num": 24,
+    "href": "/question/20011323/answer/434462389",
+    "text": "为什么很多人都说百度是家缺德的公司？"
+}, {
+    "num": 24,
+    "href": "/question/30273224/answer/343599314",
+    "text": "京东一直在亏，为什么没有倒闭?刘强东为什么还那么有钱？"
+}, {
+    "num": 24,
+    "href": "/question/24718096/answer/85248844",
+    "text": "中国菜可以有多好吃？"
+}, {
+    "num": 24,
+    "href": "/question/24708380/answer/69777239",
+    "text": "有什么地方让你觉得「哪怕只为了吃都值得特地跑一趟」？"
+}, {
+    "num": 24,
+    "href": "/question/25877081/answer/32071359",
+    "text": "《火影忍者》完结，你最遗憾的是什么？"
+}, {
+    "num": 24,
+    "href": "/question/51233589/answer/188028431",
+    "text": "有哪些看着像 PS 过的照片，实际却没有？"
+}, {
+    "num": 24,
+    "href": "/question/22425541/answer/38078345",
+    "text": "一个人旅行应该怎样自拍？"
+}, {
+    "num": 24,
+    "href": "/question/50608844/answer/426918813",
+    "text": "有哪些不经意拍出的惊艳照片？"
+}, {
+    "num": 24,
+    "href": "/question/30408742/answer/66873995",
+    "text": "历史上有哪些意志力强到像开挂一样的人物？"
+}, {
+    "num": 24,
+    "href": "/question/31683668/answer/53129418",
+    "text": "历史上有哪些值得尊敬的小人物？"
+}, {
+    "num": 24,
+    "href": "/question/21234709/answer/122164900",
+    "text": "提离职被老板加薪挽留，该怎么办？"
+}, {
+    "num": 24,
+    "href": "/question/283619965/answer/433978274",
+    "text": "如何看待校园贷公司704起诉四百多名大学生这一案件？"
+}, {
+    "num": 24,
+    "href": "/question/296480350/answer/500522827",
+    "text": "三流大学和一流大学学生的简历有什么区别？"
+}, {
+    "num": 24,
+    "href": "/question/28237073/answer/89975440",
+    "text": "身体上的哪些迹象表明你正在衰老？"
+}, {
+    "num": 24,
+    "href": "/question/264406995/answer/284665581",
+    "text": "有哪些歌手实际唱歌能力不怎样，甚至是难听？"
+}, {
+    "num": 23,
+    "href": "/question/274533921/answer/376268267",
+    "text": "为什么中国的公厕这么臭？"
+}, {
+    "num": 23,
+    "href": "/question/274958537/answer/401994025",
+    "text": "职业运动员究竟有多恐怖？"
+}, {
+    "num": 23,
+    "href": "/question/267912777/answer/427349143",
+    "text": "有哪些让你热泪盈眶的体育精神？"
+}, {
+    "num": 23,
+    "href": "/question/30620066/answer/117265891",
+    "text": "NBA 感人的比赛或者画面有哪些？"
+}, {
+    "num": 23,
+    "href": "/question/21030625/answer/18897994",
+    "text": "为什么部分人舍得买 5000 元的手机，却不舍得买 500 元的手机壳？"
+}, {
+    "num": 23,
+    "href": "/question/24114364/answer/60028793",
+    "text": "适合中国人的现代厨房是什么样的？"
+}, {
+    "num": 23,
+    "href": "/question/51204995/answer/134549311",
+    "text": "中国版的《你的名字》会是怎样的？"
+}, {
+    "num": 23,
+    "href": "/question/264876866/answer/314296442",
+    "text": "在留学行李箱中你最后悔从内地带去的东西是什么？"
+}, {
+    "num": 23,
+    "href": "/question/52446918/answer/131660686",
+    "text": "溥仪花钱买门票进故宫时是什么心情？"
+}, {
+    "num": 23,
+    "href": "/question/61891943/answer/339646093",
+    "text": "唐朝有多强大？"
+}, {
+    "num": 23,
+    "href": "/question/266840018/answer/315854760",
+    "text": "有哪些被历史打脸的观点？"
+}, {
+    "num": 23,
+    "href": "/question/26913328/answer/140867485",
+    "text": "一个国家欠钱不还会怎么样？"
+}, {
+    "num": 23,
+    "href": "/question/23541368/answer/296870146",
+    "text": "游戏中有哪些羞辱对手的方法？"
+}, {
+    "num": 23,
+    "href": "/question/46397383/answer/101252857",
+    "text": "游戏里，有「大哥」是一种什么样的体验？"
+}, {
+    "num": 23,
+    "href": "/question/31496671/answer/57710027",
+    "text": "人种基因改良是利大于弊么？"
+}, {
+    "num": 23,
+    "href": "/question/19707850/answer/72872014",
+    "text": "如何理解平行宇宙？"
+}, {
+    "num": 23,
+    "href": "/question/26911044/answer/150267810",
+    "text": "核武器能把地球炸得粉身碎骨吗？"
+}, {
+    "num": 23,
+    "href": "/question/275655239/answer/411630933",
+    "text": "国家电网到底有多强大？"
+}, {
+    "num": 23,
+    "href": "/question/275655239/answer/418636433",
+    "text": "国家电网到底有多强大？"
+}, {
+    "num": 23,
+    "href": "/question/19622126/answer/76463009",
+    "text": "钱学森是个怎样的人？"
+}, {
+    "num": 23,
+    "href": "/question/20181996/answer/29120391",
+    "text": "抑郁症的表现有什么？"
+}, {
+    "num": 23,
+    "href": "/question/33110020/answer/56619055",
+    "text": "有哪些看似精妙实则很蠢的设计？"
+}, {
+    "num": 23,
+    "href": "/question/279804105/answer/411975228",
+    "text": "你被吓的最惨的一次是什么情况？"
+}, {
+    "num": 23,
+    "href": "/question/40563735/answer/87233568",
+    "text": "如果是王家卫去拍《西游记》会是什么样的故事？"
+}, {
+    "num": 23,
+    "href": "/question/269741445/answer/353608958",
+    "text": "有没有哪一首歌曲你听了后觉得是超级难听的？"
+}, {
+    "num": 22,
+    "href": "/question/21876053/answer/63201599",
+    "text": "北京有哪些好？"
+}, {
+    "num": 22,
+    "href": "/question/62795700/answer/202482193",
+    "text": "你遇到过哪些让你拍案叫绝的巧合？"
+}, {
+    "num": 22,
+    "href": "/question/28946100/answer/378434310",
+    "text": "食堂大妈不愿给同学们打肉，食堂的肉去哪了？"
+}, {
+    "num": 22,
+    "href": "/question/60430475/answer/177874579",
+    "text": "高晓松说 AlphaGo 下得没有美感，不会打劫，事实如此吗？"
+}, {
+    "num": 22,
+    "href": "/question/22732593/answer/83139119",
+    "text": "圈内捧谷歌贬百度的风气是怎样形成的？百度是否真的不如谷歌那样「业界良心」？"
+}, {
+    "num": 22,
+    "href": "/question/30273224/answer/47907969",
+    "text": "京东一直在亏，为什么没有倒闭?刘强东为什么还那么有钱？"
+}, {
+    "num": 22,
+    "href": "/question/21696230/answer/388151836",
+    "text": "你是明白了哪几个基本原理之后而厨艺大增的？"
+}, {
+    "num": 22,
+    "href": "/question/277133834/answer/392388046",
+    "text": "为什么钢铁侠总是不让蜘蛛侠帮忙？"
+}, {
+    "num": 22,
+    "href": "/question/63907042/answer/214299668",
+    "text": "《灌篮高手》樱木家条件不太好，他们真的很穷吗？"
+}, {
+    "num": 22,
+    "href": "/question/48598757/answer/228302766",
+    "text": "为什么有些人瞧不起奔驰 C 级车？"
+}, {
+    "num": 22,
+    "href": "/question/22005152/answer/141739736",
+    "text": "为什么那么多人喜欢尼采？"
+}, {
+    "num": 22,
+    "href": "/question/272262535/answer/367292225",
+    "text": "美国对叙利亚精确打击后英法立即响应，叙利亚会成为下一个阿富汗吗？"
+}, {
+    "num": 22,
+    "href": "/question/35798442/answer/70243425",
+    "text": "你在旅行途中遇到过哪些感人的人或事？"
+}, {
+    "num": 22,
+    "href": "/question/52741692/answer/132247904",
+    "text": "如何看待 2016 年 11 月 17 日中国留德女生遭难民强奸？出国留学如何做好安全防范？"
+}, {
+    "num": 22,
+    "href": "/question/264494016/answer/285277856",
+    "text": "为什么没有人用黑客技术黑支付宝，是技术问题吗？"
+}, {
+    "num": 22,
+    "href": "/question/30971299/answer/376031338",
+    "text": "为什么会有越是喜欢越是远离的心理？"
+}, {
+    "num": 22,
+    "href": "/question/25984324/answer/93986525",
+    "text": "哪些单机手机游戏让你玩两分钟就惊呼「太好玩了」？为什么？"
+}, {
+    "num": 22,
+    "href": "/question/48603127/answer/317618713",
+    "text": "十多年过去了，第一批激光治疗近视的人是否有出现不良反应？"
+}, {
+    "num": 22,
+    "href": "/question/20509121/answer/15329340",
+    "text": "如果地球上所有人同时用激光笔指着月亮，月亮会不会变颜色？"
+}, {
+    "num": 22,
+    "href": "/question/279687546/answer/428067510",
+    "text": "如果掉进一个相对光滑的弧形坑里，怎么从坑里出来？"
+}, {
+    "num": 22,
+    "href": "/question/38182938/answer/194872677",
+    "text": "笑气是否算毒品？"
+}, {
+    "num": 22,
+    "href": "/question/20009938/answer/131352683",
+    "text": "早上起床后喝水是喝蜂蜜水还是淡盐水还是温白开好？"
+}, {
+    "num": 22,
+    "href": "/question/20134551/answer/26134730",
+    "text": "患了抑郁症，为何会经常出现自杀念头？"
+}, {
+    "num": 22,
+    "href": "/question/22332149/answer/25705909",
+    "text": "如何设计一张高品位高水准海报？"
+}, {
+    "num": 22,
+    "href": "/question/33690764/answer/57911831",
+    "text": "你见过的真正的Photoshop高手是什么样的？"
+}, {
+    "num": 22,
+    "href": "/question/275566110/answer/394993366",
+    "text": "为什么靠谱员工越来越难找？"
+}, {
+    "num": 22,
+    "href": "/question/303651330/answer/540135702",
+    "text": "如何评价独立音乐人花粥遭大学老师批评《盗将行》的歌词「狗屁不通」一事？"
+}, {
+    "num": 22,
+    "href": "/question/266548863/answer/315623776",
+    "text": "被天使吻过的嗓子和被死神掐过的嗓子合唱的场景是什么样的？"
+}, {
+    "num": 21,
+    "href": "/question/51087951/answer/373064235",
+    "text": "房价都涉及了哪些群体的利益，才导致大多数城市房价那么难降下来？"
+}, {
+    "num": 21,
+    "href": "/question/22084816/answer/82955444",
+    "text": "为什么说「免费的其实是最贵的」？"
+}, {
+    "num": 21,
+    "href": "/question/29115329/answer/43309583",
+    "text": "如何评价白岩松「29 岁前买房很神奇」的言论？"
+}, {
+    "num": 21,
+    "href": "/question/274958537/answer/382248311",
+    "text": "职业运动员究竟有多恐怖？"
+}, {
+    "num": 21,
+    "href": "/question/23869960/answer/89920854",
+    "text": "有哪些比较好用的手机摄影以及后期 app？"
+}, {
+    "num": 21,
+    "href": "/question/24216286/answer/27056060",
+    "text": "《权力的游戏》的片头有哪些涵义？"
+}, {
+    "num": 21,
+    "href": "/question/266574241/answer/354294376",
+    "text": "你最喜欢的句子是？"
+}, {
+    "num": 21,
+    "href": "/question/26978967/answer/344969726",
+    "text": "读书早晚会忘，为什么还要读书？"
+}, {
+    "num": 21,
+    "href": "/question/263893348/answer/383575637",
+    "text": "有哪些看了觉得是侮辱智商的番剧？"
+}, {
+    "num": 21,
+    "href": "/question/36519574/answer/69525536",
+    "text": "有哪些著名的设计失败的汽车？"
+}, {
+    "num": 21,
+    "href": "/question/21567651/answer/56227075",
+    "text": "为什么说俄罗斯是战斗民族？"
+}, {
+    "num": 21,
+    "href": "/question/26342346/answer/387744095",
+    "text": "你愿意回到民国，走在石板路上，做一个撑着油纸伞的优雅姑娘吗？"
+}, {
+    "num": 21,
+    "href": "/question/57943484/answer/155476099",
+    "text": "某语文老师讲古诗词遇到杜甫的诗作，言必称“窝囊”，作为学生该如何反驳？"
+}, {
+    "num": 21,
+    "href": "/question/30999803/answer/50877233",
+    "text": "微信的好处究竟在哪里，为何我感受不到？"
+}, {
+    "num": 21,
+    "href": "/question/60617863/answer/210413817",
+    "text": "支付宝健康保障里面的「大病无忧宝」有必要买吗？"
+}, {
+    "num": 21,
+    "href": "/question/25097618/answer/414878262",
+    "text": "你在简历上撒过的最大的谎是什么？"
+}, {
+    "num": 21,
+    "href": "/question/30261645/answer/110877277",
+    "text": "创业失败的人后来都怎么样了？"
+}, {
+    "num": 21,
+    "href": "/question/23444019/answer/28016620",
+    "text": "23 岁到 35 岁该如何实现资产增值？如何不陷入结婚生孩子买房的恶性循环中？"
+}, {
+    "num": 21,
+    "href": "/question/33326594/answer/305695782",
+    "text": "为什么俄罗斯女性年轻的时候那么美，结婚后颜值残的那么厉害？"
+}, {
+    "num": 21,
+    "href": "/question/28461353/answer/40988482",
+    "text": "如何评价 2010 年柴静对丁仲礼的采访？"
+}, {
+    "num": 21,
+    "href": "/question/29862425/answer/57717749",
+    "text": "如果有人跳楼，楼下有人通过撑开被子营救有用吗？"
+}, {
+    "num": 21,
+    "href": "/question/40023941/answer/89503281",
+    "text": "如何评价迪士尼动画电影《疯狂动物城》？"
+}, {
+    "num": 21,
+    "href": "/question/33500951/answer/483776725",
+    "text": "小罗伯特·唐尼为什么片酬极高？"
+}, {
+    "num": 21,
+    "href": "/question/19612472/answer/46463617",
+    "text": "零基础如何自学吉他？"
+}, {
+    "num": 21,
+    "href": "/question/269741445/answer/355375809",
+    "text": "有没有哪一首歌曲你听了后觉得是超级难听的？"
+}, {
+    "num": 20,
+    "href": "/question/33022664/answer/73907979",
+    "text": "旅游景点都有哪些常见的坑钱、骗人的伎俩？"
+}, {
+    "num": 20,
+    "href": "/question/26096314/answer/50685418",
+    "text": "要想穿衣服好看，女生身上哪些地方需要注意锻炼？"
+}, {
+    "num": 20,
+    "href": "/question/23054572/answer/348107700",
+    "text": "有哪些 100 元以下，很少见但高大上的物件？"
+}, {
+    "num": 20,
+    "href": "/question/21482079/answer/431451913",
+    "text": "有哪些适合大学生使用的 app？"
+}, {
+    "num": 20,
+    "href": "/question/21004786/answer/171572584",
+    "text": "如今百度是否已经从中国互联网三大公司（BAT）中出局？"
+}, {
+    "num": 20,
+    "href": "/question/271139566/answer/380202451",
+    "text": "腾讯在游戏方面真的是一家毫无情怀的公司吗？"
+}, {
+    "num": 20,
+    "href": "/question/20779813/answer/211856692",
+    "text": "什么样的用户不喜欢微信？"
+}, {
+    "num": 20,
+    "href": "/question/269959475/answer/350969506",
+    "text": "如何看待百度李彦宏表示的「中国人更开放，愿用隐私换效率 」?"
+}, {
+    "num": 20,
+    "href": "/question/26518222/answer/40006038",
+    "text": "《西游记》能拍摄成类似《权力的游戏》的电视剧吗？"
+}, {
+    "num": 20,
+    "href": "/question/26530272/answer/33590694",
+    "text": "有没有一些简单好吃又健康而且适合在家做的甜品？"
+}, {
+    "num": 20,
+    "href": "/question/26956917/answer/51416513",
+    "text": "如何在星巴克点一杯好喝的饮料？"
+}, {
+    "num": 20,
+    "href": "/question/25111949/answer/30485330",
+    "text": "为什么明清时的社会生产力比先秦更高，战争规模反而变小？"
+}, {
+    "num": 20,
+    "href": "/question/271435202/answer/362438230",
+    "text": "你吃过最令人感动的食物是什么？"
+}, {
+    "num": 20,
+    "href": "/question/24243644/answer/27148607",
+    "text": "成年了想投资股票，该如何入门？"
+}, {
+    "num": 20,
+    "href": "/question/267925961/answer/330751034",
+    "text": "什么操作称得上「绝杀」，可以用视频分享吗？"
+}, {
+    "num": 20,
+    "href": "/question/66017545/answer/239190846",
+    "text": "玩《绝地求生：大逃杀》时，你领悟了哪些生活中的真理？"
+}, {
+    "num": 20,
+    "href": "/question/35993826/answer/65561657",
+    "text": "作为一名眼科医生，你有哪些「一般人我都告诉他，但他就是不听」的忠告？"
+}, {
+    "num": 20,
+    "href": "/question/36953729/answer/69733678",
+    "text": "为什么我怎么也理解不了波粒二象性，是因为智商不够吗？"
+}, {
+    "num": 20,
+    "href": "/question/62126661/answer/194990026",
+    "text": "如何看待小米 2017 年第二季度出货量 2316 万台，环比增长 70%？"
+}, {
+    "num": 20,
+    "href": "/question/19767374/answer/18504728",
+    "text": "怎样快速有效地学习游泳？"
+}, {
+    "num": 20,
+    "href": "/question/278494688/answer/405231432",
+    "text": "减脂有哪些常见误区？正确的方法是怎样的？"
+}, {
+    "num": 20,
+    "href": "/question/20570905/answer/456459456",
+    "text": "抑郁症患者的心理是怎样的？为什么有的会抑郁到自杀？"
+}, {
+    "num": 20,
+    "href": "/question/38984755/answer/80342863",
+    "text": "如何才能坦然地面对自己因为抑郁症而荒废的五六年时间？"
+}, {
+    "num": 20,
+    "href": "/question/19631509/answer/375074375",
+    "text": "知乎给你带来的最小限度的好处是什么？"
+}, {
+    "num": 20,
+    "href": "/question/19740572/answer/27085743",
+    "text": "怎么才能把英文字写得漂亮？"
+}, {
+    "num": 20,
+    "href": "/question/268769977/answer/372040802",
+    "text": "有哪些很邪性的中国民间故事？"
+}, {
+    "num": 19,
+    "href": "/question/22084816/answer/81263587",
+    "text": "为什么说「免费的其实是最贵的」？"
+}, {
+    "num": 19,
+    "href": "/question/55396683/answer/271946814",
+    "text": "如果姚明是美国人，凭他在NBA的表现，能否进入名人堂，并退役球衣？"
+}, {
+    "num": 19,
+    "href": "/question/21158269/answer/87380413",
+    "text": "如何用好 Kindle？"
+}, {
+    "num": 19,
+    "href": "/question/40511388/answer/89452498",
+    "text": "接手了一家经营不善的蛋糕店，如何扭转局面？"
+}, {
+    "num": 19,
+    "href": "/question/29556265/answer/388992095",
+    "text": "如何评价《复仇者联盟 3 ：无限战争》?"
+}, {
+    "num": 19,
+    "href": "/question/30938703/answer/50101882",
+    "text": "如果知乎放到《哆啦A梦》中会被问什么问题？"
+}, {
+    "num": 19,
+    "href": "/question/47955389/answer/108395979",
+    "text": "《中国队长》谁来演最合适？"
+}, {
+    "num": 19,
+    "href": "/question/34368524/answer/349184224",
+    "text": "为啥自己照镜子感觉自己长的蛮好看，可是一拍照就觉得不咋的?"
+}, {
+    "num": 19,
+    "href": "/question/30046079/answer/83892467",
+    "text": "如何理清五代十国的历史？"
+}, {
+    "num": 19,
+    "href": "/question/37365778/answer/72011137",
+    "text": "如果和庄子辩论「子非鱼」的是诸葛孔明，会发生什么？"
+}, {
+    "num": 19,
+    "href": "/question/34508673/answer/60080731",
+    "text": "在法庭上碰见法盲是怎样的一种体验？"
+}, {
+    "num": 19,
+    "href": "/question/21187514/answer/147065558",
+    "text": "如何制作高水平简历？"
+}, {
+    "num": 19,
+    "href": "/question/21181450/answer/30522966",
+    "text": "为什么老干妈陶华碧说「我坚决不上市」「那是骗人家的钱」？"
+}, {
+    "num": 19,
+    "href": "/question/26896662/answer/408574626",
+    "text": "做银行柜员有没有什么有趣的经历？"
+}, {
+    "num": 19,
+    "href": "/question/274399739/answer/376528055",
+    "text": "古代贩卖私盐犯法，那贩卖咸鱼呢？"
+}, {
+    "num": 19,
+    "href": "/question/266816898/answer/319802524",
+    "text": "你在高自由度游戏里遇到过什么想要说说的事？"
+}, {
+    "num": 19,
+    "href": "/question/25157435/answer/30234555",
+    "text": "《魔兽世界》的故事背景是怎样的？"
+}, {
+    "num": 19,
+    "href": "/question/66364901/answer/244078291",
+    "text": "美术生在画裸体的时候如何克服自己的生理反应？"
+}, {
+    "num": 19,
+    "href": "/question/21050791/answer/25837073",
+    "text": "常戴隐形眼镜的人用什么眼药水比较好？"
+}, {
+    "num": 19,
+    "href": "/question/268753428/answer/341368144",
+    "text": "斯蒂芬·霍金（Stephen Hawking）去世，享年 76 岁，如何评价他一生的贡献？"
+}, {
+    "num": 19,
+    "href": "/question/29912743/answer/46069841",
+    "text": "如何看待尼泊尔地震后，有中国人控诉未获得政府援助？撤离的真实情况是什么？"
+}, {
+    "num": 19,
+    "href": "/question/21634580/answer/28674977",
+    "text": "多大的力气才能把一元硬币掰断？"
+}, {
+    "num": 19,
+    "href": "/question/32012886/answer/377218290",
+    "text": "腾讯都作了哪些恶？"
+}, {
+    "num": 19,
+    "href": "/question/21476991/answer/35544843",
+    "text": "中医是否科学？应该如何看待中医？"
+}, {
+    "num": 19,
+    "href": "/question/62661712/answer/200976760",
+    "text": "你见过最丧心病狂的衣服是什么样的？"
+}, {
+    "num": 19,
+    "href": "/question/25025196/answer/30269982",
+    "text": "为什么芭蕾舞和一些其它舞蹈有把底裤刻意暴露给观众看的一些动作？"
+}, {
+    "num": 19,
+    "href": "/question/42392347/answer/94900511",
+    "text": "魏则西怎么样了？"
+}, {
+    "num": 19,
+    "href": "/question/263894060/answer/274516962",
+    "text": "如何评价江歌案一审庭审经过及一审结果（陈世峰罪名成立，被判 20 年有期徒刑）？"
+}, {
+    "num": 19,
+    "href": "/question/22538027/answer/47890582",
+    "text": "好莱坞故事模式的《西游记》会被改编成什么样子？"
+}, {
+    "num": 19,
+    "href": "/question/26562688/answer/69452758",
+    "text": "有哪些吉他和弦比较少又适合新手学习的歌曲？"
+}, {
+    "num": 19,
+    "href": "/question/31005906/answer/51063482",
+    "text": "玩音乐的朋友有什么有趣的街头演奏经历？"
+}, {
+    "num": 19,
+    "href": "/question/21895581/answer/148092571",
+    "text": "龚琳娜可以「好好唱歌」，为什么却不「好好唱」？难道是所谓的曲高和寡？"
+}, {
+    "num": 18,
+    "href": "/question/31092804/answer/88469248",
+    "text": "从事食品行业和餐饮行业的人，不会去吃哪些食品？"
+}, {
+    "num": 18,
+    "href": "/question/281825329/answer/424299174",
+    "text": "如何评价上海语文教材中把作者原文中的外婆改成了姥姥，且教育局在英译汉问题中回复称“外婆”属于方言？"
+}, {
+    "num": 18,
+    "href": "/question/30071084/answer/59992701",
+    "text": "南京和杭州，我应该选择哪个？"
+}, {
+    "num": 18,
+    "href": "/question/28819689/answer/234189061",
+    "text": "月薪 20000 元者在北京生活，是种怎样的体验？"
+}, {
+    "num": 18,
+    "href": "/question/40700155/answer/89002644",
+    "text": "如何看待 2016 年初上海房价一天飞涨 70 万元？"
+}, {
+    "num": 18,
+    "href": "/question/25378124/answer/31502881",
+    "text": "同一个人，体重 120 斤和 100 斤的世界是完全不同的吗？"
+}, {
+    "num": 18,
+    "href": "/question/269807491/answer/354987354",
+    "text": "为什么快手、抖音等短视频网站比知乎、豆瓣发展得要好，用户多那么多？"
+}, {
+    "num": 18,
+    "href": "/question/265829482/answer/458024958",
+    "text": "中国音乐圈最令人痛心的一刻是什么时候？"
+}, {
+    "num": 18,
+    "href": "/question/21650582/answer/18936991",
+    "text": "怎样才能做出与饭店一样好吃的菜？"
+}, {
+    "num": 18,
+    "href": "/question/31750592/answer/67359174",
+    "text": "你们吃过的最好吃的东西是什么？"
+}, {
+    "num": 18,
+    "href": "/question/40852072/answer/248337205",
+    "text": "普通人进豪车店，店员会有什么反应？"
+}, {
+    "num": 18,
+    "href": "/question/29848086/answer/46695186",
+    "text": "有哪些我们习以为常，其实似是而非的历史观？"
+}, {
+    "num": 18,
+    "href": "/question/24871100/answer/98028657",
+    "text": "读史时，哪些故事让你动容？"
+}, {
+    "num": 18,
+    "href": "/question/30130754/answer/49090361",
+    "text": "苏轼被神化了吗？有哪些例子可看出苏轼仍是「凡人」？"
+}, {
+    "num": 18,
+    "href": "/question/62437111/answer/450927121",
+    "text": "李世民为什么要立懦弱的李治为接班人？"
+}, {
+    "num": 18,
+    "href": "/question/20597941/answer/198553180",
+    "text": "有哪些出国后才发现的以前对英语世界的错误理解？"
+}, {
+    "num": 18,
+    "href": "/question/26743347/answer/34235147",
+    "text": "网易云音乐的歌单推荐算法是怎样的？"
+}, {
+    "num": 18,
+    "href": "/question/264494016/answer/285774098",
+    "text": "为什么没有人用黑客技术黑支付宝，是技术问题吗？"
+}, {
+    "num": 18,
+    "href": "/question/49602855/answer/117017609",
+    "text": "普通人如何通过训练大幅提高自己的决策能力？"
+}, {
+    "num": 18,
+    "href": "/question/264642519/answer/331304902",
+    "text": "相比微信支付，支付宝在技术、业务上有哪些不同之处？"
+}, {
+    "num": 18,
+    "href": "/question/39032548/answer/80064211",
+    "text": "如何看待 15 岁游戏主播退学后签约熊猫 TV ？"
+}, {
+    "num": 18,
+    "href": "/question/292536878/answer/481070060",
+    "text": "如何评价 2018 年雅加达亚运会英雄联盟总决赛中国队 3:1 战胜韩国队夺得金牌？"
+}, {
+    "num": 18,
+    "href": "/question/28596384/answer/41603454",
+    "text": "一个 32 岁的有家庭有娃的男人每天将所有业余时间都用来玩魔兽世界，怎么才能拯救？"
+}, {
+    "num": 18,
+    "href": "/question/33526473/answer/82151531",
+    "text": "人类都起源自非洲吗？"
+}, {
+    "num": 18,
+    "href": "/question/22059592/answer/193661602",
+    "text": "为什么部分人在配型骨髓或造血干细胞成功后又拒绝捐献？"
+}, {
+    "num": 18,
+    "href": "/question/279598824/answer/418382844",
+    "text": "如果在猴群面前将猴王一棒子打倒，猴子们会认我为新猴王吗？"
+}, {
+    "num": 18,
+    "href": "/question/51605025/answer/139145843",
+    "text": "生物学上有什么凄美的故事？"
+}, {
+    "num": 18,
+    "href": "/question/67652244/answer/310380034",
+    "text": "腾讯做过让你觉得很蠢的设计是什么？"
+}, {
+    "num": 18,
+    "href": "/question/35033860/answer/202053891",
+    "text": "怎么把自己皮肤养得好好的？"
+}, {
+    "num": 18,
+    "href": "/question/25500848/answer/115304747",
+    "text": "男人日常如何保养身体？"
+}, {
+    "num": 18,
+    "href": "/question/41035200/answer/89418308",
+    "text": "《疯狂动物城》（Zootopia）中有哪些有趣的细节？"
+}, {
+    "num": 18,
+    "href": "/question/39164259/answer/89941093",
+    "text": "如何在一个月内对 Photoshop 技术有所突破？"
+}, {
+    "num": 18,
+    "href": "/question/20976518/answer/42282028",
+    "text": "现代各国军装都不如二战时期德国军服漂亮吗？如果是，为什么？"
+}, {
+    "num": 18,
+    "href": "/question/53381416/answer/134814625",
+    "text": "如何看待民生银行性骚扰事件？"
+}, {
+    "num": 18,
+    "href": "/question/27560392/answer/76462072",
+    "text": "离婚会对孩子产生什么影响？"
+}, {
+    "num": 18,
+    "href": "/question/267431456/answer/327203732",
+    "text": "有哪些歌词读起来很奇怪？"
+}, {
+    "num": 17,
+    "href": "/question/36113637/answer/426727460",
+    "text": "在星巴克点热拿铁时告诉店员不加糖，店员说拿铁是不加糖的，我该说什么？"
+}, {
+    "num": 17,
+    "href": "/question/34406872/answer/58582081",
+    "text": "有哪些我们觉得荒谬的事，却有着合理的经济学解释？"
+}, {
+    "num": 17,
+    "href": "/question/60293871/answer/174484434",
+    "text": "什么是「低欲望社会」？为什么日本社会会进入这种状态？"
+}, {
+    "num": 17,
+    "href": "/question/30620066/answer/48921922",
+    "text": "NBA 感人的比赛或者画面有哪些？"
+}, {
+    "num": 17,
+    "href": "/question/25378124/answer/89456243",
+    "text": "同一个人，体重 120 斤和 100 斤的世界是完全不同的吗？"
+}, {
+    "num": 17,
+    "href": "/question/282931198/answer/428241277",
+    "text": "如何评价 2018 世界杯德国 0:2 不敌韩国，被淘汰出局？"
+}, {
+    "num": 17,
+    "href": "/question/21004786/answer/191555363",
+    "text": "如今百度是否已经从中国互联网三大公司（BAT）中出局？"
+}, {
+    "num": 17,
+    "href": "/question/22208507/answer/20656809",
+    "text": "怎样欣赏交响乐、歌剧、美声这些古典音乐？"
+}, {
+    "num": 17,
+    "href": "/question/21348277/answer/77797699",
+    "text": "怎么做出好吃的炸鸡？"
+}, {
+    "num": 17,
+    "href": "/question/21663896/answer/18966671",
+    "text": "在家如何做出美味的火锅汤底、蘸料？"
+}, {
+    "num": 17,
+    "href": "/question/29336768/answer/45501901",
+    "text": "《食戟之灵》里的美食料理有哪些具有可行性？"
+}, {
+    "num": 17,
+    "href": "/question/23136981/answer/30908460",
+    "text": "出过事故的二手车可以买吗？"
+}, {
+    "num": 17,
+    "href": "/question/28388995/answer/41396272",
+    "text": "怎么给爸妈拍很有格调的照片？"
+}, {
+    "num": 17,
+    "href": "/question/35242211/answer/65782687",
+    "text": "史书中有哪些细思恐极的细节？"
+}, {
+    "num": 17,
+    "href": "/question/21665000/answer/78012909",
+    "text": "甲午战争时，清廷修建颐和园耗费巨大，慈禧太后在这中间有多大责任？光绪不是亲政了吗，为什么不积极组织？"
+}, {
+    "num": 17,
+    "href": "/question/51356680/answer/126074942",
+    "text": "第一次去男朋友家受委屈应该发作吗？"
+}, {
+    "num": 17,
+    "href": "/question/20560506/answer/79042312",
+    "text": "为什么感觉上了大学静下心读书成为一种奢侈？"
+}, {
+    "num": 17,
+    "href": "/question/20745287/answer/22304813",
+    "text": "怎么购买一份合适的重疾险组合？"
+}, {
+    "num": 17,
+    "href": "/question/35597444/answer/67782948",
+    "text": "如果将现在的顶级游戏拿到十几年前去给那些老玩家玩，会有什么效果？"
+}, {
+    "num": 17,
+    "href": "/question/24559750/answer/63298192",
+    "text": "李逍遥更爱林月如还是更爱赵灵儿？"
+}, {
+    "num": 17,
+    "href": "/question/35682635/answer/502486314",
+    "text": "你见过哪些奇怪的过敏源？"
+}, {
+    "num": 17,
+    "href": "/question/46086426/answer/110347160",
+    "text": "流浪猫会记得经常喂它的人吗？"
+}, {
+    "num": 17,
+    "href": "/question/63624764/answer/211221533",
+    "text": "如何反驳朋友圈的「三峡不炸地震不断」？"
+}, {
+    "num": 17,
+    "href": "/question/25058826/answer/30010900",
+    "text": "小米作了哪些恶？"
+}, {
+    "num": 17,
+    "href": "/question/272231522/answer/384364074",
+    "text": "如何评论傅园慧「请不起队医」的言论？"
+}, {
+    "num": 17,
+    "href": "/question/49376799/answer/115947206",
+    "text": "如何评价游泳冠军队员傅园慧？还有第一印象是什么？"
+}, {
+    "num": 17,
+    "href": "/question/27428780/answer/65992291",
+    "text": "微信设计的神细节有哪些？"
+}, {
+    "num": 17,
+    "href": "/question/67517133/answer/254244150",
+    "text": "如何评价苏宁被曝禁止员工在京东购物 一经发现立即开除？"
+}, {
+    "num": 17,
+    "href": "/question/34949068/answer/62885215",
+    "text": "如果 48 小时后就会生化危机，如何准备求生？"
+}, {
+    "num": 17,
+    "href": "/question/31005906/answer/67126169",
+    "text": "玩音乐的朋友有什么有趣的街头演奏经历？"
+}, {
+    "num": 17,
+    "href": "/question/30782161/answer/49760679",
+    "text": "为什么很久没有周杰伦、林俊杰、王力宏、孙燕姿、蔡依林、S.H.E 级别的华语歌手了？"
+}, {
+    "num": 17,
+    "href": "/question/31940418/answer/459276187",
+    "text": "怎么在KTV更好地装逼？"
+}, {
+    "num": 17,
+    "href": "/question/21321799/answer/18352762",
+    "text": "为什么《董小姐》里「爱上一匹野马，可我的家里没有草原」会引起如此强烈的共鸣？"
+}, {
+    "num": 16,
+    "href": "/question/20013875/answer/255345894",
+    "text": "第一次去星巴克如何装得像老手？"
+}, {
+    "num": 16,
+    "href": "/question/268930983/answer/346309939",
+    "text": "为什么没人聊实业，比如制造业？"
+}, {
+    "num": 16,
+    "href": "/question/281062700/answer/430277975",
+    "text": "14 亿人的中国，为何找不到足球踢得好的十一个男子足球运动员？"
+}, {
+    "num": 16,
+    "href": "/question/22586211/answer/25756288",
+    "text": "有哪些好玩且耐玩的 iOS 游戏？"
+}, {
+    "num": 16,
+    "href": "/question/285114819/answer/443549920",
+    "text": "姜文导演的《邪不压正》为什么首映当天豆瓣评分从 8.2 降到 7.2 ？"
+}, {
+    "num": 16,
+    "href": "/question/24099873/answer/26711652",
+    "text": "如何得到 Google 的工作机会？"
+}, {
+    "num": 16,
+    "href": "/question/38643401/answer/83599770",
+    "text": "有哪些体现创意的 iPhone 壁纸？"
+}, {
+    "num": 16,
+    "href": "/question/263821069/answer/274383130",
+    "text": "如何看待袁立与《演员的诞生》节目组之间的纠纷？"
+}, {
+    "num": 16,
+    "href": "/question/28814096/answer/297097791",
+    "text": "后悔买 Kindle 了吗？"
+}, {
+    "num": 16,
+    "href": "/question/265120544/answer/473877582",
+    "text": "你最不能理解的网红美食是什么？"
+}, {
+    "num": 16,
+    "href": "/question/25665631/answer/265542103",
+    "text": "国宴为什么要以淮扬菜为主？"
+}, {
+    "num": 16,
+    "href": "/question/34534579/answer/262364456",
+    "text": "吃火锅时最讨厌什么？"
+}, {
+    "num": 16,
+    "href": "/question/34534579/answer/206776441",
+    "text": "吃火锅时最讨厌什么？"
+}, {
+    "num": 16,
+    "href": "/question/276813445/answer/390402598",
+    "text": "如何评价奇异博士在复仇者联盟3中的表现？"
+}, {
+    "num": 16,
+    "href": "/question/53176323/answer/220543144",
+    "text": "开一万元的汽车是什么体验？"
+}, {
+    "num": 16,
+    "href": "/question/29050140/answer/43855912",
+    "text": "开过飞机、坦克、潜艇的人再开家用轿车是什么感觉？"
+}, {
+    "num": 16,
+    "href": "/question/22107626/answer/20458591",
+    "text": "摄影构图有哪些技巧和标准？"
+}, {
+    "num": 16,
+    "href": "/question/24871100/answer/31992112",
+    "text": "读史时，哪些故事让你动容？"
+}, {
+    "num": 16,
+    "href": "/question/30583278/answer/58217304",
+    "text": "中国的山寨这么多，为什么我们总是说日本善于模仿？"
+}, {
+    "num": 16,
+    "href": "/question/21448656/answer/385738536",
+    "text": "李白的诗算无病呻吟吗？"
+}, {
+    "num": 16,
+    "href": "/question/26374091/answer/73969135",
+    "text": "与中国相比，西方发达国家的治安是不是普遍不好？为什么？"
+}, {
+    "num": 16,
+    "href": "/question/20779813/answer/333011017",
+    "text": "什么样的用户不喜欢微信？"
+}, {
+    "num": 16,
+    "href": "/question/30971299/answer/402995581",
+    "text": "为什么会有越是喜欢越是远离的心理？"
+}, {
+    "num": 16,
+    "href": "/question/21181450/answer/481844310",
+    "text": "为什么老干妈陶华碧说「我坚决不上市」「那是骗人家的钱」？"
+}, {
+    "num": 16,
+    "href": "/question/268915280/answer/346039416",
+    "text": "如何评价steam游戏因为没有中文语音而被打差评？"
+}, {
+    "num": 16,
+    "href": "/question/63618533/answer/211762948",
+    "text": "为什么中国DOTA那么厉害？"
+}, {
+    "num": 16,
+    "href": "/question/48603885/answer/112543983",
+    "text": "关于《守望先锋》，你最想分享的事是什么？"
+}, {
+    "num": 16,
+    "href": "/question/21513255/answer/166104567",
+    "text": "美国人在日常生活中能有多浪费资源？"
+}, {
+    "num": 16,
+    "href": "/question/24414382/answer/27711168",
+    "text": "可以用经常远眺的方法治愈近视吗？"
+}, {
+    "num": 16,
+    "href": "/question/268825815/answer/342303640",
+    "text": "你见过哪些有意思的动物的行为？"
+}, {
+    "num": 16,
+    "href": "/question/38510046/answer/108502594",
+    "text": "杨振宁真的很伟大吗？"
+}, {
+    "num": 16,
+    "href": "/question/24079693/answer/38549900",
+    "text": "如何理解引力波，怎样具体探测？"
+}, {
+    "num": 16,
+    "href": "/question/267444707/answer/324717981",
+    "text": "哔哩哔哩和快手哪个更有前景？"
+}, {
+    "num": 16,
+    "href": "/question/20615865/answer/189448277",
+    "text": "雷军是怎样一个人？"
+}, {
+    "num": 16,
+    "href": "/question/22689579/answer/22318058",
+    "text": "Web 建站技术中，HTML、HTML5、XHTML、CSS、SQL、JavaScript、PHP、ASP.NET、Web Services 是什么？"
+}, {
+    "num": 16,
+    "href": "/question/36380091/answer/122103236",
+    "text": "有哪些成本是老板们开公司前未曾预见到的？"
+}, {
+    "num": 16,
+    "href": "/question/27743922/answer/46100448",
+    "text": "成本 2000 元以内、不会令人良心不安的赚钱方法有哪些？"
+}, {
+    "num": 16,
+    "href": "/question/37524914/answer/440757681",
+    "text": "App Store 有哪些冷门但逆天的 App？"
+}, {
+    "num": 16,
+    "href": "/question/52465637/answer/131037660",
+    "text": "每天正餐只吃方便面的情况下要搭配什么廉价的水果、蔬菜才能保证身体健康？"
+}, {
+    "num": 16,
+    "href": "/question/41892678/answer/215365218",
+    "text": "哪些影视作品给你留下了童年阴影？"
+}, {
+    "num": 16,
+    "href": "/question/279804105/answer/469855048",
+    "text": "你被吓的最惨的一次是什么情况？"
+}, {
+    "num": 15,
+    "href": "/question/20556024/answer/70495889",
+    "text": "国内有哪些尚未过度开发的景点值得一去？"
+}, {
+    "num": 15,
+    "href": "/question/19661829/answer/17527623",
+    "text": "经济学入门必读书籍有哪些值得推荐？"
+}, {
+    "num": 15,
+    "href": "/question/34417390/answer/58593478",
+    "text": "中国央行为何不印发更大面额的纸币（500 元、1000 元）？"
+}, {
+    "num": 15,
+    "href": "/question/34979179/answer/61425339",
+    "text": "野球场上，你见过最装逼的是什么？"
+}, {
+    "num": 15,
+    "href": "/question/44895503/answer/347174391",
+    "text": "瘦子有哪些共同的饮食习惯？"
+}, {
+    "num": 15,
+    "href": "/question/269070103/answer/346078147",
+    "text": "你见过哪些「没什么鸟用」的 App？"
+}, {
+    "num": 15,
+    "href": "/question/22741461/answer/80260454",
+    "text": "如何用互联网思维卖馒头？"
+}, {
+    "num": 15,
+    "href": "/question/276163238/answer/387431891",
+    "text": "你为什么退出了乐队？"
+}, {
+    "num": 15,
+    "href": "/question/266574241/answer/410208831",
+    "text": "你最喜欢的句子是？"
+}, {
+    "num": 15,
+    "href": "/question/24890241/answer/429430038",
+    "text": "中国有什么类似寿司那样的极简而求精的食物？"
+}, {
+    "num": 15,
+    "href": "/question/23246914/answer/24071160",
+    "text": "《海贼王》里面有哪些不引人注意却构思巧妙的小细节？"
+}, {
+    "num": 15,
+    "href": "/question/30470093/answer/75907137",
+    "text": "《火影忍者》里有哪些细思恐极的细节？"
+}, {
+    "num": 15,
+    "href": "/question/30668264/answer/49284221",
+    "text": "葫芦娃的剧情拍成 EVA 的风格会是什么样子？"
+}, {
+    "num": 15,
+    "href": "/question/264779537/answer/287463706",
+    "text": "如何看待网上热传的「黑龙江死刑犯与家人见最后一面」的视频？"
+}, {
+    "num": 15,
+    "href": "/question/58893467/answer/410511999",
+    "text": "你见过车技最好的人是什么样的?"
+}, {
+    "num": 15,
+    "href": "/question/34368524/answer/372704963",
+    "text": "为啥自己照镜子感觉自己长的蛮好看，可是一拍照就觉得不咋的?"
+}, {
+    "num": 15,
+    "href": "/question/21567651/answer/64178231",
+    "text": "为什么说俄罗斯是战斗民族？"
+}, {
+    "num": 15,
+    "href": "/question/56682219/answer/150736959",
+    "text": "如何评价文天祥赴死？"
+}, {
+    "num": 15,
+    "href": "/question/268612527/answer/341606912",
+    "text": "项羽具体有什么战绩，会被评为千古无二呢？历史名将如此多，为什么就项羽是公认的第一猛将？"
+}, {
+    "num": 15,
+    "href": "/question/59425713/answer/166810913",
+    "text": "共享充电宝是伪需求吗？"
+}, {
+    "num": 15,
+    "href": "/question/271644634/answer/380421313",
+    "text": "如果给你100w，7天后要你归还本金。你会怎么实现利益最大化？"
+}, {
+    "num": 15,
+    "href": "/question/19902214/answer/15117313",
+    "text": "什么叫对冲基金？"
+}, {
+    "num": 15,
+    "href": "/question/24676509/answer/28656256",
+    "text": "有哪些不玩会很遗憾的单机游戏？"
+}, {
+    "num": 15,
+    "href": "/question/55507748/answer/180836989",
+    "text": "你经历过哪些有意思的《王者荣耀》游戏对局？"
+}, {
+    "num": 15,
+    "href": "/question/62836353/answer/209439306",
+    "text": "你玩游戏时有哪些丧心病狂、令人发指的玩法？"
+}, {
+    "num": 15,
+    "href": "/question/38077317/answer/94462552",
+    "text": "DOTA2 里所谓的几号位是什么意思？"
+}, {
+    "num": 15,
+    "href": "/question/56876352/answer/151129384",
+    "text": "如何看待敖厂长《囧的呼唤》系列关于盗墓笔记页游的第 214 期被威胁删除一事？"
+}, {
+    "num": 15,
+    "href": "/question/20629331/answer/59896791",
+    "text": "导致《魔兽争霸 3》近几年迅速衰落的原因有哪些？"
+}, {
+    "num": 15,
+    "href": "/question/41968452/answer/93174577",
+    "text": "如何评价姚明正式入选 2016 年篮球名人堂？"
+}, {
+    "num": 15,
+    "href": "/question/35469654/answer/452139833",
+    "text": "什么是真正的动物保护？"
+}, {
+    "num": 15,
+    "href": "/question/39281916/answer/304220447",
+    "text": "人体有哪些进化的遗漏之处？"
+}, {
+    "num": 15,
+    "href": "/question/41837187/answer/92599838",
+    "text": "地球演化中有哪些超乎人想象的现象？"
+}, {
+    "num": 15,
+    "href": "/question/35682635/answer/500851681",
+    "text": "你见过哪些奇怪的过敏源？"
+}, {
+    "num": 15,
+    "href": "/question/38510046/answer/108149282",
+    "text": "杨振宁真的很伟大吗？"
+}, {
+    "num": 15,
+    "href": "/question/28641163/answer/41588274",
+    "text": "冲蹲式厕所时，最后一条屎总是很难冲走，怎么解决？"
+}, {
+    "num": 15,
+    "href": "/question/63950151/answer/215105605",
+    "text": "如何评价台湾 2017 年 8 月 15 日的大停电？"
+}, {
+    "num": 15,
+    "href": "/question/21092045/answer/17164418",
+    "text": "北斗有 35 颗卫星，而 GPS 有 24 颗卫星，为什么二者数量不同？"
+}, {
+    "num": 15,
+    "href": "/question/49334640/answer/115477072",
+    "text": "如何看待澳洲游泳运动员霍顿称孙杨为 「drug cheat」且澳委会拒绝道歉一事？"
+}, {
+    "num": 15,
+    "href": "/question/29265587/answer/44010658",
+    "text": "如何快速成为数据分析师？"
+}, {
+    "num": 15,
+    "href": "/question/30095244/answer/166092543",
+    "text": "坐月子到底科不科学？"
+}, {
+    "num": 15,
+    "href": "/question/26680768/answer/68083576",
+    "text": "你的学校有哪些令你赞不绝口的设计？"
+}, {
+    "num": 15,
+    "href": "/question/31637529/answer/54177865",
+    "text": "有什么道理是开始注重外表几年后才能悟出来的？"
+}, {
+    "num": 15,
+    "href": "/question/22462538/answer/28321021",
+    "text": "如何评价电影《后会无期》？"
+}, {
+    "num": 15,
+    "href": "/question/28088991/answer/276029208",
+    "text": "当年那个犀利的韩寒是否已经离我们远去？"
+}, {
+    "num": 15,
+    "href": "/question/68512699/answer/319160301",
+    "text": "郎朗这种级别的演奏家拿着从没见过的谱子第一遍视奏就可以弹得很好吗？"
+}, {
+    "num": 14,
+    "href": "/question/28247836/answer/245561705",
+    "text": "当一把俗人是一种怎样的体验？"
+}, {
+    "num": 14,
+    "href": "/question/23939219/answer/257420614",
+    "text": "为什么武则天最后还是把皇位还给了李家？"
+}, {
+    "num": 14,
+    "href": "/question/57082277/answer/153216637",
+    "text": "如何评价 2018 俄罗斯世界杯亚洲区预选赛十二强赛中国 1:0 韩国？"
+}, {
+    "num": 14,
+    "href": "/question/297777863/answer/516706691",
+    "text": "如何评价金庸的围棋水平？"
+}, {
+    "num": 14,
+    "href": "/question/60209246/answer/173915459",
+    "text": "如何看待王思聪对柯洁写的微博的评论？"
+}, {
+    "num": 14,
+    "href": "/question/67330164/answer/259786638",
+    "text": "如何看待马云的电影作品《功守道》？"
+}, {
+    "num": 14,
+    "href": "/question/28656794/answer/46448957",
+    "text": "坚持跑步到底有哪些改变？"
+}, {
+    "num": 14,
+    "href": "/question/266757601/answer/360880702",
+    "text": "张继科到底有多厉害？"
+}, {
+    "num": 14,
+    "href": "/question/35781319/answer/69173425",
+    "text": "喜欢宅的人，如何把家里装修成全世界最舒服的地方？"
+}, {
+    "num": 14,
+    "href": "/question/270883846/answer/398182947",
+    "text": "哪本书是你只要有机会就会强烈推荐的？为什么？"
+}, {
+    "num": 14,
+    "href": "/question/31291270/answer/63232414",
+    "text": "《名侦探柯南》中有什么细思恐极的地方？"
+}, {
+    "num": 14,
+    "href": "/question/48883505/answer/343362619",
+    "text": "有车的实质是什么？"
+}, {
+    "num": 14,
+    "href": "/question/30489442/answer/51507979",
+    "text": "长期通过微博、微信、知乎等平台接收碎片化的知识有什么弊端？"
+}, {
+    "num": 14,
+    "href": "/question/20184884/answer/101058842",
+    "text": "优秀简历要遵循哪些规则？"
+}, {
+    "num": 14,
+    "href": "/question/20668728/answer/54551631",
+    "text": "单反应当怎样入门？"
+}, {
+    "num": 14,
+    "href": "/question/24681925/answer/28608728",
+    "text": "为什么说 60 岁看三国觉得刘备最厉害？"
+}, {
+    "num": 14,
+    "href": "/question/54566488/answer/345368699",
+    "text": "为什么许多国人喜欢明朝？"
+}, {
+    "num": 14,
+    "href": "/question/22332194/answer/52744331",
+    "text": "历史上有哪些人死于装蒜？"
+}, {
+    "num": 14,
+    "href": "/question/22687951/answer/22394746",
+    "text": "为什么感觉《三国演义》的谋略比《冰与火之歌》更厉害，而后者却更残酷？"
+}, {
+    "num": 14,
+    "href": "/question/28346339/answer/40462934",
+    "text": "三国众人如果看到《三国演义》会有什么反应？"
+}, {
+    "num": 14,
+    "href": "/question/56287050/answer/234618793",
+    "text": "为什么情侣在一起旅行后容易分手？"
+}, {
+    "num": 14,
+    "href": "/question/28139333/answer/233171555",
+    "text": "旅行时和异性拼房是种什么体验？"
+}, {
+    "num": 14,
+    "href": "/question/40712955/answer/87890964",
+    "text": "如何向外行解释产品经理频繁更改需求为什么会令程序员烦恼?"
+}, {
+    "num": 14,
+    "href": "/question/36236144/answer/68283893",
+    "text": "把自己的青春时光大量花在学习 CFA 和 CPA 上好吗？"
+}, {
+    "num": 14,
+    "href": "/question/28540600/answer/41265582",
+    "text": "ACCA 和 CPA 该如何选择？"
+}, {
+    "num": 14,
+    "href": "/question/25815277/answer/31502213",
+    "text": "乔布斯高中毕业，是怎么镇得住人的？"
+}, {
+    "num": 14,
+    "href": "/question/268165456/answer/465432318",
+    "text": "一个23岁的年轻人，手上有2万有什么好的理财建议？"
+}, {
+    "num": 14,
+    "href": "/question/62836353/answer/209048822",
+    "text": "你玩游戏时有哪些丧心病狂、令人发指的玩法？"
+}, {
+    "num": 14,
+    "href": "/question/46258281/answer/100621953",
+    "text": "25 岁的男生依然在 DOTA 2 上花很多时间是不是虚度光阴？"
+}, {
+    "num": 14,
+    "href": "/question/279076006/answer/408475482",
+    "text": "如果世界上出现了比人还高级的生物，我们人类会不会沦为被虐杀的对象，有被吃掉的风险？"
+}, {
+    "num": 14,
+    "href": "/question/21804069/answer/385597548",
+    "text": "遗传病该不该生孩子？"
+}, {
+    "num": 14,
+    "href": "/question/27183659/answer/124479599",
+    "text": "自然界有哪些很残酷的现象？"
+}, {
+    "num": 14,
+    "href": "/question/20910380/answer/29172699",
+    "text": "如果证实了希格斯玻色子，能有哪些实际的用途？"
+}, {
+    "num": 14,
+    "href": "/question/20321927/answer/34405054",
+    "text": "为什么中国的航天员被称为航天英雄？"
+}, {
+    "num": 14,
+    "href": "/question/29138020/answer/81972368",
+    "text": "如何系统地自学 Python？"
+}, {
+    "num": 14,
+    "href": "/question/40490365/answer/87428322",
+    "text": "试以「Siri 已失去控制」为开头写一个故事？"
+}, {
+    "num": 14,
+    "href": "/question/20474733/answer/60229876",
+    "text": "设计师觉得最悲哀的事或者最悲哀的时刻是什么？"
+}, {
+    "num": 14,
+    "href": "/question/28006748/answer/39013684",
+    "text": "为什么人们在夜晚看到满天的繁星会觉得幸福？"
+}, {
+    "num": 14,
+    "href": "/question/67422102/answer/252674396",
+    "text": "如何评价薛之谦 2017 年 10 月 31 日发表的新歌《别》？"
+}, {
+    "num": 14,
+    "href": "/question/293436312/answer/485965456",
+    "text": "如何看待刘强东疑案，美国的司法流程是怎样的？"
+}, {
+    "num": 14,
+    "href": "/question/39960906/answer/84659739",
+    "text": "周星驰在电影史中的地位如何？"
+}, {
+    "num": 14,
+    "href": "/question/55702070/answer/403201998",
+    "text": "钢琴家会找老师上课吗？"
+}, {
+    "num": 14,
+    "href": "/question/19882239/answer/20241444",
+    "text": "陈奕迅被称为「歌神」的原因是什么？"
+}, {
+    "num": 14,
+    "href": "/question/274943829/answer/381411471",
+    "text": "推荐一些你喜欢的翻唱歌手及其实力翻唱作品（路转粉的类型）？"
+}, {
+    "num": 13,
+    "href": "/question/28183056/answer/39751759",
+    "text": "如果自己偷偷印一大笔钱给老婆花，对市场有什么影响？"
+}, {
+    "num": 13,
+    "href": "/question/24972957/answer/375870948",
+    "text": "真的有吃不胖的体质么？"
+}, {
+    "num": 13,
+    "href": "/question/22619469/answer/22035348",
+    "text": "怎样评价李娜澳网夺冠后回国时在机场的表现？"
+}, {
+    "num": 13,
+    "href": "/question/54258291/answer/139088427",
+    "text": "如何看待在弈城围棋和腾讯野狐围棋上出现的神秘 AI 高手 Magister/Master（P）？"
+}, {
+    "num": 13,
+    "href": "/question/22447908/answer/21435705",
+    "text": "百度和 Google 的搜索技术是一个量级吗？"
+}, {
+    "num": 13,
+    "href": "/question/21315622/answer/17860233",
+    "text": "为什么维基百科是专业的典范，百度百科的内容就缺乏权威？"
+}, {
+    "num": 13,
+    "href": "/question/38101333/answer/75356454",
+    "text": "对于扎克伯格承诺将手中 99%  Facebook 股份转移到商业公司并致力造福人类，你有什么感想？"
+}, {
+    "num": 13,
+    "href": "/question/58969621/answer/161789714",
+    "text": "为什么现在的罗永浩和张召忠在互联网上的评价颠倒了？"
+}, {
+    "num": 13,
+    "href": "/question/39167242/answer/86897077",
+    "text": "有哪些建筑看上去让你觉得很吃惊？"
+}, {
+    "num": 13,
+    "href": "/question/31462599/answer/52795328",
+    "text": "如果天猫是一个实体店，它会有多大？"
+}, {
+    "num": 13,
+    "href": "/question/27942445/answer/38868696",
+    "text": "为什么现在知乎上有人开始批评 Kindle？"
+}, {
+    "num": 13,
+    "href": "/question/36255414/answer/69866612",
+    "text": "你有哪些相见恨晚的糖？"
+}, {
+    "num": 13,
+    "href": "/question/34583573/answer/94999164",
+    "text": "有哪些不用烤箱就能自制的甜品？"
+}, {
+    "num": 13,
+    "href": "/question/20700510/answer/30275654",
+    "text": "吃火锅怎样的顺序放食材比较好？"
+}, {
+    "num": 13,
+    "href": "/question/41692009/answer/115304786",
+    "text": "毛利小五郎的房子户型怎么样，大概多少钱，私家侦探收入可以负担吗，毛利算有钱人吗？"
+}, {
+    "num": 13,
+    "href": "/question/269246761/answer/349750499",
+    "text": "被车撞死的原理是什么？"
+}, {
+    "num": 13,
+    "href": "/question/26939875/answer/34706775",
+    "text": "为什么中东的非法武装或者恐怖分子都喜欢用丰田车？"
+}, {
+    "num": 13,
+    "href": "/question/281937869/answer/423438689",
+    "text": "如何看待 2018 俄罗斯世界杯阿根廷 0:3 不敌克罗地亚？"
+}, {
+    "num": 13,
+    "href": "/question/30245384/answer/47401869",
+    "text": "本科生 65 个证书(职业证、荣誉证、奖学金、综合成绩专业第一)为什么抵不过一个 985 的学历？"
+}, {
+    "num": 13,
+    "href": "/question/20843119/answer/80713578",
+    "text": "拍照的时候怎么让表情自然？"
+}, {
+    "num": 13,
+    "href": "/question/19667267/answer/111826353",
+    "text": "《蒙娜丽莎》好在哪里？如何评价它的历史地位？"
+}, {
+    "num": 13,
+    "href": "/question/20911134/answer/21299674",
+    "text": "如何评价中国国徽的设计？"
+}, {
+    "num": 13,
+    "href": "/question/290387649/answer/480095625",
+    "text": "小时候看三国觉得刘备是仁君，长大后再看三国为何又觉得刘备更像是一个伪君子？"
+}, {
+    "num": 13,
+    "href": "/question/24681925/answer/291728697",
+    "text": "为什么说 60 岁看三国觉得刘备最厉害？"
+}, {
+    "num": 13,
+    "href": "/question/35798442/answer/97251367",
+    "text": "你在旅行途中遇到过哪些感人的人或事？"
+}, {
+    "num": 13,
+    "href": "/question/20688264/answer/17471299",
+    "text": "在北京一个人一天去哪玩比较好？"
+}, {
+    "num": 13,
+    "href": "/question/19637333/answer/198376135",
+    "text": "备考 CPA 的，有哪些经验可推荐？"
+}, {
+    "num": 13,
+    "href": "/question/55279817/answer/349494116",
+    "text": "律师能多大程度影响整个案件？"
+}, {
+    "num": 13,
+    "href": "/question/27908670/answer/38592784",
+    "text": "iPhone 是怎样从初代一步步进化成 iPhone 6 的？"
+}, {
+    "num": 13,
+    "href": "/question/33272270/answer/56216161",
+    "text": "如何用讲故事的方式，深入浅出地解释什么是天使投资、VC 和 PE？"
+}, {
+    "num": 13,
+    "href": "/question/22374093/answer/252771277",
+    "text": "为什么很多人想去银行工作？"
+}, {
+    "num": 13,
+    "href": "/question/24699538/answer/84901995",
+    "text": "在银行工作是怎样一番体验？"
+}, {
+    "num": 13,
+    "href": "/question/264882947/answer/289570061",
+    "text": "2018年，刚需到底应不应该买房？"
+}, {
+    "num": 13,
+    "href": "/question/49642449/answer/204086548",
+    "text": "最让你震撼的游戏细节有哪些？"
+}, {
+    "num": 13,
+    "href": "/question/38020544/answer/74638150",
+    "text": "关于科比亲笔发文透露下赛季退役，你想说点什么？"
+}, {
+    "num": 13,
+    "href": "/question/29203540/answer/140343850",
+    "text": "骨头汤真的大补吗？"
+}, {
+    "num": 13,
+    "href": "/question/31787038/answer/53284990",
+    "text": "为什么李开复做了化疗头发还那么浓密？"
+}, {
+    "num": 13,
+    "href": "/question/51605025/answer/139083922",
+    "text": "生物学上有什么凄美的故事？"
+}, {
+    "num": 13,
+    "href": "/question/52579481/answer/131445121",
+    "text": "怎么才能找到学物理的男朋友，最好是量子物理？"
+}, {
+    "num": 13,
+    "href": "/question/31845755/answer/53730896",
+    "text": "为什么中国仍然有 20 多万人没有供电？"
+}, {
+    "num": 13,
+    "href": "/question/20443747/answer/15415180",
+    "text": "哪款洗发水比较好？理由是什么？"
+}, {
+    "num": 13,
+    "href": "/question/32012886/answer/465482143",
+    "text": "腾讯都作了哪些恶？"
+}, {
+    "num": 13,
+    "href": "/question/20899988/answer/24923424",
+    "text": "如何入门 Python 爬虫？"
+}, {
+    "num": 13,
+    "href": "/question/282524165/answer/434933581",
+    "text": "网易云版权多还是 QQ 音乐版权多？"
+}, {
+    "num": 13,
+    "href": "/question/37524914/answer/83223753",
+    "text": "App Store 有哪些冷门但逆天的 App？"
+}, {
+    "num": 13,
+    "href": "/question/268620315/answer/341041862",
+    "text": "黑豹电影为什么欧美票房炸裂，而大陆评价只能算是中规中矩？"
+}, {
+    "num": 13,
+    "href": "/question/20165643/answer/385757546",
+    "text": "日本的平面设计水平为什么这么高？"
+}, {
+    "num": 13,
+    "href": "/question/36976624/answer/171909912",
+    "text": "有哪些看起来很蠢的设计实际上真的很蠢？"
+}, {
+    "num": 13,
+    "href": "/question/20308770/answer/241699602",
+    "text": "如何让打印出来的字体看起来像手写的？"
+}, {
+    "num": 13,
+    "href": "/question/43677446/answer/99638575",
+    "text": "魏则西由生病到离世，给你带来的人生思考有哪些？"
+}, {
+    "num": 13,
+    "href": "/question/28088991/answer/39800604",
+    "text": "当年那个犀利的韩寒是否已经离我们远去？"
+}, {
+    "num": 13,
+    "href": "/question/41453092/answer/91509292",
+    "text": "如何评价李安抗议奥斯卡歧视亚洲人这件事？"
+}, {
+    "num": 13,
+    "href": "/question/284380745/answer/449525180",
+    "text": "如何看待华晨宇批评李袁杰？"
+}, {
+    "num": 13,
+    "href": "/question/21604032/answer/371335719",
+    "text": "为什么编曲的费用一般会高于作曲和填词？"
+}, {
+    "num": 12,
+    "href": "/question/21128697/answer/64846118",
+    "text": "为什么有人会点两百多块一杯的猫屎咖啡？"
+}, {
+    "num": 12,
+    "href": "/question/20556024/answer/19220555",
+    "text": "国内有哪些尚未过度开发的景点值得一去？"
+}, {
+    "num": 12,
+    "href": "/question/19912025/answer/45715210",
+    "text": "五个囚犯先后从100颗绿豆中抓绿豆。抓得最多和最少的人将被处死，不能交流，可以摸出剩下绿豆的数量，谁的存活几率最大？"
+}, {
+    "num": 12,
+    "href": "/question/52458211/answer/131478774",
+    "text": "从经济学角度看，双十一什么也不买，是种损失吗？"
+}, {
+    "num": 12,
+    "href": "/question/39974807/answer/387157951",
+    "text": "闹灾荒的时候，和珅在给灾民的米汤里撒了一把沙子， 这其中包含着什么经济学原理？"
+}, {
+    "num": 12,
+    "href": "/question/51688016/answer/192738189",
+    "text": "如果你有这辈子都花不完的钱，你会做什么？"
+}, {
+    "num": 12,
+    "href": "/question/22036280/answer/20258655",
+    "text": "经济学界如何看待比特币？"
+}, {
+    "num": 12,
+    "href": "/question/34548410/answer/107943308",
+    "text": "健身房有哪些奇葩逗逼？"
+}, {
+    "num": 12,
+    "href": "/question/34548410/answer/107811869",
+    "text": "健身房有哪些奇葩逗逼？"
+}, {
+    "num": 12,
+    "href": "/question/29447490/answer/83696701",
+    "text": "你的私人书单是什么？"
+}, {
+    "num": 12,
+    "href": "/question/28203132/answer/133568855",
+    "text": "你写过或者读过的，最动人的情话是什么？"
+}, {
+    "num": 12,
+    "href": "/question/264941789/answer/294485386",
+    "text": "为什么日本女性不敢一个人去吃拉面、牛肉饭，以及买烤红薯？"
+}, {
+    "num": 12,
+    "href": "/question/30605806/answer/48943161",
+    "text": "哆啦A梦能单挑复仇者联盟吗？"
+}, {
+    "num": 12,
+    "href": "/question/22099520/answer/347723447",
+    "text": "孙悟空可以和美漫中的哪个超级英雄单挑并且取胜？"
+}, {
+    "num": 12,
+    "href": "/question/267841643/answer/333198476",
+    "text": "秒怂是一种怎样的体验？"
+}, {
+    "num": 12,
+    "href": "/question/48837193/answer/115917373",
+    "text": "精灵宝可梦动画片里小智能轻松抱起皮卡丘，他的力气到底有多大？"
+}, {
+    "num": 12,
+    "href": "/question/265187804/answer/354973517",
+    "text": "你所知道的扮老虎结果被猪吃的车型有哪些？"
+}, {
+    "num": 12,
+    "href": "/question/30696735/answer/431943873",
+    "text": "有哪些很重要，教练却没有教的驾驶技巧？"
+}, {
+    "num": 12,
+    "href": "/question/33273396/answer/68183373",
+    "text": "为什么长辈都觉得去垄断行业国企好，工作稳定，而去私企就不靠谱？"
+}, {
+    "num": 12,
+    "href": "/question/23048923/answer/29592675",
+    "text": "新手如何选单反？"
+}, {
+    "num": 12,
+    "href": "/question/20843119/answer/21931403",
+    "text": "拍照的时候怎么让表情自然？"
+}, {
+    "num": 12,
+    "href": "/question/22786718/answer/534918021",
+    "text": "怎样拍出有趣个性的全家福？"
+}, {
+    "num": 12,
+    "href": "/question/21113705/answer/17240489",
+    "text": "如何欣赏一张照片的构图？有哪些构图强大的摄影作品？"
+}, {
+    "num": 12,
+    "href": "/question/47699150/answer/107586957",
+    "text": "英国脱欧会给中国带来哪些影响？"
+}, {
+    "num": 12,
+    "href": "/question/20714871/answer/15973447",
+    "text": "依正史记载，赵云并无太过出彩部分，为何倍受喜爱？PS·三国志里就只有长坂坡救了阿斗和甘夫人和斜谷之战？"
+}, {
+    "num": 12,
+    "href": "/question/22100626/answer/20531563",
+    "text": "如果明朝不是被满清取代而是另一个汉族政权，中国能避免被西方宰割或减轻被压迫的程度吗？"
+}, {
+    "num": 12,
+    "href": "/question/26038686/answer/38219575",
+    "text": "李清照在她的作品里宿醉过多少次？"
+}, {
+    "num": 12,
+    "href": "/question/267093925/answer/319229592",
+    "text": "为何历史上的开国皇帝都很难处理与开国功臣的关系？"
+}, {
+    "num": 12,
+    "href": "/question/27427250/answer/157265678",
+    "text": "一个人旅行是什么体验？"
+}, {
+    "num": 12,
+    "href": "/question/61022374/answer/187759241",
+    "text": "如何看待 2017 年 6 月 9 日发生的北大赴美交流硕士章莹颖女士失踪一案？"
+}, {
+    "num": 12,
+    "href": "/question/57307176/answer/157409327",
+    "text": "警察是怎么忍住不犯法的？"
+}, {
+    "num": 12,
+    "href": "/question/37550394/answer/72562588",
+    "text": "李安 6 年在家赋闲，为什么不出去打工？"
+}, {
+    "num": 12,
+    "href": "/question/27776546/answer/195397157",
+    "text": "有哪些几乎没拍过烂片的导演？(要有一定产量)？"
+}, {
+    "num": 12,
+    "href": "/question/23387971/answer/33706183",
+    "text": "玩《三国杀》你最机智的一刻是什么？"
+}, {
+    "num": 12,
+    "href": "/question/47619991/answer/106878739",
+    "text": "詹姆斯第三次荣膺 NBA 总决赛 MVP 有哪些意义？"
+}, {
+    "num": 12,
+    "href": "/question/279051216/answer/406438622",
+    "text": "骑士勇士总决赛第四次相遇，最终谁能赢得 17-18 赛季 NBA 总冠军？"
+}, {
+    "num": 12,
+    "href": "/question/279050495/answer/411042296",
+    "text": "像勇士这种四（因为考辛斯的加入了变成五）巨头的球队夺冠对NBA是不是弊大于利？"
+}, {
+    "num": 12,
+    "href": "/question/37551321/answer/239121113",
+    "text": "地球上还有原始人吗？"
+}, {
+    "num": 12,
+    "href": "/question/264440547/answer/293110532",
+    "text": "动物史上，存在两个物种没有生殖隔离且生出全新物种的情况吗？"
+}, {
+    "num": 12,
+    "href": "/question/19916228/answer/121810408",
+    "text": "社会达尔文主义是错的吗？为什么？"
+}, {
+    "num": 12,
+    "href": "/question/35214567/answer/68666551",
+    "text": "高三一年能对身体造成多大的伤害？"
+}, {
+    "num": 12,
+    "href": "/question/266957523/answer/468642019",
+    "text": "刚学化学时有什么作死的行为？"
+}, {
+    "num": 12,
+    "href": "/question/274034263/answer/371806555",
+    "text": "如何拥有好看有神的眼睛？"
+}, {
+    "num": 12,
+    "href": "/question/19561688/answer/440702581",
+    "text": "近视眼如何恢复视力摘掉眼镜？"
+}, {
+    "num": 12,
+    "href": "/question/36047886/answer/65714686",
+    "text": "在幼儿园开设量子物理学课程如何？"
+}, {
+    "num": 12,
+    "href": "/question/266754083/answer/323600727",
+    "text": "跳到水里能躲子弹么？"
+}, {
+    "num": 12,
+    "href": "/question/267405918/answer/326568658",
+    "text": "物理中有哪些不可思议（违背直觉）的事实？"
+}, {
+    "num": 12,
+    "href": "/question/265253752/answer/329830293",
+    "text": "有哪些是属于读过化学的人的习惯？"
+}, {
+    "num": 12,
+    "href": "/question/21890686/answer/65357518",
+    "text": "怎样学好高中化学？"
+}, {
+    "num": 12,
+    "href": "/question/20512556/answer/100898344",
+    "text": "百度的产品中，你用过的体验最好的一款产品是？"
+}, {
+    "num": 12,
+    "href": "/question/285586045/answer/449795157",
+    "text": "一行代码可以做什么？"
+}, {
+    "num": 12,
+    "href": "/question/29372574/answer/88744491",
+    "text": "Python 的练手项目有哪些值得推荐？"
+}, {
+    "num": 12,
+    "href": "/question/278002904/answer/407110582",
+    "text": "为什么说拔罐拔出来的黑紫色印记是毒素呢？"
+}, {
+    "num": 12,
+    "href": "/question/41207814/answer/90099614",
+    "text": "《疯狂动物城》主角尼克和朱迪可以生孩子吗？生下来的小宝宝是什么样子的？"
+}, {
+    "num": 12,
+    "href": "/question/36991788/answer/69902291",
+    "text": "IT行业都有哪些职位，初学者（0基础，新人）该如何选择，才能够快速进入这个行业？"
+}, {
+    "num": 12,
+    "href": "/question/63621937/answer/211165991",
+    "text": "如何看待唐七发表「《三生》未抄袭声明」？"
+}, {
+    "num": 12,
+    "href": "/question/43677446/answer/98333538",
+    "text": "魏则西由生病到离世，给你带来的人生思考有哪些？"
+}, {
+    "num": 12,
+    "href": "/question/26686292/answer/526179276",
+    "text": "中国有哪些恐怖或鲜为人知的杀人案件？"
+}, {
+    "num": 12,
+    "href": "/question/263894060/answer/276441188",
+    "text": "如何评价江歌案一审庭审经过及一审结果（陈世峰罪名成立，被判 20 年有期徒刑）？"
+}, {
+    "num": 12,
+    "href": "/question/21023810/answer/430635349",
+    "text": "造成剧组相关人员意外死亡的电影有哪些？"
+}, {
+    "num": 12,
+    "href": "/question/40854406/answer/88595398",
+    "text": "如何评价莱昂纳多·迪卡普里奥夺得第 88 届奥斯卡最佳男主角？"
+}, {
+    "num": 12,
+    "href": "/question/20996501/answer/17700338",
+    "text": "你是否认可豆瓣电影的评分？"
+}, {
+    "num": 12,
+    "href": "/question/265285081/answer/376298784",
+    "text": "如何判断一个人是不是玩音乐的？"
+}, {
+    "num": 11,
+    "href": "/question/39826329/answer/85428123",
+    "text": "学医的吃脏器比如卤煮是什么感受？"
+}, {
+    "num": 11,
+    "href": "/question/52749383/answer/131873217",
+    "text": "如何评价谢杏芳微博回应林丹出轨事件？"
+}, {
+    "num": 11,
+    "href": "/question/21274334/answer/134611409",
+    "text": "健身房都有哪些健身器材，分别有什么作用？"
+}, {
+    "num": 11,
+    "href": "/question/27900484/answer/57537285",
+    "text": "做青旅老板是怎样的体验？"
+}, {
+    "num": 11,
+    "href": "/question/20399991/answer/35238316",
+    "text": "女生的美腿是怎样炼成的？成长期要注意什么？"
+}, {
+    "num": 11,
+    "href": "/question/20303645/answer/15491214",
+    "text": "为什么部分外行人看起来不太复杂的网站，比如Facebook，需要大量顶尖高手来开发？"
+}, {
+    "num": 11,
+    "href": "/question/22646257/answer/22113651",
+    "text": "HTML、CSS、JavaScript、PHP、 MySQL 的学习顺序是什么？"
+}, {
+    "num": 11,
+    "href": "/question/269070103/answer/349143191",
+    "text": "你见过哪些「没什么鸟用」的 App？"
+}, {
+    "num": 11,
+    "href": "/question/30438913/answer/182341345",
+    "text": "学钢琴的路上是什么让你的演奏有了质的飞跃？"
+}, {
+    "num": 11,
+    "href": "/question/26928978/answer/183356468",
+    "text": "如果巴赫，贝多芬（没耳聋），莫扎特还活着，他们会欣赏摇滚乐么？"
+}, {
+    "num": 11,
+    "href": "/question/24175751/answer/26932596",
+    "text": "榫卯结构，为什么现在使用这么少？"
+}, {
+    "num": 11,
+    "href": "/question/27212373/answer/36019580",
+    "text": "工科生怎么看懂《经济学人》（The Economist）？"
+}, {
+    "num": 11,
+    "href": "/question/288241922/answer/461287536",
+    "text": "有什么是你去了广州才知道的事情？"
+}, {
+    "num": 11,
+    "href": "/question/40191951/answer/89044498",
+    "text": "海贼王里你最佩服的人是谁？"
+}, {
+    "num": 11,
+    "href": "/question/34685017/answer/130054742",
+    "text": "海贼王空白的一百年到底发生什么？"
+}, {
+    "num": 11,
+    "href": "/question/279336440/answer/407628523",
+    "text": "为什么鼬杀了那么多人还有这么多人喜欢？"
+}, {
+    "num": 11,
+    "href": "/question/30739274/answer/77819155",
+    "text": "如何评价《火影忍者》的历代火影？"
+}, {
+    "num": 11,
+    "href": "/question/33032798/answer/73330582",
+    "text": "EVA（新世纪福音战士）里有哪些不为人知却又打动人心的细节？"
+}, {
+    "num": 11,
+    "href": "/question/21155222/answer/27137147",
+    "text": "万磁王克钢铁侠么？"
+}, {
+    "num": 11,
+    "href": "/question/270169101/answer/352382068",
+    "text": "《名侦探柯南》里面，女性好不好看是怎么区分的？"
+}, {
+    "num": 11,
+    "href": "/question/288005890/answer/471109715",
+    "text": "名侦探柯南当中有哪些细节可以证明，毛利小五郎不是一个普通人？"
+}, {
+    "num": 11,
+    "href": "/question/27440646/answer/141588784",
+    "text": "如果有一天发现和柯南住一个酒店，该如何自救？"
+}, {
+    "num": 11,
+    "href": "/question/40553738/answer/89313241",
+    "text": "硬汉适合开什么车，二十万左右？"
+}, {
+    "num": 11,
+    "href": "/question/23427617/answer/28206585",
+    "text": "如何构建自己的笔记系统？"
+}, {
+    "num": 11,
+    "href": "/question/19880155/answer/89227970",
+    "text": "如何提高雅思写作成绩？"
+}, {
+    "num": 11,
+    "href": "/question/19709258/answer/108887413",
+    "text": "雅思要如何准备？"
+}, {
+    "num": 11,
+    "href": "/question/29359552/answer/44091951",
+    "text": "朋友要借走相机，一去就一千多公里，怎么办？"
+}, {
+    "num": 11,
+    "href": "/question/24010355/answer/26388512",
+    "text": "《万历十五年》与《明朝那些事儿》，哪个更真实客观？"
+}, {
+    "num": 11,
+    "href": "/question/35451060/answer/62836086",
+    "text": "第一次海湾战争后，中国军队的反应如何？"
+}, {
+    "num": 11,
+    "href": "/question/20055884/answer/100108223",
+    "text": "你在青年旅舍有哪些难忘的经历？"
+}, {
+    "num": 11,
+    "href": "/question/29331802/answer/101620136",
+    "text": "你在俄罗斯有哪些奇特的经历？"
+}, {
+    "num": 11,
+    "href": "/question/24951648/answer/46404030",
+    "text": "一个人旅行到底安不安全？"
+}, {
+    "num": 11,
+    "href": "/question/25835899/answer/87483522",
+    "text": "北京有什么鲜为人知的、很好玩的地方？"
+}, {
+    "num": 11,
+    "href": "/question/36260065/answer/67326278",
+    "text": "比尔·盖茨和乔布斯谁更伟大，谁对世界的影响更大？"
+}, {
+    "num": 11,
+    "href": "/question/263421401/answer/276992020",
+    "text": "如何评价冯小刚导演的电影《芳华》？"
+}, {
+    "num": 11,
+    "href": "/question/27888566/answer/252351363",
+    "text": "这个时代再像马云那样拉小20个人一起创业还靠谱么？"
+}, {
+    "num": 11,
+    "href": "/question/37668821/answer/74885043",
+    "text": "拿了投资人的钱却创业失败，在商业圈子里的后果都会有哪些？"
+}, {
+    "num": 11,
+    "href": "/question/33255013/answer/82949972",
+    "text": "做投行、行研、咨询等金融岗位，有没有什么好用的找数据技巧呢？"
+}, {
+    "num": 11,
+    "href": "/question/67977715/answer/258576618",
+    "text": "为什么刀撸双修玩家一般都是向着dota的？"
+}, {
+    "num": 11,
+    "href": "/question/53929003/answer/157792567",
+    "text": "为什么都说 DOTA2 比 LOL 复杂和难？"
+}, {
+    "num": 11,
+    "href": "/question/31179147/answer/361123939",
+    "text": "为什么有脚气的人烫脚会很爽？"
+}, {
+    "num": 11,
+    "href": "/question/30133876/answer/254114169",
+    "text": "你在生活中用过最高端的生物学知识是什么？"
+}, {
+    "num": 11,
+    "href": "/question/35312192/answer/76264483",
+    "text": "经常戴隐形和近视激光手术，哪一个更伤害眼睛？"
+}, {
+    "num": 11,
+    "href": "/question/60302518/answer/181932758",
+    "text": "如何看待国家电网安规考试要求一字不差，甚至标点符号也不允许错，这样来衡量安全生产是否合理?"
+}, {
+    "num": 11,
+    "href": "/question/283421389/answer/431235718",
+    "text": "中国航天局和 NASA 哪个更厉害一点？"
+}, {
+    "num": 11,
+    "href": "/question/267405918/answer/458298929",
+    "text": "物理中有哪些不可思议（违背直觉）的事实？"
+}, {
+    "num": 11,
+    "href": "/question/38182938/answer/170966670",
+    "text": "笑气是否算毒品？"
+}, {
+    "num": 11,
+    "href": "/question/20050577/answer/130835822",
+    "text": "全面否定中医对不对？"
+}, {
+    "num": 11,
+    "href": "/question/19577036/answer/20228021",
+    "text": "平面排版时，运用哪些方法可以突出中文的美感？"
+}, {
+    "num": 11,
+    "href": "/question/29635172/answer/62917603",
+    "text": "公众号抄袭可以无耻到什么程度？"
+}, {
+    "num": 11,
+    "href": "/question/50259074/answer/138439349",
+    "text": "如何评价成龙获得奥斯卡终身成就奖，成为该奖首位华人得主？"
+}, {
+    "num": 11,
+    "href": "/question/23372992/answer/24387853",
+    "text": "奥斯卡已经过了 90 年，哪一届含金量最高？"
+}, {
+    "num": 10,
+    "href": "/question/264569967/answer/284386214",
+    "text": "为什么《芳华》中的刘峰那么惨？「奉献性」人格是否更容易被社会淘汰？"
+}, {
+    "num": 10,
+    "href": "/question/27969524/answer/267684398",
+    "text": "美国的流浪汉是怎样成为流浪汉的?"
+}, {
+    "num": 10,
+    "href": "/question/67928805/answer/259638408",
+    "text": "中国为什么不直接印大量的人民币去买美国的东西？"
+}, {
+    "num": 10,
+    "href": "/question/27221665/answer/65420734",
+    "text": "为什么很多人即使工资不高，也要拥挤在大城市生活？"
+}, {
+    "num": 10,
+    "href": "/question/44895503/answer/131103766",
+    "text": "瘦子有哪些共同的饮食习惯？"
+}, {
+    "num": 10,
+    "href": "/question/29172757/answer/44041616",
+    "text": "在健身房办了健身卡，之前从来没有接触过器械，该如何了解器械和锻炼？"
+}, {
+    "num": 10,
+    "href": "/question/29460939/answer/45648491",
+    "text": "如果苹果、谷歌、微软打算毁灭世界会怎样？"
+}, {
+    "num": 10,
+    "href": "/question/22566396/answer/36865994",
+    "text": "哪些 iOS 应用让你用了很满意并能提高生活质量？"
+}, {
+    "num": 10,
+    "href": "/question/22361144/answer/148171464",
+    "text": "新浪微博是怎么一步步衰退的？"
+}, {
+    "num": 10,
+    "href": "/question/53296944/answer/134486104",
+    "text": "微博看见一个叫法医郑明明的往下拉的时候看见他发一些与网友交易图片他竟然卖尸检视频这算不算犯罪啊？"
+}, {
+    "num": 10,
+    "href": "/question/61926374/answer/193032834",
+    "text": "余额宝规模达到 1.43 万亿意味着什么？对银行的业务有哪些影响？"
+}, {
+    "num": 10,
+    "href": "/question/20973249/answer/304134431",
+    "text": "钢琴业余十级证书有什么用？"
+}, {
+    "num": 10,
+    "href": "/question/20787836/answer/24705162",
+    "text": "令人印象最深刻的包装设计有哪些？"
+}, {
+    "num": 10,
+    "href": "/question/27958747/answer/39673734",
+    "text": "真正爱看书的人会买 Kindle 吗？"
+}, {
+    "num": 10,
+    "href": "/question/22593208/answer/30111394",
+    "text": "如何简单烹制让人上瘾的啤酒鸡？"
+}, {
+    "num": 10,
+    "href": "/question/26500277/answer/33176497",
+    "text": "如何评价《火影忍者》的大结局？"
+}, {
+    "num": 10,
+    "href": "/question/21900376/answer/44163273",
+    "text": "为什么这么多人喜欢樱桃小丸子？"
+}, {
+    "num": 10,
+    "href": "/question/20859710/answer/74690431",
+    "text": "如何评价《一拳超人》这部漫画？"
+}, {
+    "num": 10,
+    "href": "/question/23188453/answer/92836180",
+    "text": "山王工业如果不轻敌湘北还有胜算吗？"
+}, {
+    "num": 10,
+    "href": "/question/20202027/answer/22440025",
+    "text": "如何看待「流川枫终于懂得传球了」？"
+}, {
+    "num": 10,
+    "href": "/question/266115133/answer/308583072",
+    "text": "别人认为蝙蝠侠弱的时候怎么反驳？"
+}, {
+    "num": 10,
+    "href": "/question/267841643/answer/333045731",
+    "text": "秒怂是一种怎样的体验？"
+}, {
+    "num": 10,
+    "href": "/question/266793958/answer/313412410",
+    "text": "如何看待 SpaceX 猎鹰重型火箭在美国时间 2 月 6 日发射并且回收成功？"
+}, {
+    "num": 10,
+    "href": "/question/271747893/answer/363259186",
+    "text": "为什么很多豪车的配置并不高？"
+}, {
+    "num": 10,
+    "href": "/question/52545263/answer/132201026",
+    "text": "自己的车被借走后遇到过哪些坑爹事？"
+}, {
+    "num": 10,
+    "href": "/question/58893467/answer/349204725",
+    "text": "你见过车技最好的人是什么样的?"
+}, {
+    "num": 10,
+    "href": "/question/19806854/answer/429554585",
+    "text": "中国队 2002 世界杯为什么会出线？"
+}, {
+    "num": 10,
+    "href": "/question/281107399/answer/419856894",
+    "text": "世界杯期间有哪些流传很广的段子？"
+}, {
+    "num": 10,
+    "href": "/question/19591121/answer/171332950",
+    "text": "如何建立自己的知识体系？"
+}, {
+    "num": 10,
+    "href": "/question/20166937/answer/118124928",
+    "text": "自学考雅思 7.0，要做到些什么？ 怎么学？"
+}, {
+    "num": 10,
+    "href": "/question/27244993/answer/36599976",
+    "text": "在 3 个月之内准备托福，想要达到 100+，有哪些方法建议?"
+}, {
+    "num": 10,
+    "href": "/question/37914016/answer/74129073",
+    "text": "甜点的摆盘和拍照有什么技巧？"
+}, {
+    "num": 10,
+    "href": "/question/23757699/answer/25703766",
+    "text": "日本老师几乎每节课都要大骂中国，作为中国留学生该怎么办？"
+}, {
+    "num": 10,
+    "href": "/question/38162603/answer/75583380",
+    "text": "曹操率军翻越太行山时候遇到的熊后来怎么样了？"
+}, {
+    "num": 10,
+    "href": "/question/26896662/answer/142103979",
+    "text": "做银行柜员有没有什么有趣的经历？"
+}, {
+    "num": 10,
+    "href": "/question/26949736/answer/45364252",
+    "text": "国内为什么不严查税收，真的是怕中小企业倒闭吗？"
+}, {
+    "num": 10,
+    "href": "/question/22524442/answer/26697251",
+    "text": "如何快速地对税务知识有一个框架式的了解？"
+}, {
+    "num": 10,
+    "href": "/question/28778713/answer/42927410",
+    "text": "你是如何从两千多只股票中选出心仪的股票的？"
+}, {
+    "num": 10,
+    "href": "/question/44674903/answer/97752793",
+    "text": "为什么有些人玩惯了单机游戏不喜欢网络游戏？"
+}, {
+    "num": 10,
+    "href": "/question/35056185/answer/65874259",
+    "text": "DotA 真有那么大的吸引力，让男生不顾女朋友的感受吗？"
+}, {
+    "num": 10,
+    "href": "/question/43015363/answer/95221845",
+    "text": "如何评价 2016 年 4 月 14 日湖人 VS 爵士，科比最后一场 NBA 比赛？"
+}, {
+    "num": 10,
+    "href": "/question/28027881/answer/62572726",
+    "text": "巅峰时期的姚明有多强？"
+}, {
+    "num": 10,
+    "href": "/question/293481737/answer/529576320",
+    "text": "有哪些神经科学上的事实，没有一定神经科学知识的人不会相信？"
+}, {
+    "num": 10,
+    "href": "/question/27647963/answer/37714920",
+    "text": "头被砍掉的一刹那，是头觉得身体掉了，还是身体觉得头掉了？"
+}, {
+    "num": 10,
+    "href": "/question/36394421/answer/67340301",
+    "text": "为什么没有进化出三栖动物？"
+}, {
+    "num": 10,
+    "href": "/question/25279114/answer/211131339",
+    "text": "为什么那么多美国人对特定食物过敏，而在中国很少听说？"
+}, {
+    "num": 10,
+    "href": "/question/268447608/answer/337946894",
+    "text": "绿化草坪为什么不用韭菜？"
+}, {
+    "num": 10,
+    "href": "/question/279472454/answer/485082891",
+    "text": "有哪些看起来战五渣，实际战斗力爆表的生物？"
+}, {
+    "num": 10,
+    "href": "/question/29265587/answer/125091104",
+    "text": "如何快速成为数据分析师？"
+}, {
+    "num": 10,
+    "href": "/question/50399158/answer/121452233",
+    "text": "为什么微商的非议这么大？和淘宝开店有本质区别么？"
+}, {
+    "num": 10,
+    "href": "/question/48051118/answer/108969084",
+    "text": "如何评价百度大 UE 总监刘超在 2016 国际体验设计大会的演讲？"
+}, {
+    "num": 10,
+    "href": "/question/35636702/answer/66958295",
+    "text": "你 Ps 得最满意的图片是哪个？"
+}, {
+    "num": 10,
+    "href": "/question/40500856/answer/105178205",
+    "text": "你有哪些「做过某功能的改进之后，数据得到大幅提升」的经历？"
+}, {
+    "num": 10,
+    "href": "/question/47083978/answer/104642460",
+    "text": "如何看待韩寒炮轰高考作文很蠢这件事？"
+}, {
+    "num": 10,
+    "href": "/question/22462538/answer/28344750",
+    "text": "如何评价电影《后会无期》？"
+}, {
+    "num": 10,
+    "href": "/question/36509150/answer/67878788",
+    "text": "为什么 10 年前的《指环王》三部曲，现在依然能秒杀市场上绝大多数电影制作？"
+}, {
+    "num": 10,
+    "href": "/question/20688006/answer/316120440",
+    "text": "姜文是一个怎样的导演？"
+}, {
+    "num": 10,
+    "href": "/question/31972365/answer/54554648",
+    "text": "有哪些颜值低，演技高的演员？"
+}, {
+    "num": 10,
+    "href": "/question/37546812/answer/95315249",
+    "text": "如何评价日本电影《垫底辣妹》？"
+}];
+},{}],"index.js":[function(require,module,exports) {
+'use strict';
+
+require('./style.css');
+
+// 引入资源
+var o = require('./test2.json'),
+    html = '',
+    URL = 'https://zhihu.com';
+// 排序
+o.sort(function (p, n) {
+    var kv = parseInt(p.num) - parseInt(n.num),
+        pid = parseInt(p.href.split('answer/')[1]),
+        nid = parseInt(n.href.split('answer/')[1]);
+    return kv > 0 ? -1 : kv === 0 ? pid > nid ? -1 : 1 : 1;
+});
+// 过滤
+o = o.filter(function (p, i) {
+    return p.href != (o[i + 1] || {}).href;
+});
+// 布局
+o.forEach(function (item, idx) {
+    html += '<li><b>' + item.num + 'K</b><a target="_blank" href="' + URL + item.href + '">' + item.text + '</a></li>';
+});
+console.log(o);
+// 绘制
+document.querySelector('#content').innerHTML = html;
+},{"./style.css":"style.css","./test2.json":"test2.json"}],"C:\\Users\\flyfi\\AppData\\Roaming\\npm\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
+var global = arguments[3];
+var OVERLAY_ID = '__parcel__error__overlay__';
+
+var OldModule = module.bundle.Module;
+
+function Module(moduleName) {
+  OldModule.call(this, moduleName);
+  this.hot = {
+    data: module.bundle.hotData,
+    _acceptCallbacks: [],
+    _disposeCallbacks: [],
+    accept: function (fn) {
+      this._acceptCallbacks.push(fn || function () {});
+    },
+    dispose: function (fn) {
+      this._disposeCallbacks.push(fn);
+    }
+  };
+
+  module.bundle.hotData = null;
+}
+
+module.bundle.Module = Module;
+
+var parent = module.bundle.parent;
+if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
+  var hostname = '' || location.hostname;
+  var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '52646' + '/');
+  ws.onmessage = function (event) {
+    var data = JSON.parse(event.data);
+
+    if (data.type === 'update') {
+      console.clear();
+
+      data.assets.forEach(function (asset) {
+        hmrApply(global.parcelRequire, asset);
+      });
+
+      data.assets.forEach(function (asset) {
+        if (!asset.isNew) {
+          hmrAccept(global.parcelRequire, asset.id);
+        }
+      });
+    }
+
+    if (data.type === 'reload') {
+      ws.close();
+      ws.onclose = function () {
+        location.reload();
+      };
+    }
+
+    if (data.type === 'error-resolved') {
+      console.log('[parcel] ✨ Error resolved');
+
+      removeErrorOverlay();
+    }
+
+    if (data.type === 'error') {
+      console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
+
+      removeErrorOverlay();
+
+      var overlay = createErrorOverlay(data);
+      document.body.appendChild(overlay);
+    }
+  };
+}
+
+function removeErrorOverlay() {
+  var overlay = document.getElementById(OVERLAY_ID);
+  if (overlay) {
+    overlay.remove();
+  }
+}
+
+function createErrorOverlay(data) {
+  var overlay = document.createElement('div');
+  overlay.id = OVERLAY_ID;
+
+  // html encode message and stack trace
+  var message = document.createElement('div');
+  var stackTrace = document.createElement('pre');
+  message.innerText = data.error.message;
+  stackTrace.innerText = data.error.stack;
+
+  overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
+
+  return overlay;
+}
+
+function getParents(bundle, id) {
+  var modules = bundle.modules;
+  if (!modules) {
+    return [];
+  }
+
+  var parents = [];
+  var k, d, dep;
+
+  for (k in modules) {
+    for (d in modules[k][1]) {
+      dep = modules[k][1][d];
+      if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
+        parents.push(k);
+      }
+    }
+  }
+
+  if (bundle.parent) {
+    parents = parents.concat(getParents(bundle.parent, id));
+  }
+
+  return parents;
+}
+
+function hmrApply(bundle, asset) {
+  var modules = bundle.modules;
+  if (!modules) {
+    return;
+  }
+
+  if (modules[asset.id] || !bundle.parent) {
+    var fn = new Function('require', 'module', 'exports', asset.generated.js);
+    asset.isNew = !modules[asset.id];
+    modules[asset.id] = [fn, asset.deps];
+  } else if (bundle.parent) {
+    hmrApply(bundle.parent, asset);
+  }
+}
+
+function hmrAccept(bundle, id) {
+  var modules = bundle.modules;
+  if (!modules) {
+    return;
+  }
+
+  if (!modules[id] && bundle.parent) {
+    return hmrAccept(bundle.parent, id);
+  }
+
+  var cached = bundle.cache[id];
+  bundle.hotData = {};
+  if (cached) {
+    cached.hot.data = bundle.hotData;
+  }
+
+  if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
+    cached.hot._disposeCallbacks.forEach(function (cb) {
+      cb(bundle.hotData);
+    });
+  }
+
+  delete bundle.cache[id];
+  bundle(id);
+
+  cached = bundle.cache[id];
+  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
+    cached.hot._acceptCallbacks.forEach(function (cb) {
+      cb();
+    });
+    return true;
+  }
+
+  return getParents(global.parcelRequire, id).some(function (id) {
+    return hmrAccept(global.parcelRequire, id);
+  });
+}
+},{}]},{},["C:\\Users\\flyfi\\AppData\\Roaming\\npm\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js","index.js"], null)
+//# sourceMappingURL=/web.fe3ce1af.map
