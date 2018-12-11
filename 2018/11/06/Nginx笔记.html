@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://togor.cn/2018/11/06/Nginx笔记.html">
 <meta property="og:site_name" content="Keer">
 <meta property="og:description" content="Nginx也用过好一段时间了，自己一直没有系统的了解和学习过，借此篇做以记录及日后查阅。  环境: centos7 安装1, 添加 /etc/yum.repos.d/nginx.repo, 内容如下:12345[nginx]name=nginx repobaseurl=http://nginx.org/packages/centos/7/$basearch/gpgcheck=0enabled=1">
-<meta property="og:updated_time" content="2018-11-06T08:09:43.077Z">
+<meta property="og:updated_time" content="2018-11-16T05:17:34.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx笔记">
 <meta name="twitter:description" content="Nginx也用过好一段时间了，自己一直没有系统的了解和学习过，借此篇做以记录及日后查阅。  环境: centos7 安装1, 添加 /etc/yum.repos.d/nginx.repo, 内容如下:12345[nginx]name=nginx repobaseurl=http://nginx.org/packages/centos/7/$basearch/gpgcheck=0enabled=1">
@@ -387,6 +387,9 @@
 </tbody>
 </table>
 <h5 id="nginx压缩"><a href="#nginx压缩" class="headerlink" title="nginx压缩"></a>nginx压缩</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 最常用的几个值</div><div class="line">gzip             on;      // 开启压缩模式</div><div class="line">gzip_min_length  1000;    // 可以被压缩的最小文件大小</div><div class="line">gzip_types       text/plain application/xml;    // 被压缩的文件类型</div></pre></td></tr></table></figure>
+<h5 id="ssi"><a href="#ssi" class="headerlink" title="ssi"></a>ssi</h5><p>server side include，一种基于服务端的网页制作技术。</p>
+<p><strong>工作原理</strong><br>在页面内容发送到客户端之前，nginx将页面中include的内容嵌入到页面中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssi              on;</div></pre></td></tr></table></figure>
 <p>《后续》</p>
 
       
@@ -439,6 +442,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/10/sublime快捷键.html" rel="prev" title="sublime快捷键">
+                sublime快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -510,7 +517,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -523,7 +530,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -578,7 +585,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx压缩"><span class="nav-number">3.</span> <span class="nav-text">nginx压缩</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nginx压缩"><span class="nav-number">3.</span> <span class="nav-text">nginx压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ssi"><span class="nav-number">4.</span> <span class="nav-text">ssi</span></a></li></ol></div>
             
 
           </div>
