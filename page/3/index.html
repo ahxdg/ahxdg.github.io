@@ -286,6 +286,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/04/11/FlexPaper无法播放跨域的swf文件.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/11/FlexPaper无法播放跨域的swf文件.html" itemprop="url">FlexPaper无法播放跨域的swf文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T15:33:50+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>今天接到一个问题，公司有个项目使用了flexpaper，做文档展示。但无法正常显示swf文件</p>
+</blockquote>
+<p>其实，如果在本地先做好demo，问题可能就很快被发现的。<br>但是，由于这个项目三个人参与，且后端代码，前端代码和静态资源（swf文件）分别由三个人负责，所以问题一直没有被发现，因为不清楚到底是谁那里出了问题。</p>
+<p>中午接到问题时，我也是一脸懵逼，因为刚进来，根本不知道这个项目。</p>
+<p><strong>处理过程：</strong></p>
+<p>1，先把前端代码拿到手，配置好打开发现只是一个样式demo，并没有flexpaper。索性在本地写一个flexpaper的demo</p>
+<p>2，找到后端负责人（因为他在开发这个项目，并且是套的前端代码），拿到他的开发环境，浏览器打开发现只是未显示swf文件，并没有报错。</p>
+<p>3，找到负责swf文件的人，从他那里copy了一份。直接拖到chrome浏览器发现是直接下载，又拖到360浏览器，可以正常打开，<strong>排除文件出错</strong>。</p>
+<p>由于是参照后端的项目写的demo，代码中引入的FlexPaperViewer.swf是服务器上的文件，而播放的swf是本地的文件，所以报了一个错误：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GET http:<span class="comment">//192.168.0.180:8078/crossdomain.xml 404 (Not Found)</span></div></pre></td></tr></table></figure></p>
+<p>从报错信息中可以得知，是跨域问题。</p>
+<p>修改FlexPaperViewer.swf的引入路径，把FlexPaperViewer.swf文件下载到本地，引入本地的FlexPaperViewer.swf试一下，可以正常打开。</p>
+<p><strong>也就是说：当我们引入FlexPaperViewer文件时，对于需要播放的swf文件必须是在同一个域名下，不然就会出现上面的错误。</strong></p>
+<p>当然，除此之外还有别的解决方案：就是上面报错的信息中所提到的crossdomain.xml文件，当FlexPaperViewer文件和需要播放的swf文件在不同域时，我们可以在需要播放的swf文件所在域的根目录下添加一个crossdomain.xml：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">cross-domain-policy</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">allow-access-from</span> <span class="attr">domain</span>=<span class="string">"FlexPaperViewer文件所在的域"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">cross-domain-policy</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>意思是：允许FlexPaperViewer文件所在的域对本域名下的文件进行跨域请求，这样就不会报错了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/03/30/webRTC录音功能.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1350,123 +1476,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2017/08/28/我是搬运工-js数组打乱-shuffle.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/28/我是搬运工-js数组打乱-shuffle.html" itemprop="url">[我是搬运工]-js数组打乱-shuffle</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T08:53:50+08:00">
-                2017-08-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近在项目要用到一个函数，把数组打乱，结果竟然发现：js没有这么一个函数！！！震惊！！！</p>
-<p>然而旁边的陈同学却告诉我php里都内置了这样的函数shuffle，果然php是世界上最NB的语言~</p>
-<p>下面摘抄stackoverflow上面的一些精髓的方法</p>
-<p>方法一：(852赞)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> currentIndex = array.length, temporaryValue, randomIndex;</div><div class="line"></div><div class="line">  <span class="comment">// While there remain elements to shuffle...</span></div><div class="line">  <span class="keyword">while</span> (<span class="number">0</span> !== currentIndex) &#123;</div><div class="line"></div><div class="line">    <span class="comment">// Pick a remaining element...</span></div><div class="line">    randomIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * currentIndex);</div><div class="line">    currentIndex -= <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="comment">// And swap it with the current element.</span></div><div class="line">    temporaryValue = array[currentIndex];</div><div class="line">    array[currentIndex] = array[randomIndex];</div><div class="line">    array[randomIndex] = temporaryValue;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> array;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// Used like so</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>, <span class="number">11</span>, <span class="number">37</span>, <span class="number">42</span>];</div><div class="line">arr = shuffle(arr);</div><div class="line"><span class="built_in">console</span>.log(arr);</div></pre></td></tr></table></figure></p>
-<p>方法二：(347赞)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffleArray</span>(<span class="params">array</span>) </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = array.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">        <span class="keyword">var</span> j = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (i + <span class="number">1</span>));</div><div class="line">        <span class="keyword">var</span> temp = array[i];</div><div class="line">        array[i] = array[j];</div><div class="line">        array[j] = temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> array;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><a href="https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array" target="_blank" rel="external">传送门</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1516,7 +1525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1529,7 +1538,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

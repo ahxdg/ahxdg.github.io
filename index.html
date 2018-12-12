@@ -286,6 +286,123 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/12/12/gulp无法运行-Cannot-read-property-apply-of-undefined.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/12/gulp无法运行-Cannot-read-property-apply-of-undefined.html" itemprop="url">gulp无法运行 - Cannot read property 'apply' of undefined</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-12T09:17:50+08:00">
+                2018-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>今天自己新建了一个项目，准备使用gulp做自动化开发。结果安装好gulp之后，无法正常启动….</p>
+</blockquote>
+<p>报错信息如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">F:\...\project&gt;gulp</div><div class="line">[08:05:18] Using gulpfile F:\...\project\gulpfile.js</div><div class="line">C:\Users\flyfi\AppData\Roaming\npm\node_modules\gulp\bin\gulp.js:129</div><div class="line">    gulpInst.start.apply(gulpInst, toRun);</div><div class="line">                   ^</div><div class="line"></div><div class="line">TypeError: Cannot read property &apos;apply&apos; of undefined</div><div class="line">    at C:\Users\flyfi\AppData\Roaming\npm\node_modules\gulp\bin\gulp.js:129:20</div><div class="line">    at _combinedTickCallback (internal/process/next_tick.js:132:7)</div><div class="line">    at process._tickCallback (internal/process/next_tick.js:181:9)</div><div class="line">    at Function.Module.runMain (module.js:696:11)</div><div class="line">    at startup (bootstrap_node.js:204:16)</div><div class="line">    at bootstrap_node.js:625:3</div></pre></td></tr></table></figure></p>
+<p>其实问题很简单，因为全局的gulp和项目中的gulp版本不同导致的。<br>查看版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">F:\...\project&gt;gulp -v</div><div class="line">[08:06:47] CLI version 3.9.1</div><div class="line">[08:06:47] Local version 4.0.0</div></pre></td></tr></table></figure></p>
+<p>删除项目的gulp，重新安装3.9.1的即可。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/12/10/sublime快捷键.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1410,125 +1527,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/07/11/如何做内网项目的https优化.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/11/如何做内网项目的https优化.html" itemprop="url">如何做内网项目的https优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-11T17:27:23+08:00">
-                2018-07-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>有时候，我们可能会遇到客户要求在自己的内部网络内使用项目。那么我们就需要把项目部署到客户的网络内部，然后又需要让用户使用时浏览器提示是“安全的”，尽管已经是和外部网络隔离了。</p>
-</blockquote>
-<p>问题来了，怎么办呢？</p>
-<p>首先，我们需要一个域名，那就去各大域名网站购买一个吧。<br>其次，就需要申请一个ssl证书了（域名网站一般会有1年的免费域名使用且都有相应教程，这里不做赘述）。<br>再然后，就是给项目添加https，这里多说一下：<br>以nginx为例：<br>在nginx.conf中添加ssl<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 443;</div><div class="line">    server_name youdomainname.com;</div><div class="line">    ssl on;</div><div class="line"></div><div class="line">    ssl_certificate   cert/youssl.pem;</div><div class="line">    ssl_certificate_key  cert/youssl.key;</div><div class="line">    ssl_session_timeout 5m;</div><div class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</div><div class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</div><div class="line">    ssl_prefer_server_ciphers on;</div><div class="line">    location / &#123;</div><div class="line">        root html;</div><div class="line">        index index.html index.htm;</div><div class="line">        # 这里也可以做端口的转发</div><div class="line">        # proxy_pass locahost:8081;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>接下来，就需要你把内网电脑上的hosts文件添加一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 这里的192.168.2.245是内网服务器</div><div class="line">192.168.2.245 youdomainname.com</div></pre></td></tr></table></figure></p>
-<p>是不是很简单…</p>
-<p>其实这种方案可以解决相关很多问题，比如：https访问http接口</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1578,7 +1576,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1591,7 +1589,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
