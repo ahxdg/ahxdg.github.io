@@ -286,6 +286,125 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://togor.cn/2019/01/10/【电脑维护】-清理右键-控制面板-注册表.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Togor">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Keer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/10/【电脑维护】-清理右键-控制面板-注册表.html" itemprop="url">【电脑维护】-清理右键/控制面板/服务/文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T00:41:15+08:00">
+                2019-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>清理右键</strong></p>
+<p>右键信息在注册表里很多地方，一个个找很麻烦。通过右键名称直接在注册表中搜索，然后删除掉即可，十分方便。</p>
+<p><strong>清理控制面板</strong></p>
+<p>有些应用会在控制面板中添加一些管理入口，卸载后还会有残留，同样的，通过显示的名称，直接在注册表中搜索并删除。</p>
+<p><strong>清理服务</strong></p>
+<p>这个在注册表中可能会搜索不到，不过你可以打开注册表到HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services/下查找，然后删除对应的服务</p>
+<p><strong>清理文件</strong></p>
+<p>有些软件被卸载后还有残留的文件，无法被删除。如：需要权限或者被程序打开等等，你可以直接进入安全模式进行删除。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://togor.cn/2019/01/08/愿你的喜爱永在.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1428,134 +1547,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://togor.cn/2018/08/17/virtualBox上的那些事3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Togor">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Keer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/17/virtualBox上的那些事3.html" itemprop="url">virtualBox上的那些事(三)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T18:22:01+08:00">
-                2018-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>这篇文章，我们聊一聊虚拟机的后台运行吧！</p>
-</blockquote>
-<p>查了一下，virtualBox有个VBoxManage.exe，打开cmd，进入到virtualBox目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">查看一下这个命令的参数： VBoxManage -h</div><div class="line"></div><div class="line">VBoxManage [&lt;general option&gt;] &lt;command&gt;</div><div class="line"></div><div class="line">General Options:</div><div class="line"></div><div class="line">  [-v|--version]            print version number and exit</div><div class="line">  [-q|--nologo]             suppress the logo</div><div class="line">  [--settingspw &lt;pw&gt;]       provide the settings password</div><div class="line">  [--settingspwfile &lt;file&gt;] provide a file containing the settings password</div><div class="line">  [@&lt;response-file&gt;]        load arguments from the given response file (bourne style)</div><div class="line"></div><div class="line">Commands:</div><div class="line"></div><div class="line">  list [--long|-l] [--sorted|-s]          vms|runningvms|ostypes|hostdvds|hostfloppies|</div><div class="line">                            intnets|bridgedifs|hostonlyifs|natnets|dhcpservers|</div><div class="line">                            hostinfo|hostcpuids|hddbackends|hdds|dvds|floppies|</div><div class="line">                            usbhost|usbfilters|systemproperties|extpacks|</div><div class="line">                            groups|webcams|screenshotformats</div><div class="line"></div><div class="line">  showvminfo                &lt;uuid|vmname&gt; [--details]</div><div class="line">                            [--machinereadable]</div><div class="line">  showvminfo                &lt;uuid|vmname&gt; --log &lt;idx&gt;</div><div class="line"></div><div class="line">  registervm                &lt;filename&gt;</div><div class="line"></div><div class="line">  unregistervm              &lt;uuid|vmname&gt; [--delete]</div><div class="line"></div><div class="line">  createvm                  --name &lt;name&gt;</div><div class="line">                            [--groups &lt;group&gt;, ...]</div><div class="line">                            [--ostype &lt;ostype&gt;]</div><div class="line">                            [--register]</div><div class="line">                            [--basefolder &lt;path&gt;]</div><div class="line">                            [--uuid &lt;uuid&gt;]</div><div class="line">...</div><div class="line"></div><div class="line"> startvm                   &lt;uuid|vmname&gt;...</div><div class="line">                            [--type gui|sdl|headless|separate]</div><div class="line">                            [-E|--putenv &lt;NAME&gt;[=&lt;VALUE&gt;]]</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p>ok，我们查看一下有几台虚拟机：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">VBoxManage list vms</div><div class="line"></div><div class="line">&quot;centos7&quot; &#123;abe0c1a1-da62-4016-b834-ec4f644eb1f6&#125;</div><div class="line">&quot;cs2&quot; &#123;091d1b5b-372d-4dcb-a164-536b3054e016&#125;</div></pre></td></tr></table></figure></p>
-<p>发现我装了两天虚拟机</p>
-<p>上面有个startvm的命令，后面有几个参数：gui，sdl，headless，separate</p>
-<p>用这条命令，就能后台运行了…</p>
-<p>VBoxManage startvm cs2 –type headless</p>
-<p>其他的命令，有兴趣就去试试吧。</p>
-<p>最好，添加一条系统变量，这样就能全局使用VBoxManage了</p>
-<p>^_^</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1600,7 +1596,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1613,7 +1609,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
